@@ -34,6 +34,8 @@ in {
       gimp
       spotify
       gucharmap
+
+      neofetch
     ];
   };
 }
