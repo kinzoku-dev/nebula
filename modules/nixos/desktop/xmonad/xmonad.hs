@@ -19,6 +19,7 @@ main = xmonad
 myConfig = def
   { terminal = "kitty"
   , layoutHook = smartBorders $ myLayouts
+  , startupHook = myStartupHook
   }
   `additionalKeysP`
   [ ("M-S-s", spawn "flameshot gui")
@@ -36,3 +37,6 @@ myLayouts = toggleLayouts (noBorders Full) (myTiled)
     where
         myTiled = spacingWithEdge 10 $ Tall 1 (3/100) (1/2)
         myFullscreen = Tall 1 (3/100) (1/2)
+
+myStartupHook = do
+    spawnOnce "picom &"

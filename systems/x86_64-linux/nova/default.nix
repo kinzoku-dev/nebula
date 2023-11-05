@@ -41,6 +41,7 @@
   apps.tmux.enable = true;
   apps.brave.enable = true;
   apps.discord.enable = true;
+  desktop.picom.enable = true;
 
   system.cron.enable = true;
 
