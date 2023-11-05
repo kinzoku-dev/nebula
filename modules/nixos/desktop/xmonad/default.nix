@@ -25,8 +25,6 @@ in {
     environment.systemPackages = with pkgs; [
       dmenu
       flameshot
-
-      custom.walslide
     ];
   };
 }
