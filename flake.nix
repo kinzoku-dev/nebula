@@ -18,12 +18,6 @@
       url = "github:kinzoku-dev/neovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Firefox plugins
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs: let
