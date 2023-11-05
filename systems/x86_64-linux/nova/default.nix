@@ -30,9 +30,11 @@
   };
 
   apps.misc.enable = true;
+  apps.misc.figlet.enable = true;
   apps.zsh.enable = true;
   apps.tools.direnv.enable = true;
   apps.tools.zoxide.enable = true;
+  apps.tools.git.enable = true;
   apps.kitty.enable = true;
   apps.steam.enable = true;
   apps.neovim.enable = true;

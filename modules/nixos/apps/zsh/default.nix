@@ -29,6 +29,13 @@ in {
         dva = "direnv allow";
         sz = "source ~/.config/zsh/.zshrc";
         tfmt = "treefmt";
+        flui = "sudo nix flake lock --update-input";
+        figshad = mkIf config.apps.misc.figlet.enable "figlet -f ~/figlet_fonts/ANSI_Shadow.flf $1";
+        ga = mkIf config.apps.tools.git.enable "git add .";
+        gc = mkIf config.apps.tools.git.enable "git commit -m ";
+        gp = mkIf config.apps.tools.git.enable "git push -u origin";
+
+        lg = mkIf config.apps.tools.git.enable "lazygit";
       };
       initExtra = ''
         eval "$(direnv hook zsh)"

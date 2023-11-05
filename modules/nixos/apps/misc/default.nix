@@ -33,6 +33,7 @@ in {
       xfce.thunar
       gimp
       spotify
+      gucharmap
     ];
   };
 }
