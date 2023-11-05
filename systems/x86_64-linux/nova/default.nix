@@ -42,6 +42,8 @@
   apps.brave.enable = true;
   apps.discord.enable = true;
 
+  system.cron.enable = true;
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
