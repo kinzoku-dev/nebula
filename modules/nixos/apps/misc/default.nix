@@ -32,10 +32,11 @@ in {
       xfce.mousepad
       xfce.thunar
       gimp
-      spotify
+      spicetify-cli
       gucharmap
 
       neofetch
+      pfetch
     ];
   };
 }

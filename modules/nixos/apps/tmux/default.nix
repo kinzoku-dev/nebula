@@ -58,7 +58,6 @@ in {
         set -g @catppuccin_status_right_separator_inverse "yes"
         set -g @catppuccin_status_fill "all"
         set -g @catppuccin_status_connect_separator "no"
-
       '';
       plugins = with pkgs; [
         tmuxPlugins.vim-tmux-navigator

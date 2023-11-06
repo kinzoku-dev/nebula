@@ -18,6 +18,11 @@ in {
       enable = true;
       enableContribAndExtras = true;
       config = ./xmonad.hs;
+      extraPackages = hp: [
+        hp.dbus
+        hp.monad-logger
+        hp.xmonad-contrib
+      ];
     };
 
     services.xserver.windowManager.xmonad.enable = true;
@@ -25,6 +30,33 @@ in {
     environment.systemPackages = with pkgs; [
       dmenu
       flameshot
+      xmonad-log
+      xorg.xhost
     ];
+    home.programs.xmobar = let
+      inherit (config.colorscheme) colors;
+    in {
+      enable = true;
+      extraConfig = ''
+        Config
+          { font = "JetBrains Mono 10"
+          , position = TopSize C 99 30
+          , bgColor = "#11111b"
+          , fgColor = "#${colors.base05}"
+          , allDesktops = True
+          , persistent = True
+          , lowerOnStart = True
+          , commands =
+            [ Run Cpu ["-t", "cpu: <fc=#89b4fa><bar> <total>%</fc>"] 10
+            , Run Memory ["-t","mem: <fc=#89b4fa><usedbar> <usedratio>%</fc>"] 10
+            , Run Date "date: <fc=#89b4fa>%a %d %b %Y %H:%M:%S </fc>" "date" 10
+            , Run XMonadLog
+          ]
+          , sepChar = "%"
+          , alignSep = "}{"
+          , template    = "%XMonadLog% }{ %cpu% | %memory% | %date% "
+          }
+      '';
+    };
   };
 }

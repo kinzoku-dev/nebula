@@ -20,5 +20,7 @@ in {
       wallpapers = ./wallpapers;
       colorscheme = inputs.nix-colors.colorschemes.${cfg.colorscheme};
     };
+
+    colorScheme = inputs.nix-colors.colorschemes.${cfg.colorscheme};
   };
 }

@@ -32,7 +32,7 @@
   apps.misc.enable = true;
   apps.misc.figlet.enable = true;
   apps.zsh.enable = true;
-  apps.tools.direnv.enable = true;
+  # apps.tools.direnv.enable = true;
   apps.tools.zoxide.enable = true;
   apps.tools.git.enable = true;
   apps.kitty.enable = true;
@@ -42,6 +42,7 @@
   apps.brave.enable = true;
   apps.discord.enable = true;
   desktop.picom.enable = true;
+  desktop.polybar.enable = true;
 
   system.cron.enable = true;
 
@@ -72,6 +73,7 @@
     wget
     git
     custom.nix-inspect
+    sl
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

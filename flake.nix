@@ -18,6 +18,8 @@
       url = "github:kinzoku-dev/neovim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
   };
 
   outputs = inputs: let
@@ -36,15 +38,16 @@
     };
   in
     lib.mkFlake {
-      inherit inputs;
-      src = ./.;
-
       channels-config = {
         allowUnfree = true;
       };
 
       overlays = with inputs; [
         neovim.overlays.x86_64-linux.neovim
+      ];
+
+      systems.modules.nixos = with inputs; [
+        home-manager.nixosModules.home-manager
       ];
     };
 }

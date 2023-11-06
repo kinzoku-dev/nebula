@@ -8,7 +8,6 @@
 with lib;
 with lib.custom; {
   imports = with inputs; [
-    home-manager.nixosModules.home-manager
     nix-colors.homeManagerModules.default
     prism.homeModules.prism
   ];
@@ -22,6 +21,7 @@ with lib.custom; {
       "A set of files to be managed by home-manager's xdg.configFile";
     programs = mkOpt attrs {} "Programs to be managed by home-manager.";
     extraOptions = mkOpt attrs {} "Options to pass directly to home-manager.";
+    packages = mkOpt (listOf str) [] "Packages to be installed with home-manager.";
   };
 
   config = {
@@ -32,6 +32,8 @@ with lib.custom; {
       xdg.configFile = mkAliasDefinitions options.home.configFile;
       programs = mkAliasDefinitions options.home.programs;
     };
+
+    home.packages = mkAliasDefinitions options.home.packages;
 
     home-manager = {
       useUserPackages = true;

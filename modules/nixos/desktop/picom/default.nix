@@ -14,17 +14,20 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.services.picom = {
-      enable = true;
-      activeOpacity = 0.95;
-      inactiveOpacity = 0.95;
-      settings = {
-        blur = {
-          mething = "gaussian";
-          size = 10;
-          deviation = 5.0;
-        };
-      };
-    };
+    environment.systemPackages = [
+      pkgs.picom
+    ];
+
+    home.configFile."picom/picom.conf".text = ''
+      opacity-rule = [
+        "100:fullscreen",
+        "100:name *= 'Firefox'",
+        "100:name *= 'Discord'",
+        "100:name *= 'Steam'"
+      ];
+
+      inactive-opacity = 0.95;
+      active-opacity = 0.95;
+    '';
   };
 }

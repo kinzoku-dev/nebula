@@ -17,7 +17,9 @@ in {
     users.users.kinzoku.ignoreShellProgramCheck = true;
     users.users.kinzoku.shell = pkgs.zsh;
 
-    home.programs.zsh = {
+    home.programs.zsh = let
+      inherit (config.colorscheme) colors;
+    in {
       enable = true;
       enableAutosuggestions = true;
       enableCompletion = true;
@@ -42,6 +44,8 @@ in {
         export DIRENV_LOG_FORMAT=""
         eval "$(starship init zsh)"
         eval "$(zoxide init zsh)"
+
+        echo "${colors.base00}"
       '';
     };
     home.programs.starship = {
