@@ -21,7 +21,7 @@ in {
     home.configFile."picom/picom.conf".text = ''
       opacity-rule = [
         "100:fullscreen",
-        "100:name *= 'Firefox'",
+        "100:name *= 'Brave'",
         "100:name *= 'Discord'",
         "100:name *= 'Steam'"
       ];
