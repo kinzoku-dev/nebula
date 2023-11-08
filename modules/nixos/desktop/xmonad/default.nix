@@ -40,6 +40,7 @@ in {
       extraConfig = ''
         Config
           { font = "JetBrains Mono 10"
+          , additionalFonts = [ "Font Awesome 6 Free Solid 12" ]
           , position = TopSize C 99 30
           , bgColor = "#11111b"
           , fgColor = "#${colors.base05}"
@@ -47,14 +48,20 @@ in {
           , persistent = True
           , lowerOnStart = True
           , commands =
-            [ Run Cpu ["-t", "cpu: <fc=#89b4fa><bar> <total>%</fc>"] 10
-            , Run Memory ["-t","mem: <fc=#89b4fa><usedbar> <usedratio>%</fc>"] 10
-            , Run Date "date: <fc=#89b4fa>%a %d %b %Y %H:%M:%S </fc>" "date" 10
+            [ Run Cpu ["-t", "<fn=1></fn> <fc=#89b4fa><total>%</fc>"] 10
+            , Run Memory ["-t","<fn=1></fn> <fc=#89b4fa><usedratio>%</fc>"] 10
+            , Run Date "<fn=1></fn> <fc=#89b4fa>%D %I:%M %p</fc>" "date" 10
             , Run XMonadLog
+            , Run Alsa "default" "Master"
+                        [ "--template", "<fn=1></fn> <fc=#89b4fa><volumestatus></fc>"
+                        , "--suffix"  , "True"
+                        , "--"
+                        , "--on", ""
+                        ]
           ]
           , sepChar = "%"
           , alignSep = "}{"
-          , template    = "%XMonadLog% }{ %cpu% | %memory% | %date% "
+          , template    = "  %XMonadLog% }{ %cpu% | %memory% | %alsa:default:Master% | %date%  "
           }
       '';
     };

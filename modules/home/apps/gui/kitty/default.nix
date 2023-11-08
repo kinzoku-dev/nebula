@@ -7,14 +7,14 @@
 }:
 with lib;
 with lib.custom; let
-  cfg = config.apps.kitty;
+  cfg = config.home.apps.gui.kitty;
 in {
-  options.apps.kitty = {
+  options.home.apps.gui.kitty = {
     enable = mkBoolOpt false "enable kitty terminal";
   };
 
   config = mkIf cfg.enable {
-    home.programs.kitty = {
+    programs.kitty = {
       enable = true;
       environment = {};
       font = {

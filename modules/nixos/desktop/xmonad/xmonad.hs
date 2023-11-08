@@ -51,9 +51,10 @@ myLayouts = toggleLayouts (noBorders Full) (myTiled)
         myTiled = spacingWithEdge 5 $ Tall 1 (3/100) (1/2)
         myFullscreen = Tall 1 (3/100) (1/2)
 
+myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "xhost +localhost"
-    spawnOnce "picom &"
+    spawn "picom &"
     spawnOnce "nitrogen --set-zoom-fill --random ~/.config/wallpapers --save"
 
 myXmobarPP = statusBarProp "xmobar ~/.config/xmobar/.xmobarrc" (pure pp)
@@ -61,8 +62,7 @@ myXmobarPP = statusBarProp "xmobar ~/.config/xmobar/.xmobarrc" (pure pp)
 pp = xmobarPP {
           ppCurrent = xmobarColor "#f38ba8" "" -- . wrap ("<box type=Bottom width=2 mb=5 color=#6690C4>") "</box>"
           , ppVisible = xmobarColor "#89b4fa" ""
-          , ppHidden = xmobarColor "#f38ba8" "" . wrap "*" ""
+          , ppHidden = xmobarColor "#89b4fa" "" . wrap "" ""
           , ppWsSep = "  "
-          , ppOrder = \(ws:l:t:ex) -> [ws]++ex++[t]
+          , ppOrder = \(ws:l:t:ex) -> [ws]
 }
-

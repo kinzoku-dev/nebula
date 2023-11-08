@@ -15,7 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.picom
+      pkgs.picom-allusive
     ];
 
     home.configFile."picom/picom.conf".text = ''
@@ -23,11 +23,20 @@ in {
         "100:fullscreen",
         "100:name *= 'Brave'",
         "100:name *= 'Discord'",
-        "100:name *= 'Steam'"
+        "100:name *= 'Steam'",
+        "100:name *= 'Spotify'"
       ];
+
+      corners-rule = [
+        "15:class_g = 'xmobar'"
+      ];
+
+      animations = false;
 
       inactive-opacity = 0.95;
       active-opacity = 0.95;
+
+      backend = "glx";
     '';
   };
 }

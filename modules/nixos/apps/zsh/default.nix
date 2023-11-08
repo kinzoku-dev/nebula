@@ -29,6 +29,7 @@ in {
         rb = "sudo nixos-rebuild switch --flake .";
         dv = "direnv";
         dva = "direnv allow";
+        dvr = "direnv revoke";
         sz = "source ~/.config/zsh/.zshrc";
         tfmt = "treefmt";
         flui = "sudo nix flake lock --update-input";
@@ -44,8 +45,6 @@ in {
         export DIRENV_LOG_FORMAT=""
         eval "$(starship init zsh)"
         eval "$(zoxide init zsh)"
-
-        echo "${colors.base00}"
       '';
     };
     home.programs.starship = {

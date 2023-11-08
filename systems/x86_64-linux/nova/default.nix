@@ -32,10 +32,8 @@
   apps.misc.enable = true;
   apps.misc.figlet.enable = true;
   apps.zsh.enable = true;
-  # apps.tools.direnv.enable = true;
   apps.tools.zoxide.enable = true;
   apps.tools.git.enable = true;
-  apps.kitty.enable = true;
   apps.steam.enable = true;
   apps.neovim.enable = true;
   apps.tmux.enable = true;
@@ -45,6 +43,8 @@
   desktop.polybar.enable = true;
 
   system.cron.enable = true;
+
+  system.sops.enable = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -74,6 +74,12 @@
     git
     custom.nix-inspect
     sl
+
+    gopls
+    spotify
+    cava
+
+    sops
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

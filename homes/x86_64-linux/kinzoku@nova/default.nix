@@ -13,10 +13,14 @@ with lib.custom; {
     };
     apps = {
       gui = {
-        spicetify.enable = true;
+        kitty.enable = true;
       };
       tools = {
         direnv.enable = true;
+      };
+      cli = {
+        # doom-emacs.enable = true;
+        lf.enable = true;
       };
     };
     home-manager.enable = true;

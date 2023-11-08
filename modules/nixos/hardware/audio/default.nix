@@ -30,5 +30,25 @@ in {
       # no need to redefine it in your config for now)
       #media-session.enable = true;
     };
+    # services.actkbd = {
+    #   enable = true;
+    #   bindings = [
+    #     {
+    #       keys = [121];
+    #       events = ["key"];
+    #       command = "/run/current-system/sw/bin/runuser -l kinzoku -c 'amixer -q set Master toggle'";
+    #     }
+    #     {
+    #       keys = [122];
+    #       events = ["key"];
+    #       command = "/run/current-system/sw/bin/runuser -l kinzoku -c 'amixer -q set Master 5%- unmute'";
+    #     }
+    #     {
+    #       keys = [123];
+    #       events = ["key"];
+    #       command = "/run/current-system/sw/bin/runuser -l kinzoku -c 'amixer -q set Master 5%+ unmute'";
+    #     }
+    #   ];
+    # };
   };
 }
