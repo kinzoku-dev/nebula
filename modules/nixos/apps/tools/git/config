@@ -1,7 +1,10 @@
 [user]
 	name = kinzoku-dev
 	email = kinzokudev4869@gmail.com
+    signingkey = 990975E21FACB61D
 [pull]
 	rebase = true
 [init]
 	defaultBranch = main
+[commit]
+    gpgsign = true

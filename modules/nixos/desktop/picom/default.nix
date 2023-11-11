@@ -24,11 +24,13 @@ in {
         "100:name *= 'Brave'",
         "100:name *= 'Discord'",
         "100:name *= 'Steam'",
-        "100:name *= 'Spotify'"
+        "100:name *= 'Spotify'",
+        "100:class_g = 'Element'"
       ];
 
+      corner-radius = 12;
       corners-rule = [
-        "15:class_g = 'xmobar'"
+        "12:name = 'xmobar'"
       ];
 
       animations = false;

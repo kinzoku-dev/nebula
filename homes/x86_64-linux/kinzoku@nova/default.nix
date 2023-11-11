@@ -14,6 +14,7 @@ with lib.custom; {
     apps = {
       gui = {
         kitty.enable = true;
+        anyrun.enable = true;
       };
       tools = {
         direnv.enable = true;
@@ -21,7 +22,14 @@ with lib.custom; {
       cli = {
         # doom-emacs.enable = true;
         lf.enable = true;
+        # neomutt.enable = true;
       };
+    };
+    desktop = {
+      mako.enable = true;
+      waybar.enable = true;
+      colorscheme = "catppuccin-mocha";
+      swww.enable = true;
     };
     home-manager.enable = true;
   };

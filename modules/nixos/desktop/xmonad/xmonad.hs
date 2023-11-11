@@ -1,7 +1,8 @@
 import XMonad
+import Graphics.X11.ExtraTypes.XF86
 
 import XMonad.Layout.Spacing
-import XMonad.Util.EZConfig (additionalKeysP)
+import XMonad.Util.EZConfig (additionalKeys)
 import XMonad.Util.Ungrab
 import XMonad.Hooks.StatusBar
 import XMonad.Hooks.StatusBar.PP
@@ -34,10 +35,13 @@ main = xmonad . ewmh . ewmhFullscreen . withSB myXmobarPP $ def
   , startupHook = myStartupHook
   , focusedBorderColor = "#f38ba8"
   }
-  `additionalKeysP`
-  [ ("M-S-s", spawn "flameshot gui")
-  , ("M-f", sendMessage (Toggle "Full"))
-  , ("M-t", withFocused toggleFloat)
+  `additionalKeys`
+  [ ((mod1Mask .|. shiftMask, xK_s), spawn "flameshot gui")
+  , ((mod1Mask, xK_f), sendMessage (Toggle "Full"))
+  , ((mod1Mask, xK_t), withFocused toggleFloat)
+  , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer set Master 2%-")
+  , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer set Master 2%+")
+  , ((0, xF86XK_AudioMute          ), spawn "amixer set Master toggle")
   ]  
   where
             toggleFloat w = windows (\s -> if M.member w (W.floating s)

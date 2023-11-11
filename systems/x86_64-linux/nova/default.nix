@@ -23,6 +23,7 @@
   };
   hardware.audio.enable = true;
   hardware.nvidia.enable = true;
+  hardware.bluetoothctl.enable = true;
 
   system.locale = {
     enable = true;
@@ -42,17 +43,18 @@
   desktop.picom.enable = true;
   desktop.polybar.enable = true;
 
-  system.cron.enable = true;
-
   system.sops.enable = true;
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the XFCE Desktop Environment.
-  services.xserver.displayManager.lightdm.enable = true;
-  # services.xserver.desktopManager.xfce.enable = true;
+  system.xserver.enable = true;
   desktop.xmonad.enable = true;
+  desktop.sddm.enable = true;
+  desktop.hyprland.enable = true;
+  system.systemd-timers.enable = true;
+
+  security.gnupg.enable = true;
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # Configure keymap in X11
   services.xserver = {
@@ -81,7 +83,10 @@
 
     sops
 
+    element-desktop
     nitch
+
+    custom.kiwi-ssg
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

@@ -19,16 +19,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Spicetify
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    anyrun = {
+      url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

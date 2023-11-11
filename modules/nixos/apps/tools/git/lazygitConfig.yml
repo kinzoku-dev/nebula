@@ -8,3 +8,8 @@ customCommands:
     context: "files"
     loadingText: "opening commitizen commit tool"
     subprocess: true
+  - key: "<c-g>"
+    command: "git commit -S -m"
+    description: "commit and sign"
+    context: "files"
+    loadingText: "loading commit"
