@@ -35,6 +35,7 @@
   apps.zsh.enable = true;
   apps.tools.zoxide.enable = true;
   apps.tools.git.enable = true;
+  apps.tools.nix.enable = true;
   apps.steam.enable = true;
   apps.neovim.enable = true;
   apps.tmux.enable = true;
