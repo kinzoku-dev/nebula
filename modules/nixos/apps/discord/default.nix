@@ -16,9 +16,19 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = [
       (pkgs.discord.override {
-        withOpenASAR = true;
+        withOpenASAR = false;
+        withVencord = true;
       })
     ];
-    home.configFile."discord/settings.json".source = ./settings.json;
+    home.file.".config/Vencord/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
+    home.configFile."discord/settings.json".text = ''
+      {
+        "IS_MAXIMIZED": false,
+        "IS_MINIMIZED": false,
+        "OPEN_ON_STARTUP": false,
+        "MINIMIZE_TO_TRAY": false,
+        "SKIP_HOST_UPDATE": true
+      }
+    '';
   };
 }
