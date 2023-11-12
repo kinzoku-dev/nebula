@@ -17,6 +17,7 @@ in {
       enable = true;
       nix-direnv.enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
     };
 
     home.sessionVariables.DIRENV_LOG_FORMAT = ""; # Blank so direnv will shut up

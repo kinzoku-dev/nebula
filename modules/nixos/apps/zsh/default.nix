@@ -48,25 +48,5 @@ in {
         export GPG_TTY=$(tty)
       '';
     };
-    home.programs.starship = {
-      enable = true;
-      settings = {
-        format = ''
-          [╔═](bold blue) $username$hostname [═╡](bold blue)
-          [║](bold blue) $directory
-          [╚═══╡](bold blue) '';
-
-        username = {
-          format = "[$user]($style)";
-          show_always = true;
-        };
-
-        hostname = {
-          format = "[@$hostname]($style)";
-          style = "bold green";
-          ssh_only = false;
-        };
-      };
-    };
   };
 }

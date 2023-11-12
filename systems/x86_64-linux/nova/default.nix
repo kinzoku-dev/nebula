@@ -32,7 +32,9 @@
 
   apps.misc.enable = true;
   apps.misc.figlet.enable = true;
-  apps.zsh.enable = true;
+  # apps.zsh.enable = true;
+  apps.nushell.enable = true;
+  apps.starship.enable = true;
   apps.tools.zoxide.enable = true;
   apps.tools.git.enable = true;
   apps.tools.nix.enable = true;
