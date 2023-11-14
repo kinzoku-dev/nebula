@@ -14,6 +14,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.xserver.displayManager.sddm.enable = true;
+    services.xserver.displayManager.sddm = {
+      enable = true;
+      theme = "${pkgs.custom.sddm-catppuccin-mocha}";
+    };
   };
 }
