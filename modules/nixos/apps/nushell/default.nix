@@ -34,6 +34,8 @@ in {
 
         lg = mkIf config.apps.tools.git.enable "lazygit";
         neofetch = "nitch";
+
+        az = "yazi";
       };
       envFile.text = ''
         mkdir ~/.cache/starship

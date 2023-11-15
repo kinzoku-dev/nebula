@@ -43,6 +43,7 @@
   apps.tmux.enable = true;
   apps.brave.enable = true;
   apps.discord.enable = true;
+  apps.yazi.enable = true;
   desktop.picom.enable = true;
   desktop.polybar.enable = true;
 
