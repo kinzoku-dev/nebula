@@ -92,6 +92,7 @@
 
     custom.kiwi-ssg
 
+    gum
     obsidian
   ];
 
