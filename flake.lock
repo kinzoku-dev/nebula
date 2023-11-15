@@ -262,11 +262,11 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1699802848,
-        "narHash": "sha256-C0m7URbJJDCxTm0G+W2+Vv3cPfJ6+vl1TPvPWLwQZlw=",
+        "lastModified": 1699923207,
+        "narHash": "sha256-9XXfIHh2VMw6RnwIlxNVSdwe/4a8wVHqYjNLNkjZM0Y=",
         "owner": "kinzoku-dev",
         "repo": "neovim",
-        "rev": "d5bf420f8db7577f31b0ca84cefda047724cd0e6",
+        "rev": "f09a69b1c59f4864778bcb2d178d4fd3a55677b6",
         "type": "github"
       },
       "original": {
