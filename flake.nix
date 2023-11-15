@@ -53,6 +53,9 @@
     lib.mkFlake {
       channels-config = {
         allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-24.8.6"
+        ];
       };
 
       overlays = with inputs; [
