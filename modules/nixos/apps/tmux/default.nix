@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.apps.tmux;
 in {
   options.apps.tmux = with types; {

@@ -7,7 +7,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.home.apps.gui.anyrun;
 in {
   options.home.apps.gui.anyrun = with types; {

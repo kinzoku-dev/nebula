@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.home.apps.cli.lf;
 in {
   options.home.apps.cli.lf = with types; {

@@ -7,7 +7,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.desktop.hyprland;
 in {
   options.desktop.hyprland = with types; {

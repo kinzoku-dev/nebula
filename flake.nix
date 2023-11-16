@@ -46,7 +46,7 @@
           title = "Nebula Flake";
         };
 
-        namespace = "custom";
+        namespace = "nebula";
       };
     };
   in
@@ -65,5 +65,6 @@
       systems.modules.nixos = with inputs; [
         home-manager.nixosModules.home-manager
       ];
+      templates = import ./templates {};
     };
 }

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.apps.zsh;
 in {
   options.apps.zsh = with types; {
@@ -39,6 +39,8 @@ in {
         gp = mkIf config.apps.tools.git.enable "git push -u origin";
 
         lg = mkIf config.apps.tools.git.enable "lazygit";
+
+        czf = "cd \$(find \$(pwd) -type d \( -name node_modules -o -name .git \) -prune -o -name '*'  -type d -print | fzf)";
       };
       initExtra = ''
         eval "$(direnv hook zsh)"
@@ -46,6 +48,15 @@ in {
         eval "$(starship init zsh)"
         eval "$(zoxide init zsh)"
         export GPG_TTY=$(tty)
+
+        function ya() {
+            tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+            yazi --cwd-file="$tmp"
+            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+                cd -- "$cwd"
+            fi
+            rm -f -- "$tmp"
+        }
       '';
     };
   };

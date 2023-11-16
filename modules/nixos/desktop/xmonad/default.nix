@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.desktop.xmonad;
 in {
   options.desktop.xmonad = with types; {

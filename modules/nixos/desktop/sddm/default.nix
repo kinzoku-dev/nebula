@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.desktop.sddm;
 in {
   options.desktop.sddm = with types; {
@@ -16,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     services.xserver.displayManager.sddm = {
       enable = true;
-      theme = "${pkgs.custom.sddm-catppuccin-mocha}";
+      theme = "${pkgs.nebula.sddm-catppuccin-mocha}";
     };
   };
 }

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.apps.tools.zoxide;
 in {
   options.apps.tools.zoxide = with types; {

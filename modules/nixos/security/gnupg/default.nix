@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.security.gnupg;
 in {
   options.security.gnupg = with types; {

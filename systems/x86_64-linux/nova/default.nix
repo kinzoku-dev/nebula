@@ -32,8 +32,8 @@
 
   apps.misc.enable = true;
   apps.misc.figlet.enable = true;
-  # apps.zsh.enable = true;
-  apps.nushell.enable = true;
+  apps.zsh.enable = true;
+  # apps.nushell.enable = true;
   apps.starship.enable = true;
   apps.tools.zoxide.enable = true;
   apps.tools.git.enable = true;
@@ -91,7 +91,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
-    custom.nix-inspect
+    nebula.nix-inspect
     sl
 
     gopls
@@ -103,7 +103,7 @@
     element-desktop
     nitch
 
-    custom.kiwi-ssg
+    nebula.kiwi-ssg
 
     gum
     obsidian

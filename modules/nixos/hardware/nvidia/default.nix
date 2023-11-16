@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.hardware.nvidia;
 in {
   options.hardware.nvidia = with types; {

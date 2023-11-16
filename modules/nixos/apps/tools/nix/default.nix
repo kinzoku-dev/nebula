@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.apps.tools.nix;
 in {
   options.apps.tools.nix = with types; {

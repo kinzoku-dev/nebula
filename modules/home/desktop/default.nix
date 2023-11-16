@@ -7,7 +7,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.home.desktop;
 in {
   options.home.desktop = with types; {

@@ -5,7 +5,7 @@
   ...
 }:
 with lib;
-with lib.custom; {
+with lib.nebula; {
   home = {
     user = {
       enable = true;

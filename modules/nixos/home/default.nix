@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; {
+with lib.nebula; {
   imports = with inputs; [
     nix-colors.homeManagerModules.default
     prism.homeModules.prism

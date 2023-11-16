@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.desktop.lightdm;
 in {
   options.desktop.lightdm = with types; {

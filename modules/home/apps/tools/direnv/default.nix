@@ -5,7 +5,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.home.apps.tools.direnv;
 in {
   options.home.apps.tools.direnv = with types; {

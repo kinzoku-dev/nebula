@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.hardware.bluetoothctl;
 in {
   options.hardware.bluetoothctl = with types; {

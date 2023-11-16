@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.home.apps.cli.neomutt;
 in {
   options.home.apps.cli.neomutt = with types; {

@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.user;
 in {
   options.user = with types; {
@@ -21,7 +21,7 @@ in {
   };
 
   config = {
-    environment.sessionVariables.FLAKE = "/home/kinzoku/.nebula";
+    environment.sessionVariables.FLAKE = "/home/kinzoku/dev/nebula";
 
     users.users.kinzoku =
       {

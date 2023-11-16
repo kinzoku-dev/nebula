@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.hardware.networking;
 in {
   options.hardware.networking = with types; {

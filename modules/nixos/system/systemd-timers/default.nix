@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.system.systemd-timers;
 in {
   options.system.systemd-timers = with types; {
@@ -26,7 +26,7 @@ in {
     systemd.services."wallpaper" = {
       script = ''
         export XDG_RUNTIME_DIR=/run/user/1000
-        ${pkgs.custom.wallpaper}/bin/wallpaper
+        ${pkgs.nebula.wallpaper}/bin/wallpaper
       '';
       serviceConfig = {
         Type = "oneshot";

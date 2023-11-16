@@ -6,7 +6,7 @@
   ...
 }:
 with lib;
-with lib.custom; let
+with lib.nebula; let
   cfg = config.apps.starship;
 in {
   options.apps.starship = with types; {
@@ -20,9 +20,8 @@ in {
       enableNushellIntegration = true;
       settings = {
         format = ''
-          [╔═](bold blue) $username$hostname [═╡](bold blue)
-          [║](bold blue) $directory
-          [╚═══╡](bold blue) '';
+          [//=](bold blue) $username$hostname [<>](bold blue) $directory $fill ($nix_shell)$custom
+          [|>](bold blue) '';
 
         username = {
           format = "[$user]($style)";
@@ -33,6 +32,29 @@ in {
           format = "[@$hostname]($style)";
           style = "bold green";
           ssh_only = false;
+        };
+        custom = {
+          nix_inspect = let
+            excluded = [
+              "kitty"
+              "imagemagick"
+              "ncurses"
+              "user-environment"
+              "pciutils"
+              "binutils-wrapper"
+            ];
+          in {
+            disabled = false;
+            when = "test -z $IN_NIX_SHELL";
+            command = "${(lib.getExe pkgs.nebula.nix-inspect)} ${(lib.concatStringsSep " " excluded)}";
+            format = "[($output <- )$symbol]($style) ";
+            symbol = " ";
+            style = "bold blue";
+          };
+        };
+        fill = {
+          symbol = " ";
+          disabled = false;
         };
       };
     };
