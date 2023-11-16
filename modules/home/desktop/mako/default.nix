@@ -27,6 +27,7 @@ in {
         text-color=#${colors.base05}
         border-color=#${colors.base0D}
         progress-color=over #${colors.base02}
+        border-size=2
         border-radius=15
         default-timeout=5000
 
@@ -34,7 +35,9 @@ in {
         border-color=#${colors.base09}
       '';
       onChange = ''
-        ${pkgs.busybox}/bin/pkill -SIGUSR2 mako
+        ${pkgs.mako}/bin/makoctl reload
+        ${pkgs.libnotify}/bin/notify-send -a "Test notification" -i firefox -t 5000 "Test Notification (Normal)" "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+        ${pkgs.libnotify}/bin/notify-send -a "Test notification" -i firefox -t 5000 "Test Notification (Urgent)" "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat." -u critical
       '';
     };
   };
