@@ -52,7 +52,20 @@
   system.xserver.enable = true;
   desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
-  desktop.hyprland.enable = true;
+  desktop.hyprland = {
+    enable = true;
+    monitors = [
+      {
+        name = "HDMI-A-1";
+        width = 1920;
+        height = 1080;
+        refreshRate = 75;
+        x = 0;
+        y = 0;
+        enabled = true;
+      }
+    ];
+  };
   system.systemd-timers.enable = true;
 
   security.gnupg.enable = true;
