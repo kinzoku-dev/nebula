@@ -17,6 +17,10 @@
       kb_options = caps:escape
   }
 
+  dwindle {
+    preserve_split = yes
+  }
+
   $mainMod = ALT
 
   bind = $mainMod SHIFT, Return, exec, kitty
