@@ -41,6 +41,7 @@
   apps.yazi.enable = true;
   desktop.picom.enable = true;
   desktop.polybar.enable = true;
+  apps.foot.enable = true;
 
   system.sops.enable = true;
 
