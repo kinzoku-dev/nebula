@@ -15,16 +15,8 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      fzf
-      fd
-      ripgrep
-      vim
-      git
-      eza
-      wget
       btop
       xclip
-      bat
       cron
       feh
 
@@ -32,11 +24,7 @@ in {
       xfce.mousepad
       xfce.thunar
       gimp
-      spicetify-cli
       gucharmap
-
-      neofetch
-      pfetch
     ];
   };
 }

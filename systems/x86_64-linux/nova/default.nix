@@ -31,11 +31,6 @@
   };
 
   apps.misc.enable = true;
-  apps.misc.figlet.enable = true;
-  apps.zsh.enable = true;
-  # apps.nushell.enable = true;
-  apps.starship.enable = true;
-  apps.tools.zoxide.enable = true;
   apps.tools.git.enable = true;
   apps.tools.nix.enable = true;
   apps.steam.enable = true;
@@ -107,6 +102,8 @@
 
     gum
     obsidian
+
+    r2modman
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
