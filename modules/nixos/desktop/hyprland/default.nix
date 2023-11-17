@@ -91,7 +91,7 @@ in {
       );
     in {
       "hypr/hyprland.conf" = {
-        text = import ./hyprland.nix {inherit monitorList;};
+        text = import ./hyprland.nix {inherit monitorList pkgs;};
         onChange = ''
           ${pkgs.hyprland}/bin/hyprctl reload
         '';

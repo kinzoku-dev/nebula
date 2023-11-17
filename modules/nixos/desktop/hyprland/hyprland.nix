@@ -1,6 +1,9 @@
-{monitorList}: ''
+{
+  monitorList,
+  pkgs,
+}: ''
   ${monitorList}
-  exec-once=waybar &
+  exec-once=${pkgs.nebula.nebulauncher}/bin/nebulauncher --launch waybar
   exec-once=swww init &
   exec-once=swww img ~/.config/wallpapers/ultra1.png &
   exec-once=mako &
