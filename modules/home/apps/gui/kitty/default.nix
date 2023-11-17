@@ -27,8 +27,6 @@ in {
         disable_ligatures never
 
         confirm_os_window_close 0
-
-        background #11111b
       '';
       settings = {enable_audio_bell = false;};
     };
