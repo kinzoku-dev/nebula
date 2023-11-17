@@ -52,17 +52,29 @@
     },
 
     "network": {
-        "format-wifi": "  {essid} {signalStrength}%",
-        "format-ethernet": "󰈀",
-        "format-disconnected": "󰈂"
+        "format-wifi": "{icon}  {essid} {signalStrength}%",
+        "format-ethernet": "󰈁",
+        "format-disconnected": "󰖪",
+        "format-icons": [
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
+        ]
     },
 
     "pulseaudio": {
-        "format": "  {volume}%",
+        "format": "{icon}  {volume}%",
         "tooltip": false,
-        "format-muted": "  N/A",
+        "format-muted": "󰸈  N/A",
         "on-click": "pavucontrol &",
-        "scroll-step": 5
+        "scroll-step": 5,
+        "format-icons": [
+            "󰕿",
+            "󰖀",
+            "󰕾",
+        ],
     },
 
     "cpu": {
@@ -73,7 +85,7 @@
 
     "memory": {
         "interval": 30,
-        "format": " {}%",
+        "format": "  {}%",
         "max-length": 10
     },
 }

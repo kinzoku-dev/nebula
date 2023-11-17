@@ -39,6 +39,8 @@ in {
         #clock,
         #pulseaudio,
         #tray,
+        #cpu,
+        #memory,
         #network {
             padding: 5 15px;
             border-radius: 12px;
@@ -46,8 +48,7 @@ in {
             color: #${colors.base07};
             margin-top: 8px;
             margin-bottom: 8px;
-            margin-right: 2px;
-            margin-left: 2px;
+            margin-left: 10px;
             transition: all 0.3s ease;
         }
         #window {
