@@ -75,6 +75,7 @@ in {
         export DIRENV_LOG_FORMAT=""
         eval "$(starship init zsh)"
         eval "$(zoxide init zsh)"
+        set -o vi
 
         function ya() {
             tmp="$(mktemp -t "yazi-cwd.XXXXX")"
