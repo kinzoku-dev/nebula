@@ -6,7 +6,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Theming and colors related
-    nix-colors.url = "github:IogaMaster/nix-colors";
+    nix-colors.url = "github:misterio77/nix-colors";
     prism.url = "github:IogaMaster/prism";
 
     snowfall-lib = {

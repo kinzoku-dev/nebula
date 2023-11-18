@@ -281,15 +281,15 @@
         "nixpkgs-lib": "nixpkgs-lib"
       },
       "locked": {
-        "lastModified": 1698268413,
-        "narHash": "sha256-FB+EDor5GoFUMCdPPCjcuEtK99hLpso6bAmKfeSsdeg=",
-        "owner": "IogaMaster",
+        "lastModified": 1695388192,
+        "narHash": "sha256-2jelpE7xK+4M7jZNyWL7QYOYegQLYBDQS5bvdo8XRUQ=",
+        "owner": "misterio77",
         "repo": "nix-colors",
-        "rev": "f2659297c2cd5a54169968a835ad378a63960024",
+        "rev": "37227f274b34a3b51649166deb94ce7fec2c6a4c",
         "type": "github"
       },
       "original": {
-        "owner": "IogaMaster",
+        "owner": "misterio77",
         "repo": "nix-colors",
         "type": "github"
       }
