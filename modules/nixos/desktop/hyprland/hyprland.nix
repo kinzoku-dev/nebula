@@ -35,7 +35,7 @@
 
   $mainMod = ALT
 
-  bind = $mainMod SHIFT, Return, exec, kitty
+  bind = $mainMod SHIFT, Return, exec, foot
   bind = $mainMod SHIFT, C, killactive
   bind = $mainMod, P, exec, anyrun
   bind = $mainMod SHIFT, S, exec, grim -l 0 -g "$(slurp)" - | wl-copy
