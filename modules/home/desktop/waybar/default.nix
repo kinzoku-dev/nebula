@@ -16,16 +16,27 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = [
-      pkgs.waybar
-      pkgs.pavucontrol
-    ];
+    home.packages = with pkgs;
+      [
+        waybar
+        pavucontrol
+        playerctl
+      ]
+      ++ (with pkgs.python311Packages; [
+        pygobject3
+        pygobject-stubs
+      ]);
 
     home.file.".config/waybar/config" = {
       source = ./config;
       onChange = ''
         ${pkgs.nebula.nebulauncher}/bin/nebulauncher --reload waybar
       '';
+    };
+
+    home.file.".config/waybar/scripts/" = {
+      source = ./scripts;
+      recursive = true;
     };
 
     home.file.".config/waybar/style.css" = {
@@ -41,6 +52,7 @@ in {
         #tray,
         #cpu,
         #memory,
+        #custom-spotify,
         #network {
             padding: 5 15px;
             border-radius: 12px;

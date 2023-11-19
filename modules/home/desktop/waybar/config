@@ -6,7 +6,9 @@
         "hyprland/workspaces"
     ],
 
-    "modules-center": [],
+    "modules-center": [
+        "custom/spotify"
+    ],
 
     "modules-right": [
         "tray",
@@ -87,5 +89,18 @@
         "interval": 30,
         "format": "  {}%",
         "max-length": 10
+    },
+
+    "custom/spotify": {
+        "format": "  {}",
+        "max-length": 60,
+        "interval": 30,
+        "return-type": "json",
+        "exec": "$XDG_CONFIG_HOME/waybar/scripts/spotify/metadata",
+        "on-click": "$XDG_CONFIG_HOME/waybar/scripts/spotify/controls",
+        "on-scroll-up": "$XDG_CONFIG_HOME/waybar/scripts/spotify/controls next",
+        "on-scroll-down": "$XDG_CONFIG_HOME/waybar/scripts/spotify/controls prev",
+        "signal": 5,
+        "smooth-scrolling-threshold": 1.0,
     },
 }
