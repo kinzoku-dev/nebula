@@ -15,6 +15,7 @@ with lib.nebula; {
       gui = {
         kitty.enable = true;
         anyrun.enable = true;
+        # ags.enable = true;
       };
       tools = {
         direnv.enable = true;

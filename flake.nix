@@ -35,6 +35,8 @@
     };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
+
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = inputs: let
