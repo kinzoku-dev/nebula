@@ -61,6 +61,19 @@
   bind = $mainMod SHIFT, k, movewindow, u
   bind = $mainMod SHIFT, j, movewindow, d
 
+  bind = $mainMod, R, submap, resize
+
+  submap=resize
+
+  binde =, h, resizeactive, -15 0
+  binde =, l, resizeactive, 15 0
+  binde =, k, resizeactive, 0 -15
+  binde =, j, resizeactive, 0 15
+
+  bind =, escape, submap, reset
+
+  submap=reset
+
   bind = $mainMod, 1, workspace, 1
   bind = $mainMod, 2, workspace, 2
   bind = $mainMod, 3, workspace, 3
