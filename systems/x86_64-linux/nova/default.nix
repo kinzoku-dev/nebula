@@ -109,6 +109,10 @@
     nebula.nebulauncher
 
     nebula.houston
+
+    obs-studio
+
+    libsForQt5.kdenlive
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
