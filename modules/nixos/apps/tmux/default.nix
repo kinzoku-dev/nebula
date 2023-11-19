@@ -40,6 +40,7 @@ in {
         bind -r m resize-pane -Z
 
         set -g mouse on
+        set -g renumber-windows on
 
         set -g @catppuccin_flavour 'mocha'
         set -g @catppuccin_window_left_separator "█"
