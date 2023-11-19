@@ -86,6 +86,10 @@ in {
             fi
             rm -f -- "$tmp"
         }
+
+        function flakeinit() {
+            nix flake init -t github:nix-community/templates#$1
+        }
       '';
     };
 
