@@ -107,6 +107,8 @@
     r2modman
 
     nebula.nebulauncher
+
+    nebula.houston
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
