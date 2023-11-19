@@ -69,6 +69,7 @@ in {
           sz = "source ~/.config/zsh/.zshrc";
           cat = "bat";
           ls = "eza";
+          cdzf = "cd $(find . -type d | fzf)";
         };
       initExtra = ''
         eval "$(direnv hook zsh)"
