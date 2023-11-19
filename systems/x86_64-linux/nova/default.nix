@@ -106,8 +106,6 @@
 
     r2modman
 
-    nebula.nebulauncher
-
     nebula.houston
 
     obs-studio

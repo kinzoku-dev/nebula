@@ -30,7 +30,7 @@ in {
     home.file.".config/waybar/config" = {
       source = ./config;
       onChange = ''
-        ${pkgs.nebula.nebulauncher}/bin/nebulauncher --reload waybar
+        ${pkgs.busybox}/bin/pkill -SIGUSR2 waybar
       '';
     };
 
@@ -141,7 +141,7 @@ in {
         }
       '';
       onChange = ''
-        ${pkgs.nebula.nebulauncher}/bin/nebulauncher --reload waybar
+        ${pkgs.busybox}/bin/pkill -SIGUSR2 waybar
       '';
     };
   };
