@@ -50,8 +50,6 @@ in {
         #clock,
         #pulseaudio,
         #tray,
-        #cpu,
-        #memory,
         #custom-spotify,
         #network {
             padding: 5 15px;
