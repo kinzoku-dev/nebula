@@ -69,10 +69,24 @@ in {
           sz = "source ~/.config/zsh/.zshrc";
           cat = "bat";
           ls = "eza";
-          cdzf = "cd $(find . -type d | fzf)";
           vesktop = "vesktop --disable-gpu";
         };
-      initExtra = ''
+      initExtra = let
+        sources = with pkgs; [
+          "${oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh"
+          "${oh-my-zsh}/share/oh-my-zsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh"
+          "${oh-my-zsh}/share/oh-my-zsh/plugins/fd/_fd"
+          "${oh-my-zsh}/share/oh-my-zsh/plugins/ripgrep/_ripgrep"
+        ];
+
+        source = map (source: "source ${source}") sources;
+
+        plugins = concatStringsSep "\n" source;
+      in ''
+        export FZF_DEFAULT_COMMANd="fd"
+
+        ${plugins}
+
         eval "$(direnv hook zsh)"
         export DIRENV_LOG_FORMAT=""
         eval "$(starship init zsh)"
