@@ -15,12 +15,9 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      (pkgs.discord.override {
-        withOpenASAR = false;
-        withVencord = true;
-      })
+      pkgs.nebula.vesktop
     ];
-    home.file.".config/Vencord/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
+    home.file.".config/VencordDesktop/VencordDesktop/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
     home.configFile."discord/settings.json".text = ''
       {
         "IS_MAXIMIZED": false,

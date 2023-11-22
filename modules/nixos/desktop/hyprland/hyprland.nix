@@ -7,7 +7,6 @@
   exec-once=swww init &
   exec-once=swww img ~/.config/wallpapers/ultra1.png &
   exec-once=mako &
-  exec-once=xwaylandvideobridge
   exec-once=nm-applet
 
   decoration {

@@ -70,6 +70,7 @@ in {
           cat = "bat";
           ls = "eza";
           cdzf = "cd $(find . -type d | fzf)";
+          vesktop = "vesktop --disable-gpu";
         };
       initExtra = ''
         eval "$(direnv hook zsh)"
