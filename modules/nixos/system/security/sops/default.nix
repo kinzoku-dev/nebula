@@ -10,11 +10,15 @@ with lib;
 with lib.nebula; let
   cfg = config.security.sops;
 in {
+  options.security.sops = with types; {
+    enable = mkBoolOpt false "Enable sops";
+  };
+
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
 
-  config = {
+  config = mkIf cfg.enable {
     sops.defaultSopsFile = ./secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
 
