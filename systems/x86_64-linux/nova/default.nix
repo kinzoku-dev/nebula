@@ -6,6 +6,7 @@
   options,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
@@ -17,41 +18,35 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.networking = {
-    enable = true;
-    hostname = "nova";
-  };
-  hardware.audio.enable = true;
   hardware.nvidia.enable = true;
   hardware.bluetoothctl.enable = true;
 
-  system.locale = {
-    enable = true;
-    timezone = "America/Chicago";
-  };
+  suites.common.enable = true;
+  suites.development.enable = true;
 
   apps.misc.enable = true;
-  apps.tools.git.enable = true;
-  apps.tools.nix.enable = true;
   apps.steam.enable = true;
-  apps.neovim.enable = true;
-  apps.tmux.enable = true;
-  apps.brave.enable = true;
-  apps.librewolf.enable = true;
   apps.discord.enable = true;
-  apps.yazi.enable = true;
   desktop.picom.enable = true;
   desktop.polybar.enable = true;
   apps.flatpak.enable = true;
-
-  system.sops.enable = true;
+  apps.eww.enable = true;
+  apps.browser = {
+    enable = [
+      "firefox"
+      "librewolf"
+    ];
+    defaultBrowser = "firefox";
+  };
 
   system.xserver.enable = true;
+  # system.xremap.enable = true;
   desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
+  desktop.gtk.enable = true;
   desktop.hyprland = {
     enable = true;
-    monitors = [
+    displays = [
       {
         name = "HDMI-A-1";
         width = 1920;
@@ -59,13 +54,12 @@
         refreshRate = 75;
         x = 0;
         y = 0;
-        enabled = true;
+        workspaces = [1 2 3 4 5 6 7 8 9 10];
       }
     ];
   };
+  desktop.waybar.enable = true;
   system.systemd-timers.enable = true;
-
-  security.gnupg.enable = true;
 
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
@@ -84,35 +78,50 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    nebula.nix-inspect
-    sl
+  environment.systemPackages = with pkgs;
+    [
+      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      wget
+      git
+      nebula.nix-inspect
+      sl
 
-    gopls
-    spotify
-    cava
+      gopls
+      spotify
+      cava
 
-    sops
+      sops
 
-    element-desktop
-    nitch
+      element-desktop
+      nitch
 
-    nebula.kiwi-ssg
+      nebula.kiwi-ssg
 
-    gum
-    obsidian
+      gum
+      obsidian
 
-    r2modman
+      r2modman
 
-    nebula.houston
+      nebula.houston
 
-    obs-studio
+      obs-studio
 
-    libsForQt5.kdenlive
-  ];
+      libsForQt5.kdenlive
+
+      eww-wayland
+      libnotify
+
+      thunderbird
+
+      gamemode
+
+      cinny-desktop
+
+      signal-desktop-beta
+    ]
+    ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
+      mapscii
+    ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

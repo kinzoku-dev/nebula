@@ -15,20 +15,17 @@ with lib.nebula; {
       gui = {
         kitty.enable = true;
         anyrun.enable = true;
-        # ags.enable = true;
-      };
-      tools = {
-        direnv.enable = true;
+        ags.enable = true;
       };
       cli = {
         # doom-emacs.enable = true;
-        lf.enable = true;
+        # lf.enable = true;
         # neomutt.enable = true;
+        # neovim.enable = true;
       };
     };
     desktop = {
       mako.enable = true;
-      waybar.enable = true;
       colorscheme = "catppuccin-mocha";
       swww.enable = true;
     };

@@ -12,39 +12,47 @@ with lib.nebula; let
 in {
   options.desktop.hyprland = with types; {
     enable = mkBoolOpt false "Enable hyprland";
-    monitors = mkOption {
+    displays = mkOption {
       type = types.listOf (types.submodule {
         options = {
           name = mkOption {
             type = types.str;
             example = "DP-1";
+            description = "Name of this display, e.g. HDMI-1";
           };
           width = mkOption {
             type = types.int;
             example = 1920;
+            description = "Width of this display";
           };
           height = mkOption {
             type = types.int;
             example = 1080;
+            description = "Height of this display";
           };
           refreshRate = mkOption {
             type = types.int;
             default = 60;
+            description = "Refresh rate of this display";
           };
           x = mkOption {
             type = types.int;
             default = 0;
+            description = "X position of this display";
           };
           y = mkOption {
             type = types.int;
             default = 0;
+            description = "Y position of this display";
           };
-          enabled = mkOption {
-            type = types.bool;
-            default = true;
+          workspaces = mkOption {
+            type = types.listOf int;
+            description = "List of workspaces for this display";
           };
         };
       });
+      default = [];
+      description = "Config for new displays";
     };
   };
 
@@ -55,7 +63,6 @@ in {
       enable = true;
       package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
-      enableNvidiaPatches = true;
     };
 
     environment.systemPackages = with pkgs; [
@@ -75,23 +82,19 @@ in {
     };
 
     home.configFile = let
-      monitorList = lib.concatLines (
+      displayList = lib.concatLines (
         map
         (
           m: let
             resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
             position = "${toString m.x}x${toString m.y}";
-          in "monitor=${m.name},${
-            if m.enabled
-            then "${resolution},${position},1"
-            else "disable"
-          }"
+          in "monitor=${m.name},${"${resolution},${position},1"}"
         )
-        cfg.monitors
+        cfg.displays
       );
     in {
       "hypr/hyprland.conf" = {
-        text = import ./hyprland.nix {inherit monitorList pkgs;};
+        text = import ./hyprland.nix {inherit displayList pkgs;};
         onChange = ''
           ${pkgs.hyprland}/bin/hyprctl reload
         '';

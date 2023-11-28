@@ -1,9 +1,17 @@
 {pkgs, ...}:
-pkgs.mkShell {
-  nativeBuildInputs = with pkgs; [
-    treefmt
+with pkgs;
+  mkShell {
+    nativeBuildInputs = [
+      treefmt
 
-    alejandra
-    shfmt
-  ];
-}
+      alejandra
+      shfmt
+
+      go
+      gofumpt
+      gopls
+
+      pkg-config
+      glib
+    ];
+  }

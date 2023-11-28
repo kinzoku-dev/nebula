@@ -1,8 +1,8 @@
 {
-  monitorList,
+  displayList,
   pkgs,
 }: ''
-  ${monitorList}
+  ${displayList}
   exec-once=waybar &
   exec-once=swww init &
   exec-once=swww img ~/.config/wallpapers/ultra1.png &

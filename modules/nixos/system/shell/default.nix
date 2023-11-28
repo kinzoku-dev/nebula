@@ -70,6 +70,7 @@ in {
           cat = "bat";
           ls = "eza";
           vesktop = "vesktop --disable-gpu";
+          hss = "hugo server --noHTTPCache";
         };
       initExtra = let
         sources = with pkgs; [
@@ -138,6 +139,10 @@ in {
                     cd $cwd
                 }
             rm -f $tmp
+        }
+
+        def flakeinit [template] {
+            nix flake init -t github:nix-community/templates#$template
         }
       '';
     };

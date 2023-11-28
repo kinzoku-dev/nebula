@@ -25,6 +25,16 @@ in {
       extraPackages = [pkgs.libsoup_3];
     };
 
+    home.packages = with pkgs; [
+      glib
+      libglibutil
+      gobject-introspection
+      glib-networking
+
+      gjs
+      gnomeExtensions.eval-gjs
+    ];
+
     xdg.configFile."ags/" = {
       source = ./src;
       recursive = true;
