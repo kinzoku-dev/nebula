@@ -17,5 +17,6 @@ in {
     suites.common.enable = true;
     suites.development.enable = true;
     cloudflared.enable = true;
+    security.sops.enable = true;
   };
 }

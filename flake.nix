@@ -35,6 +35,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Deployments
+    arion.url = "github:hercules-ci/arion";
+    arion.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
 
     ags.url = "github:Aylur/ags";
@@ -89,6 +93,7 @@
         home-manager.nixosModules.home-manager
         nur.nixosModules.nur
         disko.nixosModules.disko
+        arion.nixosModules.arion
       ];
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};

@@ -8,6 +8,7 @@
 with lib;
 with lib.nebula; let
   cfg = config.cloudflared;
+  secrets = config.sops.secrets;
 in {
   options.cloudflared = with types; {
     enable = mkBoolOpt false "Enable cloudflared";
@@ -30,5 +31,19 @@ in {
       };
     };
     environment.systemPackages = [pkgs.cloudflared];
+
+    virtualisation.arion.enable = true;
+    virtualisation.arion.projects.cloudflare.settings = {
+      project.name = "cloudflare";
+      services.cloudflare.service = {
+        image = "cloudflare/cloudflared:latest";
+        command = ["tunnel" "--no-autoupdate" "run" "--token" "${secrets.cloudflared-token.path}"];
+        volumes = [
+          "/home/${config.user.name}:/srv"
+        ];
+      };
+    };
+
+    users.users.${config.user.name}.extraGroups = ["docker"];
   };
 }
