@@ -22,10 +22,12 @@ in {
     sops.defaultSopsFile = ./secrets/secrets.yaml;
     sops.defaultSopsFormat = "yaml";
 
+    sops.age.sshKeyPaths = ["/home/${config.user.name}/.ssh/id_ed25519"];
+
     sops.age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
 
-    sops.secrets.example-key = {};
-    sops.secrets."myservice/my_subdir/my_secret" = {};
+    sops.age.generateKey = true;
+
     sops.secrets.cloudflared-token = {};
   };
 }
