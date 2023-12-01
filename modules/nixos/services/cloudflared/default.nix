@@ -22,13 +22,6 @@ in {
     environment.systemPackages = [pkgs.cloudflared pkgs.cloudflare-warp];
 
     virtualisation.arion.enable = true;
-    virtualisation.arion.projects.cloudflare.settings = {
-      project.name = "cloudflare";
-      services.cloudflare.service = {
-        image = "cloudflare/cloudflared:latest";
-        command = ["tunnel" "run" "--token" "${builtins.readFile secrets.cloudflared-token.path}"];
-      };
-    };
 
     users.users.${config.user.name}.extraGroups = ["docker"];
   };
