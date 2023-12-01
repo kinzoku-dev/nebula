@@ -10,6 +10,7 @@ with lib.nebula; let
 in {
   options.services.ssh = with types; {
     enable = mkBoolOpt false "Enable ssh";
+    extraConfig = mkOpt lines "" "extra config";
   };
 
   config = mkIf cfg.enable {
@@ -31,6 +32,8 @@ in {
 
     home.file.".ssh/config".text = ''
       identityfile ~/.ssh/id_ed25519
+
+      ${cfg.extraConfig}
     '';
   };
 }

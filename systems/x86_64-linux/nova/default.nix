@@ -25,6 +25,10 @@
   suites.development.enable = true;
 
   apps.misc.enable = true;
+  services.ssh.extraConfig = ''
+    Host ssh.the-nebula.xyz
+    ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
+  '';
   apps.steam.enable = true;
   apps.discord.enable = true;
   desktop.picom.enable = true;
@@ -118,6 +122,7 @@
       cinny-desktop
 
       signal-desktop-beta
+      cloudflared
     ]
     ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
       mapscii
