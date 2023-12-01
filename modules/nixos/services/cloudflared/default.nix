@@ -26,7 +26,7 @@ in {
       project.name = "cloudflare";
       services.cloudflare.service = {
         image = "cloudflare/cloudflared:latest";
-        command = ["tunnel" "--no-autoupdate" "run" "--token" "${builtins.readFile secrets.cloudflared-token.path}"];
+        command = ["tunnel" "run" "--token" "${builtins.readFile secrets.cloudflared-token.path}"];
       };
     };
 
