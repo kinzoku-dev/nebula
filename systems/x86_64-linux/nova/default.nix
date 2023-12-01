@@ -31,6 +31,7 @@
   '';
   apps.steam.enable = true;
   apps.discord.enable = true;
+  apps.mullvad-vpn.enable = true;
   desktop.picom.enable = true;
   desktop.polybar.enable = true;
   apps.flatpak.enable = true;
