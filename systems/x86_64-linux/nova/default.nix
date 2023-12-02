@@ -128,6 +128,8 @@
 
       signal-desktop-beta
       cloudflared
+
+      premid
     ]
     ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
       mapscii
