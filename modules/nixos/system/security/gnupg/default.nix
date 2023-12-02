@@ -25,8 +25,8 @@ in {
 
     home.file.".local/share/gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
 
-    environment.variables = {
-      GNUPGHOME = "$XDG_DATA_HOME/gnupg";
+    environment.sessionVariables = {
+      GNUPGHOME = "/home/${config.user.name}/.local/share/gnupg";
     };
   };
 }
