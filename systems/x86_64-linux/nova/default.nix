@@ -25,14 +25,6 @@
   suites.development.enable = true;
 
   apps.misc.enable = true;
-  # services.ssh.extraConfig = ''
-  #   Host nebula
-  #     HostName ssh.the-nebula.xyz
-  #     IdentityFile ~/.ssh/id_ed25519
-  #     ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
-  #     User kinzoku
-  # '';
-  # cloudflared.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
   apps.mullvad-vpn.enable = true;
