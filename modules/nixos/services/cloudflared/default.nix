@@ -18,10 +18,17 @@ in {
     services.cloudflared = {
       enable = true;
       user = "kinzoku";
+      tunnels = {
+        "d4412cc7-5391-42ed-bd4b-0adbefe51061" = {
+          credentialsFile = "/home/kinzoku/.cloudflared/d4412cc7-5391-42ed-bd4b-0adbefe51061.json";
+          default = "http_status:404";
+          ingress = {
+            "ssh.the-nebula.xyz" = "ssh://localhost:22";
+          };
+        };
+      };
     };
     environment.systemPackages = [pkgs.cloudflared pkgs.cloudflare-warp];
-
-    virtualisation.arion.enable = true;
 
     users.users.${config.user.name}.extraGroups = ["docker"];
   };
