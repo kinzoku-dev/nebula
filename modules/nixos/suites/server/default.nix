@@ -16,7 +16,10 @@ in {
   config = mkIf cfg.enable {
     suites.common.enable = true;
     suites.development.enable = true;
-    cloudflared.enable = true;
+    # cloudflared = {
+    #   enable = true;
+    #   enableTunnel = true;
+    # };
     security.sops.enable = true;
   };
 }
