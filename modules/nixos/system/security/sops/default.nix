@@ -29,5 +29,6 @@ in {
     sops.age.generateKey = true;
 
     sops.secrets.cloudflared-token = {};
+    sops.secrets.invHmacKey = {};
   };
 }
