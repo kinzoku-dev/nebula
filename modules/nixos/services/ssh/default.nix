@@ -21,11 +21,11 @@ in {
 
     users.users = {
       root.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGKJjalzFloqAZdQDQKalAdU+flocszBXk48DbZXtHQ kinzokudev4869@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGKJjalzFloqAZdQDQKalAdU+flocszBXk48DbZXtHQ kinzoku@the-nebula.xyz"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBQBLgsHBT+XIna7j0TWocmEsoksvphIZGf8x6h7JMqh kinzoku@tempest"
       ];
       ${config.user.name}.openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGKJjalzFloqAZdQDQKalAdU+flocszBXk48DbZXtHQ kinzokudev4869@gmail.com"
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGKJjalzFloqAZdQDQKalAdU+flocszBXk48DbZXtHQ kinzoku@the-nebula.xyz"
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBQBLgsHBT+XIna7j0TWocmEsoksvphIZGf8x6h7JMqh kinzoku@tempest"
       ];
     };
