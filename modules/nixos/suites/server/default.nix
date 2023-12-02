@@ -20,6 +20,7 @@ in {
     #   enable = true;
     #   enableTunnel = true;
     # };
+    tailscale.enable = true;
     security.sops.enable = true;
   };
 }
