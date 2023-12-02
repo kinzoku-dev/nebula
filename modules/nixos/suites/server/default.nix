@@ -20,7 +20,6 @@ in {
     #   enable = true;
     #   enableTunnel = true;
     # };
-    tailscale.enable = true;
     security.sops.enable = true;
     invidious.enable = true;
     users.users.postgres.ignoreShellProgramCheck = true;
