@@ -25,7 +25,8 @@ in {
         "100:name *= 'Discord'",
         "100:name *= 'Steam'",
         "100:name *= 'Spotify'",
-        "100:class_g = 'Element'"
+        "100:class_g = 'Element'",
+        "100:name *= 'LibreWolf'",
       ];
 
       corner-radius = 12;
