@@ -58,7 +58,7 @@
 
   #clock,
   #custom-cava,
-  #group-audio {
+  #pulseaudio {
       border-radius: 5px;
       padding: 0 10px;
       color: #${colors.base05};
@@ -78,27 +78,5 @@
 
   #custom-wlogout {
       color: #${colors.base08};
-  }
-
-  #pulseaudio, #pulseaudio-slider {
-      background-color: #${colors.base00};
-      color: #${colors.base05};
-      border-radius: 5px;
-  }
-
-  #pulseaudio-slider {
-      min-width: 100px;
-      padding: 0;
-      margin-right: 10px;
-  }
-
-  slider {
-      margin: 0;
-      padding: 0;
-      min-height: 0px;
-      min-width: 0px;
-      border-radius: 5px;
-      box-shadow: none;
-      background-color: #b4befe;
   }
 ''

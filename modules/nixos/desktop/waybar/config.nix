@@ -10,8 +10,7 @@
 
     modules-left = [
       "clock"
-      "custom/cava"
-      "group/group-audio"
+      "pulseaudio"
     ];
 
     modules-center = ["hyprland/workspaces"];
@@ -51,27 +50,6 @@
       on-click = "wlogout";
     };
 
-    "custom/cava" = {
-      format = "{}";
-      return-type = "text";
-      max-length = 40;
-      escape = true;
-      exec = "$HOME/.config/waybar/scripts/cava";
-    };
-
-    "group/group-audio" = {
-      orienatation = "inherit";
-      drawer = {
-        transition-duration = 500;
-        children-class = "";
-        transition-left-to-right = true;
-      };
-      modules = [
-        "pulseaudio"
-        "pulseaudio/slider"
-      ];
-    };
-
     "pulseaudio" = {
       format = "{icon} {volume}%";
       format-muted = "󰸈 Muted";
@@ -79,12 +57,6 @@
         default = ["󰕿" "󰖀" "󰕾"];
       };
       on-click = "pavucontrol";
-    };
-
-    "pulseaudio/slider" = {
-      min = 0;
-      max = 100;
-      orienatation = "horizontal";
     };
   };
 }
