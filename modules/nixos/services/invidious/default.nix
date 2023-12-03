@@ -19,11 +19,15 @@ in {
       port = 3000;
       domain = "invidious.the-nebula.xyz";
       nginx.enable = true;
+      address = "127.0.90.3";
       settings = {
+        external_port = lib.mkForce 443;
+        default_user_preferences.dark_mode = "dark";
+        force_resolve = "ipv6";
         hmac_key = "${builtins.readFile config.sops.secrets.invidious-hmac-key.path}";
         db = {
           user = "kemal";
-          dbname = "invidious";
+          dbname = "kemal";
           port = 5432;
           host = lib.mkDefault "localhost";
           password = lib.mkDefault "${builtins.readFile config.sops.secrets.invidious-db-password.path}";
@@ -34,13 +38,10 @@ in {
     services.nginx.virtualHosts."invidious.the-nebula.xyz" = {
       listen = [
         {
-          addr = "0.0.0.0";
+          addr = "127.0.90.3";
           port = 8080;
         }
       ];
-      locations."/" = {
-        proxyPass = "http://127.0.0.1:3000";
-      };
       enableACME = false;
       forceSSL = false;
     };
