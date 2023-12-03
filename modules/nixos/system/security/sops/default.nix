@@ -28,7 +28,7 @@ in {
 
     sops.age.generateKey = true;
 
-    sops.secrets.cloudflared-token = {};
-    sops.secrets.invHmacKey = {};
+    sops.secrets.invidious-hmac-key = {};
+    sops.secrets.invidious-db-password = {};
   };
 }
