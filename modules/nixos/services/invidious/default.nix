@@ -16,7 +16,7 @@ in {
   config = mkIf cfg.enable {
     services.invidious = {
       enable = true;
-      port = 3000;
+      port = 3005;
       settings = {
         hmac_key = "${builtins.readFile config.sops.secrets.invHmacKey.path}";
       };
