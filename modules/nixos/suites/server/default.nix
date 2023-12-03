@@ -18,6 +18,7 @@ in {
     suites.development.enable = true;
     security.sops.enable = true;
     invidious.enable = true;
+    nginx.enable = true;
     users.users.postgres.ignoreShellProgramCheck = true;
   };
 }
