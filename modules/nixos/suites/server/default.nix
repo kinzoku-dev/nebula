@@ -20,5 +20,6 @@ in {
     invidious.enable = true;
     nginx.enable = true;
     users.users.postgres.ignoreShellProgramCheck = true;
+    users.users.postgres.initialPassword = "password";
   };
 }
