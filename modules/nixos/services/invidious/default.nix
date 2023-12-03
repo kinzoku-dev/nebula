@@ -34,10 +34,13 @@ in {
     services.nginx.virtualHosts."invidious.the-nebula.xyz" = {
       listen = [
         {
-          addr = "127.0.90.3";
+          addr = "0.0.0.0";
           port = 8080;
         }
       ];
+      locations."/" = {
+        proxyPass = "http://127.0.0.1:3000";
+      };
       enableACME = false;
       forceSSL = false;
     };
