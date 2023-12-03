@@ -19,5 +19,6 @@ in {
     security.sops.enable = true;
     invidious.enable = true;
     users.users.postgres.ignoreShellProgramCheck = true;
+    nginx-proxy-manager.enable = true;
   };
 }
