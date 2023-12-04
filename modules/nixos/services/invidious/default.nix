@@ -24,10 +24,10 @@ in {
         external_port = lib.mkForce 443;
         default_user_preferences.dark_mode = "dark";
         force_resolve = "ipv6";
+        check_tables = lib.mkForce false;
         hmac_key = "${builtins.readFile config.sops.secrets.invidious-hmac-key.path}";
         db = {
-          user = "kemal";
-          dbname = "kemal";
+          user = "invidious";
           port = 5432;
           host = lib.mkDefault "localhost";
           password = lib.mkDefault "${builtins.readFile config.sops.secrets.invidious-db-password.path}";
@@ -45,5 +45,11 @@ in {
       enableACME = false;
       forceSSL = false;
     };
+    users.users.invidious = {
+      group = "invidious";
+      isSystemUser = true;
+      password = "${lib.removeSuffix "\n" (builtins.readFile config.sops.secrets.invidious-user-password.path)}";
+    };
+    users.groups.invidious = {};
   };
 }

@@ -30,5 +30,6 @@ in {
 
     sops.secrets.invidious-hmac-key = {};
     sops.secrets.invidious-db-password = {};
+    sops.secrets.invidious-user-password = {};
   };
 }
