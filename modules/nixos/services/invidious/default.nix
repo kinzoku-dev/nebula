@@ -39,7 +39,11 @@ in {
       listen = [
         {
           addr = "127.0.90.3";
-          port = 3000;
+          port = 8080;
+        }
+        {
+          addr = "127.0.90.3";
+          port = 443;
         }
       ];
       enableACME = false;
