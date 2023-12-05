@@ -25,7 +25,9 @@
   }
 
   input {
-      kb_options = caps:escape
+      kb_options = caps:escape,grp:alt_space_toggle
+      kb_layout = us,us
+      kb_variant = ,intl
   }
 
   dwindle {
