@@ -18,5 +18,6 @@ in {
     suites.development.enable = true;
     security.sops.enable = true;
     nginx-proxy-manager.enable = true;
+    environment.systemPackages = [pkgs.docker-compose];
   };
 }
