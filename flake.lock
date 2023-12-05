@@ -592,38 +592,6 @@
         "type": "github"
       }
     },
-    "invidious": {
-      "locked": {
-        "lastModified": 1700779662,
-        "narHash": "sha256-hLJPe9OBsz3h6fg3+S/Nwe1OM654Un00NdYpbwFdVoA=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "c40aa4e0c410903b39a24e82e1b1ddf2821d1bdd",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "pull/269514/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "invidious-module": {
-      "locked": {
-        "lastModified": 1700820255,
-        "narHash": "sha256-HiGF5yl7VQkCfW/XeMhH/9QbeT689p1g+/XvpJV61FI=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "978dabaa231a06cc7924e1dcfdc238be7b5ab2da",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "pull/265857/head",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "naersk": {
       "inputs": {
         "nixpkgs": "nixpkgs_8"
@@ -968,8 +936,6 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "invidious": "invidious",
-        "invidious-module": "invidious-module",
         "neovim": "neovim",
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",

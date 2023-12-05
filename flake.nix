@@ -56,9 +56,6 @@
     #   url = "github:kinzoku-dev/nebuvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-
-    invidious-module.url = "github:nixos/nixpkgs/pull/265857/head";
-    invidious.url = "github:nixos/nixpkgs/pull/269514/head";
   };
 
   outputs = inputs: let
@@ -97,14 +94,6 @@
         nur.nixosModules.nur
         disko.nixosModules.disko
         arion.nixosModules.arion
-        {
-          imports = [
-            "${inputs.invidious-module}/nixos/modules/services/web-apps/invidious.nix"
-          ];
-          disabledModules = [
-            "services/web-apps/invidious.nix"
-          ];
-        }
       ];
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};

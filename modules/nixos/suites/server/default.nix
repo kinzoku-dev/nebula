@@ -24,5 +24,7 @@ in {
       isSystemUser = true;
     };
     users.groups.invidious = {};
+    users.users.postgres.ignoreShellProgramCheck = true;
+    invidious.enable = true;
   };
 }
