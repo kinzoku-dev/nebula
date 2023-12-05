@@ -19,5 +19,10 @@ in {
     security.sops.enable = true;
     nginx-proxy-manager.enable = true;
     environment.systemPackages = [pkgs.docker-compose];
+    users.users.invidious = {
+      group = "invidious";
+      isSystemUser = true;
+    };
+    users.groups.invidious = {};
   };
 }
