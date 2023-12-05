@@ -17,5 +17,6 @@ in {
     suites.common.enable = true;
     suites.development.enable = true;
     security.sops.enable = true;
+    nginx-proxy-manager.enable = true;
   };
 }
