@@ -28,8 +28,14 @@ in {
 
     sops.age.generateKey = true;
 
-    sops.secrets.invidious-hmac-key = {};
-    sops.secrets.invidious-db-password = {};
+    sops.secrets.invidious-hmac-key = {
+      mode = "044";
+      owner = "invidious";
+    };
+    sops.secrets.invidious-db-password = {
+      mode = "044";
+      owner = "invidious";
+    };
     sops.secrets.invidious-user-password = {};
   };
 }
