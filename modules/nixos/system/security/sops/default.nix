@@ -29,12 +29,12 @@ in {
     sops.age.generateKey = true;
 
     sops.secrets.invidious-hmac-key = {
-      mode = "044";
+      mode = "444";
       owner = "invidious";
     };
     sops.secrets.invidious-db-password = {
       mode = "044";
-      owner = "invidious";
+      owner = "postgres";
     };
     sops.secrets.invidious-user-password = {};
   };

@@ -19,17 +19,14 @@ in {
       port = 6969;
       database = {
         port = 5432;
-        host = lib.mkForce "localhost";
-        passwordFile = "${config.sops.secrets.invidious-db-password.path}";
       };
       domain = "invidious.the-nebula.xyz";
-      hmacKeyFile = "${config.sops.secrets.invidious-hmac-key.path}";
       settings = {
+        hmac_key = "${lib.removeSuffix "\n" (builtins.readFile config.sops.secrets.invidious-hmac-key.path)}";
         check_tables = true;
         default_user_preferences.dark_mode = "dark";
         external_port = lib.mkForce 443;
         captions = ["English" "Turkish" "Polish"];
-        db.user = "invidious";
       };
     };
   };
