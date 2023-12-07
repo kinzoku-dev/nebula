@@ -26,5 +26,6 @@ in {
     users.groups.invidious = {};
     users.users.postgres.ignoreShellProgramCheck = true;
     invidious.enable = true;
+    vaultwarden.enable = true;
   };
 }
