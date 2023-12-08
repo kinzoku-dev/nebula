@@ -118,7 +118,20 @@
 
       cinny-desktop
 
-      signal-desktop-beta
+      (signal-desktop-beta.overrideAttrs {
+        desktopItems = [
+          (makeDesktopItem {
+            name = "signal";
+            desktopName = "Signal";
+            exec = "signal-desktop-beta --disable-gpu %U";
+            icon = "signal";
+            startupWMClass = "Signal Beta";
+            genericName = "Internet Messenger";
+            keywords = ["call" "signal" "electron" "chat"];
+            categories = ["Network" "InstantMessaging" "Chat"];
+          })
+        ];
+      })
       cloudflared
 
       premid
