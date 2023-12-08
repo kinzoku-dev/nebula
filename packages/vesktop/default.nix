@@ -133,9 +133,9 @@ stdenv.mkDerivation rec {
   desktopItems = [
     (makeDesktopItem {
       name = "vencorddesktop";
-      desktopName = "Vesktop";
+      desktopName = "Discord";
       exec = "vencorddesktop --disable-gpu %U";
-      icon = "Discord";
+      icon = "discord";
       startupWMClass = "VencordDesktop";
       genericName = "Internet Messenger";
       keywords = ["discord" "vencord" "electron" "chat"];
@@ -151,4 +151,3 @@ stdenv.mkDerivation rec {
     mainProgram = "vencorddesktop";
   };
 }
-
