@@ -56,6 +56,10 @@
     #   url = "github:kinzoku-dev/nebuvim";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let

@@ -123,9 +123,13 @@
 
       premid
     ]
-    ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
-      mapscii
-    ]);
+    ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux;
+      [
+        mapscii
+      ]
+      ++ [
+        inputs.hyprland-contrib.packages.${pkgs.system}.hyprprop
+      ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

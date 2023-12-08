@@ -518,6 +518,26 @@
         "type": "github"
       }
     },
+    "hyprland-contrib": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1700963402,
+        "narHash": "sha256-JhkanLmYRLekGOysO6JpCWKPlgRoemHPzUrARCGBqYA=",
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "rev": "65e567a81176d39be7ce6513d1af23954f00cbec",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "contrib",
+        "type": "github"
+      }
+    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -619,11 +639,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1700956763,
-        "narHash": "sha256-MpMmOkXffDFh5/Vw8XNmfJuPjkUwar+ploJs8eXHduY=",
+        "lastModified": 1701991358,
+        "narHash": "sha256-CP7qYbVeLOFJ9zdCBOvOqkMQnZdhDtbni+Sb5OzoIxY=",
         "owner": "kinzoku-dev",
         "repo": "neovim",
-        "rev": "bbd8148a6730b0505e5eec0e7ea80cc8c6cbaed9",
+        "rev": "93a920f22eba900319b0736211f2f5bb2e45ec42",
         "type": "github"
       },
       "original": {
@@ -936,6 +956,7 @@
         "disko": "disko",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
+        "hyprland-contrib": "hyprland-contrib",
         "neovim": "neovim",
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",
