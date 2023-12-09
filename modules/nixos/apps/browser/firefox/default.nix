@@ -28,10 +28,30 @@ in {
             name = "Kinzoku";
             settings = {
             };
-            userChrome = ''
-              ${builtins.readFile ./userChrome}
-            '';
+            search.default = "DuckDuckGo";
+            search.engines = {
+              "SearXNG" = {
+                urls = [
+                  {
+                    template = "https://search.the-nebula.xyz/?q={searchTerms}";
+                  }
+                ];
+              };
+              "DuckDuckGo" = {
+                urls = [
+                  {
+                    template = "https://duckduckgo.com/?q={searchTerms}";
+                  }
+                ];
+              };
+            };
             bookmarks = [
+              {
+                url = "https://github.com";
+              }
+              {
+                url = "https://mail.proton.me";
+              }
               {
                 name = "Nix sites";
                 toolbar = true;
@@ -54,6 +74,20 @@ in {
                   }
                 ];
               }
+              {
+                name = "Docs";
+                toolbar = true;
+                bookmarks = [
+                  {
+                    name = "Rust";
+                    url = "https://docs.rust-lang.org/std/index.html";
+                  }
+                  {
+                    name = "Golang";
+                    url = "https://pkg.go.dev/std";
+                  }
+                ];
+              }
             ];
             isDefault = true;
             extensions = with config.nur.repos.rycee.firefox-addons; [
@@ -62,8 +96,6 @@ in {
               libredirect
               stylus
               ublock-origin
-              enhancer-for-youtube
-              firefox-color
             ];
           };
         };
