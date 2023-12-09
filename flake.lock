@@ -639,11 +639,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1701991358,
-        "narHash": "sha256-CP7qYbVeLOFJ9zdCBOvOqkMQnZdhDtbni+Sb5OzoIxY=",
+        "lastModified": 1702078100,
+        "narHash": "sha256-y8o74mpH/Kdl8/HHyXNuatQY50TxYsR40FKmsd6FWEs=",
         "owner": "kinzoku-dev",
         "repo": "neovim",
-        "rev": "93a920f22eba900319b0736211f2f5bb2e45ec42",
+        "rev": "544980a35752d1148fd72982b6d7d903240c3b01",
         "type": "github"
       },
       "original": {
