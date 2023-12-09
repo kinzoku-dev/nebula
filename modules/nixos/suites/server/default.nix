@@ -17,21 +17,27 @@ in {
     suites.common.enable = true;
     suites.development.enable = true;
     security.sops.enable = true;
-    nginx-proxy-manager.enable = true;
     environment.systemPackages = [pkgs.docker-compose];
-    users.users.invidious = {
-      group = "invidious";
-      isSystemUser = true;
-    };
-    users.groups.invidious = {};
-    users.users.postgres.ignoreShellProgramCheck = true;
-    users.users.postgres = {
-      isSystemUser = true;
-      group = "postgres";
-    };
-    users.groups.postgres = {};
     invidious.enable = true;
     vaultwarden.enable = true;
     searx.enable = true;
+    nginx-proxy-manager.enable = true;
+    users = {
+      users = {
+        postgres = {
+          isSystemUser = true;
+          group = "postgres";
+          ignoreShellProgramCheck = true;
+        };
+        invidious = {
+          group = "invidious";
+          isSystemUser = true;
+        };
+      };
+      groups = {
+        invidious = {};
+        postgres = {};
+      };
+    };
   };
 }
