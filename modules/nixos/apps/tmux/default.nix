@@ -32,6 +32,11 @@ in {
         unbind r
         bind r source-file ~/.config/tmux/tmux.conf
 
+        unbind '&'
+        bind-key q kill-window
+
+        bind-key x kill-pane
+
         bind -r j resize-pane -D 5
         bind -r k resize-pane -U 5
         bind -r l resize-pane -R 5
