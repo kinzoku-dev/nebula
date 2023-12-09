@@ -32,5 +32,6 @@ in {
     users.groups.postgres = {};
     invidious.enable = true;
     vaultwarden.enable = true;
+    searx.enable = true;
   };
 }
