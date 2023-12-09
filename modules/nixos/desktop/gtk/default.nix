@@ -50,6 +50,10 @@ in {
         package = cfg.iconTheme.package;
         name = cfg.iconTheme.name;
       };
+      font = {
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        name = "JetBrainsMono Nerd Font";
+      };
     };
   };
 }
