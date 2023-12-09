@@ -37,5 +37,6 @@ in {
       owner = "postgres";
     };
     sops.secrets.invidious-user-password = {};
+    sops.secrets.searx-secret-key = {};
   };
 }
