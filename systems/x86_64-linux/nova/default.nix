@@ -40,6 +40,8 @@
     defaultBrowser = "firefox";
   };
 
+  virtualisation.vm.enable = true;
+
   system.xserver.enable = true;
   # system.xremap.enable = true;
   desktop.xmonad.enable = true;
