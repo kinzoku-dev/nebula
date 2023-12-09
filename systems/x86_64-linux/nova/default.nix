@@ -64,8 +64,10 @@
   desktop.waybar.enable = true;
   system.systemd-timers.enable = true;
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal = {
+    enable = true;
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  };
 
   # Configure keymap in X11
   services.xserver = {
