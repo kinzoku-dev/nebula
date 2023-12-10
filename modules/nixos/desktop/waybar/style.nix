@@ -42,7 +42,7 @@
   }
 
   #workspaces button.active {
-      color: #${colors.base0D};
+      color: #${colors.base07};
   }
 
   #workspaces button:hover {
