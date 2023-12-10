@@ -9,6 +9,7 @@
 with lib;
 with lib.nebula; let
   cfg = config.desktop.hyprland;
+  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
 in {
   options.desktop.hyprland = with types; {
     enable = mkBoolOpt false "Enable hyprland";
@@ -65,16 +66,23 @@ in {
       xwayland.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [
-      # wallpaper daemon
-      swww
+    environment.systemPackages = with pkgs;
+      [
+        # wallpaper daemon
+        swww
 
-      grim
-      slurp
-      wl-clipboard
+        grim
+        slurp
+        wl-clipboard
 
-      xwaylandvideobridge
-    ];
+        xwaylandvideobridge
+
+        wlr-randr
+      ]
+      ++ (with inputs.hyprland-contrib.packages.${pkgs.system}; [
+        hyprprop
+        grimblast
+      ]);
 
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
@@ -94,7 +102,7 @@ in {
       );
     in {
       "hypr/hyprland.conf" = {
-        text = import ./hyprland.nix {inherit displayList pkgs;};
+        text = import ./hyprland.nix {inherit displayList pkgs colors;};
         onChange = ''
           ${pkgs.hyprland}/bin/hyprctl reload
         '';

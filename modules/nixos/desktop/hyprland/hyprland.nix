@@ -1,6 +1,7 @@
 {
   displayList,
   pkgs,
+  colors,
 }: ''
   ${displayList}
   exec-once=waybar &
@@ -16,16 +17,26 @@
       shadow_range = 4
       shadow_render_power = 3
       col.shadow = rgba(1a1a1aee)
+      blur {
+          size = 5
+          passes = 3
+          new_optimizations = true
+          xray = false
+      }
   }
+  env = WLR_NO_HARDWARE_CURSORS,1
+  env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
   general {
       border_size = 3
       layout = dwindle
       gaps_in = 5
-      gaps_out = 20
+      gaps_out = 10
+      col.active_border = rgb(${colors.base0E}) rgb(${colors.base0E}) rgb(${colors.base07}) rgb(${colors.base0D}) 45deg
+      col.inactive_border = rgb(${colors.base02})
   }
 
   input {
-      kb_options = caps:escape,grp:alt_space_toggle
+      kb_options = caps:escape,grp:alt_shift_k_toggle
       kb_layout = us,us
       kb_variant = ,intl
   }
@@ -39,7 +50,7 @@
   bind = $mainMod SHIFT, Return, exec, kitty
   bind = $mainMod SHIFT, C, killactive
   bind = $mainMod, P, exec, anyrun
-  bind = $mainMod SHIFT, S, exec, grim -l 0 -g "$(slurp)" - | wl-copy
+  bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating
 
   binde =, Prior, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
