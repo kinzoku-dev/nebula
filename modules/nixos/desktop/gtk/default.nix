@@ -35,24 +35,28 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.extraOptions.gtk.enable = true;
-
-    home.extraOptions.gtk = {
-      cursorTheme = {
-        package = cfg.cursorTheme.package;
-        name = cfg.cursorTheme.name;
-      };
-      theme = {
-        package = cfg.theme.package;
-        name = cfg.theme.name;
-      };
-      iconTheme = {
-        package = cfg.iconTheme.package;
-        name = cfg.iconTheme.name;
-      };
-      font = {
-        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
-        name = "JetBrainsMono Nerd Font";
+    home.pointerCursor = {
+      name = "Catppuccin-Mocha-Lavender-Cursors";
+      package = pkgs.catppuccin-cursors.mochaLavender;
+      size = 24;
+      gtk.enable = true;
+      x11.enable = true;
+    };
+    home.extraOptions = {
+      gtk = {
+        enable = true;
+        theme = {
+          package = cfg.theme.package;
+          name = cfg.theme.name;
+        };
+        iconTheme = {
+          package = cfg.iconTheme.package;
+          name = cfg.iconTheme.name;
+        };
+        font = {
+          package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+          name = "JetBrainsMono Nerd Font";
+        };
       };
     };
   };
