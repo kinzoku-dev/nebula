@@ -15,5 +15,8 @@ in {
 
   config = mkIf cfg.enable {
     # TODO: add nextcloud instance config
+    services.nextcloud = {
+      enable = true;
+    };
   };
 }

@@ -25,7 +25,6 @@ with lib.nebula; {
       };
     };
     desktop = {
-      mako.enable = true;
       colorscheme = "catppuccin-mocha";
       swww.enable = true;
     };

@@ -26,5 +26,6 @@ in {
       wireplumber.enable = true;
     };
     programs.noisetorch.enable = true;
+    environment.systemPackages = [pkgs.pavucontrol];
   };
 }

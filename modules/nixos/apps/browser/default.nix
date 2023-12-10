@@ -17,32 +17,18 @@ in {
   config = let
     defaultBrowser = cfg.defaultBrowser;
   in {
-    # home.mimeApps = {
-    #   enable = true;
-    #   associations.added = {
-    #     "text/html" = ["librewolf.desktop"];
-    #     "x-scheme-handler/http" = ["librewolf.desktop"];
-    #     "x-scheme-handler/https" = ["librewolf.desktop"];
-    #     "x-scheme-handler/about" = ["librewolf.desktop"];
-    #     "x-scheme-handler/unknown" = ["librewolf.desktop"];
-    #     "x-scheme-handler/url" = ["librewolf.desktop"];
-    #     "application/xhtml_xml" = ["librewolf.desktop"];
-    #     "application/url" = ["librewolf.desktop"];
-    #   };
-    #   defaultApplications = {
-    #     "text/html" = ["librewolf.desktop"];
-    #     "x-scheme-handler/http" = ["librewolf.desktop"];
-    #     "x-scheme-handler/https" = ["librewolf.desktop"];
-    #     "x-scheme-handler/about" = ["librewolf.desktop"];
-    #     "x-scheme-handler/unknown" = ["librewolf.desktop"];
-    #     "x-scheme-handler/url" = ["librewolf.desktop"];
-    #     "application/xhtml_xml" = ["librewolf.desktop"];
-    #     "application/url" = ["librewolf.desktop"];
-    #   };
-    # };
-    #
-    # environment.sessionVariables = {
-    #   DEFAULT_BROWSER = "${pkgs.librewolf}/bin/librewolf";
-    # };
+    home.mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = ["${defaultBrowser}.desktop"];
+        "x-scheme-handler/http" = ["${defaultBrowser}.desktop"];
+        "x-scheme-handler/https" = ["${defaultBrowser}.desktop"];
+        "x-scheme-handler/about" = ["${defaultBrowser}.desktop"];
+        "x-scheme-handler/unknown" = ["${defaultBrowser}.desktop"];
+        "x-scheme-handler/url" = ["${defaultBrowser}.desktop"];
+        "application/xhtml_xml" = ["${defaultBrowser}.desktop"];
+        "application/url" = ["${defaultBrowser}.desktop"];
+      };
+    };
   };
 }

@@ -43,6 +43,7 @@ with lib.nebula; {
 
     home-manager = {
       useUserPackages = true;
+      backupFileExtension = "backup";
 
       users.${config.user.name} =
         mkAliasDefinitions options.home.extraOptions;

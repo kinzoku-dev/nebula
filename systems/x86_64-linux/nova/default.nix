@@ -37,7 +37,7 @@
       "firefox"
       "librewolf"
     ];
-    defaultBrowser = "firefox";
+    defaultBrowser = "librewolf";
   };
 
   virtualisation.vm.enable = true;
@@ -67,6 +67,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    config.common.default = "*";
   };
 
   # Configure keymap in X11
