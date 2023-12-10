@@ -23,12 +23,13 @@ in {
         size = 12;
       };
       theme = "Catppuccin-Mocha";
-      extraConfig = ''
-        disable_ligatures never
-
-        confirm_os_window_close 0
-      '';
-      settings = {enable_audio_bell = false;};
+      settings = {
+        enable_audio_bell = false;
+        window_padding_width = 2;
+        confirm_os_window_close = 0;
+        background_opacity = "0.7";
+        disable_ligatures = "never";
+      };
     };
   };
 }
