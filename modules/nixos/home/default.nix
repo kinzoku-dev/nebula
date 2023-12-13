@@ -25,6 +25,7 @@ with lib.nebula; {
     packages = mkOpt (listOf str) [] "Packages to be installed with home-manager.";
     mimeApps = mkOpt attrs {} "Mime app settings.";
     pointerCursor = mkOpt attrs {} "Cursor settings";
+    services = mkOpt attrs {} "service settings";
   };
 
   config = {
@@ -35,6 +36,7 @@ with lib.nebula; {
       xdg.configFile = mkAliasDefinitions options.home.configFile;
       xdg.mimeApps = mkAliasDefinitions options.home.mimeApps;
       programs = mkAliasDefinitions options.home.programs;
+      services = mkAliasDefinitions options.home.services;
       home.homeDirectory = "/home/${config.user.name}";
       home.pointerCursor = mkIf config.desktop.gtk.enable (mkAliasDefinitions options.home.pointerCursor);
     };

@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    services.mako = {
+    home.services.mako = {
       enable = true;
     };
   };

@@ -14,24 +14,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd.timers."wallpaper" = {
-      wantedBy = ["timers.target"];
-      timerConfig = {
-        OnBootSec = "5m";
-        OnUnitActiveSec = "5m";
-        Unit = "wallpaper.service";
-      };
-    };
-
-    systemd.services."wallpaper" = {
-      script = ''
-        export XDG_RUNTIME_DIR=/run/user/1000
-        ${pkgs.nebula.wallpaper}/bin/wallpaper
-      '';
-      serviceConfig = {
-        Type = "oneshot";
-        User = "root";
-      };
-    };
+    # systemd.timers."wallpaper" = {
+    #   wantedBy = ["timers.target"];
+    #   timerConfig = {
+    #     OnBootSec = "5m";
+    #     OnUnitActiveSec = "5m";
+    #     Unit = "wallpaper.service";
+    #   };
+    # };
+    #
+    # systemd.services."wallpaper" = {
+    #   script = ''
+    #     export XDG_RUNTIME_DIR=/run/user/1000
+    #     ${pkgs.nebula.wallpaper}/bin/wallpaper
+    #   '';
+    #   serviceConfig = {
+    #     Type = "oneshot";
+    #     User = "root";
+    #   };
+    # };
   };
 }

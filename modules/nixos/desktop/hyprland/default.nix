@@ -100,9 +100,16 @@ in {
         )
         cfg.displays
       );
+      workspaceMonitors = lib.concatLines (
+        lib.lists.concatMap
+        (
+          m: map (w: "${toString w},monitor:${m.name}") (m.workspaces)
+        )
+        (cfg.displays)
+      );
     in {
       "hypr/hyprland.conf" = {
-        text = import ./hyprland.nix {inherit displayList pkgs colors;};
+        text = import ./hyprland.nix {inherit displayList workspaceMonitors pkgs colors;};
         onChange = ''
           ${pkgs.hyprland}/bin/hyprctl reload
         '';

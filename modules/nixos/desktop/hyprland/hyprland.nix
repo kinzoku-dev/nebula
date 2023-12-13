@@ -1,12 +1,13 @@
 {
   displayList,
+  workspaceMonitors,
   pkgs,
   colors,
 }: ''
   ${displayList}
   exec-once=waybar &
   exec-once=swww init &
-  exec-once=swww img ~/.config/wallpapers/ultra1.png &
+  exec-once=swww img ~/Pictures/invasion_of_vryn_purple.jpg &
   exec-once=mako &
   exec-once=nm-applet
 
@@ -26,6 +27,8 @@
   }
   env = WLR_NO_HARDWARE_CURSORS,1
   env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
+  env = WLR_DRM_NO_ATOMIC,1
+
   general {
       border_size = 3
       layout = dwindle
@@ -96,6 +99,16 @@
   bind = $mainMod, 8, workspace, 8
   bind = $mainMod, 9, workspace, 9
   bind = $mainMod, 0, workspace, 10
+  bind = SUPER, 1, workspace, 11
+  bind = SUPER, 2, workspace, 12
+  bind = SUPER, 3, workspace, 13
+  bind = SUPER, 4, workspace, 14
+  bind = SUPER, 5, workspace, 15
+  bind = SUPER, 6, workspace, 16
+  bind = SUPER, 7, workspace, 17
+  bind = SUPER, 8, workspace, 18
+  bind = SUPER, 9, workspace, 19
+  bind = SUPER, 0, workspace, 20
 
   bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
   bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
@@ -107,7 +120,18 @@
   bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
   bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
   bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
+  bind = SUPER SHIFT, 1, movetoworkspacesilent, 11
+  bind = SUPER SHIFT, 2, movetoworkspacesilent, 12
+  bind = SUPER SHIFT, 3, movetoworkspacesilent, 13
+  bind = SUPER SHIFT, 4, movetoworkspacesilent, 14
+  bind = SUPER SHIFT, 5, movetoworkspacesilent, 15
+  bind = SUPER SHIFT, 6, movetoworkspacesilent, 16
+  bind = SUPER SHIFT, 7, movetoworkspacesilent, 17
+  bind = SUPER SHIFT, 8, movetoworkspacesilent, 18
+  bind = SUPER SHIFT, 9, movetoworkspacesilent, 19
+  bind = SUPER SHIFT, 0, movetoworkspacesilent, 20
 
-  bindm = $mainMod, mouse:272, movewindow
   bindm = $mainMod, mouse:273, resizewindow
+
+  ${workspaceMonitors}
 ''

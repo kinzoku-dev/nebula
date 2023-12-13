@@ -18,7 +18,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.nvidia.enable = true;
+  # hardware.nvidia.enable = false;
   hardware.bluetoothctl.enable = true;
 
   suites.common.enable = true;
@@ -51,13 +51,22 @@
     enable = true;
     displays = [
       {
-        name = "HDMI-A-1";
+        name = "DP-1";
         width = 1920;
         height = 1080;
-        refreshRate = 75;
+        refreshRate = 165;
         x = 0;
         y = 0;
         workspaces = [1 2 3 4 5 6 7 8 9 10];
+      }
+      {
+        name = "HDMI-A-1";
+        width = 1920;
+        height = 1080;
+        refreshRate = 144;
+        x = 1920;
+        y = 0;
+        workspaces = [11 12 13 14 15 16 17 18 19 20];
       }
     ];
   };
@@ -74,6 +83,7 @@
   services.xserver = {
     layout = "us";
     xkbVariant = "";
+    videoDrivers = ["amdgpu"];
   };
 
   # Enable CUPS to print documents.
@@ -142,12 +152,19 @@
       premid
 
       gucharmap
+      dotnet-sdk
+
+      sl
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
         mapscii
       ]
     );
+
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

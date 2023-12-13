@@ -504,6 +504,26 @@
         "type": "github"
       }
     },
+    "hyprland-plugins": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ]
+      },
+      "locked": {
+        "lastModified": 1702313205,
+        "narHash": "sha256-pPQO8Umt/5C51hAPBb3JdZUsQ6F3LeSmVqpWaAo+Mdo=",
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "rev": "9099c480d84563f3e86548b8f9a4494fd2b11bd1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "hyprland-plugins",
+        "type": "github"
+      }
+    },
     "hyprland-protocols": {
       "inputs": {
         "nixpkgs": [
@@ -586,11 +606,11 @@
         "utils": "utils_2"
       },
       "locked": {
-        "lastModified": 1702078100,
-        "narHash": "sha256-y8o74mpH/Kdl8/HHyXNuatQY50TxYsR40FKmsd6FWEs=",
+        "lastModified": 1702251727,
+        "narHash": "sha256-LuuR5GO4rcQFm0duLejp81Bu0BR5Iexh4WDEaFOFq8A=",
         "owner": "kinzoku-dev",
         "repo": "neovim",
-        "rev": "544980a35752d1148fd72982b6d7d903240c3b01",
+        "rev": "8684a622f3f4e9c06f8f448d27275021e21f5350",
         "type": "github"
       },
       "original": {
@@ -856,6 +876,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
+        "hyprland-plugins": "hyprland-plugins",
         "neovim": "neovim",
         "nix-colors": "nix-colors",
         "nix-flatpak": "nix-flatpak",
