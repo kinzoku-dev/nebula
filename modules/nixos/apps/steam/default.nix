@@ -54,10 +54,8 @@ in {
     environment.systemPackages = [
       pkgs.protonup-ng
       pkgs.gamescope
+      pkgs.mangohud
+      pkgs.goverlay
     ];
-
-    home.programs.mangohud = {
-      enable = true;
-    };
   };
 }
