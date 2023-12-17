@@ -56,6 +56,15 @@ in {
       pkgs.gamescope
       pkgs.mangohud
       pkgs.goverlay
+      (pkgs.makeDesktopItem {
+        name = "Steam (Mullvad Exclude)";
+        desktopName = "Steam (Mullvad Exclude)";
+        genericName = "Application for managing and playing games on Steam.";
+        categories = ["Network" "FileTransfer" "Game"];
+        type = "Application";
+        icon = "steam";
+        exec = "mullvad-exclude steam";
+      })
     ];
   };
 }
