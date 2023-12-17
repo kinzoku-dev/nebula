@@ -52,6 +52,7 @@ in {
     };
 
     environment.systemPackages = [
+      pkgs.protonup-ng
       pkgs.gamescope
     ];
 
