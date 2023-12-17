@@ -49,29 +49,10 @@ in {
       };
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
-      # gamescopeSession = {
-      #   enable = true;
-      # };
     };
-    # programs.gamescope = {
-    #   enable = true;
-    # };
+
     environment.systemPackages = [
       pkgs.gamescope
-      (pkgs.makeDesktopItem {
-        name = "Steam (Gamepad UI)";
-        desktopName = "Steam (Gamepad UI)";
-        genericName = "Application for managing and playing games on Steam.";
-        categories = ["Network" "FileTransfer" "Game"];
-        type = "Application";
-        icon = "steam";
-        exec = "steamos";
-        terminal = false;
-      })
-
-      (pkgs.writeShellScriptBin "steamos" ''
-        gamescope -W 1920 -H 1080  -w 1920 -h 1080 -e --adaptive-sync -- steam -gamepadui -steamdeck -steamos -fulldesktopres -tenfoot
-      '')
     ];
 
     home.programs.mangohud = {
