@@ -15,7 +15,20 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.nebula.vesktop
+      (pkgs.vesktop.overrideAttrs {
+        desktopItems = [
+          (pkgs.makeDesktopItem {
+            name = "vencorddesktop";
+            desktopName = "Discord";
+            exec = "mullvad-exclude vencorddesktop --disable-gpu";
+            icon = "discord";
+            startupWMClass = "VencordDesktop";
+            genericName = "Internet Messenger";
+            keywords = ["discord" "vencord" "electron" "chat"];
+            categories = ["Network" "InstantMessaging" "Chat"];
+          })
+        ];
+      })
     ];
     home.file.".config/VencordDesktop/VencordDesktop/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
     home.configFile."discord/settings.json".text = ''
