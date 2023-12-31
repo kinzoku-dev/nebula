@@ -46,9 +46,9 @@
   }
 
   input {
-      kb_options = caps:escape,grp:alt_shift_k_toggle
-      kb_layout = us,us
-      kb_variant = ,intl
+      kb_options = caps:escape,grp:win_space_toggle
+      kb_layout = us,us,us
+      kb_variant = ,intl,colemak_dh
   }
 
   dwindle {
