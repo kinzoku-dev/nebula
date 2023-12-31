@@ -65,6 +65,9 @@ in {
       enable = true;
       xwayland.enable = true;
       systemd.enable = true;
+      plugins = with inputs; [
+        split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+      ];
       extraConfig = let
         displayList = lib.concatLines (
           map
