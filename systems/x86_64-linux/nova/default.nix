@@ -155,6 +155,9 @@
       gpu-screen-recorder-gtk
 
       mpv
+
+      jre
+      minetest
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
