@@ -25,6 +25,7 @@
   suites.development.enable = true;
 
   apps.misc.enable = true;
+  apps.calcure.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
   apps.mullvad-vpn.enable = true;
