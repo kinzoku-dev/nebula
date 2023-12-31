@@ -49,6 +49,8 @@
       kb_options = caps:escape,grp:win_space_toggle
       kb_layout = us,us,us
       kb_variant = ,intl,colemak_dh
+      accel_profile = flat
+      sensitivity = 0.6
   }
 
   dwindle {
