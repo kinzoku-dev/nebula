@@ -162,6 +162,8 @@
 
       ngrok
 
+      blender
+
       soundux
 
       audacity
