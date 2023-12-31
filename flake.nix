@@ -91,6 +91,7 @@
         allowUnfree = true;
         permittedInsecurePackages = [
           "electron-24.8.6"
+          "vscode-1.84.2"
         ];
       };
 

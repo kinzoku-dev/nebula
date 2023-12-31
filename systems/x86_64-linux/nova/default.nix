@@ -27,6 +27,9 @@
   apps.misc.enable = true;
   apps.calcure.enable = true;
   apps.chat.enable = true;
+  apps.thunderbird.enable = true;
+  apps.vscode.enable = true;
+  apps.neofetch.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
   apps.mullvad-vpn.enable = true;
