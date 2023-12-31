@@ -13,6 +13,7 @@ with lib.nebula; let
 in {
   options.desktop.hyprland = with types; {
     enable = mkBoolOpt false "Enable hyprland";
+    laptop = mkBoolOpt false "Is this system a laptop?";
     displays = mkOption {
       type = types.listOf (types.submodule {
         options = {
