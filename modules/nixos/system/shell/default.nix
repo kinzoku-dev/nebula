@@ -101,6 +101,10 @@ in {
         function flakeinit() {
             nix flake init -t github:nix-community/templates#$1
         }
+
+        function ,() {
+            nix shell nixpkgs#$1
+        }
       '';
     };
 
