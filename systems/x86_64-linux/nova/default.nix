@@ -149,6 +149,8 @@
       dotnet-sdk
 
       sl
+
+      prismlauncher
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
