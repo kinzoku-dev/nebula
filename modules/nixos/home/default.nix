@@ -11,6 +11,7 @@ with lib.nebula; {
     nix-colors.homeManagerModules.default
     prism.homeModules.prism
     # nebuvim.homeManagerModules.default
+    schizofox.homeManagerModules.default
   ];
 
   options.home = with types; {
