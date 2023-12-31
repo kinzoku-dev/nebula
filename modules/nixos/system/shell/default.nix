@@ -93,14 +93,6 @@ in {
         eval "$(zoxide init zsh)"
         set -o vi
 
-        function ya() {
-            tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-            yazi --cwd-file="$tmp"
-            if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-                cd -- "$cwd"
-            fi
-            rm -f -- "$tmp"
-        }
 
         function flakeinit() {
             nix flake init -t github:nix-community/templates#$1
@@ -127,17 +119,6 @@ in {
 
         def , [...packages] {
             nix shell ($packages | each {|s| $"nixpkgs#($s)"})
-
-        }
-
-        def-env ya [] {
-            let tmp = (mktemp -t "yazi-cwd.XXXXX")
-                yazi --cwd-file $tmp
-                let cwd = (cat -- $tmp)
-                if $cwd != "" and $cwd != $env.PWD {
-                    cd $cwd
-                }
-            rm -f $tmp
         }
 
         def flakeinit [template] {
