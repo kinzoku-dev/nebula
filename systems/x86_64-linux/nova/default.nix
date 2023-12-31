@@ -152,6 +152,8 @@
 
       prismlauncher
 
+      gpu-screen-recorder-gtk
+
       mpv
     ]
     ++ (
