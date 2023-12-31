@@ -105,6 +105,10 @@ in {
         function ,() {
             nix shell nixpkgs#$1
         }
+
+        bindkey -v
+        autoload edit-command-line; zle -N edit-command-line
+        bindkey '^e' edit-command-line
       '';
     };
 
