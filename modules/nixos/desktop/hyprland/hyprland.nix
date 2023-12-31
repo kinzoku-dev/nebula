@@ -64,6 +64,7 @@
   bind = $mainMod, P, exec, anyrun
   bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating
+  bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
 
   binde =, Prior, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
   binde =, Next, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-

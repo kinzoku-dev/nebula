@@ -103,6 +103,8 @@ in {
         xwaylandvideobridge
 
         wlr-randr
+
+        hyprpicker
       ]
       ++ (with inputs.hyprland-contrib.packages.${pkgs.system}; [
         hyprprop
