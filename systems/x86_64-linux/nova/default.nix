@@ -151,6 +151,8 @@
       sl
 
       prismlauncher
+
+      mpv
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
