@@ -173,6 +173,7 @@
       unzip
       zip
 
+      wineWowPackages.waylandFull
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
