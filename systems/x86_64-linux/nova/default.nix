@@ -69,10 +69,10 @@
         workspaces = [1 2 3 4 5 6 7 8 9 10];
       }
       {
-        name = "HDMI-A-1";
+        name = "DP-2";
         width = 1920;
         height = 1080;
-        refreshRate = 144;
+        refreshRate = 165;
         x = 1920;
         y = 0;
         workspaces = [11 12 13 14 15 16 17 18 19 20];
