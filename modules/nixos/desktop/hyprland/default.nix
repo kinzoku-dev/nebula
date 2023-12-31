@@ -61,10 +61,31 @@ in {
   imports = [inputs.hyprland.nixosModules.default];
 
   config = mkIf cfg.enable {
-    programs.hyprland = {
+    home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
+      systemd.enable = true;
+      extraConfig = let
+        displayList = lib.concatLines (
+          map
+          (
+            m: let
+              resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
+              position = "${toString m.x}x${toString m.y}";
+            in "monitor=${m.name},${"${resolution},${position},1"}"
+          )
+          cfg.displays
+        );
+        workspaceMonitors = lib.concatLines (
+          lib.lists.concatMap
+          (
+            m: map (w: "${toString w},monitor:${m.name}") (m.workspaces)
+          )
+          (cfg.displays)
+        );
+      in ''
+        ${import ./hyprland.nix {inherit displayList workspaceMonitors pkgs colors;}}
+      '';
     };
 
     environment.systemPackages = with pkgs;
@@ -88,33 +109,6 @@ in {
     environment.sessionVariables = {
       WLR_NO_HARDWARE_CURSORS = "1";
       NIXOS_OZONE_WL = "1";
-    };
-
-    home.configFile = let
-      displayList = lib.concatLines (
-        map
-        (
-          m: let
-            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
-            position = "${toString m.x}x${toString m.y}";
-          in "monitor=${m.name},${"${resolution},${position},1"}"
-        )
-        cfg.displays
-      );
-      workspaceMonitors = lib.concatLines (
-        lib.lists.concatMap
-        (
-          m: map (w: "${toString w},monitor:${m.name}") (m.workspaces)
-        )
-        (cfg.displays)
-      );
-    in {
-      "hypr/hyprland.conf" = {
-        text = import ./hyprland.nix {inherit displayList workspaceMonitors pkgs colors;};
-        onChange = ''
-          ${pkgs.hyprland}/bin/hyprctl reload
-        '';
-      };
     };
   };
 }
