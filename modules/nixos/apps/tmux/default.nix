@@ -32,6 +32,9 @@ in {
         unbind r
         bind r source-file ~/.config/tmux/tmux.conf
 
+        unbind n
+        bind-key n command-prompt -I "rename-window %%"
+
         unbind '&'
         bind-key q kill-window
 
