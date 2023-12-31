@@ -26,6 +26,7 @@
 
   apps.misc.enable = true;
   apps.calcure.enable = true;
+  apps.chat.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
   apps.mullvad-vpn.enable = true;
@@ -109,7 +110,6 @@
 
       sops
 
-      element-desktop
       nitch
 
       nebula.kiwi-ssg
@@ -128,26 +128,8 @@
       eww-wayland
       libnotify
 
-      thunderbird
-
       gamemode
 
-      cinny-desktop
-
-      (signal-desktop-beta.overrideAttrs {
-        desktopItems = [
-          (makeDesktopItem {
-            name = "signal";
-            desktopName = "Signal";
-            exec = "signal-desktop-beta --disable-gpu %U";
-            icon = "signal";
-            startupWMClass = "Signal Beta";
-            genericName = "Internet Messenger";
-            keywords = ["call" "signal" "electron" "chat"];
-            categories = ["Network" "InstantMessaging" "Chat"];
-          })
-        ];
-      })
       cloudflared
 
       premid
