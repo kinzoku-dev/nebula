@@ -53,6 +53,7 @@
 
   system.xserver.enable = true;
   # system.xremap.enable = true;
+  system.shell.shell = "zsh";
   desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
