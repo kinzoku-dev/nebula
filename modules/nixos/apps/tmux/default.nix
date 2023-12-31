@@ -19,6 +19,9 @@ in {
       baseIndex = 1;
       extraConfig = ''
         set -g default-terminal "screen-256color"
+        set -g allow-passthrough on
+        set -ga update-environment TERM
+        set -ga update-environment TERM_PROGRAM
 
         set -g prefix C-a
         unbind C-b
