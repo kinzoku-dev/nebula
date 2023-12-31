@@ -22,7 +22,6 @@ in {
     vaultwarden.enable = true;
     searx.enable = true;
     nginx-proxy-manager.enable = true;
-    minecraft-server.enable = true;
     users = {
       users = {
         postgres = {
