@@ -23,6 +23,7 @@ in {
       enable = true;
       packages = [
         "im.riot.Riot"
+        "com.fyralabs.SkiffDesktop"
       ];
     };
   };
