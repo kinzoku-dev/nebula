@@ -18,7 +18,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  # hardware.nvidia.enable = false;
+  hardware.graphics = {
+    enable = true;
+    gpu = "amd";
+  };
   hardware.bluetoothctl.enable = true;
   hardware.utils.enable = true;
 
@@ -89,7 +92,6 @@
   services.xserver = {
     layout = "us";
     xkbVariant = "";
-    videoDrivers = ["amdgpu"];
   };
 
   # Enable CUPS to print documents.

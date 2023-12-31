@@ -13,7 +13,9 @@
   ];
 
   boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = ["amdgpu"];
+  boot.initrd.kernelModules = lib.mkIf (config.hardware.graphics.gpu == "amd") [
+    "amdgpu"
+  ];
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
