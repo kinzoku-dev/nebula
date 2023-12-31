@@ -38,9 +38,7 @@
   apps.discord.enable = true;
   apps.mullvad-vpn.enable = true;
   desktop.picom.enable = true;
-  desktop.polybar.enable = true;
   apps.flatpak.enable = true;
-  apps.eww.enable = true;
   apps.browser = {
     enable = [
       "firefox"
