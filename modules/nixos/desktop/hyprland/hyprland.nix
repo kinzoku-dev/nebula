@@ -133,6 +133,7 @@
   bind = SUPER SHIFT, J, split-changemonitorsilent, prev
   bind = SUPER SHIFT, K, split-changemonitorsilent, next
 
+  bindm = $mainMod SHIFT, mouse:272, movewindow
   bindm = $mainMod, mouse:273, resizewindow
 
   ${workspaceMonitors}
