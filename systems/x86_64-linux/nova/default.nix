@@ -164,6 +164,8 @@
 
       blender
 
+      udisks
+
       soundux
 
       audacity
@@ -201,6 +203,7 @@
   # services.openssh.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
+  services.udisks2.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
