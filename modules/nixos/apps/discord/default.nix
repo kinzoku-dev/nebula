@@ -16,11 +16,22 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = [
       (pkgs.vesktop.overrideAttrs {
-        desktopItems = [
+        desktopItems = let
+          mullvad-exclude = config.apps.mullvad-vpn.enable;
+          disable-gpu = config.hardware.graphics.gpu == "nvidia";
+        in [
           (pkgs.makeDesktopItem {
             name = "vencorddesktop";
             desktopName = "Discord";
-            exec = "mullvad-exclude vencorddesktop --disable-gpu";
+            exec = "${
+              if mullvad-exclude
+              then "mullvad-exlude"
+              else ""
+            } vencorddesktop ${
+              if disable-gpu
+              then "--disable-gpu"
+              else ""
+            }";
             icon = "discord";
             startupWMClass = "VencordDesktop";
             genericName = "Internet Messenger";
