@@ -170,6 +170,9 @@
 
       godot_4
 
+      unzip
+      zip
+
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
