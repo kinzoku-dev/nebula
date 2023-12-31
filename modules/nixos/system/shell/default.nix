@@ -48,6 +48,11 @@ in {
       gp = "git push -u origin";
       lg = "lazygit";
       az = "yazi";
+      spoodle = "ssh poodle@mc.theduckpond.xyz -p 42069";
+      tx = "tmux";
+      hss = "hugo server --noHTTPCache";
+      vesktop = "vesktop --disable-gpu";
+      ssh = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
     };
 
     home.programs.zoxide = {
@@ -68,8 +73,6 @@ in {
           sz = "source ~/.config/zsh/.zshrc";
           cat = "bat";
           ls = "eza";
-          vesktop = "vesktop --disable-gpu";
-          hss = "hugo server --noHTTPCache";
         };
       initExtra = let
         sources = with pkgs; [
