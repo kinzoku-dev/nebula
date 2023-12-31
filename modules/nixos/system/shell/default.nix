@@ -126,7 +126,8 @@ in {
       '';
       extraConfig = ''
         $env.config = {
-        	show_banner: false,
+        	show_banner: false
+            edit_mode: vi
         }
 
         def , [...packages] {
