@@ -174,6 +174,8 @@
       zip
 
       wineWowPackages.waylandFull
+
+      ungoogled-chromium
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
