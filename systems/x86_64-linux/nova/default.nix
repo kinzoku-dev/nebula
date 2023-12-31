@@ -158,6 +158,10 @@
 
       jre
       minetest
+      nmap
+
+      ngrok
+
     ]
     ++ (
       with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
