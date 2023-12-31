@@ -20,6 +20,7 @@
 
   # hardware.nvidia.enable = false;
   hardware.bluetoothctl.enable = true;
+  hardware.utils.enable = true;
 
   suites.common.enable = true;
   suites.development.enable = true;
