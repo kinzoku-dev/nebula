@@ -10,6 +10,7 @@
   exec-once=swww img ~/Pictures/invasion_of_vryn_purple.jpg &
   exec-once=mako &
   exec-once=nm-applet
+  exec-once=blueman-applet
 
   decoration {
       rounding = 10
