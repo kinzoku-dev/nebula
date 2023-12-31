@@ -67,6 +67,9 @@
   bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
   bind = $mainMod, t, togglegroup
 
+  bind = ALT,F10,pass,^(com\.obsproject\.Studio)$
+  bind = ALT,F9,pass,^(VencordDesktop)$
+
   binde =, Prior, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
   binde =, Next, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
   bind =, End, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
