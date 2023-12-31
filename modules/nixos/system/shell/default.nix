@@ -37,7 +37,6 @@ in {
 
     environment.shellAliases = {
       ".." = "cd ..";
-      neofetch = "nitch";
       tfmt = "treefmt";
       dv = "direnv";
       dva = "direnv allow";
