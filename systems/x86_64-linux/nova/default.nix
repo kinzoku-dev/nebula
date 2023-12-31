@@ -88,6 +88,12 @@
     config.common.default = "*";
   };
 
+  services.hardware.openrgb = {
+    enable = true;
+    package = pkgs.openrgb-with-all-plugins;
+    motherboard = "amd";
+  };
+
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
