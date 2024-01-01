@@ -51,6 +51,10 @@
   virtualisation.vm.enable = true;
 
   system.xserver.enable = true;
+  system.fonts = {
+    enable = true;
+  };
+
   # system.xremap.enable = true;
   system.shell.shell = "zsh";
   desktop.xmonad.enable = true;
