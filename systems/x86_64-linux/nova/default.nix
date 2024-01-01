@@ -37,7 +37,7 @@
   apps.neofetch.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
-  apps.mullvad-vpn.enable = true;
+  apps.mullvad-vpn.enable = false;
   desktop.picom.enable = true;
   apps.flatpak.enable = true;
   apps.browser = {
