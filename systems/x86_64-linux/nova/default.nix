@@ -55,6 +55,7 @@
     enable = true;
   };
 
+  programs.dconf.enable = true;
   # system.xremap.enable = true;
   system.shell.shell = "zsh";
   desktop.xmonad.enable = true;
