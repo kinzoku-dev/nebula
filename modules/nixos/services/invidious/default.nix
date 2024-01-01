@@ -22,6 +22,9 @@ in {
       };
       domain = "invidious.the-nebula.xyz";
       settings = {
+        db = {
+          user = "invidious";
+        };
         hmac_key = "${lib.removeSuffix "\n" (builtins.readFile config.sops.secrets.invidious-hmac-key.path)}";
         check_tables = true;
         default_user_preferences.dark_mode = "dark";
