@@ -41,6 +41,7 @@ in {
       groups = {
         invidious = {};
         postgres = {};
+        www-data = {};
       };
     };
   };

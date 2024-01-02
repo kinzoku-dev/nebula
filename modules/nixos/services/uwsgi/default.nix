@@ -26,6 +26,7 @@ in {
         enable = true;
         description = "uWSGI instance to serve 0x0";
         after = ["network.target"];
+        preStart = "nix-shell";
         serviceConfig = {
           User = "kinzoku";
           Group = "www-data";
