@@ -18,6 +18,9 @@ in {
       enable = true;
       plugins = ["python3"];
     };
+    environment.systemPackages = with pkgs; [
+      uwsgi
+    ];
     systemd.services = {
       "0x0" = mkIf config.OxO.enable {
         enable = true;
