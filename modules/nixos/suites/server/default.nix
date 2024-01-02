@@ -25,6 +25,7 @@ in {
     rimgo.enable = true;
     uwsgi.enable = true;
     nginx.enable = true;
+    OxO.enable = true;
     users = {
       users = {
         postgres = {
