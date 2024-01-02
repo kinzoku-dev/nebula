@@ -23,6 +23,7 @@ in {
     searx.enable = true;
     nginx-proxy-manager.enable = true;
     rimgo.enable = true;
+    uwsgi.enable = true;
     users = {
       users = {
         postgres = {
