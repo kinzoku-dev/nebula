@@ -108,16 +108,20 @@ in {
       '';
       keymaps = [
         {
-          action = "require(\"oil\").open_float()";
+          action = "require(\"oil\").open_float";
           key = "<leader>op";
+          lua = true;
           options = {
             desc = "Open oil";
-            expr = true;
           };
         }
         {
           action = "<cmd>Neotree toggle<CR>";
           key = "<C-n>";
+        }
+        {
+          action = "<cmd>q<CR>";
+          key = "<leader>q";
         }
         {
           action = "<cmd>Telescope find_files<CR>";
