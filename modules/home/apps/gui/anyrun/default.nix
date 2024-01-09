@@ -1,6 +1,7 @@
 {
   config,
   options,
+  osConfig,
   pkgs,
   lib,
   inputs,
@@ -9,6 +10,7 @@
 with lib;
 with lib.nebula; let
   cfg = config.home.apps.gui.anyrun;
+  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.home.desktop.colorscheme}) colors;
 in {
   options.home.apps.gui.anyrun = with types; {
     enable = mkBoolOpt false "Enable anyrun";
@@ -19,26 +21,62 @@ in {
     programs.anyrun = {
       enable = true;
       config = {
-        plugins = [
-          inputs.anyrun.packages.${pkgs.system}.applications
-          inputs.anyrun.packages.${pkgs.system}.shell
-          inputs.anyrun.packages.${pkgs.system}.translate
-          inputs.anyrun.packages.${pkgs.system}.websearch
-          inputs.anyrun.packages.${pkgs.system}.dictionary
+        plugins = with inputs.anyrun.packages.${pkgs.system}; [
+          applications
+          rink
+          shell
+          symbols
+          translate
         ];
-        x = {fraction = 0.5;};
-        y = {fraction = 0.0;};
-        hideIcons = false;
-        layer = "overlay";
-        width = {absolute = 800;};
-        height = {absolute = 0;};
-        ignoreExclusiveZones = false;
-        hidePluginInfo = false;
-        closeOnClick = false;
-        maxEntries = 10;
-        showResultsImmediately = true;
+
+        width.fraction = 0.3;
+        y.absolute = 15;
+        hidePluginInfo = true;
+        closeOnClick = true;
       };
-      extraCss = null;
+      extraCss = ''
+        * {
+          transition: 200ms ease;
+          font-family: JetBrainsMono Nerd Font;
+          font-size: 1.3rem;
+        }
+
+        #window,
+        #match,
+        #entry,
+        #plugin,
+        #main {
+          background: transparent;
+        }
+
+        #match:selected {
+          background: rgba(203, 166, 247, 0.7);
+        }
+
+        #match {
+          padding: 3px;
+          border-radius: 16px;
+        }
+
+        #entry, #plugin:hover {
+          border-radius: 16px;
+        }
+
+        box#main {
+          background: rgba(30, 30, 46, 0.7);
+          border: 1px solid;
+          border-color: linear-gradient(45deg, rgb(${colors.base0E}), rgb(${colors.base0E}), rgb(${colors.base07}), rgb(${colors.base0D}), 100%);
+          border-radius: 24px;
+          padding: 8px;
+        }
+      '';
+      extraConfigFiles."applications.ron".text = ''
+        Config(
+          desktop_actions: false,
+          max_entries: 5,
+          terminal: Some("kitty"),
+        )
+      '';
     };
   };
 }

@@ -63,6 +63,7 @@ in {
   config = mkIf cfg.enable {
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
+      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
       systemd.enable = true;
       plugins = with inputs; [
@@ -91,6 +92,8 @@ in {
       '';
     };
 
+    programs.hyprland.enable = true;
+
     environment.systemPackages = with pkgs;
       [
         # wallpaper daemon
@@ -109,6 +112,7 @@ in {
       ++ (with inputs.hyprland-contrib.packages.${pkgs.system}; [
         hyprprop
         grimblast
+        scratchpad
       ]);
 
     environment.sessionVariables = {

@@ -18,7 +18,6 @@ in {
       eza
       bat
       nitch
-      fzf
       fd
       ripgrep
       wget
@@ -52,7 +51,8 @@ in {
       tx = "tmux";
       hss = "hugo server --noHTTPCache";
       vesktop = "vesktop --disable-gpu";
-      ssh = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
+      ssh = "TERM=xterm-256color ssh";
+      seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
     };
 
     home.programs.zoxide = {
@@ -86,15 +86,7 @@ in {
 
         plugins = concatStringsSep "\n" source;
       in ''
-        export FZF_DEFAULT_COMMANd="fd"
-
         ${plugins}
-
-        eval "$(direnv hook zsh)"
-        export DIRENV_LOG_FORMAT=""
-        eval "$(starship init zsh)"
-        eval "$(zoxide init zsh)"
-        set -o vi
 
         export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS
 
@@ -106,6 +98,7 @@ in {
             nix shell nixpkgs#$1
         }
 
+        set -o vi
         bindkey -v
         autoload edit-command-line; zle -N edit-command-line
         bindkey '^e' edit-command-line
@@ -115,20 +108,35 @@ in {
     home.programs.nushell = mkIf (cfg.shell == "nushell") {
       enable = true;
       shellAliases = config.environment.shellAliases // {ls = "ls";};
-      envFile.text = ''
-        mkdir ~/.cache/starship
-        starship init nu | save -f ~/.cache/starship/init.nu
-        zoxide init nushell | save -f ~/.zoxide.nu
-      '';
-      configFile.text = ''
-        use ~/.cache/starship/init.nu
-        source ~/.zoxide.nu
-      '';
+      # envFile.text = ''
+      #   mkdir ~/.cache/starship
+      #   starship init nu | save -f ~/.cache/starship/init.nu
+      #   zoxide init nushell | save -f ~/.zoxide.nu
+      # '';
+      # configFile.text = ''
+      #   use ~/.cache/starship/init.nu
+      #   source ~/.zoxide.nu
+      # '';
       extraConfig = ''
         $env.config = {
         	show_banner: false
             edit_mode: vi
+            completions: {
+                quick: true
+                partial: true
+                algorithm: "fuzzy"
+                external: {
+                    enable: true
+                    max_results: 100
+                }
+            }
         }
+        $env.PATH = ($env.PATH |
+        split row (char esep) |
+        prepend /home/${config.user.name}/.apps |
+        append /usr/bin/env
+        )
+        $env.TEMP = "tmp"
 
         def , [...packages] {
             nix shell ($packages | each {|s| $"nixpkgs#($s)"})
@@ -137,6 +145,20 @@ in {
         def flakeinit [template] {
             nix flake init -t github:nix-community/templates#$template
         }
+
+        def --env ya [args?] {
+            let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
+            if $args == "" {
+                yazi --cwd-file $tmp
+            }
+            yazi $args --cwd-file $tmp
+            let cwd = (open $tmp)
+            if $cwd != "" and $cwd != $env.PWD {
+                cd $cwd
+            }
+            rm -f $tmp
+        }
+
       '';
     };
   };

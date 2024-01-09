@@ -9,8 +9,8 @@
   exec-once=swww init &
   exec-once=swww img ~/Pictures/invasion_of_vryn_purple.jpg &
   exec-once=mako &
-  exec-once=nm-applet
-  exec-once=blueman-applet
+  exec-once=pkill nm-applet && nm-applet
+  exec-once=pkill blueman-applet && blueman-applet
 
   decoration {
       rounding = 10
@@ -66,6 +66,8 @@
   bind = $mainMod, V, togglefloating
   bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
   bind = $mainMod, t, togglegroup
+
+  bind = SUPER SHIFT, D, exec, scratchpad
 
   bind = ALT,F10,pass,^(com\.obsproject\.Studio)$
   bind = ALT,F9,pass,^(VencordDesktop)$

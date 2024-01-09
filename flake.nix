@@ -1,4 +1,7 @@
 {
+  ###
+
+  ###
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -43,6 +46,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nh = {
+      url = "github:viperML/nh";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Deployments
     arion.url = "github:hercules-ci/arion";
     arion.inputs.nixpkgs.follows = "nixpkgs";
@@ -73,6 +86,11 @@
       url = "github:schizofox/schizofox";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
@@ -100,7 +118,7 @@
       };
 
       overlays = with inputs; [
-        neovim.overlays.x86_64-linux.neovim
+        # neovim.overlays.x86_64-linux.neovim
       ];
 
       systems.hosts.eclipse.modules = with inputs; [
@@ -112,6 +130,7 @@
         nur.nixosModules.nur
         disko.nixosModules.disko
         arion.nixosModules.arion
+        nixvim.nixosModules.nixvim
       ];
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};

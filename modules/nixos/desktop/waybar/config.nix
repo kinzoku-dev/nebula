@@ -8,6 +8,7 @@
     height = 20;
 
     modules-left = [
+      "tray"
     ];
 
     modules-center = [
