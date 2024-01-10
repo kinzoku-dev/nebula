@@ -24,6 +24,7 @@ in {
     nginx-proxy-manager.enable = true;
     rimgo.enable = true;
     OxO.enable = true;
+    libreddit.enable = true;
     users = {
       users = {
         postgres = {
