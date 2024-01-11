@@ -17,7 +17,8 @@ in {
     services.uwsgi = {
       enable = true;
       plugins = ["python3"];
-      user = "${config.user.name}";
+      user = "kinzoku";
+      group = "www-data";
       instance = {
         type = "emperor";
         vassals = {
@@ -40,11 +41,8 @@ in {
             callable = "app";
             master = true;
             processes = "5";
-            uid = "kinzoku:www-data";
             socket = "127.0.0.1:9627";
-            chown-socket = "kinzoku:www-data";
-            chmod-socket = "664";
-            chdir = "/home/${config.user.name}/0x0";
+            chmod-socket = "660";
             vacuum = true;
             die-on-term = true;
           };
@@ -83,7 +81,7 @@ in {
     };
     services.nginx = {
       enable = true;
-      user = "${config.user.name}";
+      user = "kinzoku";
       group = "www-data";
       virtualHosts."0x0" = {
         root = /home/kinzoku/0x0;
@@ -114,6 +112,7 @@ in {
           };
           "/up" = {
             extraConfig = ''
+              root /home/kinzoku/0x0;
               internal;
             '';
           };

@@ -17,7 +17,7 @@ in {
     suites.common.enable = true;
     suites.development.enable = true;
     security.sops.enable = true;
-    environment.systemPackages = [pkgs.docker-compose];
+    environment.systemPackages = [pkgs.docker-compose] ++ (with pkgs.nodePackages_latest; [nodejs npm pnpm]);
     invidious.enable = true;
     vaultwarden.enable = true;
     searx.enable = true;
