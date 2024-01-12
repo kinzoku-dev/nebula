@@ -29,6 +29,7 @@
   suites.development.enable = true;
 
   apps.misc.enable = true;
+  apps.rofi.enable = true;
   apps.printing.enable = true;
   apps.calcure.enable = true;
   apps.chat.enable = true;

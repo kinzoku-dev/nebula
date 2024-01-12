@@ -9,8 +9,8 @@
   exec-once=swww init &
   exec-once=swww img ~/Pictures/invasion_of_vryn_purple.jpg &
   exec-once=mako &
-  exec-once=pkill nm-applet && nm-applet
-  exec-once=pkill blueman-applet && blueman-applet
+  exec-once=nm-applet &
+  exec-once=blueman-applet &
 
   decoration {
       rounding = 10
@@ -41,7 +41,7 @@
       layout = dwindle
       gaps_in = 5
       gaps_out = 10
-      col.active_border = rgb(${colors.base0E}) rgb(${colors.base0E}) rgb(${colors.base07}) rgb(${colors.base0D}) 45deg
+      col.active_border = rgb(${colors.base07})
       col.inactive_border = rgb(${colors.base02})
   }
 
@@ -61,7 +61,10 @@
 
   bind = $mainMod SHIFT, Return, exec, kitty
   bind = $mainMod SHIFT, C, killactive
-  bind = $mainMod, P, exec, anyrun
+  bind = $mainMod, P, exec, rofi-drun
+  bind = SUPER, P, exec, rofi-run
+  bind = SUPER, W, exec, rofi-windows
+  bind = $mainMod, U, exec, uploader
   bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating
   bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
@@ -110,47 +113,30 @@
 
   submap=reset
 
-  bind = $mainMod, 1, workspace, 1
-  bind = $mainMod, 2, workspace, 2
-  bind = $mainMod, 3, workspace, 3
-  bind = $mainMod, 4, workspace, 4
-  bind = $mainMod, 5, workspace, 5
-  bind = $mainMod, 6, workspace, 6
-  bind = $mainMod, 7, workspace, 7
-  bind = $mainMod, 8, workspace, 8
-  bind = $mainMod, 9, workspace, 9
-  bind = $mainMod, 0, workspace, 10
-  bind = SUPER, 1, workspace, 11
-  bind = SUPER, 2, workspace, 12
-  bind = SUPER, 3, workspace, 13
-  bind = SUPER, 4, workspace, 14
-  bind = SUPER, 5, workspace, 15
-  bind = SUPER, 6, workspace, 16
-  bind = SUPER, 7, workspace, 17
-  bind = SUPER, 8, workspace, 18
-  bind = SUPER, 9, workspace, 19
-  bind = SUPER, 0, workspace, 20
+  bind = $mainMod, 1, split-workspace, 1
+  bind = $mainMod, 2, split-workspace, 2
+  bind = $mainMod, 3, split-workspace, 3
+  bind = $mainMod, 4, split-workspace, 4
+  bind = $mainMod, 5, split-workspace, 5
+  bind = $mainMod, 6, split-workspace, 6
+  bind = $mainMod, 7, split-workspace, 7
+  bind = $mainMod, 8, split-workspace, 8
+  bind = $mainMod, 9, split-workspace, 9
+  bind = $mainMod, 0, split-workspace, 10
 
-  bind = $mainMod SHIFT, 1, movetoworkspacesilent, 1
-  bind = $mainMod SHIFT, 2, movetoworkspacesilent, 2
-  bind = $mainMod SHIFT, 3, movetoworkspacesilent, 3
-  bind = $mainMod SHIFT, 4, movetoworkspacesilent, 4
-  bind = $mainMod SHIFT, 5, movetoworkspacesilent, 5
-  bind = $mainMod SHIFT, 6, movetoworkspacesilent, 6
-  bind = $mainMod SHIFT, 7, movetoworkspacesilent, 7
-  bind = $mainMod SHIFT, 8, movetoworkspacesilent, 8
-  bind = $mainMod SHIFT, 9, movetoworkspacesilent, 9
-  bind = $mainMod SHIFT, 0, movetoworkspacesilent, 10
-  bind = SUPER SHIFT, 1, movetoworkspacesilent, 11
-  bind = SUPER SHIFT, 2, movetoworkspacesilent, 12
-  bind = SUPER SHIFT, 3, movetoworkspacesilent, 13
-  bind = SUPER SHIFT, 4, movetoworkspacesilent, 14
-  bind = SUPER SHIFT, 5, movetoworkspacesilent, 15
-  bind = SUPER SHIFT, 6, movetoworkspacesilent, 16
-  bind = SUPER SHIFT, 7, movetoworkspacesilent, 17
-  bind = SUPER SHIFT, 8, movetoworkspacesilent, 18
-  bind = SUPER SHIFT, 9, movetoworkspacesilent, 19
-  bind = SUPER SHIFT, 0, movetoworkspacesilent, 20
+  bind = $mainMod SHIFT, 1, split-movetoworkspacesilent, 1
+  bind = $mainMod SHIFT, 2, split-movetoworkspacesilent, 2
+  bind = $mainMod SHIFT, 3, split-movetoworkspacesilent, 3
+  bind = $mainMod SHIFT, 4, split-movetoworkspacesilent, 4
+  bind = $mainMod SHIFT, 5, split-movetoworkspacesilent, 5
+  bind = $mainMod SHIFT, 6, split-movetoworkspacesilent, 6
+  bind = $mainMod SHIFT, 7, split-movetoworkspacesilent, 7
+  bind = $mainMod SHIFT, 8, split-movetoworkspacesilent, 8
+  bind = $mainMod SHIFT, 9, split-movetoworkspacesilent, 9
+  bind = $mainMod SHIFT, 0, split-movetoworkspacesilent, 10
+
+  bind = SUPER SHIFT, J, split-changemonitorsilent, prev
+  bind = SUPER SHIFT, K, split-changemonitorsilent, next
 
   bindm = $mainMod SHIFT, mouse:272, movewindow
   bindm = $mainMod, mouse:273, resizewindow

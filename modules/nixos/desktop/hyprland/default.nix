@@ -58,7 +58,10 @@ in {
     };
   };
 
-  imports = [inputs.hyprland.nixosModules.default];
+  imports = [
+    inputs.hyprland.nixosModules.default
+    ./scripts
+  ];
 
   config = mkIf cfg.enable {
     home.extraOptions.wayland.windowManager.hyprland = {
@@ -67,7 +70,7 @@ in {
       xwayland.enable = true;
       systemd.enable = true;
       plugins = with inputs; [
-        # split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+        split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
       extraConfig = let
         displayList = lib.concatLines (
