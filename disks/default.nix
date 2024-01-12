@@ -1,7 +1,11 @@
-{lib, ...}: {
+{
+  lib,
+  disks ? ["/dev/nvme0n1"],
+  ...
+}: {
   disko.devices = {
     disk.laptop = {
-      device = lib.mkDefault "/dev/nvme0n1";
+      device = builtins.elemAt disks 0;
       type = "disk";
       content = {
         type = "gpt";
