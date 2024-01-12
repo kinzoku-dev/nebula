@@ -31,7 +31,7 @@ in {
     '';
     home.configFile."rofi/launchers/type-1/shared/fonts.rasi".text = ''
       * {
-          font: "JetBrains Mono Nerd Font 10";
+          font: "JetBrains Mono Nerd Font 12";
       }
     '';
     home.configFile."rofi/launchers/type-1/shared/colors.rasi".text = ''
@@ -42,9 +42,10 @@ in {
                             modi: "drun,run,filebrowser,window";
                             show-icons: true;
                             display-drun: "󰀻";
-                            display-run: "";
-                            display-filebrowser: "";
+                            display-run: "";
+                            display-filebrowser: "󰉖";
                             display-window: "";
+                            display-wallpaper: "󰥶";
                             drun-display-format: "{name} [<span weight='light' size='small'><i>({generic})</i></span>]";
                             window-format: "{w} 󰧟 {c} 󰧟 {t}";
                             display-clipboard: "󰅌";

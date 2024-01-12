@@ -64,6 +64,7 @@
   bind = $mainMod, P, exec, rofi-drun
   bind = SUPER, P, exec, rofi-run
   bind = SUPER, W, exec, rofi-windows
+  bind = SUPER SHIFT, W, exec, rofi-wallpaper
   bind = $mainMod, U, exec, uploader
   bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating
