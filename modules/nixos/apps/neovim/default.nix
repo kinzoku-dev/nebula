@@ -36,6 +36,17 @@ in {
           enable = true;
           flavour = "mocha";
           transparentBackground = true;
+          integrations = {
+            alpha = true;
+            cmp = true;
+            gitsigns = true;
+            leap = true;
+            lsp_trouble = true;
+            neotree = true;
+            noice = true;
+            treesitter = true;
+            which_key = true;
+          };
         };
       };
       extraConfigLua = ''
@@ -162,6 +173,18 @@ in {
         {
           action = "<cmd>bprev<CR>";
           key = "<leader><S-Tab>";
+        }
+        {
+          action = "<cmd>tabnext<CR>";
+          key = "<leader>t<Tab>";
+        }
+        {
+          action = "<cmd>tabprevious<CR>";
+          key = "<leader>t<S-Tab>";
+        }
+        {
+          action = "<cmd>tabnew<CR>";
+          key = "<leader>tn";
         }
       ];
       plugins = {
@@ -303,6 +326,9 @@ in {
         };
         indent-blankline = {
           enable = true;
+          scope = {
+            enabled = true;
+          };
         };
         leap = {
           enable = true;
@@ -361,6 +387,17 @@ in {
         };
         noice = {
           enable = true;
+          lsp = {
+            hover = {
+              enabled = true;
+            };
+            message = {
+              enabled = true;
+            };
+            progress = {
+              enabled = true;
+            };
+          };
         };
         nvim-autopairs.enable = true;
         surround.enable = true;
@@ -383,6 +420,9 @@ in {
         };
         ts-autotag.enable = true;
         which-key.enable = true;
+        trouble = {
+          enable = true;
+        };
       };
       options = {
         nu = true;
