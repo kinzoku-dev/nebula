@@ -20,7 +20,7 @@
       shadow_render_power = 3
       col.shadow = rgba(1a1a1aee)
       blur {
-          size = 5
+          size = 3
           passes = 3
           new_optimizations = true
           xray = false
