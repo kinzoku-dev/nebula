@@ -8,7 +8,7 @@
   networking.firewall.enable = false;
   services.logind.lidSwitch = "ignore";
 
-  # suites.server.enable = true;
+  suites.server.enable = true;
   suites.common.enable = true;
   suites.development.enable = true;
   services.udisks2.enable = true;
