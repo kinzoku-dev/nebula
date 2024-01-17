@@ -21,7 +21,11 @@
   hardware.graphics = {
     enable = true;
     gpu = "nvidia";
-    nvidiaOffload.enable = true;
+    nvidiaOffload = {
+      enable = true;
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:01:0:0";
+    };
   };
   hardware.bluetoothctl.enable = true;
   hardware.utils.enable = true;

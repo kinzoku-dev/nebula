@@ -23,7 +23,7 @@ in {
       in [
         plugpkgs.friendly-snippets
         plugpkgs.move-nvim
-	/*
+        /*
         {
           plugin = plugpkgs.neocord;
           config = toLua ''
@@ -32,7 +32,7 @@ in {
             })
           '';
         }
-	*/
+        */
       ];
       extraPackages = with pkgs; [
         nil
@@ -120,7 +120,7 @@ in {
           };
         }
         {
-          action = "<cmd>MoveLine(1)<CR>";
+          action = "<cmd>MoveLine(1)<CR>gv";
           key = "J";
           mode = "v";
           options = {
@@ -129,7 +129,7 @@ in {
           };
         }
         {
-          action = "<cmd>MoveLine(-1)<CR>";
+          action = "<cmd>MoveLine(-1)<CR>gv";
           key = "K";
           mode = "v";
           options = {
