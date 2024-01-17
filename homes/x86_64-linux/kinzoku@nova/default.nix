@@ -23,6 +23,7 @@ with lib.nebula; {
         # neomutt.enable = true;
         # neovim.enable = true;
       };
+      # spicetify.enable = true;
     };
     desktop = {
       colorscheme = "catppuccin-mocha";

@@ -20,7 +20,8 @@
 
   hardware.graphics = {
     enable = true;
-    gpu = "amd";
+    gpu = "nvidia";
+    nvidiaOffload.enable = true;
   };
   hardware.bluetoothctl.enable = true;
   hardware.utils.enable = true;
@@ -37,17 +38,12 @@
   apps.misc.enable = true;
   # apps.spotify-tui.enable = true;
   apps.rofi.enable = true;
-  apps.printing.enable = true;
   apps.calcure.enable = true;
   apps.chat.enable = true;
-  apps.thunderbird.enable = true;
-  apps.vscode.enable = true;
   apps.neofetch.enable = true;
   apps.fzf.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
-  apps.mullvad-vpn.enable = false;
-  desktop.picom.enable = true;
   apps.flatpak.enable = true;
   apps.browser = {
     enable = [
@@ -57,8 +53,6 @@
     defaultBrowser = "librewolf";
   };
 
-  virtualisation.vm.enable = true;
-
   system.xserver.enable = true;
   system.fonts = {
     enable = true;
@@ -67,7 +61,6 @@
   programs.dconf.enable = true;
   # system.xremap.enable = true;
   system.shell.shell = "nushell";
-  desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
   desktop.dunst.enable = true;
@@ -75,22 +68,13 @@
     enable = true;
     displays = [
       {
-        name = "DP-1";
+        name = "eDP-1";
         width = 1920;
         height = 1080;
-        refreshRate = 165;
+        refreshRate = 60;
         x = 0;
         y = 0;
         workspaces = [1 2 3 4 5 6 7 8 9 10];
-      }
-      {
-        name = "DP-2";
-        width = 1920;
-        height = 1080;
-        refreshRate = 165;
-        x = 1920;
-        y = 0;
-        workspaces = [11 12 13 14 15 16 17 18 19 20];
       }
     ];
   };
@@ -101,12 +85,6 @@
     enable = true;
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config.common.default = "*";
-  };
-
-  services.hardware.openrgb = {
-    enable = true;
-    package = pkgs.openrgb-with-all-plugins;
-    motherboard = "amd";
   };
 
   # Configure keymap in X11

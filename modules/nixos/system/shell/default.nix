@@ -107,16 +107,16 @@ in {
 
     home.programs.nushell = mkIf (cfg.shell == "nushell") {
       enable = true;
-      shellAliases = config.environment.shellAliases // {ls = "ls";};
-      # envFile.text = ''
-      #   mkdir ~/.cache/starship
-      #   starship init nu | save -f ~/.cache/starship/init.nu
-      #   zoxide init nushell | save -f ~/.zoxide.nu
-      # '';
-      # configFile.text = ''
-      #   use ~/.cache/starship/init.nu
-      #   source ~/.zoxide.nu
-      # '';
+      shellAliases = config.environment.shellAliases // {ls = "eza";};
+      envFile.text = ''
+        mkdir ~/.cache/starship
+        starship init nu | save -f ~/.cache/starship/init.nu
+        zoxide init nushell | save -f ~/.zoxide.nu
+      '';
+      configFile.text = ''
+        use ~/.cache/starship/init.nu
+        source ~/.zoxide.nu
+      '';
       extraConfig = ''
         $env.config = {
         	show_banner: false
@@ -131,12 +131,6 @@ in {
                 }
             }
         }
-        $env.PATH = ($env.PATH |
-        split row (char esep) |
-        prepend /home/${config.user.name}/.apps |
-        append /usr/bin/env
-        )
-        $env.TEMP = "tmp"
 
         def , [...packages] {
             nix shell ($packages | each {|s| $"nixpkgs#($s)"})
@@ -145,20 +139,6 @@ in {
         def flakeinit [template] {
             nix flake init -t github:nix-community/templates#$template
         }
-
-        def --env ya [args?] {
-            let tmp = $"($env.TEMP)(char path_sep)yazi-cwd." + (random chars -l 5)
-            if $args == "" {
-                yazi --cwd-file $tmp
-            }
-            yazi $args --cwd-file $tmp
-            let cwd = (open $tmp)
-            if $cwd != "" and $cwd != $env.PWD {
-                cd $cwd
-            }
-            rm -f $tmp
-        }
-
       '';
     };
   };

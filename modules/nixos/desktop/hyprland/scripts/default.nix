@@ -10,6 +10,7 @@ with lib; let
   rofi-run = import ./rofi-run.nix {inherit pkgs;};
   rofi-windows = import ./rofi-windows.nix {inherit pkgs;};
   rofi-wallpaper = import ./rofi-wallpaper.nix {inherit pkgs;};
+  rofi-wifimenu = import ./rofi-wifimenu.nix {inherit pkgs;};
 in {
   environment.systemPackages = with pkgs; [
     uploader
@@ -17,5 +18,6 @@ in {
     rofi-run
     rofi-windows
     rofi-wallpaper
+    rofi-wifimenu
   ];
 }

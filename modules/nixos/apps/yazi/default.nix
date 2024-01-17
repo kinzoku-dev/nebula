@@ -17,6 +17,7 @@ in {
     home.programs.yazi = {
       enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
       settings = {
         manager = {
           layout = [0 1 1];

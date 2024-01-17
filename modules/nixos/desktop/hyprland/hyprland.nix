@@ -8,7 +8,7 @@
   exec-once=waybar &
   exec-once=swww init &
   exec-once=swww img ~/Pictures/invasion_of_vryn_purple.jpg &
-  exec-once=mako &
+  exec-once=dunst &
   exec-once=nm-applet &
   exec-once=blueman-applet &
 
@@ -65,6 +65,7 @@
   bind = SUPER, P, exec, rofi-run
   bind = SUPER, W, exec, rofi-windows
   bind = SUPER SHIFT, W, exec, rofi-wallpaper
+  bind = SUPER, N, exec, wifi-menu
   bind = $mainMod, U, exec, uploader
   bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating

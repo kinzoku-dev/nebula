@@ -14,16 +14,32 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [
-      # pkgs.neovim
-
-      pkgs.stylua
-      pkgs.lua-language-server
-      pkgs.ripgrep
-    ];
-
+    environment.sessionVariables.EDITOR = "nvim";
     programs.nixvim = {
       enable = true;
+      extraPlugins = let
+        toLua = str: "lua << EOF\n${str}\nEOF\n";
+        plugpkgs = pkgs.vimPlugins;
+      in [
+        plugpkgs.friendly-snippets
+        plugpkgs.move-nvim
+	/*
+        {
+          plugin = plugpkgs.neocord;
+          config = toLua ''
+            require("neocord").setup({
+                    logo = "https://raw.githubusercontent.com/IogaMaster/neovim/main/.github/assets/nixvim-dark.webp"
+            })
+          '';
+        }
+	*/
+      ];
+      extraPackages = with pkgs; [
+        nil
+        stylua
+        luajitPackages.lua-lsp
+        ripgrep
+      ];
       globals = {
         mapleader = " ";
       };
@@ -92,29 +108,6 @@ in {
                     return mode_map[vim.api.nvim_get_mode().mode] or "__"
                 end},
             },
-            tabline = {
-                lualine_a = {
-                    {
-                        'buffers',
-                        filetype_names = {
-                            TelescopePrompt = 'Telescope',
-                            fzf = 'FZF',
-                            alpha = 'Alpha'
-                        },
-                        symbols = {
-                            modified = "",
-                            directory = "󰉖",
-                        },
-                        mode = 2,
-                    }
-                },
-                lualine_z = {
-                    {
-                        'tabs',
-                        mode = 0,
-                    }
-                }
-            }
         })
       '';
       keymaps = [
@@ -125,6 +118,36 @@ in {
           options = {
             desc = "Open oil";
           };
+        }
+        {
+          action = "<cmd>MoveLine(1)<CR>";
+          key = "J";
+          mode = "v";
+          options = {
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          action = "<cmd>MoveLine(-1)<CR>";
+          key = "K";
+          mode = "v";
+          options = {
+            silent = true;
+            noremap = true;
+          };
+        }
+        {
+          action = "nzzzv";
+          key = "n";
+        }
+        {
+          action = "Nzzzv";
+          key = "N";
+        }
+        {
+          action = "<cmd>noh<CR>";
+          key = "<leader>noh";
         }
         {
           action = "<cmd>Neotree toggle<CR>";
@@ -175,16 +198,8 @@ in {
           key = "<leader><S-Tab>";
         }
         {
-          action = "<cmd>tabnext<CR>";
-          key = "<leader>t<Tab>";
-        }
-        {
-          action = "<cmd>tabprevious<CR>";
-          key = "<leader>t<S-Tab>";
-        }
-        {
-          action = "<cmd>tabnew<CR>";
-          key = "<leader>tn";
+          action = "<cmd>bdel<CR>";
+          key = "<C-x>";
         }
       ];
       plugins = {
@@ -267,6 +282,25 @@ in {
             {name = "treesitter";}
             {name = "cmdline";}
           ];
+          mapping = {
+            "<C-Space>" = "cmp.mapping.complete()";
+            "<C-e>" = "cmp.mapping.close()";
+            "<CR>" = "cmp.mapping.confirm({ select = true })";
+            "<S-Tab>" = {
+              action = "cmp.mapping.select_prev_item()";
+              modes = [
+                "i"
+                "s"
+              ];
+            };
+            "<Tab>" = {
+              action = "cmp.mapping.select_next_item()";
+              modes = [
+                "i"
+                "s"
+              ];
+            };
+          };
         };
         comment-nvim = {
           enable = true;
@@ -310,7 +344,7 @@ in {
           position = "center";
           autoclose = 0;
           autohide = 1;
-          shell = "zsh";
+          shell = "nushell";
           wintype = "float";
           keymaps = {
             toggle = "<leader>tt";
@@ -366,6 +400,25 @@ in {
             volar.enable = true;
             vuels.enable = true;
           };
+          keymaps = {
+            diagnostic = {
+              "<leader>j" = "goto_next";
+              "<leader>k" = "goto_prev";
+            };
+            lspBuf = {
+              gK = "hover";
+              gD = "references";
+              gd = "definition";
+              gi = "implementation";
+              gt = "type_definition";
+            };
+          };
+        };
+        bufferline = {
+          enable = true;
+          bufferCloseIcon = "";
+          closeIcon = "";
+          modifiedIcon = "";
         };
         lualine = {
           enable = true;
@@ -398,6 +451,13 @@ in {
               enabled = true;
             };
           };
+          presets = {
+            inc_rename = true;
+            lsp_doc_border = true;
+          };
+        };
+        inc-rename = {
+          enable = true;
         };
         nvim-autopairs.enable = true;
         surround.enable = true;

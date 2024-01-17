@@ -38,5 +38,6 @@ in {
     };
     sops.secrets.invidious-user-password = {};
     sops.secrets.searx-secret-key = {};
+    sops.secrets.spotifyd-password = {};
   };
 }

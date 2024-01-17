@@ -91,6 +91,20 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    plugin-move = {
+      url = "github:fedepujol/move.nvim";
+      flake = false;
+    };
+    plugin-neocord = {
+      url = "github:IogaMaster/neocord";
+      flake = false;
+    };
+
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
@@ -122,6 +136,9 @@
       ];
 
       systems.hosts.eclipse.modules = with inputs; [
+        (import ./disks/default.nix {inherit lib;})
+      ];
+      systems.hosts.tempest.modules = with inputs; [
         (import ./disks/default.nix {inherit lib;})
       ];
 
