@@ -13,6 +13,7 @@ with lib.nebula; {
     # nebuvim.homeManagerModules.default
     schizofox.homeManagerModules.default
     spicetify-nix.homeManagerModule
+    # stylix.homeManagerModules.stylix
   ];
 
   options.home = with types; {

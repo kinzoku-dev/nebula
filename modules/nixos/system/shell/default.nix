@@ -74,20 +74,7 @@ in {
           cat = "bat";
           ls = "eza";
         };
-      initExtra = let
-        sources = with pkgs; [
-          "${oh-my-zsh}/share/oh-my-zsh/plugins/fzf/fzf.plugin.zsh"
-          "${oh-my-zsh}/share/oh-my-zsh/plugins/colored-man-pages/colored-man-pages.plugin.zsh"
-          "${oh-my-zsh}/share/oh-my-zsh/plugins/fd/_fd"
-          "${oh-my-zsh}/share/oh-my-zsh/plugins/ripgrep/_ripgrep"
-        ];
-
-        source = map (source: "source ${source}") sources;
-
-        plugins = concatStringsSep "\n" source;
-      in ''
-        ${plugins}
-
+      initExtra = ''
         export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS
 
         function flakeinit() {

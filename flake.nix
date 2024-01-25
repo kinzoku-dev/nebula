@@ -2,9 +2,12 @@
   ###
 
   ###
+  ###
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
+
+    stylix.url = "github:danth/stylix";
 
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -98,6 +101,10 @@
     };
     plugin-neocord = {
       url = "github:IogaMaster/neocord";
+      flake = false;
+    };
+    plugin-aerial = {
+      url = "github:stevearc/aerial.nvim";
       flake = false;
     };
 

@@ -71,6 +71,7 @@
   bind = $mainMod, V, togglefloating
   bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
   bind = $mainMod, t, togglegroup
+  bind = $mainMod, M, exec, rofi-calc
 
   bind = SUPER SHIFT, D, exec, scratchpad
 

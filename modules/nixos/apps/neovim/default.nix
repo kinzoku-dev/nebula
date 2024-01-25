@@ -23,6 +23,8 @@ in {
       in [
         plugpkgs.friendly-snippets
         plugpkgs.move-nvim
+        plugpkgs.lazygit-nvim
+        plugpkgs.aerial-nvim
         /*
         {
           plugin = plugpkgs.neocord;
@@ -39,6 +41,8 @@ in {
         stylua
         luajitPackages.lua-lsp
         ripgrep
+        rust-analyzer
+        alejandra
       ];
       globals = {
         mapleader = " ";
@@ -109,6 +113,63 @@ in {
                 end},
             },
         })
+
+        require("luasnip.loaders.from_vscode").lazy_load()
+
+        local lsnip = require 'luasnip'
+        local s = lsnip.snippet
+        local t = lsnip.text_node
+        local i = lsnip.insert_node
+        local extras = require 'luasnip.extras'
+        local rep = extras.rep
+        local fmt = require('luasnip.extras.fmt').fmt
+
+        lsnip.add_snippets('nix', {
+            s('vimpluginput',
+                fmt(
+                    [[
+                        plugin-{} = {{
+                            url = "github:{}";
+                            flake = false;
+                        }};
+                    ]],
+                    {
+                        i(1),
+                        i(2),
+                    }
+                )
+            ),
+            s('vimplugoverlay',
+                fmt(
+                [[
+                    {} = prev.vimUtils.buildVimPlugin {{
+                        name = "{}";
+                        src = {};
+                    }};
+                ]],
+                {
+                    i(1),
+                    i(2),
+                    i(3),
+                }
+                )
+            )
+        })
+
+        require('aerial').setup({
+                backends = { "treesitter", "lsp" },
+                on_attach = function(bufnr)
+                    vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+                    vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+                end,
+                layout = {
+                    max_width = { 40, 0.2 },
+                    width = nil,
+                    min_width = 10,
+
+                    default_direction = "prefer_right",
+                },
+        })
       '';
       keymaps = [
         {
@@ -120,7 +181,7 @@ in {
           };
         }
         {
-          action = "<cmd>MoveLine(1)<CR>gv";
+          action = "<cmd>MoveBlock(1)<CR>";
           key = "J";
           mode = "v";
           options = {
@@ -129,13 +190,17 @@ in {
           };
         }
         {
-          action = "<cmd>MoveLine(-1)<CR>gv";
+          action = "<cmd>MoveBlock(-1)<CR>";
           key = "K";
           mode = "v";
           options = {
             silent = true;
             noremap = true;
           };
+        }
+        {
+          action = "<cmd>LazyGit<CR>";
+          key = "<leader>gg";
         }
         {
           action = "nzzzv";
@@ -148,6 +213,10 @@ in {
         {
           action = "<cmd>noh<CR>";
           key = "<leader>noh";
+        }
+        {
+          action = "<cmd>AerialToggle!<CR>";
+          key = "<leader>ae";
         }
         {
           action = "<cmd>Neotree toggle<CR>";
@@ -282,6 +351,7 @@ in {
             {name = "treesitter";}
             {name = "cmdline";}
           ];
+          mappingPresets = ["insert"];
           mapping = {
             "<C-Space>" = "cmp.mapping.complete()";
             "<C-e>" = "cmp.mapping.close()";
@@ -338,6 +408,7 @@ in {
         };
         emmet = {
           enable = true;
+          mode = "i";
         };
         floaterm = {
           enable = true;
@@ -360,9 +431,6 @@ in {
         };
         indent-blankline = {
           enable = true;
-          scope = {
-            enabled = true;
-          };
         };
         leap = {
           enable = true;
@@ -419,6 +487,9 @@ in {
           bufferCloseIcon = "";
           closeIcon = "";
           modifiedIcon = "";
+          indicator.style = "underline";
+          rightTruncMarker = "";
+          leftTruncMarker = "";
         };
         lualine = {
           enable = true;
