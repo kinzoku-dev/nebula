@@ -53,6 +53,9 @@ in {
       vesktop = "vesktop --disable-gpu";
       ssh = "TERM=xterm-256color ssh";
       seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
+      cdf = "cd $(fd . -t d -H | fzf)";
+      zf = "z $(fd . -t d -H | fzf)";
+      nvf = "nvim $(fd . -t f -H | fzf)";
     };
 
     home.programs.zoxide = {
@@ -73,6 +76,7 @@ in {
           sz = "source ~/.config/zsh/.zshrc";
           cat = "bat";
           ls = "eza";
+          "," = "shellpkg";
         };
       initExtra = ''
         export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS

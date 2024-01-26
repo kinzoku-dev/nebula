@@ -22,7 +22,6 @@ in {
         plugpkgs = pkgs.vimPlugins;
       in [
         plugpkgs.friendly-snippets
-        plugpkgs.move-nvim
         plugpkgs.lazygit-nvim
         plugpkgs.aerial-nvim
         /*
@@ -181,7 +180,7 @@ in {
           };
         }
         {
-          action = "<cmd>MoveBlock(1)<CR>";
+          action = ":m '>+1<CR>gv=gv";
           key = "J";
           mode = "v";
           options = {
@@ -190,7 +189,7 @@ in {
           };
         }
         {
-          action = "<cmd>MoveBlock(-1)<CR>";
+          action = ":m '<-2<CR>gv=gv";
           key = "K";
           mode = "v";
           options = {
@@ -270,6 +269,31 @@ in {
           action = "<cmd>bdel<CR>";
           key = "<C-x>";
         }
+        {
+          action = "\"_dP";
+          key = "<leader>p";
+          mode = "x";
+        }
+        {
+          action = "\"_d";
+          key = "<leader>d";
+          mode = ["n" "v"];
+        }
+        {
+          action = "mzJ`z";
+          key = "J";
+          mode = "n";
+        }
+        {
+          action = "<C-d>zz";
+          key = "<C-d>";
+          mode = "n";
+        }
+        {
+          action = "<C-u>zz";
+          key = "<C-u>";
+          mode = "n";
+        }
       ];
       plugins = {
         alpha = {
@@ -341,6 +365,7 @@ in {
         todo-comments.enable = true;
         nvim-cmp = {
           enable = true;
+          snippet.expand = "luasnip";
           autoEnableSources = true;
           sources = [
             {name = "nvim_lsp";}
@@ -386,6 +411,8 @@ in {
             typescript = [["prettierd" "prettier"]];
             javascriptreact = [["prettierd" "prettier"]];
             typescriptreact = [["prettierd" "prettier"]];
+            json = [["prettierd" "prettier"]];
+            jsonc = [["prettierd" "prettier"]];
             rust = ["rustfmt"];
             go = ["gofumpt"];
             html = [["prettierd" "prettier"]];
@@ -415,7 +442,7 @@ in {
           position = "center";
           autoclose = 0;
           autohide = 1;
-          shell = "nushell";
+          shell = "${config.system.shell.shell}";
           wintype = "float";
           keymaps = {
             toggle = "<leader>tt";
@@ -450,7 +477,6 @@ in {
             clangd.enable = true;
             csharp-ls.enable = true;
             cssls.enable = true;
-            emmet_ls.enable = true;
             eslint.enable = true;
             gdscript.enable = true;
             gopls.enable = true;

@@ -47,6 +47,9 @@
   apps.mullvad-vpn.enable = false;
   desktop.picom.enable = true;
   apps.flatpak.enable = true;
+  apps.obsidian = {
+    enable = true;
+  };
   apps.browser = {
     enable = [
       "firefox"
@@ -142,7 +145,6 @@
       nebula.kiwi-ssg
 
       gum
-      obsidian
 
       r2modman
 

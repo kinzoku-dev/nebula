@@ -47,6 +47,9 @@
   apps.steam.enable = true;
   apps.discord.enable = true;
   apps.flatpak.enable = true;
+  apps.obsidian = {
+    enable = true;
+  };
   apps.browser = {
     enable = [
       "firefox"
@@ -62,7 +65,7 @@
 
   programs.dconf.enable = true;
   # system.xremap.enable = true;
-  system.shell.shell = "nushell";
+  system.shell.shell = "zsh";
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
   desktop.dunst.enable = true;
@@ -124,7 +127,6 @@
       nebula.kiwi-ssg
 
       gum
-      obsidian
 
       r2modman
 
