@@ -20,6 +20,7 @@ in {
         enable = true;
         theme = pkgs.nebula.catppuccin-grub;
         efiSupport = true;
+        device = "nodev";
         useOSProber = true;
       };
       efi = {

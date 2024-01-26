@@ -67,7 +67,7 @@
 
   programs.dconf.enable = true;
   # system.xremap.enable = true;
-  system.shell.shell = "nushell";
+  system.shell.shell = "zsh";
   desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
@@ -133,8 +133,6 @@
       nebula.nix-inspect
       sl
       appimage-run
-
-      pkgs.nebula.satisfactory-mod-manager
 
       gopls
       spotify

@@ -1,7 +1,6 @@
 keys:
   - &primary age109u0hhummvyua8h6ep67mmlucus5cwwp3aq2zkfsgw7mewartdjqdpjn4x
-  - &server age1kdjpv3uqspqgsagwqh9ugaj0vx7x2ffq6ar5exs8upj3nv9pmssqdzeh2a
-  - &server_pgp 7e841f5437b9d624b613fc8ec82213a47e44e964
+  - &server age1krgwkjvs3c8kncru4wt2mht7cz3t2dls84ynj7y6xj8qrutjpe4qrtlezu
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
