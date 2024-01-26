@@ -134,6 +134,8 @@
       sl
       appimage-run
 
+      pkgs.nebula.satisfactory-mod-manager
+
       gopls
       spotify
       cava
