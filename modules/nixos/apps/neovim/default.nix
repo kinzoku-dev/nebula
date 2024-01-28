@@ -42,6 +42,12 @@ in {
         ripgrep
         rust-analyzer
         alejandra
+
+        chafa
+        imagemagick
+        ffmpegthumbnailer
+        poppler_utils
+        fontpreview
       ];
       globals = {
         mapleader = " ";
@@ -164,7 +170,7 @@ in {
                 layout = {
                     max_width = { 40, 0.2 },
                     width = nil,
-                    min_width = 10,
+                    min_width = 20,
 
                     default_direction = "prefer_right",
                 },
@@ -223,7 +229,19 @@ in {
         }
         {
           action = "<cmd>q<CR>";
-          key = "<leader>q";
+          key = "<leader>qq";
+        }
+        {
+          action = "<cmd>qa<CR>";
+          key = "<leader>qa";
+        }
+        {
+          action = "<cmd>w<CR>";
+          key = "<leader>ww";
+        }
+        {
+          action = "<cmd>wq<CR>";
+          key = "<leader>wq";
         }
         {
           action = "<cmd>Telescope find_files<CR>";
@@ -293,6 +311,18 @@ in {
           action = "<C-u>zz";
           key = "<C-u>";
           mode = "n";
+        }
+        {
+          action = "<cmd>Trouble<CR>";
+          key = "<leader>tr";
+        }
+        {
+          action = "<cmd>UndotreeToggle<CR>";
+          key = "<leader>uu";
+        }
+        {
+          action = "<C-r>";
+          key = "U";
         }
       ];
       plugins = {
@@ -369,11 +399,9 @@ in {
           autoEnableSources = true;
           sources = [
             {name = "nvim_lsp";}
-            {name = "fuzzy-path";}
-            {name = "fuzzy-buffer";}
+            {name = "path";}
+            {name = "buffer";}
             {name = "luasnip";}
-            {name = "tmux";}
-            {name = "treesitter";}
             {name = "cmdline";}
           ];
           mappingPresets = ["insert"];
@@ -435,7 +463,8 @@ in {
         };
         emmet = {
           enable = true;
-          mode = "i";
+          mode = "n";
+          leader = ",";
         };
         floaterm = {
           enable = true;
@@ -508,6 +537,10 @@ in {
             };
           };
         };
+        lspkind = {
+          enable = true;
+          cmp.enable = true;
+        };
         bufferline = {
           enable = true;
           bufferCloseIcon = "";
@@ -576,6 +609,9 @@ in {
           select.enable = true;
         };
         ts-autotag.enable = true;
+        undotree = {
+          enable = true;
+        };
         which-key.enable = true;
         trouble = {
           enable = true;

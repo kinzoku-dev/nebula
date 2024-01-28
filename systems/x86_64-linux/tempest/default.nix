@@ -65,7 +65,7 @@
 
   programs.dconf.enable = true;
   # system.xremap.enable = true;
-  system.shell.shell = "zsh";
+  system.shell.shell = "nu";
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
   desktop.dunst.enable = true;

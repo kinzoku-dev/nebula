@@ -10,7 +10,7 @@ with lib.nebula; let
   cfg = config.system.shell;
 in {
   options.system.shell = with types; {
-    shell = mkOpt (enum ["nushell" "zsh"]) "zsh" "What shell to use";
+    shell = mkOpt (enum ["nu" "zsh"]) "zsh" "What shell to use";
   };
 
   config = {
@@ -23,7 +23,10 @@ in {
       wget
     ];
 
-    users.defaultUserShell = pkgs.${cfg.shell};
+    users.defaultUserShell =
+      if cfg.shell == "nu"
+      then pkgs.nushell
+      else pkgs.zsh;
     users.users.root.shell = pkgs.bashInteractive;
     users.users.kinzoku.ignoreShellProgramCheck = true;
 
@@ -53,9 +56,9 @@ in {
       vesktop = "vesktop --disable-gpu";
       ssh = "TERM=xterm-256color ssh";
       seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
-      cdf = "cd $(fd . -t d -H | fzf)";
-      zf = "z $(fd . -t d -H | fzf)";
-      nvf = "nvim $(fd . -t f -H | fzf)";
+      # cdf = "cd $(fd . -t d -H | fzf)";
+      # zf = "z $(fd . -t d -H | fzf)";
+      # nvf = "nvim $(fd . -t f -H | fzf)";
     };
 
     home.programs.zoxide = {
@@ -96,7 +99,7 @@ in {
       '';
     };
 
-    home.programs.nushell = mkIf (cfg.shell == "nushell") {
+    home.programs.nushell = mkIf (cfg.shell == "nu") {
       enable = true;
       shellAliases = config.environment.shellAliases // {ls = "eza";};
       envFile.text = ''
