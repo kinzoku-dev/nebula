@@ -134,6 +134,8 @@
       sl
       appimage-run
 
+      arduino
+
       gopls
       spotify
       cava
