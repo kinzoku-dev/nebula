@@ -112,6 +112,11 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs: let
@@ -143,10 +148,10 @@
       ];
 
       systems.hosts.eclipse.modules = with inputs; [
-        (import ./disks/default.nix {inherit lib;})
+        (import ./disks/default.nix {device = "/dev/nvme0n1";})
       ];
       systems.hosts.tempest.modules = with inputs; [
-        (import ./disks/default.nix {inherit lib;})
+        (import ./disks/default.nix {device = "/dev/nvme0n1";})
       ];
 
       systems.modules.nixos = with inputs; [
@@ -155,6 +160,7 @@
         disko.nixosModules.disko
         arion.nixosModules.arion
         nixvim.nixosModules.nixvim
+        impermanence.nixosModules.impermanence
       ];
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};

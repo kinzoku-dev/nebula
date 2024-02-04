@@ -38,6 +38,7 @@
   ];
 
   apps.misc.enable = true;
+  apps.zathura.enable = true;
   # apps.spotify-tui.enable = true;
   apps.rofi.enable = true;
   apps.calcure.enable = true;
@@ -91,6 +92,8 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config.common.default = "*";
   };
+
+  desktop.xdg.enable = true;
 
   # Configure keymap in X11
   services.xserver = {

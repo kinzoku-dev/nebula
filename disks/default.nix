@@ -1,11 +1,7 @@
-{
-  lib,
-  disks ? ["/dev/nvme0n1"],
-  ...
-}: {
+{device ? throw "Set this to your disk device, e.g. /dev/sda", ...}: {
   disko.devices = {
     disk.laptop = {
-      device = builtins.elemAt disks 0;
+      inherit device;
       type = "disk";
       content = {
         type = "gpt";
@@ -25,30 +21,47 @@
               mountpoint = "/boot";
             };
           };
+          swap = {
+            size = "4G";
+            content = {
+              type = "swap";
+              resumeDevice = true;
+            };
+          };
           root = {
             name = "root";
             size = "100%";
             content = {
               type = "lvm_pv";
-              vg = "pool";
+              vg = "root_vg";
             };
           };
         };
       };
     };
     lvm_vg = {
-      pool = {
+      root_vg = {
         type = "lvm_vg";
         lvs = {
           root = {
             size = "100%FREE";
             content = {
-              type = "filesystem";
-              format = "ext4";
-              mountpoint = "/";
-              mountOptions = [
-                "defaults"
-              ];
+              type = "btrfs";
+              extraArgs = ["-f"];
+
+              subvolumes = {
+                "/root" = {
+                  mountpoint = "/";
+                };
+                "/persist" = {
+                  mountOptions = ["subvol=persist" "noatime"];
+                  mountpoint = "/perists";
+                };
+                "/nix" = {
+                  mountOptions = ["subvol=nix" "noatime"];
+                  mountpoint = "/nix";
+                };
+              };
             };
           };
         };

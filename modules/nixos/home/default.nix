@@ -14,6 +14,7 @@ with lib.nebula; {
     schizofox.homeManagerModules.default
     spicetify-nix.homeManagerModule
     # stylix.homeManagerModules.stylix
+    impermanence.nixosModules.home-manager.impermanence
   ];
 
   options.home = with types; {
@@ -32,6 +33,7 @@ with lib.nebula; {
   };
 
   config = {
+    programs.fuse.userAllowOther = true;
     home.extraOptions = {
       home.stateVersion = config.system.stateVersion;
       home.file = mkAliasDefinitions options.home.file;
