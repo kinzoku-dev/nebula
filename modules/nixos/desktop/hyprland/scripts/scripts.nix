@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ ...}: {
   # volume = pkgs.writeShellApplication {
   #   name = "volume";
   #   runtimeInputs = with pkgs; [pamixer dunst];

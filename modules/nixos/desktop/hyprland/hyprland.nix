@@ -1,7 +1,6 @@
 {
   displayList,
   workspaceMonitors,
-  pkgs,
   colors,
 }: ''
   ${displayList}

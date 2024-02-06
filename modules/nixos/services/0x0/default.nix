@@ -25,7 +25,7 @@ in {
           OxO = {
             type = "normal";
             plugins = ["python3"];
-            pythonPackages = self:
+            pythonPackages = _self:
               with pkgs.python311Packages; [
                 flask
                 sqlalchemy

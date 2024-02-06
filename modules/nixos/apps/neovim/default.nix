@@ -18,7 +18,6 @@ in {
     programs.nixvim = {
       enable = true;
       extraPlugins = let
-        toLua = str: "lua << EOF\n${str}\nEOF\n";
         plugpkgs = pkgs.vimPlugins;
       in [
         plugpkgs.friendly-snippets

@@ -1,5 +1,4 @@
 {
-  colors,
   config,
 }: {
   mainBar = {

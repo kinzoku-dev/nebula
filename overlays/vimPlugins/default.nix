@@ -3,7 +3,7 @@
   plugin-neocord,
   plugin-aerial,
   ...
-}: (final: prev: {
+}: (_final: prev: {
   vimPlugins =
     prev.vimPlugins
     // {
