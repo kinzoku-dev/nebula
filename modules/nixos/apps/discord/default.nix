@@ -21,19 +21,19 @@ in {
           disable-gpu = config.hardware.graphics.gpu == "nvidia";
         in [
           (pkgs.makeDesktopItem {
-            name = "vencorddesktop";
+            name = "vesktop";
             desktopName = "Discord";
             exec = "${
               if mullvad-exclude
               then "mullvad-exlude"
               else ""
-            } vencorddesktop ${
+            } vesktop ${
               if disable-gpu
               then "--disable-gpu"
               else ""
             }";
             icon = "discord";
-            startupWMClass = "VencordDesktop";
+            startupWMClass = "vesktop";
             genericName = "Internet Messenger";
             keywords = ["discord" "vencord" "electron" "chat"];
             categories = ["Network" "InstantMessaging" "Chat"];
@@ -41,7 +41,7 @@ in {
         ];
       })
     ];
-    home.file.".config/VencordDesktop/VencordDesktop/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
+    home.configFile."vesktop/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
     home.configFile."discord/settings.json".text = ''
       {
         "IS_MAXIMIZED": false,

@@ -9,7 +9,8 @@
 with lib;
 with lib.nebula; let
   cfg = config.apps.zathura;
-  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
+  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
+  colors = palette;
 in {
   options.apps.zathura = with types; {
     enable = mkBoolOpt false "Enable zathura PDF reader";
