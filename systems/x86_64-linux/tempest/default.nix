@@ -15,7 +15,6 @@
   ];
 
   system.boot.enable = true;
-  system.impermanence.enable = true;
 
   hardware.graphics = {
     enable = true;

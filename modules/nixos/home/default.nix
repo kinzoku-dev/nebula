@@ -14,7 +14,6 @@ with lib.nebula; {
     schizofox.homeManagerModules.default
     spicetify-nix.homeManagerModule
     # stylix.homeManagerModules.stylix
-    (import "${impermanence}/home-manager.nix")
   ];
 
   options.home = with types; {
