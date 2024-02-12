@@ -153,6 +153,7 @@
       nebula.houston
 
       obs-studio
+      xwaylandvideobridge
 
       libsForQt5.kdenlive
 

@@ -30,6 +30,7 @@ with lib.nebula; {
     pointerCursor = mkOpt attrs {} "Cursor settings";
     services = mkOpt attrs {} "service settings";
     activation = mkOpt attrs {} "activation settings";
+    xdgDesktopEntries = mkOpt attrs {} "xdg settings";
   };
 
   config = {
@@ -40,6 +41,7 @@ with lib.nebula; {
       xdg.enable = true;
       xdg.configFile = mkAliasDefinitions options.home.configFile;
       xdg.mimeApps = mkAliasDefinitions options.home.mimeApps;
+      xdg.desktopEntries = mkAliasDefinitions options.home.xdgDesktopEntries;
       programs = mkAliasDefinitions options.home.programs;
       services = mkAliasDefinitions options.home.services;
       home.homeDirectory = "/home/${config.user.name}";

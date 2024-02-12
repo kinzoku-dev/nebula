@@ -15,6 +15,20 @@ in {
 
   config = mkIf cfg.enable {
     environment.sessionVariables.EDITOR = "nvim";
+    home.xdgDesktopEntries = {
+      nvim = lib.mkForce {
+        name = "Neovim";
+        type = "Application";
+        mimeType = ["text/plain"];
+
+        icon = builtins.fetchurl {
+          url = "https://raw.githubusercontent.com/NotAShelf/neovim-flake/main/assets/neovim-flake-logo-work.svg";
+          sha256 = "19n7n9xafyak35pkn4cww0s5db2cr97yz78w5ppbcp9jvxw6yyz3";
+        };
+        exec = "kitty nvim";
+      };
+    };
+
     programs.nixvim = {
       enable = true;
       extraPlugins = let
@@ -175,16 +189,9 @@ in {
                     default_direction = "prefer_right",
                 },
         })
+
       '';
       keymaps = [
-        {
-          action = "require(\"oil\").open_float";
-          key = "<leader>op";
-          lua = true;
-          options = {
-            desc = "Open oil";
-          };
-        }
         {
           action = ":m '>+1<CR>gv=gv";
           key = "J";
@@ -244,30 +251,6 @@ in {
           key = "<leader>wq";
         }
         {
-          action = "<cmd>Telescope find_files<CR>";
-          key = "<leader>ff";
-        }
-        {
-          action = "<cmd>Telescope frecency<CR>";
-          key = "<leader>fr";
-        }
-        {
-          action = "<cmd>Telescope live_grep<CR>";
-          key = "<leader>ft";
-        }
-        {
-          action = "<cmd>Telescope buffers<CR>";
-          key = "<leader>fb";
-        }
-        {
-          action = "<cmd>Telescope media_files<CR>";
-          key = "<leader>fm";
-        }
-        {
-          action = "<cmd>Telescope undo<CR>";
-          key = "<leader>fu";
-        }
-        {
           action = "<cmd>Gitsigns blame_line<CR>";
           key = "<leader>gb";
         }
@@ -317,8 +300,9 @@ in {
           key = "<leader>tr";
         }
         {
+          mode = "n";
           action = "<cmd>UndotreeToggle<CR>";
-          key = "<leader>uu";
+          key = "<leader>u";
         }
         {
           action = "<C-r>";
@@ -326,147 +310,14 @@ in {
         }
       ];
       plugins = {
-        alpha = {
-          enable = true;
-          iconsEnabled = true;
-          layout = [
-            {
-              type = "padding";
-              val = 2;
-            }
-            {
-              opts = {
-                hl = "Type";
-                position = "center";
-              };
-              type = "text";
-              val = [
-                "███╗   ██╗███████╗██████╗ ██╗   ██╗██╗   ██╗██╗███╗   ███╗"
-                "████╗  ██║██╔════╝██╔══██╗██║   ██║██║   ██║██║████╗ ████║"
-                "██╔██╗ ██║█████╗  ██████╔╝██║   ██║██║   ██║██║██╔████╔██║"
-                "██║╚██╗██║██╔══╝  ██╔══██╗██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║"
-                "██║ ╚████║███████╗██████╔╝╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║"
-                "╚═╝  ╚═══╝╚══════╝╚═════╝  ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝"
-              ];
-            }
-            {
-              type = "padding";
-              val = 2;
-            }
-            {
-              type = "group";
-              val = [
-                {
-                  command = "<cmd>Telescope find_files<CR>";
-                  desc = "󰥩 Find files";
-                  shortcut = "f";
-                }
-                {
-                  command = "<cmd>Telescope frecency<CR>";
-                  desc = "󰪻 Recent files";
-                  shortcut = "r";
-                }
-                {
-                  command = "<cmd>qa<CR>";
-                  desc = " Quit";
-                  shortcut = "SPC q";
-                }
-              ];
-            }
-            {
-              type = "padding";
-              val = 2;
-            }
-          ];
-        };
-        oil = {
-          enable = true;
-        };
-        telescope = {
-          enable = true;
-          extensions = {
-            frecency.enable = true;
-            media_files.enable = true;
-            fzf-native.enable = true;
-            undo.enable = true;
-          };
-        };
         tmux-navigator.enable = true;
-        todo-comments.enable = true;
-        nvim-cmp = {
-          enable = true;
-          snippet.expand = "luasnip";
-          autoEnableSources = true;
-          sources = [
-            {name = "nvim_lsp";}
-            {name = "path";}
-            {name = "buffer";}
-            {name = "luasnip";}
-            {name = "cmdline";}
-          ];
-          mappingPresets = ["insert"];
-          mapping = {
-            "<C-Space>" = "cmp.mapping.complete()";
-            "<C-e>" = "cmp.mapping.close()";
-            "<CR>" = "cmp.mapping.confirm({ select = true })";
-            "<S-Tab>" = {
-              action = "cmp.mapping.select_prev_item()";
-              modes = [
-                "i"
-                "s"
-              ];
-            };
-            "<Tab>" = {
-              action = "cmp.mapping.select_next_item()";
-              modes = [
-                "i"
-                "s"
-              ];
-            };
-          };
-        };
-        comment-nvim = {
-          enable = true;
-        };
-        conform-nvim = {
-          enable = true;
-          formatOnSave = {
-            lspFallback = true;
-          };
-          formattersByFt = {
-            lua = ["stylua"];
-            javascript = [["prettierd" "prettier"]];
-            typescript = [["prettierd" "prettier"]];
-            javascriptreact = [["prettierd" "prettier"]];
-            typescriptreact = [["prettierd" "prettier"]];
-            json = [["prettierd" "prettier"]];
-            jsonc = [["prettierd" "prettier"]];
-            rust = ["rustfmt"];
-            go = ["gofumpt"];
-            html = [["prettierd" "prettier"]];
-            css = [["prettierd" "prettier"]];
-            scss = [["prettierd" "prettier"]];
-            nix = ["alejandra"];
-          };
-        };
-        cursorline = {
-          enable = true;
-          cursorline = {
-            enable = true;
-            number = true;
-          };
-          cursorword = {
-            enable = true;
-            hl = {underline = true;};
-            minLength = 3;
-          };
-        };
         emmet = {
           enable = true;
           mode = "n";
           leader = ",";
         };
-        floaterm = {
+        /*
+           floaterm = {
           enable = true;
           position = "center";
           autoclose = 0;
@@ -476,6 +327,27 @@ in {
           keymaps = {
             toggle = "<leader>tt";
           };
+        };
+        */
+        toggleterm = {
+          enable = true;
+          size = ''
+            function(term)
+              if term.direction == "horizontal" then
+                  return 15
+              elseif term.direction == "vertical" then
+                  return vim.o.columns * 0.4
+              end
+            end
+          '';
+          openMapping = "<leader>tt";
+          hideNumbers = true;
+          shadeTerminals = true;
+          startInInsert = true;
+          terminalMappings = true;
+          persistMode = true;
+          insertMappings = false;
+          closeOnExit = true;
         };
         gitsigns = {
           enable = true;
@@ -498,48 +370,6 @@ in {
             json = ["jsonlint"];
             md = ["vale"];
           };
-        };
-        lsp = {
-          enable = true;
-          servers = {
-            bashls.enable = true;
-            clangd.enable = true;
-            csharp-ls.enable = true;
-            cssls.enable = true;
-            eslint.enable = true;
-            gdscript.enable = true;
-            gopls.enable = true;
-            html.enable = true;
-            lua-ls.enable = true;
-            nil_ls.enable = true;
-            rust-analyzer = {
-              installRustc = true;
-              installCargo = true;
-              enable = true;
-            };
-            svelte.enable = true;
-            tailwindcss.enable = true;
-            tsserver.enable = true;
-            volar.enable = true;
-            vuels.enable = true;
-          };
-          keymaps = {
-            diagnostic = {
-              "<leader>j" = "goto_next";
-              "<leader>k" = "goto_prev";
-            };
-            lspBuf = {
-              gK = "hover";
-              gD = "references";
-              gd = "definition";
-              gi = "implementation";
-              gt = "type_definition";
-            };
-          };
-        };
-        lspkind = {
-          enable = true;
-          cmp.enable = true;
         };
         bufferline = {
           enable = true;
@@ -585,6 +415,39 @@ in {
             inc_rename = true;
             lsp_doc_border = true;
           };
+          cmdline = {
+            enabled = true;
+            format = {
+              cmdline = {
+                pattern = "^:";
+                icon = "";
+                lang = "vim";
+              };
+              search_down = {
+                kind = "search";
+                pattern = "^/";
+                icon = " ";
+                lang = "regex";
+              };
+              search_up = {
+                kind = "search";
+                pattern = "^%?";
+                icon = " ";
+                lang = "regex";
+              };
+              find = {
+                pattern = [":%s*%%s*s:%s*" ":%s*%%s*s!%s*" ":%s*%%s*s/%s*" "%s*s:%s*" ":%s*s!%s*" ":%s*s/%s*"];
+                icon = "";
+                lang = "regex";
+              };
+              replace = {
+                pattern = [":%s*%%s*s:%w*:%s*" ":%s*%%s*s!%w*!%s*" ":%s*%%s*s/%w*/%s*" "%s*s:%w*:%s*" ":%s*s!%w*!%s*" ":%s*s/%w*/%s*"];
+                icon = "󱞪";
+                lang = "regex";
+              };
+              input = {};
+            };
+          };
         };
         inc-rename = {
           enable = true;
@@ -611,8 +474,15 @@ in {
         ts-autotag.enable = true;
         undotree = {
           enable = true;
+          autoOpenDiff = true;
+          focusOnToggle = true;
         };
-        which-key.enable = true;
+        which-key = {
+          enable = true;
+          registrations = {
+            "<leader>l".name = " LSP";
+          };
+        };
         trouble = {
           enable = true;
         };
