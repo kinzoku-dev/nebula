@@ -2,6 +2,7 @@
   programs.nixvim.plugins.nvim-cmp = {
     enable = true;
     autoEnableSources = true;
+    snippet.expand = "luasnip";
     sources = [
       {name = "nvim_lsp";}
       {name = "path";}

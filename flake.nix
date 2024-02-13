@@ -112,6 +112,7 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    impermanence.url = "github:nix-community/impermanence";
   };
 
   outputs = inputs: let
@@ -155,6 +156,7 @@
         disko.nixosModules.disko
         arion.nixosModules.arion
         nixvim.nixosModules.nixvim
+        impermanence.nixosModules.impermanence
       ];
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};

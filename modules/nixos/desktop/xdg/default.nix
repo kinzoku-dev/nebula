@@ -21,11 +21,14 @@ in {
         enable = true;
         createDirectories = true;
         desktop = "${homeDir}/Desktop";
-        documents = "${homeDir}/Dev";
+        documents = "${homeDir}/Documents";
         download = "${homeDir}/Downloads";
         music = "${homeDir}/Audio";
         videos = "${homeDir}/Video";
         pictures = "${homeDir}/Images";
+        extraConfig = {
+          XDG_DEV_DIR = "${homeDir}/Dev";
+        };
       };
     };
   };

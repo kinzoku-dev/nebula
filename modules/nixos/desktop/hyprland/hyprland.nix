@@ -26,6 +26,8 @@
           xray = false
       }
   }
+  layerrule = blur,rofi
+  layerrule = blur,notifications
   env = WLR_NO_HARDWARE_CURSORS,1
   env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
   env = WLR_DRM_NO_ATOMIC,1
@@ -57,26 +59,22 @@
     preserve_split = yes
   }
 
-  $mainMod = ALT
+  $mainMod = SUPER
 
   bind = $mainMod SHIFT, Return, exec, kitty
   bind = $mainMod SHIFT, C, killactive
   bind = $mainMod, P, exec, rofi-drun
-  bind = SUPER, P, exec, rofi-run
-  bind = SUPER, W, exec, rofi-windows
-  bind = SUPER SHIFT, W, exec, rofi-wallpaper
-  bind = SUPER, N, exec, wifi-menu
+  bind = $mainMod, D, exec, rofi-run
+  bind = $mainMod, W, exec, rofi-windows
+  bind = $mainMod, Z, exec, rofi-pdf
+  bind = $mainMod SHIFT, W, exec, rofi-wallpaper
+  bind = $mainMod, N, exec, wifi-menu
   bind = $mainMod, U, exec, uploader
   bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating
   bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
-  bind = $mainMod, t, togglegroup
-  bind = $mainMod, M, exec, rofi-calc
-
-  bind = SUPER SHIFT, D, exec, scratchpad
-
-  bind = ALT,F10,pass,^(com\.obsproject\.Studio)$
-  bind = ALT,F9,pass,^(VencordDesktop)$
+  bind = $mainMod, T, togglegroup
+  bind = $mainMod, M, exec, rofi-calculate
 
   binde =, Prior, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
   binde =, Next, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
@@ -92,17 +90,25 @@
   bind = $mainMod, k, movefocus, u
   bind = $mainMod, j, movefocus, d
 
-  # Move window with mainMod_SHIFT + arrow keys
   bind = $mainMod SHIFT, h, movewindoworgroup, l
   bind = $mainMod SHIFT, l, movewindoworgroup, r
   bind = $mainMod SHIFT, k, movewindoworgroup, u
   bind = $mainMod SHIFT, j, movewindoworgroup, d
 
-  bind = SUPER, J, changegroupactive, b
-  bind = SUPER, K, changegroupactive, f
-  bind = SUPER, H, movegroupwindow, b
-  bind = SUPER, L, movegroupwindow, f
+  bind = $mainMod, G, submap, group
 
+  submap=group
+
+  bind = $mainMod SHIFT, J, changegroupactive, b
+  bind = $mainMod SHIFT, K, changegroupactive, f
+  bind = $mainMod SHIFT, H, movegroupwindow, b
+  bind = $mainMod SHIFT, L, movegroupwindow, f
+
+  bind =, escape, submap, reset
+
+  submap=reset
+
+  # Move window with mainMod_SHIFT + arrow keys
   bind = $mainMod, R, submap, resize
 
   submap=resize
@@ -138,10 +144,10 @@
   bind = $mainMod SHIFT, 9, split-movetoworkspacesilent, 9
   bind = $mainMod SHIFT, 0, split-movetoworkspacesilent, 10
 
-  bind = SUPER SHIFT, J, split-changemonitorsilent, prev
-  bind = SUPER SHIFT, K, split-changemonitorsilent, next
+  bind = $mainMod, Left, split-changemonitorsilent, prev
+  bind = $mainMod, Right, split-changemonitorsilent, next
 
-  bindm = $mainMod SHIFT, mouse:272, movewindow
+  bindm = $mainMod, mouse:272, movewindow
   bindm = $mainMod, mouse:273, resizewindow
 
   ${workspaceMonitors}

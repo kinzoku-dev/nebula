@@ -60,6 +60,7 @@
   };
 
   system.xserver.enable = true;
+  system.impermanence.enable = true;
   system.fonts = {
     enable = true;
   };

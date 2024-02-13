@@ -33,6 +33,7 @@
   ];
 
   apps.misc.enable = true;
+  apps.zathura.enable = true;
   # apps.spotify-tui.enable = true;
   apps.rofi.enable = true;
   apps.printing.enable = true;
@@ -71,6 +72,7 @@
   desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
+  desktop.xdg.enable = true;
   desktop.dunst.enable = true;
   desktop.hyprland = {
     enable = true;
