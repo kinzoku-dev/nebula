@@ -38,7 +38,6 @@ in {
         plugpkgs.friendly-snippets
         plugpkgs.lazygit-nvim
         plugpkgs.aerial-nvim
-        /*
         {
           plugin = plugpkgs.neocord;
           config = toLua ''
@@ -47,7 +46,6 @@ in {
             })
           '';
         }
-        */
       ];
       extraPackages = with pkgs; [
         nil

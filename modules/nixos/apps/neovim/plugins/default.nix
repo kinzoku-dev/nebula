@@ -9,5 +9,6 @@
     ./alpha.nix
     ./telescope.nix
     ./cursorline.nix
+    ./notify.nix
   ];
 }

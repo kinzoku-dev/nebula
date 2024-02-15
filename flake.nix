@@ -112,7 +112,7 @@
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:kinzoku-dev/impermanence";
   };
 
   outputs = inputs: let
