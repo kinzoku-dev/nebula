@@ -23,7 +23,5 @@ in {
     rofi-wifimenu
     rofi-pdf
     rofi-calculate
-    rofi-calc
-    libqalculate
   ];
 }

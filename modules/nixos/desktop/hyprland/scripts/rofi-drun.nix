@@ -1,9 +1,13 @@
 {pkgs, ...}:
-pkgs.writeShellScriptBin "rofi-drun" ''
-  dir="$HOME/.config/rofi/launchers/type-1"
-  theme='style-1'
+pkgs.writeShellApplication {
+  name = "rofi-drun";
+  runtimeInputs = with pkgs; [rofi-wayland];
+  text = ''
+    dir="$HOME/.config/rofi/launchers/type-1"
+    theme='style-1'
 
-  rofi \
+    rofi \
     -show drun \
-    -theme ''${dir}/''${theme}.rasi
-''
+    -theme "''${dir}"/"''${theme}".rasi
+  '';
+}

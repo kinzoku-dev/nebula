@@ -3,9 +3,8 @@
   config,
 }: {
   mainBar = {
-    position = "top";
     layer = "top";
-    height = 30;
+    margin = "8px 10px -2px 10px";
 
     modules-left = ["custom/menu" "hyprland/workspaces"];
     modules-center = ["clock"];
@@ -40,6 +39,7 @@
       on-click = "rofi-drun";
       on-click-release = "sleep 0";
     };
+
     tray = {
       spacing = 8;
     };
@@ -54,18 +54,47 @@
       tooltip = false;
     };
     "memory" = {
-      format = " {}%";
+      format = " {percentage}%";
     };
     "backlight" = {
       format = " {percent}%";
     };
     "network" = {
-      format-wifi = "  {essid} {signalStrength}%";
+      format-wifi = " {essid} {signalStrength}%";
       format-ethernet = "󰈁 {ifname}: {ipaddr}/{cidr}";
-      format-disconnected = "󰌙  Disconnected";
-      # on-click = "wifi-menu";
-      # on-click-release = "sleep 0";
+      format-disconnected = "󰌙 Disconnected";
+      on-click = "wifi-menu";
+      on-click-release = "sleep 0";
       tooltip-format = "{essid} {signalStrength}%";
+    };
+    "group/group-audio" = {
+      orientation = "horizontal";
+      drawer = {
+        transition-duration = 500;
+        transition-left-to-right = true;
+        children-class = "group-audio-child";
+      };
+      modules = [
+        "pulseaudio"
+        "pulseaudio/slider"
+      ];
+    };
+
+    "pulseaudio" = {
+      format = "{icon} {volume}%";
+      format-muted = "󰖁 Muted";
+      format-bluetooth = "{icon}󰂯 {volume}%";
+      format-icons = {
+        phone = "";
+        headphone = "󰋋";
+        portable = "";
+        car = "";
+        speaker = "󰓃";
+        hdmi = "󰽟";
+        default = ["󰕿" "󰖀" "󰕾"];
+      };
+      scroll-step = 1;
+      on-click = "kitty pulsemixer";
     };
   };
 }

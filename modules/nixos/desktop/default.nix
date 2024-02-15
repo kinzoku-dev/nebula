@@ -19,6 +19,7 @@ in {
       enable = true;
       wallpapers = ./wallpapers;
       colorscheme = inputs.nix-colors.colorschemes.${cfg.colorscheme};
+      outPath = ".config/wallpapers";
     };
 
     colorScheme = inputs.nix-colors.colorschemes.${cfg.colorscheme};

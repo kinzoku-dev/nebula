@@ -17,7 +17,7 @@
     prism.url = "github:IogaMaster/prism";
 
     snowfall-lib = {
-      url = "github:snowfallorg/lib";
+      url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

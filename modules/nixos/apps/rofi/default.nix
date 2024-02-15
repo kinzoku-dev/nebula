@@ -1574,7 +1574,7 @@ in {
                             border-radius: 0px 0px 0px 0px;
                             border-color: @border-colour;
                             background-color: transparent;
-                            children: [ "inputbar", "message", "mode-switcher" ];
+                            children: [ "inputbar", "message"];
                         }
                         inputbar {
                             enabled: true;

@@ -9,7 +9,8 @@
 with lib;
 with lib.nebula; let
   cfg = config.desktop.waybar;
-  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) colors;
+  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
+  colors = palette;
 in {
   options.desktop.waybar = with types; {
     enable = mkBoolOpt false "Enable waybar";
