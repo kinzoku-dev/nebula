@@ -7,10 +7,8 @@ pkgs.writeShellApplication {
     theme='style-1'
 
     rofi \
-      -show calc \
-      -modi calc \
-      -no-show-match \
-      -no-sort \
-      -theme "''${dir}"/"''${theme}".rasi \
+    -modi calc \
+    -show calc \
+    -theme "''${dir}"/"''${theme}".rasi
   '';
 }

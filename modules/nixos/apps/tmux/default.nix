@@ -44,7 +44,8 @@ in {
 
         bind-key x kill-pane
 
-        bind-key -T copy-mode-vi C-c send-keys -X copy-pipe-and-cancel "wl-copy -p"
+        bind-key -T copy-mode-vi 'v' send -X begin-selection
+        bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 
         bind -r j resize-pane -D 5
         bind -r k resize-pane -U 5

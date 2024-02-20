@@ -15,29 +15,33 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      ((pkgs.discord-canary.override {withVencord = true;}).overrideAttrs {
+      (pkgs.vesktop.overrideAttrs {
         desktopItems = let
           mullvad-exclude = config.apps.mullvad-vpn.enable;
           disable-gpu = config.hardware.graphics.gpu == "nvidia";
         in [
           (pkgs.makeDesktopItem {
-            name = "discordcanary";
-            desktopName = "Discord Canary";
+            name = "vesktop";
+            desktopName = "Discord";
             exec = "${
               if mullvad-exclude
               then "mullvad-exlude"
               else ""
-            } discordcanary ${
+            } vesktop ${
               if disable-gpu
               then "--disable-gpu"
               else ""
-            }";
-            icon = "discord-canary";
+            } --enable-features=VaapiIgnoreDriverChecks,VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,UseMultiPlaneFormatForHardwareVideo";
+            icon = "discord";
+            startupWMClass = "vesktop";
+            genericName = "Internet Messenger";
+            keywords = ["discord" "vencord" "electron" "chat"];
+            categories = ["Network" "InstantMessaging" "Chat"];
           })
         ];
       })
     ];
-    home.configFile."Vencord/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
+    home.configFile."vesktop/themes/catppuccin.theme.css".source = ./catppuccin.theme.css;
     home.configFile."discord/settings.json".text = ''
       {
         "IS_MAXIMIZED": false,

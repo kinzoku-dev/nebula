@@ -64,6 +64,7 @@
   bind = $mainMod SHIFT, Return, exec, kitty
   bind = $mainMod SHIFT, C, killactive
   bind = $mainMod, P, exec, rofi-drun
+  bind = $mainMod SHIFT, P, exec, powermenu
   bind = $mainMod, D, exec, rofi-run
   bind = $mainMod, W, exec, rofi-windows
   bind = $mainMod, Z, exec, rofi-pdf
@@ -72,17 +73,13 @@
   bind = $mainMod, U, exec, uploader
   bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
   bind = $mainMod, V, togglefloating
-  bind = $mainMod SHIFT, P, exec, hyprpicker | wl-copy
+  bind = $mainMod, C, exec, hyprpicker | wl-copy
   bind = $mainMod, T, togglegroup
   bind = $mainMod, M, exec, rofi-calculate
 
-  binde =, Prior, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%+
-  binde =, Next, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SINK@ 5%-
-  bind =, End, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-
-  binde = $mainMod, Prior, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SOURCE@ 5%+
-  binde = $mainMod, Next, exec, wpctl set-volume -l 1.4 @DEFAULT_AUDIO_SOURCE@ 5%-
-  bind = $mainMod, End, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+  bind = ,XF86AudioRaiseVolume, exec, volume --up
+  bind = ,XF86AudioLowerVolume, exec, volume --down
+  bind = ,XF86AudioMute, exec, volume --toggle
 
   # Move focus with mainMod + arrow keys
   bind = $mainMod, h, movefocus, l

@@ -28,6 +28,7 @@ in {
         pictures = "${homeDir}/Images";
         extraConfig = {
           XDG_DEV_DIR = "${homeDir}/Dev";
+          XDG_NOTES_DIR = "${homeDir}/Notes";
         };
       };
     };

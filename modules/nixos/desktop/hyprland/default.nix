@@ -61,6 +61,7 @@ in {
   imports = [
     inputs.hyprland.nixosModules.default
     ./scripts
+    ./swaylock.nix
   ];
 
   config = mkIf cfg.enable {

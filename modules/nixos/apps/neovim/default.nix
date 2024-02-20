@@ -2,12 +2,15 @@
   options,
   config,
   pkgs,
+  inputs,
   lib,
   ...
 }:
 with lib;
 with lib.nebula; let
   cfg = config.apps.neovim;
+  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
+  colors = palette;
 in {
   options.apps.neovim = with types; {
     enable = mkBoolOpt false "Enable or disable neovim";
@@ -67,6 +70,18 @@ in {
       clipboard = {
         register = "unnamedplus";
         providers.wl-copy.enable = true;
+      };
+      highlight = {
+        NoiceCmdlineIcon.fg = "#${colors.base05}";
+        NoiceCmdlinePopupTitle.fg = "#${colors.base05}";
+        NoiceCmdlinePopupBorderCmdline.fg = "#${colors.base07}";
+        NoiceCmdlinePopupIconCmdline.fg = "#${colors.base07}";
+        NoiceCmdlinePopupBorderSearch.fg = "#${colors.base0A}";
+        NoiceCmdlinePopupIconSearch.fg = "#${colors.base0A}";
+        NoiceCmdlinePopupBorderHelp.fg = "#${colors.base08}";
+        NoiceCmdlinePopupIconHelp.fg = "#${colors.base08}";
+        NoiceCmdlinePopupBorderLua.fg = "#${colors.base0D}";
+        NoiceCmdlinePopupIconLua.fg = "#${colors.base0D}";
       };
       colorschemes = {
         catppuccin = {
@@ -137,9 +152,22 @@ in {
         local s = lsnip.snippet
         local t = lsnip.text_node
         local i = lsnip.insert_node
+        local c = lsnip.choice_node
         local extras = require 'luasnip.extras'
         local rep = extras.rep
         local fmt = require('luasnip.extras.fmt').fmt
+
+        vim.keymap.set({ "i", "s" }, "<A-k>", function()
+            if lsnip.expand_or_jumpable() then
+                lsnip.expand_or_jump()
+            end
+        end, {silent = true})
+
+        vim.keymap.set({ "i", "s" }, "<A-j>", function()
+            if lsnip.jumpable(-1) then
+                lsnip.jump(-1)
+            end
+        end, {silent = true})
 
         lsnip.add_snippets('nix', {
             s('vimpluginput',
@@ -172,6 +200,88 @@ in {
                 )
             )
         })
+
+        lsnip.add_snippets('bash', {
+            s('bash-if',
+                fmt(
+                    [=[
+                        if [[ {} ]]; then
+                            {}
+                        fi
+                    ]=],
+                    {
+                        i(1),
+                        i(2),
+                    }
+                )
+            ),
+            s('bash-if_else',
+                fmt(
+                    [=[
+                        if [[ {} ]]; then
+                            {}
+                        else
+                            {}
+                        fi
+                    ]=],
+                    {
+                        i(1),
+                        i(2),
+                        i(3),
+                    }
+                )
+            ),
+            s('bash-if_elif_else',
+                fmt(
+                    [=[
+                        if [[ {} ]]; then
+                            {}
+                        elif [[ {} ]]; then
+                            {}
+                        else
+                            {}
+                        fi
+                    ]=],
+                    {
+                        i(1),
+                        i(2),
+                        i(3),
+                        i(4),
+                        i(5),
+                    }
+                )
+            ),
+            s('bash-elif',
+                fmt(
+                    [=[
+                        elif [[ {} ]]; then
+                            {}
+                    ]=],
+                    {
+                        i(1),
+                        i(2),
+                    }
+                )
+            )
+        })
+
+        lsnip.filetype_extend("bash", {"sh", "nix"})
+
+        lsnip.add_snippets('javascript', {
+            s('ts-ignore', {
+                t("// @ts-ignore"),
+            }),
+            s('ts-nocheck', {
+                t("// @ts-nocheck"),
+            }),
+            s('eslint-disable', {
+                t("/* eslint "),
+                i(1),
+                t(": 0 */"),
+            }),
+        })
+
+        lsnip.filetype_extend("javascript", {"javascriptreact", "typescript", "typescriptreact"})
 
         require('aerial').setup({
                 backends = { "treesitter", "lsp" },
@@ -207,6 +317,16 @@ in {
             silent = true;
             noremap = true;
           };
+        }
+        {
+          action = "5w";
+          key = "<A-w>";
+          mode = ["n" "v"];
+        }
+        {
+          action = "5b";
+          key = "<A-b>";
+          mode = ["n" "v"];
         }
         {
           action = "<cmd>LazyGit<CR>";
@@ -377,6 +497,42 @@ in {
           indicator.style = "underline";
           rightTruncMarker = "";
           leftTruncMarker = "";
+          groups = {
+            items = [
+              {
+                name = "Docs";
+                highlight = {
+                  undercurl = true;
+                  sp = "#${colors.base0B}";
+                };
+                auto_close = false;
+
+                matcher = ''
+                  function(buf)
+                      return buf.filename:match('%.md') or buf.filename:match('%.txt')
+                  end,
+                '';
+                separator = {
+                  style = "require('bufferline.groups').separator.tab";
+                };
+              }
+              {
+                name = "Tests";
+                higlight = {
+                  underline = true;
+                  sp = "#${colors.base0A}";
+                };
+                priority = 2;
+
+                icon = "󰂖";
+                matcher = ''
+                  function(buf) -- Mandatory
+                      return buf.filename:match('%_test') or buf.filename:match('%_spec')
+                  end,
+                '';
+              }
+            ];
+          };
         };
         lualine = {
           enable = true;
@@ -399,6 +555,11 @@ in {
         noice = {
           enable = true;
           lsp = {
+            override = {
+              "vim.lsp.util.convert_input_to_markdown_lines" = true;
+              "vim.lsp.util.stylize_markdown" = true;
+              "cmp.entry.get_documentation" = true;
+            };
             hover = {
               enabled = true;
             };
@@ -434,12 +595,12 @@ in {
                 lang = "regex";
               };
               find = {
-                pattern = [":%s*%%s*s:%s*" ":%s*%%s*s!%s*" ":%s*%%s*s/%s*" "%s*s:%s*" ":%s*s!%s*" ":%s*s/%s*"];
+                pattern = [":%s*%%s*s:%s*" ":%s*%%s*s!%s*" ":%s*%%s*s/%s*" "%s*s:%s*" ":%s*s!%s*" ":%s*s/%s*" ":%s*'<,'>s/\%s*%%s*V%s*"];
                 icon = "";
                 lang = "regex";
               };
               replace = {
-                pattern = [":%s*%%s*s:%w*:%s*" ":%s*%%s*s!%w*!%s*" ":%s*%%s*s/%w*/%s*" "%s*s:%w*:%s*" ":%s*s!%w*!%s*" ":%s*s/%w*/%s*"];
+                pattern = [":%s*%%s*s:%w*:%s*" ":%s*%%s*s!%w*!%s*" ":%s*%%s*s/%w*/%s*" "%s*s:%w*:%s*" ":%s*s!%w*!%s*" ":%s*s/%w*/%s*" ":%s*'<,'>s/\%s*%%s*V%w*/%s*"];
                 icon = "󱞪";
                 lang = "regex";
               };
@@ -460,6 +621,23 @@ in {
             "nix"
             "typescript"
             "go"
+            "gdscript"
+            "gdresource"
+            "gomod"
+            "gosum"
+            "haskell"
+            "html"
+            "java"
+            "json"
+            "kotlin"
+            "markdown"
+            "python"
+            "scss"
+            "svelte"
+            "todotxt"
+            "toml"
+            "tsx"
+            "yaml"
           ];
         };
         barbecue = {

@@ -14,14 +14,16 @@ with lib; let
   rofi-pdf = import ./rofi-pdf.nix {inherit pkgs;};
   rofi-calculate = import ./rofi-calculate.nix {inherit pkgs;};
 in {
-  environment.systemPackages = with pkgs; [
-    uploader
-    rofi-drun
-    rofi-run
-    rofi-windows
-    rofi-wallpaper
-    rofi-wifimenu
-    rofi-pdf
-    rofi-calculate
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      uploader
+      rofi-drun
+      rofi-run
+      rofi-windows
+      rofi-wallpaper
+      rofi-wifimenu
+      rofi-pdf
+      rofi-calculate
+    ]
+    ++ builtins.attrValues (import ./scripts.nix {inherit pkgs;});
 }

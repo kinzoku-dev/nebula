@@ -24,6 +24,24 @@
           tsserver.enable = true;
           volar.enable = true;
           vuels.enable = true;
+          java-language-server.enable = true;
+          kotlin-language-server.enable = true;
+          htmx.enable = true;
+          nushell.enable = true;
+          pyright.enable = true;
+        };
+        keymaps = {
+          diagnostic = {
+            "<leader>lj" = "goto_next";
+            "<leader>lk" = "goto_prev";
+          };
+          lspBuf = {
+            "<leader>lh" = "hover";
+            "<leader>lr" = "references";
+            "<leader>ld" = "definition";
+            "<leader>li" = "implementation";
+            "<leader>lt" = "type_definition";
+          };
         };
       };
       lsp-format = {

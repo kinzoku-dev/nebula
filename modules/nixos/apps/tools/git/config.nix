@@ -1,8 +1,8 @@
 {sshKeyPath}: ''
   [user]
   	name = kinzoku-dev
-  	email = kinzokudev4869@gmail.com
-      signingkey = ${sshKeyPath}
+  	email = kinzoku@the-nebula.xyz
+    signingkey = ${sshKeyPath}
   [pull]
   	rebase = true
   [init]
@@ -12,3 +12,5 @@
   [commit]
     gpgsign = true
 ''
+# signingkey = 24C05E5FC1A52F45
+

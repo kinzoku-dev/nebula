@@ -21,7 +21,6 @@ in {
       enable = true;
       settings = {
         global = {
-          font = "JetBrainsMono Nerd Font 10";
           markup = "full";
           format = "%s\n%b";
           sort = "no";
@@ -47,7 +46,6 @@ in {
           separator_height = 4;
           padding = 20;
           horizontal_padding = 20;
-          separator_color = "auto";
           startup_notification = "true";
           browser = "x-www-browser -new-tab";
           always_run_script = "true";

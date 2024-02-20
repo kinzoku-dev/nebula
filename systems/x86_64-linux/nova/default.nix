@@ -126,7 +126,13 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
+
+  environment.systemPackages = with pkgs; let
+    kinzoku-pkgs = import inputs.nixpkgs-kinzoku {
+      system = "x86_64-linux";
+      overlays = [];
+    };
+  in
     [
       inputs.nh.packages.x86_64-linux.default
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -135,6 +141,8 @@
       nebula.nix-inspect
       sl
       appimage-run
+
+      pkgs.nebula.discover-overlay
 
       arduino
 
@@ -185,6 +193,8 @@
 
       ngrok
 
+      # kinzoku-pkgs.electron_29-bin
+
       blender
 
       udisks
@@ -200,6 +210,8 @@
       winetricks
 
       libreoffice
+
+      davinci-resolve
 
       ungoogled-chromium
       (pkgs.makeDesktopItem {

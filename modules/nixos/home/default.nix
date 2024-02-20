@@ -13,24 +13,26 @@ with lib.nebula; {
     # nebuvim.homeManagerModules.default
     schizofox.homeManagerModules.default
     spicetify-nix.homeManagerModule
-    # stylix.homeManagerModules.stylix
   ];
 
-  options.home = with types; {
-    file =
-      mkOpt attrs {}
-      "A set of files to be managed by home-manager's home.file";
-    configFile =
-      mkOpt attrs {}
-      "A set of files to be managed by home-manager's xdg.configFile";
-    programs = mkOpt attrs {} "Programs to be managed by home-manager.";
-    extraOptions = mkOpt attrs {} "Options to pass directly to home-manager.";
-    packages = mkOpt (listOf str) [] "Packages to be installed with home-manager.";
-    mimeApps = mkOpt attrs {} "Mime app settings.";
-    pointerCursor = mkOpt attrs {} "Cursor settings";
-    services = mkOpt attrs {} "service settings";
-    activation = mkOpt attrs {} "activation settings";
-    xdgDesktopEntries = mkOpt attrs {} "xdg settings";
+  options = with types; {
+    dconf = mkOpt attrs {} "stuff";
+    home = {
+      file =
+        mkOpt attrs {}
+        "A set of files to be managed by home-manager's home.file";
+      configFile =
+        mkOpt attrs {}
+        "A set of files to be managed by home-manager's xdg.configFile";
+      programs = mkOpt attrs {} "Programs to be managed by home-manager.";
+      extraOptions = mkOpt attrs {} "Options to pass directly to home-manager.";
+      packages = mkOpt (listOf str) [] "Packages to be installed with home-manager.";
+      mimeApps = mkOpt attrs {} "Mime app settings.";
+      pointerCursor = mkOpt attrs {} "Cursor settings";
+      services = mkOpt attrs {} "service settings";
+      activation = mkOpt attrs {} "activation settings";
+      xdgDesktopEntries = mkOpt attrs {} "xdg settings";
+    };
   };
 
   config = {
@@ -47,6 +49,7 @@ with lib.nebula; {
       home.homeDirectory = "/home/${config.user.name}";
       home.pointerCursor = mkIf config.desktop.gtk.enable (mkAliasDefinitions options.home.pointerCursor);
       home.activation = mkAliasDefinitions options.home.activation;
+      dconf = mkAliasDefinitions options.dconf;
     };
 
     home.packages = mkAliasDefinitions options.home.packages;
