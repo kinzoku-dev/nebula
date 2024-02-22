@@ -42,6 +42,12 @@ in {
         plugpkgs.lazygit-nvim
         plugpkgs.aerial-nvim
         {
+          plugin = plugpkgs.treesj;
+          config = toLua ''
+            require("treesj").setup()
+          '';
+        }
+        {
           plugin = plugpkgs.neocord;
           config = toLua ''
             require("neocord").setup({
@@ -319,6 +325,10 @@ in {
           };
         }
         {
+          action = "<cmd>TSJToggle<CR>";
+          key = "<leader>m";
+        }
+        {
           action = "5w";
           key = "<A-w>";
           mode = ["n" "v"];
@@ -414,7 +424,15 @@ in {
           mode = "n";
         }
         {
-          action = "<cmd>Trouble<CR>";
+          action = "<cmd>TroubleToggle<CR>";
+          key = "<leader>tt";
+        }
+        {
+          action = "<cmd>TroubleToggle quickfix<CR>";
+          key = "<leader>tq";
+        }
+        {
+          action = "<cmd>TroubleToggle lsp_references<CR>";
           key = "<leader>tr";
         }
         {
@@ -428,6 +446,7 @@ in {
         }
       ];
       plugins = {
+        nvim-bqf.enable = true;
         tmux-navigator.enable = true;
         emmet = {
           enable = true;
@@ -458,7 +477,7 @@ in {
               end
             end
           '';
-          openMapping = "<leader>tt";
+          openMapping = "<A-t>";
           hideNumbers = true;
           shadeTerminals = true;
           startInInsert = true;
@@ -472,6 +491,7 @@ in {
           currentLineBlame = false;
           currentLineBlameOpts.virtTextPos = "overlay";
         };
+        gitblame.enable = true;
         illuminate = {
           enable = true;
         };
@@ -639,6 +659,10 @@ in {
             "tsx"
             "yaml"
           ];
+          folding = false;
+          indent = true;
+          nixvimInjections = true;
+          incrementalSelection.enable = true;
         };
         barbecue = {
           enable = true;

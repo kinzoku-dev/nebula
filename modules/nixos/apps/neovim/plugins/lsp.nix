@@ -34,6 +34,7 @@
           diagnostic = {
             "<leader>lj" = "goto_next";
             "<leader>lk" = "goto_prev";
+            "<leader>lo" = "open_float";
           };
           lspBuf = {
             "<leader>lh" = "hover";
@@ -41,6 +42,8 @@
             "<leader>ld" = "definition";
             "<leader>li" = "implementation";
             "<leader>lt" = "type_definition";
+            "<leader>ln" = "rename";
+            "<leader>la" = "code_action";
           };
         };
       };

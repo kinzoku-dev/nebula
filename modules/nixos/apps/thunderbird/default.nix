@@ -14,6 +14,9 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = with pkgs; [
+      protonmail-bridge
+    ];
     home.programs.thunderbird = {
       enable = true;
       profiles = {

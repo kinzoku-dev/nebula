@@ -11,6 +11,7 @@
   exec-once=dunst &
   exec-once=nm-applet &
   exec-once=blueman-applet &
+  exec-once=wl-paste --watch cliphist store &
 
   decoration {
       rounding = 10
@@ -76,6 +77,8 @@
   bind = $mainMod, C, exec, hyprpicker | wl-copy
   bind = $mainMod, T, togglegroup
   bind = $mainMod, M, exec, rofi-calculate
+  bind = $mainMod, E, exec, emoji
+  bind = $mainMod, B, exec, rofi-clipboard
 
   bind = ,XF86AudioRaiseVolume, exec, volume --up
   bind = ,XF86AudioLowerVolume, exec, volume --down

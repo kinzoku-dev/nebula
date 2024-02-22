@@ -18,7 +18,6 @@ in {
   ];
 
   config = mkIf cfg.enable {
-    gtk.enable = true;
     stylix = {
       image = /home/${config.home.user.name}/.config/wallpapers/spaceman.png;
       autoEnable = false;

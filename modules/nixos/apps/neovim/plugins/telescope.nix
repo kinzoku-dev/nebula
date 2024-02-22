@@ -20,10 +20,6 @@
         key = "<leader>ff";
       }
       {
-        action = "<cmd>Telescope frecency<CR>";
-        key = "<leader>fr";
-      }
-      {
         action = "<cmd>Telescope oldfiles<CR>";
         key = "<leader>fo";
       }
@@ -42,6 +38,10 @@
       {
         action = "<cmd>Telescope undo<CR>";
         key = "<leader>fu";
+      }
+      {
+        action = "<cmd>Telescope lsp_references<CR>";
+        key = "<leader>fr";
       }
     ];
   };

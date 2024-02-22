@@ -153,4 +153,27 @@
       esac
     '';
   };
+  emoji = pkgs.writeShellApplication {
+    name = "emoji";
+    runtimeInputs = with pkgs; [rofi-emoji];
+    text = ''
+      dir="$HOME/.config/rofi/emoji"
+      theme='style-1'
+
+      rofi \
+      -modi emoji \
+      -show emoji \
+      -theme "''${dir}"/"''${theme}".rasi
+    '';
+  };
+  rofi-clipboard = pkgs.writeShellApplication {
+    name = "rofi-clipboard";
+    runtimeInputs = with pkgs; [rofi-wayland wl-clipboard cliphist];
+    text = ''
+      dir="$HOME/.config/rofi/clipboard"
+      theme='style-1'
+
+      cliphist list | rofi -dmenu -theme "''${dir}"/"''${theme}".rasi -p "󰅌" | cliphist decode | wl-copy
+    '';
+  };
 }
