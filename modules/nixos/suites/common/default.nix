@@ -22,7 +22,7 @@ in {
     hardware.bluetoothctl.enable = true;
 
     apps.tools.git.enable = true;
-    services.ssh.enable = true;
+    system.ssh.enable = true;
 
     environment.systemPackages = [pkgs.deploy-rs];
 

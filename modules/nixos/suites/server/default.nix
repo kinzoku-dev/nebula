@@ -17,6 +17,7 @@ in {
     suites.common.enable = true;
     suites.development.enable = true;
     security.sops.enable = true;
+    system.ssh.port = 42069;
     environment.systemPackages = [pkgs.docker-compose];
   };
 }
