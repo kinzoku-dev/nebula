@@ -143,6 +143,7 @@
       appimage-run
 
       pkgs.nebula.discover-overlay
+      pkgs.nebula.deploythatshit
 
       arduino
 

@@ -17,31 +17,6 @@ in {
     suites.common.enable = true;
     suites.development.enable = true;
     security.sops.enable = true;
-    environment.systemPackages = [pkgs.docker-compose] ++ (with pkgs.nodePackages_latest; [nodejs npm pnpm]);
-    # invidious.enable = true;
-    # vaultwarden.enable = true;
-    # searx.enable = true;
-    # nginx-proxy-manager.enable = true;
-    # rimgo.enable = true;
-    # OxO.enable = true;
-    # libreddit.enable = true;
-    users = {
-      users = {
-        postgres = {
-          isSystemUser = true;
-          group = "postgres";
-          ignoreShellProgramCheck = true;
-        };
-        invidious = {
-          group = "invidious";
-          isSystemUser = true;
-        };
-      };
-      groups = {
-        invidious = {};
-        postgres = {};
-        www-data = {};
-      };
-    };
+    environment.systemPackages = [pkgs.docker-compose];
   };
 }

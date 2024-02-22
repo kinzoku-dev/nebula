@@ -27,17 +27,5 @@ in {
     sops.age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
 
     sops.age.generateKey = true;
-
-    sops.secrets.invidious-hmac-key = {
-      mode = "444";
-      owner = "invidious";
-    };
-    sops.secrets.invidious-db-password = {
-      mode = "044";
-      owner = "postgres";
-    };
-    sops.secrets.invidious-user-password = {};
-    sops.secrets.searx-secret-key = {};
-    sops.secrets.spotifyd-password = {};
   };
 }
