@@ -18,6 +18,9 @@ in {
     suites.development.enable = true;
     security.sops.enable = true;
     system.ssh.port = 42069;
+    server.services.cloudflare.enable = true;
+    server.nextcloud.enable = true;
+    virtualisation.arion.enable = true;
     environment.systemPackages = [pkgs.docker-compose];
   };
 }

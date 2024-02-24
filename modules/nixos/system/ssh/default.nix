@@ -20,6 +20,14 @@ in {
       ports = [
         cfg.port
       ];
+      extraConfig = ''
+        GatewayPorts yes
+
+      '';
     };
+    programs.ssh.extraConfig = ''
+      Host ssh.the-nebula.xyz
+      ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
+    '';
   };
 }

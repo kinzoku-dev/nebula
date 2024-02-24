@@ -7,7 +7,7 @@
   ${displayList}
   exec-once=waybar &
   exec-once=swww init &
-  exec-once=swww img ~/Pictures/invasion_of_vryn_purple.jpg &
+  exec-once=swww img ~/.config/wallpapers/$(env ls ~/.config/wallpapers | shuf -n 1) &
   exec-once=dunst &
   exec-once=nm-applet &
   exec-once=blueman-applet &

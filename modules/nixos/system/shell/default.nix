@@ -10,7 +10,7 @@ with lib.nebula; let
   cfg = config.system.shell;
 in {
   options.system.shell = with types; {
-    shell = mkOpt (enum ["nu" "zsh"]) "zsh" "What shell to use";
+    shell = mkOpt (enum ["nu" "fish" "zsh"]) "nu" "What shell to use";
   };
 
   config = {
@@ -24,10 +24,12 @@ in {
     ];
 
     users.defaultUserShell =
-      if cfg.shell == "nu"
+      if (cfg.shell == "nu")
       then pkgs.nushell
-      else pkgs.zsh;
-    users.users.root.shell = pkgs.bashInteractive;
+      else if (cfg.shell == "fish")
+      then pkgs.bashInteractive
+      else pkgs.${cfg.shell};
+
     users.users.kinzoku.ignoreShellProgramCheck = true;
 
     home.programs.starship = {
@@ -35,6 +37,7 @@ in {
       enableZshIntegration = true;
       enableNushellIntegration = true;
       enableBashIntegration = true;
+      enableFishIntegration = true;
     };
     home.configFile."starship.toml".source = ./starship.toml;
 
@@ -58,6 +61,9 @@ in {
       ssh = "TERM=xterm-256color ssh";
       seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
       nf = "neofetch";
+      cl = "clear";
+      cd = "z";
+      cdi = "zi";
       # cdf = "cd $(fd . -t d -H | fzf)";
       # zf = "z $(fd . -t d -H | fzf)";
       # nvf = "nvim $(fd . -t f -H | fzf)";
@@ -66,7 +72,8 @@ in {
     home.programs.zoxide = {
       enable = true;
       enableZshIntegration = true;
-      enableNushellIntegration = true;
+      enableFishIntegration = true;
+      enableNushellIntegration = false;
     };
 
     home.programs.atuin = {
@@ -84,6 +91,16 @@ in {
       enable = true;
       enableNushellIntegration = true;
       enableZshIntegration = true;
+    };
+
+    programs.bash = {
+      interactiveShellInit = ''
+        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+        then
+          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+        fi
+      '';
     };
 
     home.programs.zsh = mkIf (cfg.shell == "zsh") {
@@ -121,14 +138,8 @@ in {
     home.programs.nushell = mkIf (cfg.shell == "nu") {
       enable = true;
       shellAliases = config.environment.shellAliases // {ls = "eza";};
-      envFile.text = ''
-        mkdir ~/.cache/starship
-        starship init nu | save -f ~/.cache/starship/init.nu
+      extraEnv = ''
         zoxide init nushell | save -f ~/.zoxide.nu
-      '';
-      configFile.text = ''
-        use ~/.cache/starship/init.nu
-        source ~/.zoxide.nu
       '';
       extraConfig = ''
         let carapace_completer = {|spans|
@@ -149,7 +160,7 @@ in {
                 }
             }
         }
-        $env.PATH = ($env.PATH | split row (char esep) | prepend /home/myuser/.apps | append /usr/bin/env)
+        $env.PATH = ($env.PATH | split row (char esep) | prepend /home/${config.user.name}/.apps | append /usr/bin/env)
         $env.DIRENV_LOG_FORMAT = ""
 
         def , [...packages] {
@@ -159,7 +170,22 @@ in {
         def flakeinit [template] {
             nix flake init -t github:nix-community/templates#$template
         }
+
+        source ~/.zoxide.nu
       '';
+    };
+
+    home.programs.fish = mkIf (cfg.shell == "fish") {
+      enable = true;
+      interactiveShellInit = ''
+        set fish_greeting
+      '';
+      plugins = [
+        {
+          name = "grc";
+          src = pkgs.fishPlugins.grc.src;
+        }
+      ];
     };
   };
 }

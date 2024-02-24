@@ -62,12 +62,12 @@ in {
           close_all = "ctrl+shift+space";
         };
         urgency-normal = {
-          frame_color = lib.mkForce "#${palette.base07}";
+          frame_color = "#${palette.base07}";
           foreground = "#${palette.base05}";
           background = "#${palette.base01}99";
         };
         urgency-critical = {
-          frame_color = lib.mkForce "#${palette.base08}";
+          frame_color = "#${palette.base08}";
           foreground = "#${palette.base08}";
           background = "#${palette.base01}99";
         };

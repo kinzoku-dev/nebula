@@ -27,5 +27,8 @@ in {
     sops.age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
 
     sops.age.generateKey = true;
+
+    sops.secrets.cloudflared-token = {};
+    sops.secrets.nextcloud-admin-pass = {};
   };
 }

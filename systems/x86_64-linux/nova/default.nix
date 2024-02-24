@@ -16,6 +16,13 @@
 
   system.boot.enable = true;
 
+  networking.hosts = {
+    "::1" = ["localhost" "nova"];
+    "127.0.0.1" = ["localhost"];
+    "127.0.0.2" = ["nova"];
+    "192.168.1.240" = ["nixos" "eclipse"];
+  };
+
   hardware.graphics = {
     enable = true;
     gpu = "amd";
@@ -106,6 +113,11 @@
     config.common.default = "*";
   };
 
+  hardware.openrazer = {
+    enable = true;
+    users = ["kinzoku"];
+  };
+
   services.hardware.openrgb = {
     enable = true;
     package = pkgs.openrgb-with-all-plugins;
@@ -143,7 +155,7 @@
       appimage-run
 
       pkgs.nebula.discover-overlay
-      pkgs.nebula.deploythatshit
+      razergenie
 
       arduino
 

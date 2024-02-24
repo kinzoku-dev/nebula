@@ -17,11 +17,17 @@ in {
     programs.kitty = {
       enable = true;
       environment = {};
+      font = {
+        name = "JetBrains Mono Nerd Font";
+        package = pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];};
+        size = 12;
+      };
       theme = "Catppuccin-Mocha";
       settings = {
         enable_audio_bell = false;
         window_padding_width = 2;
         confirm_os_window_close = 0;
+        background_opacity = "0.7";
         disable_ligatures = "never";
       };
     };

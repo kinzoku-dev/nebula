@@ -26,7 +26,6 @@ with lib.nebula; {
     desktop = {
       colorscheme = "catppuccin-mocha";
       swww.enable = true;
-      stylix.enable = true;
     };
     home-manager.enable = true;
   };
