@@ -52,7 +52,7 @@
   apps.fzf.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
-  apps.mullvad-vpn.enable = false;
+  apps.mullvad-vpn.enable = true;
   desktop.picom.enable = true;
   apps.flatpak.enable = true;
   apps.obsidian = {

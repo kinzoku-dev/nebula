@@ -25,7 +25,7 @@ in {
             desktopName = "Discord";
             exec = "${
               if mullvad-exclude
-              then "mullvad-exlude"
+              then "mullvad-exclude"
               else ""
             } vesktop ${
               if disable-gpu
