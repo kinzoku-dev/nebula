@@ -34,7 +34,6 @@ in {
         adminpassFile = "/etc/nextcloud-admin-pass";
         dbhost = "127.0.0.1";
         dbname = "nextcloud";
-        dbport = 5432;
         dbuser = "nextcloud";
       };
       settings = {
