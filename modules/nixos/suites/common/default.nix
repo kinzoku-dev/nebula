@@ -29,7 +29,10 @@ in {
     system = {
       locale.enable = true;
       security = {
-        doas.enable = true;
+        doas = {
+          enable = true;
+          replaceSudo = false;
+        };
         gnupg.enable = true;
       };
     };
