@@ -22,6 +22,7 @@ in {
       services.cloudflare.enable = true;
       nextcloud.enable = true;
       jellyfin.enable = true;
+      prometheus.enable = true;
       postgresql.enable = true;
     };
     services.webdav.enable = true;
