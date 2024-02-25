@@ -139,6 +139,10 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
+  services.gvfs.enable = true;
+
+  system.security.doas.replaceSudo = lib.mkForce true;
+
   environment.systemPackages = with pkgs; let
     kinzoku-pkgs = import inputs.nixpkgs-kinzoku {
       system = "x86_64-linux";
@@ -155,6 +159,7 @@
       appimage-run
 
       pkgs.nebula.discover-overlay
+      cinnamon.nemo
       razergenie
 
       arduino
