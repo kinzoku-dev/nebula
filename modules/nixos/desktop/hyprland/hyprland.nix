@@ -12,6 +12,7 @@
   exec-once=nm-applet &
   exec-once=blueman-applet &
   exec-once=wl-paste --watch cliphist store &
+  exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 
   decoration {
       rounding = 10
