@@ -14,6 +14,14 @@ with lib.nebula; let
     invidious = {};
   };
   dbNames = builtins.attrNames databases;
+  # authHba = let
+  #   allowedLocalUsers =
+  #   ["postgres" "kinzoku"];
+  #   allowedHosts = ["eclipse"];
+  #   hostAuth = lib.concatMapStringsSep "\n" (host: let
+  #     hostCfg =
+  #   in )
+  # in
 in {
   options.server.postgresql = with types; {
     enable = mkBoolOpt false "Enable postgresql";
@@ -69,6 +77,10 @@ in {
       enableTCPIP = true;
       checkConfig = false;
       settings = {
+        password_encryption = "scram-sha-256";
+        log_timezone = config.time.timeZone;
+        log_line_prefix = lib.mkForce "{%h} [%p] %q%u@%d ";
+        log_connections = true;
         ssl =
           if cfg.hasSSL
           then "on"
