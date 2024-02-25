@@ -5,6 +5,7 @@
       cursorline = {
         enable = true;
         number = true;
+        timeout = 0;
       };
       cursorword = {
         enable = true;

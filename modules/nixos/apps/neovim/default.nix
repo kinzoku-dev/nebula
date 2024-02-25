@@ -88,6 +88,11 @@ in {
         NoiceCmdlinePopupIconHelp.fg = "#${colors.base08}";
         NoiceCmdlinePopupBorderLua.fg = "#${colors.base0D}";
         NoiceCmdlinePopupIconLua.fg = "#${colors.base0D}";
+        LineNr.fg = "#${colors.base01}";
+        LineNrAbove.fg = "#${colors.base01}";
+        LineNrBelow.fg = "#${colors.base01}";
+        CursorLineNr.fg = "#${colors.base07}";
+        "@ibl.indent.char.1".fg = "#${colors.base02}";
       };
       colorschemes = {
         catppuccin = {
