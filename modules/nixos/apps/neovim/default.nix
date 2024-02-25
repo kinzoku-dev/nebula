@@ -181,6 +181,12 @@ in {
             end
         end, {silent = true})
 
+        lsnip.add_snippets('all', {
+            s('enb', {
+                t('enable = true;'),
+            }),
+        })
+
         lsnip.add_snippets('nix', {
             s('vimpluginput',
                 fmt(
