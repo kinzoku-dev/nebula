@@ -41,6 +41,7 @@ in {
         plugpkgs.friendly-snippets
         plugpkgs.lazygit-nvim
         plugpkgs.aerial-nvim
+        plugpkgs.playground
         {
           plugin = plugpkgs.treesj;
           config = toLua ''
