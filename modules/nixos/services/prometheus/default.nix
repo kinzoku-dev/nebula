@@ -26,6 +26,12 @@ in {
         node = {
           enable = true;
         };
+        nextcloud = {
+          enable = true;
+          url = "https://cloud.the-nebula.xyz/ocs/v2.php/apps/serverinfo/api/v1/info";
+          username = "root";
+          passwordFile = "/etc/nextcloud-admin-pass";
+        };
       };
       scrapeConfigs = [
         {
@@ -33,6 +39,14 @@ in {
           static_configs = [
             {
               targets = ["localhost:9090"];
+            }
+          ];
+        }
+        {
+          job_name = "node";
+          static_configs = [
+            {
+              targets = ["localhost:9100"];
             }
           ];
         }
