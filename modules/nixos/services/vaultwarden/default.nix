@@ -9,7 +9,7 @@ with lib;
 with lib.nebula; let
   cfg = config.server.vaultwarden;
 in {
-  optins.server.vaultwarden = with types; {
+  options.server.vaultwarden = with types; {
     enable = mkBoolOpt false "Enable vaultwarden";
   };
 
