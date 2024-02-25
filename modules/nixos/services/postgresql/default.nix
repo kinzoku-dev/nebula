@@ -10,6 +10,7 @@ with lib.nebula; let
   cfg = config.server.postgresql;
   databases = {
     nextcloud = {};
+    vaultwarden = {};
     invidious = {};
   };
   dbNames = builtins.attrNames databases;
