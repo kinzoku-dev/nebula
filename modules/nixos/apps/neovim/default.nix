@@ -424,8 +424,12 @@ in {
           mode = "n";
         }
         {
-          action = "<cmd>TroubleToggle<CR>";
-          key = "<leader>tt";
+          action = "<cmd>TroubleToggle document_diagnostics<CR>";
+          key = "<leader>td";
+        }
+        {
+          action = "<cmd>TroubleToggle workspace_diagnostics<CR>";
+          key = "<leader>tw";
         }
         {
           action = "<cmd>TroubleToggle quickfix<CR>";
