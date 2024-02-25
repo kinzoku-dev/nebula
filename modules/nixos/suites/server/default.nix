@@ -21,6 +21,7 @@ in {
     server.services.cloudflare.enable = true;
     server.nextcloud.enable = true;
     server.jellyfin.enable = true;
+    services.webdav.enable = true;
     virtualisation.arion.enable = true;
     environment.systemPackages = [pkgs.docker-compose];
   };

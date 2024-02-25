@@ -140,6 +140,7 @@
   # $ nix search wget
 
   services.gvfs.enable = true;
+  services.webdav.enable = true;
 
   system.security.doas.replaceSudo = lib.mkForce true;
 
