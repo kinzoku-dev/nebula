@@ -16,5 +16,7 @@ in {
   config = mkIf cfg.enable {
     environment.systemPackages = [pkgs.gnome.gnome-boxes];
     virtualisation.libvirtd.enable = true;
+    programs.virt-manager.enable = true;
+    user.extraGroups = ["libvirtd"];
   };
 }
