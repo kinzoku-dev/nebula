@@ -95,18 +95,10 @@
   bind = $mainMod SHIFT, k, movewindoworgroup, u
   bind = $mainMod SHIFT, j, movewindoworgroup, d
 
-  bind = $mainMod, G, submap, group
-
-  submap=group
-
-  bind = $mainMod SHIFT, J, changegroupactive, b
-  bind = $mainMod SHIFT, K, changegroupactive, f
-  bind = $mainMod SHIFT, H, movegroupwindow, b
-  bind = $mainMod SHIFT, L, movegroupwindow, f
-
-  bind =, escape, submap, reset
-
-  submap=reset
+  bind = ALT SHIFT, J, changegroupactive, b
+  bind = ALT SHIFT, K, changegroupactive, f
+  bind = ALT SHIFT, H, movegroupwindow, b
+  bind = ALT SHIFT, L, movegroupwindow, f
 
   # Move window with mainMod_SHIFT + arrow keys
   bind = $mainMod, R, submap, resize
