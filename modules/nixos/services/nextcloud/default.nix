@@ -30,7 +30,13 @@ in {
       };
       # https = true;
       hostName = "cloud.the-nebula.xyz";
-      config.adminpassFile = "/etc/nextcloud-admin-pass";
+      config = {
+        adminpassFile = "/etc/nextcloud-admin-pass";
+        dbhost = "127.0.0.1";
+        dbname = "nextcloud";
+        dbport = 5432;
+        dbuser = "nextcloud";
+      };
       settings = {
         trusted_domains = [
           "localhost"
