@@ -30,5 +30,6 @@ in {
 
     sops.secrets.cloudflared-token = {};
     sops.secrets.nextcloud-admin-pass = {};
+    sops.secrets.invidious-hmac-key = {};
   };
 }
