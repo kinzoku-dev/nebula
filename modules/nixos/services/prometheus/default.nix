@@ -22,6 +22,11 @@ in {
         scrape_interval = "15s";
         evaluation_interval = "15s";
       };
+      exporters = {
+        node = {
+          enable = true;
+        };
+      };
       scrapeConfigs = [
         {
           job_name = "prometheus";
