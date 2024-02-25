@@ -31,10 +31,16 @@
     fsType = "vfat";
   };
 
-  fileSystems."/media/games" = {
-    device = "/dev/disk/by-uuid/745e6b03-a87d-4bc1-bba7-32327ee6062d";
+  fileSystems."/hdds/games" = {
+    device = "/dev/disk/by-label/GAMES";
     fsType = "ext4";
-    options = ["users" "rw"];
+    options = ["defaults" "user"];
+  };
+
+  fileSystems."/hdds/vm-storage" = {
+    device = "/dev/disk/by-label/VM_STORAGE";
+    fsType = "ext4";
+    options = ["defaults" "user"];
   };
 
   swapDevices = [
