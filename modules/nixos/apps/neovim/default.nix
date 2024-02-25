@@ -680,6 +680,11 @@ in {
           nixvimInjections = true;
           incrementalSelection.enable = true;
         };
+        treesitter-refactor = {
+          enable = true;
+          highlightDefinitions.enable = true;
+          smartRename.enable = true;
+        };
         barbecue = {
           enable = true;
         };
