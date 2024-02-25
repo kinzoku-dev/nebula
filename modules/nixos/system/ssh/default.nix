@@ -15,8 +15,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    users.mutableUsers = false;
+    users.users.root.hashedPassword = "*";
     services.openssh = {
       enable = true;
+      permitRootLogin = "without-password";
       ports = [
         cfg.port
       ];
