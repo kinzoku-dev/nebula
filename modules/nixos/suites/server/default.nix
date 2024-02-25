@@ -18,9 +18,12 @@ in {
     suites.development.enable = true;
     security.sops.enable = true;
     system.ssh.port = 42069;
-    server.services.cloudflare.enable = true;
-    server.nextcloud.enable = true;
-    server.jellyfin.enable = true;
+    server = {
+      services.cloudflare.enable = true;
+      nextcloud.enable = true;
+      jellyfin.enable = true;
+      postgresql.enable = true;
+    };
     services.webdav.enable = true;
     virtualisation.arion.enable = true;
     environment.systemPackages = [pkgs.docker-compose];
