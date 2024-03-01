@@ -14,19 +14,26 @@ in {
   };
 
   config = mkIf cfg.enable {
-    hardware.networking = {
-      enable = true;
+    nix.allowedUsers = ["@wheel"];
+    hardware = {
+      networking = {
+        nm.enable = true;
+        fw = {
+          enable = true;
+        };
+      };
+      audio.enable = true;
+
+      bluetoothctl.enable = true;
     };
-    hardware.audio.enable = true;
-
-    hardware.bluetoothctl.enable = true;
-
-    apps.tools.git.enable = true;
-    system.ssh.enable = true;
-
-    environment.systemPackages = [pkgs.deploy-rs];
-
     system = {
+      boot = {
+        enable = true;
+      };
+      ssh = {
+        enable = true;
+      };
+
       locale.enable = true;
       security = {
         doas = {
@@ -36,5 +43,8 @@ in {
         gnupg.enable = true;
       };
     };
+    apps.tools.git.enable = true;
+
+    environment.systemPackages = [pkgs.deploy-rs];
   };
 }

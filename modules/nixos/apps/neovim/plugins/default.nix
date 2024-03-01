@@ -10,5 +10,7 @@
     ./telescope.nix
     ./cursorline.nix
     ./notify.nix
+    ./git
+    ./bufferline.nix
   ];
 }

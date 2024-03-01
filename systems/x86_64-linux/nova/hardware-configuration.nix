@@ -11,36 +11,32 @@
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+  boot = {
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
+    initrd.kernelModules = lib.mkIf (config.hardware.graphics.gpu == "amd") [
+      "amdgpu"
+    ];
+    kernelModules = ["kvm-amd"];
+    extraModulePackages = [];
 
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-  boot.initrd.kernelModules = lib.mkIf (config.hardware.graphics.gpu == "amd") [
-    "amdgpu"
-  ];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
-
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/041c3424-016e-490a-ab27-1b0aad8c65ef";
-    fsType = "ext4";
+    kernelPackages = pkgs.linuxPackages_latest;
   };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/041c3424-016e-490a-ab27-1b0aad8c65ef";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0D44-5CCD";
-    fsType = "vfat";
-  };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/0D44-5CCD";
+      fsType = "vfat";
+    };
 
-  fileSystems."/hdds/games" = {
-    device = "/dev/disk/by-label/GAMES";
-    fsType = "ext4";
-    options = ["defaults" "user"];
-  };
-
-  fileSystems."/hdds/vm-storage" = {
-    device = "/dev/disk/by-label/VM_STORAGE";
-    fsType = "ext4";
-    options = ["defaults" "user"];
+    "/home/kinzoku/storage" = {
+      device = "/dev/disk/by-label/STORAGE";
+      fsType = "ext4";
+      options = ["defaults" "user"];
+    };
   };
 
   swapDevices = [

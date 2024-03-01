@@ -21,6 +21,7 @@ in {
       fd
       ripgrep
       wget
+      grc
     ];
 
     users.defaultUserShell =
@@ -62,8 +63,6 @@ in {
       seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
       nf = "neofetch";
       cl = "clear";
-      cd = "z";
-      cdi = "zi";
       # cdf = "cd $(fd . -t d -H | fzf)";
       # zf = "z $(fd . -t d -H | fzf)";
       # nvf = "nvim $(fd . -t f -H | fzf)";
@@ -80,6 +79,7 @@ in {
       enable = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
+      enableFishIntegration = true;
       settings = {
         enter_accept = true;
         filter_mode_shell_up_key_binding = "session";
@@ -91,6 +91,7 @@ in {
       enable = true;
       enableNushellIntegration = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
     };
 
     programs.bash = {
@@ -177,8 +178,10 @@ in {
 
     home.programs.fish = mkIf (cfg.shell == "fish") {
       enable = true;
+      shellAliases = config.environment.shellAliases;
       interactiveShellInit = ''
         set fish_greeting
+        fish_vi_key_bindings
       '';
       plugins = [
         {

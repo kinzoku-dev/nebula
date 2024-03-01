@@ -20,7 +20,6 @@
     "::1" = ["localhost" "nova"];
     "127.0.0.1" = ["localhost"];
     "127.0.0.2" = ["nova"];
-    "192.168.1.240" = ["nixos" "eclipse"];
   };
 
   hardware.graphics = {
@@ -32,6 +31,7 @@
 
   suites.common.enable = true;
   suites.development.enable = true;
+  system.security.doas.noPassword = true;
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -75,7 +75,7 @@
 
   programs.dconf.enable = true;
   # system.xremap.enable = true;
-  system.shell.shell = "nu";
+  system.shell.shell = "fish";
   desktop.xmonad.enable = true;
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;

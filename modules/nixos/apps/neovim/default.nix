@@ -39,14 +39,12 @@ in {
         plugpkgs = pkgs.vimPlugins;
       in [
         plugpkgs.friendly-snippets
-        plugpkgs.lazygit-nvim
         plugpkgs.aerial-nvim
         plugpkgs.playground
+        plugpkgs.nui-nvim
         {
           plugin = plugpkgs.treesj;
-          config = toLua ''
-            require("treesj").setup()
-          '';
+          config = toLua ''require("treesj").setup() '';
         }
         {
           plugin = plugpkgs.neocord;
@@ -89,9 +87,9 @@ in {
         NoiceCmdlinePopupIconHelp.fg = "#${colors.base08}";
         NoiceCmdlinePopupBorderLua.fg = "#${colors.base0D}";
         NoiceCmdlinePopupIconLua.fg = "#${colors.base0D}";
-        LineNr.fg = "#${colors.base01}";
-        LineNrAbove.fg = "#${colors.base01}";
-        LineNrBelow.fg = "#${colors.base01}";
+        LineNr.fg = "#${colors.base05}";
+        LineNrAbove.fg = "#${colors.base05}";
+        LineNrBelow.fg = "#${colors.base05}";
         CursorLineNr.fg = "#${colors.base07}";
         "@ibl.indent.char.1".fg = "#${colors.base02}";
       };
@@ -337,24 +335,6 @@ in {
           };
         }
         {
-          action = "<cmd>TSJToggle<CR>";
-          key = "<leader>m";
-        }
-        {
-          action = "5w";
-          key = "<A-w>";
-          mode = ["n" "v"];
-        }
-        {
-          action = "5b";
-          key = "<A-b>";
-          mode = ["n" "v"];
-        }
-        {
-          action = "<cmd>LazyGit<CR>";
-          key = "<leader>gg";
-        }
-        {
           action = "nzzzv";
           key = "n";
         }
@@ -365,6 +345,10 @@ in {
         {
           action = "<cmd>noh<CR>";
           key = "<leader>noh";
+        }
+        {
+          action = "<cmd>TSJToggle<CR>";
+          key = "<leader>m";
         }
         {
           action = "<cmd>AerialToggle!<CR>";
@@ -389,26 +373,6 @@ in {
         {
           action = "<cmd>wq<CR>";
           key = "<leader>wq";
-        }
-        {
-          action = "<cmd>Gitsigns blame_line<CR>";
-          key = "<leader>gb";
-        }
-        {
-          action = "<cmd>Gitsigns toggle_current_line_blame<CR>";
-          key = "<leader>gbt";
-        }
-        {
-          action = "<cmd>bnext<CR>";
-          key = "<leader><Tab>";
-        }
-        {
-          action = "<cmd>bprev<CR>";
-          key = "<leader><S-Tab>";
-        }
-        {
-          action = "<cmd>bdel<CR>";
-          key = "<C-x>";
         }
         {
           action = "\"_dP";
@@ -502,11 +466,6 @@ in {
           insertMappings = false;
           closeOnExit = true;
         };
-        gitsigns = {
-          enable = true;
-          currentLineBlame = false;
-          currentLineBlameOpts.virtTextPos = "overlay";
-        };
         gitblame.enable = true;
         illuminate = {
           enable = true;
@@ -525,51 +484,6 @@ in {
             md = ["vale"];
           };
         };
-        bufferline = {
-          enable = true;
-          bufferCloseIcon = "";
-          closeIcon = "";
-          modifiedIcon = "";
-          indicator.style = "underline";
-          rightTruncMarker = "";
-          leftTruncMarker = "";
-          groups = {
-            items = [
-              {
-                name = "Docs";
-                highlight = {
-                  undercurl = true;
-                  sp = "#${colors.base0B}";
-                };
-                auto_close = false;
-
-                matcher = ''
-                  function(buf)
-                      return buf.filename:match('%.md') or buf.filename:match('%.txt')
-                  end,
-                '';
-                separator = {
-                  style = "require('bufferline.groups').separator.tab";
-                };
-              }
-              {
-                name = "Tests";
-                higlight = {
-                  underline = true;
-                  sp = "#${colors.base0A}";
-                };
-                priority = 2;
-
-                icon = "󰂖";
-                matcher = ''
-                  function(buf) -- Mandatory
-                      return buf.filename:match('%_test') or buf.filename:match('%_spec')
-                  end,
-                '';
-              }
-            ];
-          };
-        };
         lualine = {
           enable = true;
           iconsEnabled = true;
@@ -584,12 +498,46 @@ in {
         };
         luasnip = {
           enable = true;
+          extraConfig = {
+            enable_autosnippets = true;
+            store_selection_keys = "<Tab>";
+          };
+          fromVscode = [
+            {
+              lazyLoad = true;
+              paths = "${pkgs.vimPlugins.friendly-snippets}";
+            }
+          ];
         };
         neo-tree = {
           enable = true;
+          enableDiagnostics = true;
+          enableGitStatus = true;
+          enableModifiedMarkers = true;
+          enableRefreshOnWrite = true;
+          closeIfLastWindow = true;
+          popupBorderStyle = "rounded";
+          buffers = {
+            bindToCwd = false;
+            followCurrentFile = {
+              enabled = true;
+            };
+          };
+          window = {
+            width = 40;
+            height = 15;
+            autoExpandWidth = false;
+            mappings = {
+              "<space>" = "none";
+            };
+          };
         };
         noice = {
           enable = true;
+          popupmenu = {
+            enabled = true;
+            backend = "nui";
+          };
           lsp = {
             override = {
               "vim.lsp.util.convert_input_to_markdown_lines" = true;
@@ -652,6 +600,8 @@ in {
         treesitter = {
           enable = true;
           ensureInstalled = [
+            "bash"
+            "fish"
             "rust"
             "lua"
             "nix"

@@ -14,18 +14,20 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.programs.btop = {
-      enable = true;
-      settings = {
-        theme_background = false;
-        vim_keys = true;
-        color_theme = "catppuccin_mocha";
+    home = {
+      programs.btop = {
+        enable = true;
+        settings = {
+          theme_background = false;
+          vim_keys = true;
+          color_theme = "catppuccin_mocha";
+        };
       };
-    };
 
-    home.configFile."btop/themes/catppuccin_mocha.theme" = {
-      source = ./catppuccin_mocha.theme;
-      recursive = true;
+      configFile."btop/themes/catppuccin_mocha.theme" = {
+        source = ./catppuccin_mocha.theme;
+        recursive = true;
+      };
     };
 
     environment.systemPackages = with pkgs; [

@@ -4,7 +4,7 @@
       notify = {
         enable = true;
         maxWidth = 50;
-        timeout = 1000;
+        timeout = 500;
         topDown = false;
         icons = {
           debug = "󰯠";

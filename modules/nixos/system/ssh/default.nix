@@ -16,21 +16,21 @@ in {
 
   config = mkIf cfg.enable {
     users.mutableUsers = false;
-    users.users.root.hashedPassword = "*";
+    users.users.root.initialPassword = "wigglenuts123";
     services.openssh = {
       enable = true;
-      permitRootLogin = "without-password";
+      passwordAuthentication = false;
+      challengeResponseAuthentication = false;
       ports = [
         cfg.port
       ];
       extraConfig = ''
-        GatewayPorts yes
-
+        AllowTcpForwarding yes
+        X11Forwarding no
+        AllowAgentForwarding no
+        AllowStreamLocalForwarding no
+        AuthenticationMethods publickey
       '';
     };
-    programs.ssh.extraConfig = ''
-      Host ssh.the-nebula.xyz
-      ProxyCommand ${pkgs.cloudflared}/bin/cloudflared access ssh --hostname %h
-    '';
   };
 }

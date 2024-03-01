@@ -12,6 +12,7 @@ in {
   options.system.security.doas = {
     enable = mkBoolOpt false "Enable doas";
     replaceSudo = mkBoolOpt true "replace sudo with doas";
+    noPassword = mkBoolOpt false "Don't require password with doas";
   };
 
   config = mkIf cfg.enable {
@@ -24,7 +25,7 @@ in {
       extraRules = [
         {
           users = [config.user.name];
-          noPass = true;
+          noPass = cfg.noPassword;
           keepEnv = true;
         }
       ];
