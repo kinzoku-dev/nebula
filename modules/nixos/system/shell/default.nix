@@ -55,6 +55,7 @@ in {
       gp = "git push -u origin";
       lg = "lazygit";
       az = "yazi";
+      ya = "yazi";
       spoodle = "ssh poodle@mc.theduckpond.xyz -p 42069";
       tx = "tmux";
       hss = "hugo server --noHTTPCache";

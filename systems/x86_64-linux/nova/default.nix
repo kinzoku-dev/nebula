@@ -20,6 +20,7 @@
     "::1" = ["localhost" "nova"];
     "127.0.0.1" = ["localhost"];
     "127.0.0.2" = ["nova"];
+    "192.168.1.129" = ["nixos" "eclipse"];
   };
 
   hardware.graphics = {

@@ -18,6 +18,7 @@ in {
       enable = true;
       enableZshIntegration = true;
       enableNushellIntegration = true;
+      enableFishIntegration = true;
       settings = {
         manager = {
           layout = [0 1 1];

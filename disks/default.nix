@@ -32,42 +32,67 @@
             name = "root";
             size = "100%";
             content = {
-              type = "lvm_pv";
-              vg = "root_vg";
+              type = "zfs";
+              pool = "zroot";
             };
           };
         };
       };
     };
-    lvm_vg = {
-      root_vg = {
-        type = "lvm_vg";
-        lvs = {
-          root = {
-            size = "100%FREE";
-            content = {
-              type = "btrfs";
-              extraArgs = ["-f"];
+    zpool = {
+      zroot = {
+        type = "zpool";
+        rootFsOptions = {
+          compression = "zstd";
+          "com.sun:auto-snapshot" = "false";
+        };
+        mountpoint = "/";
+        postCreateHook = "zfs snapshot zroot@blank";
 
-              subvolumes = {
-                "/root" = {
-                  mountpoint = "/";
-                };
-
-                "/persist" = {
-                  mountOptions = ["subvol=persist" "noatime"];
-                  mountpoint = "/persist";
-                };
-
-                "/nix" = {
-                  mountOptions = ["subvol=nix" "noatime"];
-                  mountpoint = "/nix";
-                };
-              };
-            };
+        datasets = {
+          nix = {
+            type = "zfs_fs";
+            mountpoint = "/nix";
+          };
+          tmp = {
+            type = "zfs_fs";
+            mountpoint = "/tmp";
+          };
+          persist = {
+            type = "zfs_fs";
+            mountpoint = "/persist";
+          };
+          persist-cache = {
+            type = "zfs_fs";
+            mountpoint = "/persist/cache";
           };
         };
       };
+      # lvs = {
+      #   root = {
+      #     size = "100%FREE";
+      #     content = {
+      #       type = "zfs";
+      #       extraArgs = ["-f"];
+      #
+      #       subvolumes = {
+      #         "/root" = {
+      #           mountpoint = "/";
+      #         };
+      #
+      #         "/persist" = {
+      #           mountOptions = ["subvol=persist" "noatime"];
+      #           mountpoint = "/persist";
+      #         };
+      #
+      #         "/nix" = {
+      #           mountOptions = ["subvol=nix" "noatime"];
+      #           mountpoint = "/nix";
+      #         };
+      #       };
+      #     };
+      #   };
+      # };
     };
   };
 }
