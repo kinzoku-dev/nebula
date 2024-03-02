@@ -180,6 +180,11 @@ in {
     home.programs.fish = mkIf (cfg.shell == "fish") {
       enable = true;
       shellAliases = config.environment.shellAliases;
+      shellAbbrs = {
+        txn = "tx new";
+        txa = "tx a";
+        txd = "tx detach";
+      };
       interactiveShellInit = ''
         set fish_greeting
         fish_vi_key_bindings
