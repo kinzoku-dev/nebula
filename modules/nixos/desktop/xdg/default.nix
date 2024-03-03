@@ -32,5 +32,15 @@ in {
         };
       };
     };
+    system.persist.home.dirs = [
+      "Desktop"
+      "Documents"
+      "Downloads"
+      "Audio"
+      "Video"
+      "Images"
+      "Dev"
+      "Notes"
+    ];
   };
 }

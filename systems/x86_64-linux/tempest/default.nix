@@ -16,6 +16,8 @@
 
   system.boot.enable = true;
 
+  networking.hostId = "c106acaf";
+
   hardware.graphics = {
     enable = true;
     gpu = "nvidia";
@@ -30,6 +32,10 @@
 
   suites.common.enable = true;
   suites.development.enable = true;
+  system.security.doas = {
+    noPassword = true;
+    replaceSudo = lib.mkForce true;
+  };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -104,9 +110,6 @@
     xkbVariant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -135,8 +138,6 @@
       gum
 
       r2modman
-
-      nebula.houston
 
       obs-studio
 

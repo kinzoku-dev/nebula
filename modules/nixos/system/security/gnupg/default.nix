@@ -23,6 +23,11 @@ in {
       enableSSHSupport = true;
     };
 
+    system.persist.home.dirs = [
+      ".gnupg"
+      ".local/share/gnupg"
+    ];
+
     home.file.".local/share/gnupg/gpg-agent.conf".source = ./gpg-agent.conf;
 
     environment.sessionVariables = {

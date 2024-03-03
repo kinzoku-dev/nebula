@@ -14,8 +14,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    hardware.bluetooth.enable = true; # enables support for Bluetooth
-    hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    hardware = {
+      bluetooth.enable = true; # enables support for Bluetooth
+      bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
+    };
     services.blueman.enable = true;
+
+    system.persist.root.dirs = ["/var/lib/bluetooth"];
   };
 }

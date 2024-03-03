@@ -10,6 +10,7 @@ with lib;
 with lib.nebula; let
   cfg = config.desktop.hyprland;
   inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
+  colors = palette;
 in {
   options.desktop.hyprland = with types; {
     enable = mkBoolOpt false "Enable hyprland";
@@ -67,7 +68,6 @@ in {
   config = mkIf cfg.enable {
     home.extraOptions.wayland.windowManager.hyprland = {
       enable = true;
-      package = inputs.hyprland.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
       systemd = {
         enable = true;
@@ -106,6 +106,87 @@ in {
     };
 
     programs.hyprland.enable = true;
+    programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+
+    # home.extraOptions.wayland.windowManager.hyprland = {
+    #   enable = true;
+    #   settings = {
+    #     "$mainMod" = "SUPER";
+    #     decoration = {
+    #       rounding = 10;
+    #       shadow_range = 4;
+    #       shadow_render_power = 3;
+    #       "col.shadow" = "rgba(1a1a1aee)";
+    #       blur = {
+    #         size = 3;
+    #         passes = 3;
+    #         new_optimizations = true;
+    #         xray = false;
+    #       };
+    #     };
+    #     layerrule = [
+    #       "blur,rofi"
+    #       "blur,notifications"
+    #     ];
+    #     env = [
+    #       "WLR_NO_HARDWARE_CURSORS,1"
+    #       "GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark"
+    #       "WLR_DRM_NO_ATOMIC,1"
+    #     ];
+    #     general = {
+    #       border_size = 3;
+    #       layout = "dwindle";
+    #       gaps_in = 5;
+    #       gaps_out = 10;
+    #       "col.active_border" = "rgb(${colors.base07})";
+    #       "col.inactive_border" = "rgb(${colors.base02})";
+    #     };
+    #     input = {
+    #       kb_options = "caps:escape,grp:win_space_toggle";
+    #       kb_layout = "us,us,us";
+    #       kb_variant = ",intl,colemak_dh";
+    #       accel_profile = "flat";
+    #       sensitivity = 0.6;
+    #     };
+    #     dwindle = {
+    #       preserve_split = "yes";
+    #     };
+    #     bind = [
+    #       "$mainMod SHIFT, Return, exec, kitty"
+    #       "$mainMod SHIFT, C, killactive"
+    #       "$mainMod, P, exec, rofi-drun"
+    #       "$mainMod SHIFT, P, exec, powermenu"
+    #       "$mainMod, D, exec, rofi-run"
+    #       "$mainMod, W, exec, rofi-windows"
+    #       "$mainMod, Z, exec, rofi-pdf"
+    #       "$mainMod SHIFT, W, exec, rofi-wallpaper"
+    #       "$mainMod, N, exec, wifi-menu"
+    #       "$mainmod, U, exec, uploader"
+    #       "$mainMod, M, exec, rofi-calculate"
+    #       "$mainMod, E, exec, emoji"
+    #       "$mainMod, B, exec, rofi-clipboard"
+    #       "$mainMod SHIFT, S, exec, grimblast --freeze copy area"
+    #       "$mainMod, V, togglefloating"
+    #       "$mainMod, C, exec, hyprpicker | wl-copy"
+    #       "$mainMod, T, togglegroup"
+    #       ",XF86AudioRaiseVolume, exec, volume --up"
+    #       ",XF86AudioLowerVolume, exec, volume --down"
+    #       ",XF86AudioMute, exec, volume --toggle"
+    #       "$mainMod, h, movefocus, l"
+    #       "$mainMod, l, movefocus, r"
+    #       "$mainMod, k, movefocus, u"
+    #       "$mainMod, j, movefocus, d"
+    #       "$mainMod SHIFT, h, movewindoworgroup, l"
+    #       "$mainMod SHIFT, l, movewindoworgroup, r"
+    #       "$mainMod SHIFT, k, movewindoworgroup, u"
+    #       "$mainMod SHIFT, j, movewindoworgroup, d"
+    #       "ALT SHIFT, J, changegroupactive, b"
+    #       "ALT SHIFT, K, changegroupactive, f"
+    #       "ALT SHIFT, H, movegroupwindow, b"
+    #       "ALT SHIFT, L, movegroupwindow, f"
+    #     ];
+    #   };
+    # };
 
     environment.systemPackages = with pkgs;
       [

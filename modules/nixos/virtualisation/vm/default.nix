@@ -14,8 +14,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [pkgs.gnome.gnome-boxes];
+    environment.systemPackages = with pkgs; [virtiofsd];
     virtualisation.libvirtd.enable = true;
+    programs.virt-manager.enable = true;
+
     user.extraGroups = ["libvirtd"];
+
+    system.persist.root.cache = ["/var/lib/libvirt"];
   };
 }

@@ -20,6 +20,10 @@ in {
       enableNushellIntegration = true;
     };
 
+    system.persist.home.dirs = [
+      ".local/share/direnv"
+    ];
+
     environment.sessionVariables.DIRENV_LOG_FORMAT = ""; # Blank so direnv will shut up
   };
 }

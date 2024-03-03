@@ -32,5 +32,8 @@ in {
         AuthenticationMethods publickey
       '';
     };
+    system.persist.home.dirs = [
+      ".ssh"
+    ];
   };
 }

@@ -18,20 +18,20 @@ in {
       programs.btop = {
         enable = true;
         settings = {
+          color_theme = "catppuccin_mocha";
           theme_background = false;
           vim_keys = true;
-          color_theme = "catppuccin_mocha";
         };
       };
-
-      configFile."btop/themes/catppuccin_mocha.theme" = {
-        source = ./catppuccin_mocha.theme;
-        recursive = true;
+      programs.cava = {
+        enable = true;
+        settings = {};
       };
     };
 
     environment.systemPackages = with pkgs; [
       lm_sensors
+      nvtop-amd
     ];
   };
 }

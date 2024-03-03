@@ -16,6 +16,8 @@ in {
   config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       protonmail-bridge
+      pass-wayland
+      pass
     ];
     home.programs.thunderbird = {
       enable = true;

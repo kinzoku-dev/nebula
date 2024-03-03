@@ -119,6 +119,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     impermanence.url = "github:kinzoku-dev/impermanence";
+
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+    catppuccin-cava = {
+      url = "github:catppuccin/cava";
+      flake = false;
+    };
+    catppuccin-starship = {
+      url = "github:catppuccin/starship";
+      flake = false;
+    };
   };
 
   outputs = inputs: let
@@ -150,10 +163,18 @@
       ];
 
       systems.hosts.eclipse.modules = with inputs; [
-        (import ./disks/default.nix {device = "/dev/nvme0n1";})
+        (import ./disks/default.nix {
+          inherit lib;
+          swap = true;
+          device = "/dev/nvme0n1";
+        })
       ];
       systems.hosts.tempest.modules = with inputs; [
-        (import ./disks/default.nix {device = "/dev/nvme0n1";})
+        (import ./disks/default.nix {
+          inherit lib;
+          swap = true;
+          device = "/dev/nvme0n1";
+        })
       ];
 
       systems.modules.nixos = with inputs; [

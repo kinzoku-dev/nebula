@@ -26,6 +26,7 @@ in {
 
       bluetoothctl.enable = true;
     };
+    systemd.services.NetworkManager-wait-online.enable = false;
     system = {
       boot = {
         enable = true;
@@ -44,7 +45,10 @@ in {
       };
     };
     apps.tools.git.enable = true;
+    services.gvfs.enable = true;
 
     environment.systemPackages = [pkgs.deploy-rs];
+    # Enable CUPS to print documents.
+    services.printing.enable = true;
   };
 }

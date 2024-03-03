@@ -37,7 +37,17 @@
       {
         mode = "n";
         key = "<leader>bp";
+        action = "<cmd>BufferLinePick<cr>";
+      }
+      {
+        mode = "n";
+        key = "<leader>bt";
         action = "<cmd>BufferLineTogglePin<cr>";
+      }
+      {
+        mode = "n";
+        key = "<leader>bb";
+        action = "<cmd>e #<cr>";
       }
       {
         mode = "n";

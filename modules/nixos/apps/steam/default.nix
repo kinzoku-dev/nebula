@@ -51,6 +51,9 @@ in {
       dedicatedServer.openFirewall = true;
     };
 
+    system.persist.home.dirs = [
+      ".local/share/Steam"
+    ];
     environment.systemPackages = [
       pkgs.protonup-ng
       pkgs.gamescope

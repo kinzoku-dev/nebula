@@ -27,5 +27,8 @@ in {
     };
     programs.noisetorch.enable = true;
     environment.systemPackages = [pkgs.pavucontrol pkgs.pulsemixer];
+    system.persist.home.dirs = [
+      ".local/state/wireplumber"
+    ];
   };
 }

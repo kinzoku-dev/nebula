@@ -15,12 +15,14 @@
   ];
 
   system.boot.enable = true;
-
-  networking.hosts = {
-    "::1" = ["localhost" "nova"];
-    "127.0.0.1" = ["localhost"];
-    "127.0.0.2" = ["nova"];
-    "192.168.1.129" = ["nixos" "eclipse"];
+  networking = {
+    hostId = "9bf01da4";
+    hosts = {
+      "::1" = ["localhost" "nova"];
+      "127.0.0.1" = ["localhost"];
+      "127.0.0.2" = ["nova"];
+      "192.168.1.129" = ["nixos" "eclipse"];
+    };
   };
 
   hardware.graphics = {
@@ -32,7 +34,10 @@
 
   suites.common.enable = true;
   suites.development.enable = true;
-  system.security.doas.noPassword = true;
+  system.security.doas = {
+    noPassword = true;
+    replaceSudo = lib.mkForce true;
+  };
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
@@ -131,19 +136,13 @@
     xkbVariant = "";
   };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
 
-  services.gvfs.enable = true;
   services.webdav.enable = true;
-
-  system.security.doas.replaceSudo = lib.mkForce true;
 
   environment.systemPackages = with pkgs; let
     kinzoku-pkgs = import inputs.nixpkgs-kinzoku {
@@ -180,8 +179,6 @@
 
       r2modman
 
-      nebula.houston
-
       obs-studio
       xwaylandvideobridge
 
@@ -209,7 +206,6 @@
 
       jre
       minetest
-      nmap
 
       ngrok
 

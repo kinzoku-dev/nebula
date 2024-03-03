@@ -29,6 +29,9 @@ in {
       services.xserver.videoDrivers = [
         "${gpuDriver}"
       ];
+      boot.initrd.kernelModules = [
+        (lib.optionalString (cfg.gpu == "amd") "amdgpu")
+      ];
       hardware.nvidia = mkIf (cfg.gpu == "nvidia") {
         modesetting.enable = true;
         prime = mkIf cfg.nvidiaOffload.enable {
