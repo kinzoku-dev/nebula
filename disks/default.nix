@@ -4,7 +4,6 @@
       disk.main = {
         inherit device;
         type = "disk";
-        imageSize = "2G";
         content = {
           type = "gpt";
           partitions = {
@@ -30,7 +29,7 @@
                 resumeDevice = true;
               };
             };
-            zfs = {
+            root = {
               size = "100%";
               content = {
                 type = "zfs";
@@ -44,28 +43,35 @@
         zroot = {
           type = "zpool";
           rootFsOptions = {
-            compression = "zstd";
-            "com.sun:auto-snapshot" = "false";
+            canmount = "off";
           };
-          mountpoint = "/";
-          postCreateHook = "zfs snapshot zroot@blank";
 
           datasets = {
+            root = {
+              type = "zfs_fs";
+              mountpoint = "/";
+              options.mountpoint = "legacy";
+              postCreateHook = "zfs snapshot zroot/root@blank";
+            };
             nix = {
               type = "zfs_fs";
               mountpoint = "/nix";
+              options.mountpoint = "legacy";
             };
             tmp = {
               type = "zfs_fs";
               mountpoint = "/tmp";
+              options.mountpoint = "legacy";
             };
             persist = {
               type = "zfs_fs";
               mountpoint = "/persist";
+              options.mountpoint = "legacy";
             };
             persist-cache = {
               type = "zfs_fs";
               mountpoint = "/persist/cache";
+              options.mountpoint = "legacy";
             };
           };
         };

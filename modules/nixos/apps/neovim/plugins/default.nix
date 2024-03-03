@@ -1,4 +1,11 @@
-{...}: {
+{
+  inputs,
+  config,
+  ...
+}: let
+  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
+  colors = palette;
+in {
   imports = [
     ./lsp.nix
     ./nvim-cmp.nix
@@ -11,6 +18,6 @@
     ./cursorline.nix
     ./notify.nix
     ./git
-    ./bufferline.nix
+    (import ./bufferline.nix {inherit colors;})
   ];
 }

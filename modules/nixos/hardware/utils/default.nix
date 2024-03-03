@@ -3,6 +3,7 @@
   options,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 with lib;
@@ -18,7 +19,7 @@ in {
       programs.btop = {
         enable = true;
         settings = {
-          color_theme = "catppuccin_mocha";
+          color_theme = "dracula";
           theme_background = false;
           vim_keys = true;
         };
@@ -26,6 +27,13 @@ in {
       programs.cava = {
         enable = true;
         settings = {};
+      };
+      configFile = {
+        "cava/config".text =
+          ''
+            # custom cava config
+          ''
+          + builtins.readFile "${inputs.catppuccin-cava}/mocha.cava";
       };
     };
 

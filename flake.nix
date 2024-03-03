@@ -33,16 +33,20 @@
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland?ref=v0.34.0";
+      url = "github:hyprwm/Hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
-    split-monitor-workspaces = {
-      url = "github:Duckonaut/split-monitor-workspaces";
-      inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+    # split-monitor-workspaces = {
+    #   url = "github:Duckonaut/split-monitor-workspaces";
+    #   inputs.hyprland.follows = "hyprland"; # <- make sure this line is present for the plugin to work as intended
+    # };
+    hyprsome = {
+      url = "github:sopa0/hyprsome";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     anyrun = {

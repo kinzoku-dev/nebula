@@ -28,8 +28,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    #TODO: SET UP TMPFS
-
     boot = {
       # Clear /tmp on boot
       tmp.cleanOnBoot = true;

@@ -78,7 +78,7 @@ in {
         ];
       };
       plugins = with inputs; [
-        split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
+        # split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
       extraConfig = let
         displayList = lib.concatLines (
@@ -94,7 +94,7 @@ in {
         workspaceMonitors = lib.concatLines (
           lib.lists.concatMap
           (
-            m: map (w: "${toString w},monitor:${m.name}") (m.workspaces)
+            m: map (w: "workspace=${toString w},monitor:${m.name}") (m.workspaces)
           )
           (cfg.displays)
         );
@@ -105,9 +105,10 @@ in {
         }}
       '';
     };
-
-    programs.hyprland.enable = true;
-    programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    programs.hyprland = {
+      enable = true;
+      package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    };
 
     # home.extraOptions.wayland.windowManager.hyprland = {
     #   enable = true;
@@ -199,6 +200,7 @@ in {
 
         wl-clipboard
         cliphist
+        inputs.hyprsome.packages."${pkgs.system}".default
 
         xwaylandvideobridge
 

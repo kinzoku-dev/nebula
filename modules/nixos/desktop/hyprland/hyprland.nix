@@ -35,12 +35,6 @@
   env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
   env = WLR_DRM_NO_ATOMIC,1
 
-  plugin {
-      split-monitor-workspaces {
-          count = 10
-      }
-  }
-
   general {
       border_size = 3
       layout = dwindle
@@ -116,33 +110,34 @@
 
   submap=reset
 
-  bind = $mainMod, 1, split-workspace, 1
-  bind = $mainMod, 2, split-workspace, 2
-  bind = $mainMod, 3, split-workspace, 3
-  bind = $mainMod, 4, split-workspace, 4
-  bind = $mainMod, 5, split-workspace, 5
-  bind = $mainMod, 6, split-workspace, 6
-  bind = $mainMod, 7, split-workspace, 7
-  bind = $mainMod, 8, split-workspace, 8
-  bind = $mainMod, 9, split-workspace, 9
-  bind = $mainMod, 0, split-workspace, 10
+  bind = $mainMod, 1, exec, hyprsome workspace 1
+  bind = $mainMod, 2, exec, hyprsome workspace 2
+  bind = $mainMod, 3, exec, hyprsome workspace 3
+  bind = $mainMod, 4, exec, hyprsome workspace 4
+  bind = $mainMod, 5, exec, hyprsome workspace 5
+  bind = $mainMod, 6, exec, hyprsome workspace 6
+  bind = $mainMod, 7, exec, hyprsome workspace 7
+  bind = $mainMod, 8, exec, hyprsome workspace 8
+  bind = $mainMod, 9, exec, hyprsome workspace 9
+  bind = $mainMod, 0, exec, hyprsome workspace 10
 
-  bind = $mainMod SHIFT, 1, split-movetoworkspacesilent, 1
-  bind = $mainMod SHIFT, 2, split-movetoworkspacesilent, 2
-  bind = $mainMod SHIFT, 3, split-movetoworkspacesilent, 3
-  bind = $mainMod SHIFT, 4, split-movetoworkspacesilent, 4
-  bind = $mainMod SHIFT, 5, split-movetoworkspacesilent, 5
-  bind = $mainMod SHIFT, 6, split-movetoworkspacesilent, 6
-  bind = $mainMod SHIFT, 7, split-movetoworkspacesilent, 7
-  bind = $mainMod SHIFT, 8, split-movetoworkspacesilent, 8
-  bind = $mainMod SHIFT, 9, split-movetoworkspacesilent, 9
-  bind = $mainMod SHIFT, 0, split-movetoworkspacesilent, 10
-
-  bind = $mainMod, Left, split-changemonitorsilent, prev
-  bind = $mainMod, Right, split-changemonitorsilent, next
+  bind = $mainMod SHIFT, 1, exec, hyprsome move 1
+  bind = $mainMod SHIFT, 2, exec, hyprsome move 2
+  bind = $mainMod SHIFT, 3, exec, hyprsome move 3
+  bind = $mainMod SHIFT, 4, exec, hyprsome move 4
+  bind = $mainMod SHIFT, 5, exec, hyprsome move 5
+  bind = $mainMod SHIFT, 6, exec, hyprsome move 6
+  bind = $mainMod SHIFT, 7, exec, hyprsome move 7
+  bind = $mainMod SHIFT, 8, exec, hyprsome move 8
+  bind = $mainMod SHIFT, 9, exec, hyprsome move 9
+  bind = $mainMod SHIFT, 0, exec, hyprsome move 10
 
   bindm = $mainMod, mouse:272, movewindow
   bindm = $mainMod, mouse:273, resizewindow
 
   ${workspaceMonitors}
 ''
+# split-monitor-workspaces {
+#     count = 10
+# }
+
