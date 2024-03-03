@@ -62,13 +62,7 @@
   apps.obsidian = {
     enable = true;
   };
-  apps.browser = {
-    enable = [
-      "firefox"
-      "librewolf"
-    ];
-    defaultBrowser = "librewolf";
-  };
+  apps.browser.firefox.enable = true;
 
   virtualisation.vm.enable = true;
 

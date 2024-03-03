@@ -60,8 +60,20 @@ in {
           neededForBoot = true;
           options = [
             "defaults"
-            "size=1G"
+            "size=3G"
             "mode=755"
+          ];
+        }
+      );
+      "/home/${config.user.name}" = mkIf (cfg.tmpfs && cfg.erase) (
+        lib.mkForce {
+          device = "tmpfs";
+          fsType = "tmpfs";
+          neededForBoot = true;
+          options = [
+            "defaults"
+            "size=4G"
+            "mode=777"
           ];
         }
       );
@@ -79,6 +91,8 @@ in {
         directories =
           [
             "/var/log"
+            "/var/lib/nixos"
+            "/var/lib/systemd/coredump"
           ]
           ++ persistCfg.root.dirs;
         users.${config.user.name} = {
