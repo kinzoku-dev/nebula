@@ -75,7 +75,7 @@
 
   programs.dconf.enable = true;
   # system.xremap.enable = true;
-  system.shell.shell = "nu";
+  system.shell.shell = "fish";
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
   desktop.dunst.enable = true;
