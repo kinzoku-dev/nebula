@@ -27,8 +27,6 @@
       nvidiaBusId = "PCI:01:0:0";
     };
   };
-  hardware.bluetoothctl.enable = true;
-  hardware.utils.enable = true;
 
   suites.common.enable = true;
   suites.development.enable = true;
@@ -220,7 +218,6 @@
   # services.openssh.enable = true;
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
-  services.udisks2.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

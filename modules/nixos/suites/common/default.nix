@@ -25,6 +25,8 @@ in {
       audio.enable = true;
 
       bluetoothctl.enable = true;
+
+      utils.enable = true;
     };
     systemd.services.NetworkManager-wait-online.enable = false;
     system = {

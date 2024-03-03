@@ -33,5 +33,8 @@ in {
       lm_sensors
       nvtop-amd
     ];
+
+    services.udisks2.enable = true;
+    home.services.udiskie.enable = true;
   };
 }
