@@ -23,7 +23,6 @@ in {
       wget
       grc
     ];
-
     users.defaultUserShell =
       if (cfg.shell == "nu")
       then pkgs.nushell
@@ -32,6 +31,7 @@ in {
       else pkgs.${cfg.shell};
 
     users.users.kinzoku.ignoreShellProgramCheck = true;
+    users.users.root.ignoreShellProgramCheck = true;
 
     home.programs.starship = {
       enable = true;
@@ -119,15 +119,49 @@ in {
           ls = "eza";
           "," = "shellpkg";
         };
-      initExtra = ''
+      initExtra = let
+        sources = with pkgs; [
+          "${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
+          "${zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+          "${zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+        ];
+
+        source = map (source: "source ${source}") sources;
+
+        plugins = concatStringsSep "\n" ([
+            "${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin"
+          ]
+          ++ source);
+
+        functions = pkgs.stdenv.mkDerivation {
+          name = "zsh-functions";
+          src = ./zsh/functions;
+
+          ripgrep = "${pkgs.ripgrep}";
+          man = "${pkgs.man}";
+          eza = "${pkgs.eza}";
+
+          installPhase = let
+            basename = "\${file##*/}";
+          in ''
+            mkdir $out
+
+            for file in $src/*; do
+              substituteAll $file $out/${basename}
+              chmod 755 $out/${basename}
+            done
+          '';
+        };
+      in ''
+        ${plugins}
+
         export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS
+
+        fpath+=( ${functions} )
+        autoload -Uz ${functions}/*(:t)
 
         function flakeinit() {
             nix flake init -t github:nix-community/templates#$1
-        }
-
-        function ,() {
-            nix shell nixpkgs#$1
         }
 
         set -o vi

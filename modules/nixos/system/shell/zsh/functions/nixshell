@@ -1,0 +1,7 @@
+if [[ -z "$@" ]]; then
+    echo "Please provide arguments"
+else
+    for pkg in "$@"; do
+        nix shell nixpkgs#$pkg
+    done
+fi
