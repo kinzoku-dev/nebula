@@ -14,8 +14,6 @@
     ./hardware-configuration.nix
   ];
 
-  system.boot.enable = true;
-
   networking.hostId = "c106acaf";
 
   hardware.graphics = {
@@ -27,65 +25,89 @@
       nvidiaBusId = "PCI:01:0:0";
     };
   };
-
-  suites.common.enable = true;
-  suites.development.enable = true;
-  system.security.doas = {
-    noPassword = true;
-    replaceSudo = lib.mkForce true;
+  suites = {
+    common.enable = true;
+    development.enable = true;
   };
-
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
-
-  apps.misc.enable = true;
-  apps.zathura.enable = true;
-  # apps.spotify-tui.enable = true;
-  apps.rofi.enable = true;
-  apps.calcure.enable = true;
-  apps.chat.enable = true;
-  apps.neofetch.enable = true;
-  apps.fzf.enable = true;
-  apps.steam.enable = true;
-  apps.discord.enable = true;
-  apps.obsidian = {
-    enable = true;
+  apps = {
+    misc.enable = true;
+    zathura.enable = true;
+    # apps.spotify-tui.enable = true;
+    rofi.enable = true;
+    calcure.enable = true;
+    chat.enable = true;
+    neofetch.enable = true;
+    fzf.enable = true;
+    steam.enable = true;
+    discord.enable = true;
+    obsidian = {
+      enable = true;
+    };
+    browser.firefox.enable = true;
   };
-  apps.browser.firefox.enable = true;
+  system = {
+    boot.enable = true;
+    security.doas = {
+      noPassword = true;
+      replaceSudo = lib.mkForce true;
+    };
 
-  system.xserver.enable = true;
-  system.impermanence = {
-    enable = true;
-  };
-  system.fonts = {
-    enable = true;
-  };
+    xserver.enable = true;
+    impermanence = {
+      enable = true;
+    };
+    fonts = {
+      enable = true;
+    };
+    # system.xremap.enable = true;
+    shell.shell = "zsh";
+    systemd-timers.enable = true;
 
-  programs.dconf.enable = true;
-  # system.xremap.enable = true;
-  system.shell.shell = "zsh";
-  desktop.sddm.enable = true;
-  desktop.gtk.enable = true;
-  desktop.dunst.enable = true;
-  desktop.hyprland = {
-    enable = true;
-    displays = [
-      {
-        name = "eDP-1";
-        width = 1920;
-        height = 1080;
-        refreshRate = 60;
-        x = 0;
-        y = 0;
-        workspaces = [1 2 3 4 5 6 7 8 9 10];
-      }
+    # Open ports in the firewall.
+    # networking.firewall.allowedTCPPorts = [ ... ];
+    # networking.firewall.allowedUDPPorts = [ ... ];
+    # Or disable the firewall altogether.
+    # networking.firewall.enable = false;
+
+    # This value determines the NixOS release from which the default
+    # settings for stateful data, like file locations and database versions
+    # on your system were taken. It‘s perfectly fine and recommended to leave
+    # this value at the release version of the first install of this system.
+    # Before changing this value read the documentation for this option
+    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+    stateVersion = "23.05";
+  };
+  programs = {
+    nix-ld.enable = true;
+    nix-ld.libraries = with pkgs; [
+      # Add any missing dynamic libraries for unpackaged programs
+      # here, NOT in environment.systemPackages
     ];
+
+    dconf.enable = true;
   };
-  desktop.waybar.enable = true;
-  system.systemd-timers.enable = true;
+  desktop = {
+    sddm.enable = true;
+    gtk.enable = true;
+    dunst.enable = true;
+    hyprland = {
+      enable = true;
+      displays = [
+        {
+          name = "eDP-1";
+          width = 1920;
+          height = 1080;
+          refreshRate = 60;
+          x = 0;
+          y = 0;
+          workspaces = [1 2 3 4 5 6 7 8 9 10];
+        }
+      ];
+    };
+    waybar.enable = true;
+
+    xdg.enable = true;
+  };
 
   xdg.portal = {
     enable = true;
@@ -93,108 +115,107 @@
     config.common.default = "*";
   };
 
-  desktop.xdg.enable = true;
-
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "";
   };
+  environment = {
+    # Enable touchpad support (enabled default in most desktopManager).
+    # services.xserver.libinput.enable = true;
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+    # List packages installed in system profile. To search, run:
+    # $ nix search wget
+    systemPackages = with pkgs;
+      [
+        inputs.nh.packages.x86_64-linux.default
+        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        wget
+        git
+        nebula.nix-inspect
+        sl
+        appimage-run
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs;
-    [
-      inputs.nh.packages.x86_64-linux.default
-      vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-      wget
-      git
-      nebula.nix-inspect
-      sl
-      appimage-run
+        gopls
+        spotify
+        cava
 
-      gopls
-      spotify
-      cava
+        sops
 
-      sops
+        nitch
 
-      nitch
+        nebula.kiwi-ssg
 
-      nebula.kiwi-ssg
+        gum
 
-      gum
+        r2modman
 
-      r2modman
+        obs-studio
 
-      obs-studio
+        libsForQt5.kdenlive
 
-      libsForQt5.kdenlive
+        eww-wayland
+        libnotify
 
-      eww-wayland
-      libnotify
+        gamemode
 
-      gamemode
+        cloudflared
 
-      cloudflared
+        premid
 
-      premid
+        gucharmap
+        dotnet-sdk
 
-      gucharmap
-      dotnet-sdk
+        sl
 
-      sl
+        prismlauncher
 
-      prismlauncher
+        gpu-screen-recorder-gtk
 
-      gpu-screen-recorder-gtk
+        mpv
 
-      mpv
+        jre
+        minetest
+        nmap
 
-      jre
-      minetest
-      nmap
+        ngrok
 
-      ngrok
+        blender
 
-      blender
+        udisks
 
-      udisks
+        audacity
 
-      audacity
+        godot_4
 
-      godot_4
+        unzip
+        zip
 
-      unzip
-      zip
+        wineWowPackages.waylandFull
+        winetricks
 
-      wineWowPackages.waylandFull
-      winetricks
+        libreoffice
 
-      libreoffice
-
-      ungoogled-chromium
-      (pkgs.makeDesktopItem {
-        name = "satisfactory-mod-manager";
-        desktopName = "Satisfactory Mod Manager";
-        exec = "${pkgs.appimage-run}/bin/appimage-run /home/kinzoku/.smm/Satisfactory-Mod-Manager.AppImage";
-        icon = "/home/kinzoku/.smm/ficsit.png";
-        startupWMClass = "satisfactory-mod-manager-gui";
-        genericName = "";
-        keywords = ["satisfactory" "mod" "manager" "factory"];
-      })
-    ]
-    ++ (
-      with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
-        mapscii
+        ungoogled-chromium
+        (pkgs.makeDesktopItem {
+          name = "satisfactory-mod-manager";
+          desktopName = "Satisfactory Mod Manager";
+          exec = "${pkgs.appimage-run}/bin/appimage-run /home/kinzoku/.smm/Satisfactory-Mod-Manager.AppImage";
+          icon = "/home/kinzoku/.smm/ficsit.png";
+          startupWMClass = "satisfactory-mod-manager-gui";
+          genericName = "";
+          keywords = ["satisfactory" "mod" "manager" "factory"];
+        })
       ]
-    );
+      ++ (
+        with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
+          mapscii
+        ]
+      );
 
-  environment.sessionVariables = {
-    DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+    sessionVariables = {
+      DOTNET_ROOT = "${pkgs.dotnet-sdk}";
+    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -210,19 +231,5 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  nix.settings.experimental-features = ["nix-command" "flakes"]; # Did you read the comment?
 }
