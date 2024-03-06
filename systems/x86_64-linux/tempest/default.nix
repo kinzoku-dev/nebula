@@ -142,6 +142,8 @@
 
         sops
 
+        nebula.premid-appimage
+
         nitch
 
         nebula.kiwi-ssg

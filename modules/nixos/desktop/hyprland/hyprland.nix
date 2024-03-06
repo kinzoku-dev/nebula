@@ -14,6 +14,7 @@
   exec-once=wl-paste --watch cliphist store &
   exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
   exec-once=protonmail-bridge -c &
+  exec-once=premid &
 
   decoration {
       rounding = 10
