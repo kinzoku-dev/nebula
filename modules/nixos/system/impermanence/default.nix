@@ -60,7 +60,7 @@ in {
           neededForBoot = true;
           options = [
             "defaults"
-            "size=3G"
+            "size=5G"
             "mode=755"
           ];
         }
@@ -72,7 +72,7 @@ in {
           neededForBoot = true;
           options = [
             "defaults"
-            "size=4G"
+            "size=5G"
             "mode=777"
           ];
         }
