@@ -51,17 +51,10 @@
   apps.fzf.enable = true;
   apps.steam.enable = true;
   apps.discord.enable = true;
-  apps.flatpak.enable = true;
   apps.obsidian = {
     enable = true;
   };
-  apps.browser = {
-    enable = [
-      "firefox"
-      "librewolf"
-    ];
-    defaultBrowser = "librewolf";
-  };
+  apps.browser.firefox.enable = true;
 
   system.xserver.enable = true;
   system.impermanence = {
@@ -73,7 +66,7 @@
 
   programs.dconf.enable = true;
   # system.xremap.enable = true;
-  system.shell.shell = "fish";
+  system.shell.shell = "zsh";
   desktop.sddm.enable = true;
   desktop.gtk.enable = true;
   desktop.dunst.enable = true;
