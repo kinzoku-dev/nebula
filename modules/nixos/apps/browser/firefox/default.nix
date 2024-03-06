@@ -313,7 +313,7 @@ in {
                 }
                 {
                   label = "Router";
-                  url = "https://192.168.1.254";
+                  url = "http://192.168.1.254";
                 }
                 {
                   label = "YTMusic";
