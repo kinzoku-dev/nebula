@@ -15,8 +15,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    users.mutableUsers = false;
-    users.users.root.initialPassword = "wigglenuts123";
+    users = {
+      mutableUsers = false;
+      users.root.initialPassword = "wigglenuts123";
+      users.${config.user.name}.openssh.authorizedKeys = {
+        keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGKJjalzFloqAZdQDQKalAdU+flocszBXk48DbZXtHQ kinzoku@the-nebula.xyz"
+        ];
+      };
+    };
     services.openssh = {
       enable = true;
       passwordAuthentication = false;
