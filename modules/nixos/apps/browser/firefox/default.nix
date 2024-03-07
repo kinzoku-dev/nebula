@@ -128,6 +128,9 @@ in {
     enable = mkBoolOpt false "Enable firefox";
   };
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".mozilla"
+    ];
     home.programs = {
       firefox = {
         enable = true;
@@ -137,8 +140,8 @@ in {
             isDefault = true;
             search = {
               force = true;
-              default = "Brave";
-              privateDefault = "Brave";
+              default = "LibRedirect";
+              privateDefault = "LibRedirect";
               engines = {
                 "Nix Packages" = {
                   urls = [
@@ -179,6 +182,11 @@ in {
                   hidden = true;
                   alias = "!ddg";
                 };
+                "LibRedirect" = {
+                  urls = [{template = "http://search.libredirect.invalid/?q={searchTerms}";}];
+                  updateInterval = 24 * 60 * 60 * 1000; # every day
+                  definedAliases = ["!lr"];
+                };
               };
               order = [
                 "Brave"
@@ -199,6 +207,7 @@ in {
               fx_cast
               iina-open-in-mpv
               protondb-for-steam
+              proton-pass
               sidebery
               terms-of-service-didnt-read
               vimium-c

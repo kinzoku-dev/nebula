@@ -14,12 +14,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/Signal Beta"
+    ];
     environment.systemPackages = with pkgs; [
       revolt-desktop
       dino
       mumble
       cinny-desktop
       element-desktop
+      telegram-desktop
       (signal-desktop-beta.overrideAttrs {
         desktopItems = [
           (makeDesktopItem {

@@ -6,5 +6,7 @@
     development.enable = true;
   };
 
+  networking.hostId = "651f0572";
+
   system.stateVersion = "23.11";
 }

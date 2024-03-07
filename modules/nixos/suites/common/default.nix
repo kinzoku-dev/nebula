@@ -49,7 +49,10 @@ in {
     apps.tools.git.enable = true;
     services.gvfs.enable = true;
 
-    environment.systemPackages = [pkgs.deploy-rs];
+    environment.systemPackages = with pkgs; [
+      deploy-rs
+      nebula.houston
+    ];
     # Enable CUPS to print documents.
     services.printing.enable = true;
   };

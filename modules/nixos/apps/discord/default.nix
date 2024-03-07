@@ -14,6 +14,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/vesktop"
+      ".config/discord"
+    ];
     environment.systemPackages = [
       (pkgs.vesktop.overrideAttrs {
         desktopItems = let

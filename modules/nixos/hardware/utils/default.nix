@@ -16,17 +16,22 @@ in {
 
   config = mkIf cfg.enable {
     home = {
-      programs.btop = {
-        enable = true;
-        settings = {
-          color_theme = "dracula";
-          theme_background = false;
-          vim_keys = true;
+      programs = {
+        btop = {
+          enable = true;
+          settings = {
+            color_theme = "dracula";
+            theme_background = false;
+            vim_keys = true;
+          };
         };
-      };
-      programs.cava = {
-        enable = true;
-        settings = {};
+        bottom = {
+          enable = true;
+        };
+        cava = {
+          enable = true;
+          settings = {};
+        };
       };
       configFile = {
         "cava/config".text =
