@@ -186,6 +186,32 @@ in {
         })
 
         lsnip.add_snippets('nix', {
+            s('attrs',
+                fmt(
+                    [[
+                        {} = {{
+                            {};
+                        }};
+                    ]],
+                    {
+                        i(1),
+                        i(2),
+                    }
+                )
+            ),
+            s('list',
+                fmt(
+                    [[
+                        {} = [
+                            {}
+                        ];
+                    ]],
+                    {
+                        i(1),
+                        i(2),
+                    }
+                )
+            ),
             s('vimpluginput',
                 fmt(
                     [[

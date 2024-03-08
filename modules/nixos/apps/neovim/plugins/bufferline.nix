@@ -3,23 +3,10 @@
     plugins = {
       bufferline = {
         enable = true;
-        separatorStyle = "thick";
-        indicator.style = "underline";
-        highlights = {
-          indicatorVisible = {
-            underline = true;
-            fg = "#${colors.base00}";
-            ctermfg = "#${colors.base00}";
-            bg = "#${colors.base00}";
-            ctermbg = "#${colors.base00}";
-          };
-          indicatorSelected = {
-            underline = true;
-            fg = "#${colors.base07}";
-            ctermfg = "#${colors.base07}";
-            bg = "#${colors.base07}";
-            ctermbg = "#${colors.base07}";
-          };
+        separatorStyle = "thin";
+        indicator = {
+          style = "underline";
+          icon = "";
         };
         hover = {
           enabled = true;

@@ -1,8 +1,4 @@
 {
-  ###
-
-  ###
-  ###
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
@@ -165,30 +161,33 @@
       overlays = with inputs; [
         # neovim.overlays.x86_64-linux.neovim
       ];
+      systems = {
+        hosts = {
+          eclipse.modules = with inputs; [
+            (import ./disks/default.nix {
+              inherit lib;
+              swap = true;
+              device = "/dev/nvme0n1";
+            })
+          ];
+          tempest.modules = with inputs; [
+            (import ./disks/default.nix {
+              inherit lib;
+              swap = true;
+              device = "/dev/nvme0n1";
+            })
+          ];
+        };
 
-      systems.hosts.eclipse.modules = with inputs; [
-        (import ./disks/default.nix {
-          inherit lib;
-          swap = true;
-          device = "/dev/nvme0n1";
-        })
-      ];
-      systems.hosts.tempest.modules = with inputs; [
-        (import ./disks/default.nix {
-          inherit lib;
-          swap = true;
-          device = "/dev/nvme0n1";
-        })
-      ];
-
-      systems.modules.nixos = with inputs; [
-        home-manager.nixosModules.home-manager
-        nur.nixosModules.nur
-        disko.nixosModules.disko
-        arion.nixosModules.arion
-        nixvim.nixosModules.nixvim
-        impermanence.nixosModules.impermanence
-      ];
+        modules.nixos = with inputs; [
+          home-manager.nixosModules.home-manager
+          nur.nixosModules.nur
+          disko.nixosModules.disko
+          arion.nixosModules.arion
+          nixvim.nixosModules.nixvim
+          impermanence.nixosModules.impermanence
+        ];
+      };
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};
       checks =

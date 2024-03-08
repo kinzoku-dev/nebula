@@ -21,6 +21,7 @@ in {
       users.${config.user.name}.openssh.authorizedKeys = {
         keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINGKJjalzFloqAZdQDQKalAdU+flocszBXk48DbZXtHQ kinzoku@the-nebula.xyz"
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIK7VauA20bbSuN999AXWIwsmIML0zxqaPbdD1vje8iP kinzoku@the-nebula.xyz"
         ];
       };
     };

@@ -36,6 +36,10 @@
   env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
   env = WLR_DRM_NO_ATOMIC,1
 
+  gestures {
+      workspace_swipe = true
+  }
+
   general {
       border_size = 3
       layout = dwindle

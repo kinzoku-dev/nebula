@@ -45,6 +45,7 @@ in {
     environment.systemPackages = with pkgs; [
       lm_sensors
       nvtop-amd
+      pipes
     ];
 
     services.udisks2.enable = true;

@@ -33,6 +33,16 @@ in {
     users.users.kinzoku.ignoreShellProgramCheck = true;
     users.users.root.ignoreShellProgramCheck = true;
 
+    system.persist.home = {
+      dirs = [
+        ".local/share/zoxide"
+        ".local/share/atuin"
+      ];
+      files = [
+        ".zsh_history"
+      ];
+    };
+
     home.programs.starship = {
       enable = true;
       enableZshIntegration = true;
@@ -55,7 +65,6 @@ in {
       gp = "git push -u origin";
       lg = "lazygit";
       az = "yazi";
-      ya = "yazi";
       spoodle = "ssh poodle@mc.theduckpond.xyz -p 42069";
       tx = "tmux";
       hss = "hugo server --noHTTPCache";
@@ -64,6 +73,7 @@ in {
       seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
       nf = "neofetch";
       cl = "clear";
+      pm = "pulsemixer";
       # cdf = "cd $(fd . -t d -H | fzf)";
       # zf = "z $(fd . -t d -H | fzf)";
       # nvf = "nvim $(fd . -t f -H | fzf)";
@@ -81,10 +91,13 @@ in {
       enableZshIntegration = true;
       enableNushellIntegration = true;
       enableFishIntegration = true;
+      flags = [
+        "--disable-up-arrow"
+      ];
       settings = {
         enter_accept = true;
-        filter_mode_shell_up_key_binding = "session";
-        filter_mode = "session";
+        filter_mode = "host";
+        search_mode = "fuzzy";
       };
     };
 
