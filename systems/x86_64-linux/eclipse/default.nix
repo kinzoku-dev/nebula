@@ -19,7 +19,7 @@
     impermanence = {
       enable = true;
     };
-    shell.shell = "zsh";
+    shell.shell = "fish";
 
     stateVersion = "23.11";
   };
