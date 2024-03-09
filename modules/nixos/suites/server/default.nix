@@ -19,7 +19,6 @@ in {
     security.sops.enable = true;
     system.ssh.port = 42069;
     server = {
-      services.cloudflare.enable = true;
       nextcloud.enable = true;
       jellyfin.enable = true;
       prometheus.enable = true;
