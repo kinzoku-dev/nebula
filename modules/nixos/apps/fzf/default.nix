@@ -19,6 +19,7 @@ in {
     home.programs.fzf = {
       enable = true;
       enableZshIntegration = true;
+      enableFishIntegration = true;
       defaultCommand = "fd";
       colors = {
         fg = "#${palette.base05}";

@@ -1788,6 +1788,22 @@
         "type": "github"
       }
     },
+    "plugin-silicon": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1709768742,
+        "narHash": "sha256-iNKwV2KuwnymnFlQIgc1RSkDL41p28PbIFRM0iAFbMw=",
+        "owner": "michaelrommel",
+        "repo": "nvim-silicon",
+        "rev": "ab664633e5090809da7470288404fe5b8735a8c8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "michaelrommel",
+        "repo": "nvim-silicon",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -1866,6 +1882,7 @@
         "plugin-aerial": "plugin-aerial",
         "plugin-move": "plugin-move",
         "plugin-neocord": "plugin-neocord",
+        "plugin-silicon": "plugin-silicon",
         "prism": "prism",
         "schizofox": "schizofox",
         "snowfall-lib": "snowfall-lib_2",

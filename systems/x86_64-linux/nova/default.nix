@@ -53,7 +53,7 @@
       enable = true;
     };
     # system.xremap.enable = true;
-    shell.shell = "zsh";
+    shell.shell = "fish";
     systemd-timers.enable = true;
 
     # Open ports in the firewall.

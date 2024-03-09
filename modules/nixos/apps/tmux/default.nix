@@ -17,17 +17,17 @@ in {
     home.programs.tmux = {
       enable = true;
       baseIndex = 1;
-      sensibleOnTop = true;
       keyMode = "vi";
       prefix = "C-a";
+      sensibleOnTop = true;
       extraConfig = ''
         set -g escape-time 10
 
         unbind %
-        bind | split-window -h
+        bind | split-window -h -c "#{pane_current_path}"
 
         unbind '"'
-        bind - split-window -v
+        bind - split-window -v -c "#{pane_current_path}"
 
         unbind n
         bind-key n command-prompt -I "rename-window %%"
@@ -39,9 +39,24 @@ in {
 
         unbind r
         bind r source-file ~/.config/tmux/tmux.conf
+
+        bind -n M-H previous-window
+        bind -n M-L next-window
+        bind -n S-Left  previous-window
+        bind -n S-Right next-window
+
+        set-window-option -g mode-keys vi
+
+        bind-key -T copy-mode-vi v send-keys -X begin-selection
+        bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+        bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+
       '';
-      plugins = with pkgs; [
-        tmuxPlugins.vim-tmux-navigator
+      plugins = with pkgs.tmuxPlugins; [
+        vim-tmux-navigator
+        catppuccin
+        yank
       ];
     };
   };

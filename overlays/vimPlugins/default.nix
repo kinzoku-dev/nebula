@@ -2,6 +2,7 @@
   plugin-move,
   plugin-neocord,
   plugin-aerial,
+  plugin-silicon,
   ...
 }: (final: prev: {
   vimPlugins =
@@ -18,6 +19,10 @@
       aerial-nvim = prev.vimUtils.buildVimPlugin {
         name = "aerial";
         src = plugin-aerial;
+      };
+      nvim-silicon = prev.vimUtils.buildVimPlugin {
+        name = "silicon";
+        src = plugin-silicon;
       };
     };
 })

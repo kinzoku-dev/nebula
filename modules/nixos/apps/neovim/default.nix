@@ -17,7 +17,12 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.sessionVariables.EDITOR = "nvim";
+    environment = {
+      sessionVariables.EDITOR = "nvim";
+      systemPackages = with pkgs; [
+        silicon
+      ];
+    };
     home.xdgDesktopEntries = {
       nvim = lib.mkForce {
         name = "Neovim";
@@ -42,6 +47,16 @@ in {
         plugpkgs.aerial-nvim
         plugpkgs.playground
         plugpkgs.nui-nvim
+        plugpkgs.vim-carbon-now-sh
+        {
+          plugin = plugpkgs.nvim-silicon;
+          config = toLua ''
+            require("silicon").setup({
+                font = "JetBrainsMono Nerd Font=34;Noto Color Emoji=34",
+                theme = "Dracula"
+            })
+          '';
+        }
         {
           plugin = plugpkgs.treesj;
           config = toLua ''require("treesj").setup() '';
@@ -58,6 +73,7 @@ in {
       extraPackages = with pkgs; [
         nil
         stylua
+        silicon
         luajitPackages.lua-lsp
         ripgrep
         rust-analyzer

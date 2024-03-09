@@ -113,6 +113,10 @@
       url = "github:stevearc/aerial.nvim";
       flake = false;
     };
+    plugin-silicon = {
+      url = "github:michaelrommel/nvim-silicon";
+      flake = false;
+    };
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
