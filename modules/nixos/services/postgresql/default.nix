@@ -68,6 +68,7 @@ in {
       isSystemUser = true;
     };
     users.groups.postgres = {};
+    users.users.postgres.ignoreShellProgramCheck = true;
 
     networking.firewall.allowedTCPPorts = [config.services.postgresql.port];
     services.postgresql = {
