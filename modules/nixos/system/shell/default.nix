@@ -31,6 +31,7 @@ in {
       else pkgs.${cfg.shell};
 
     users.users.kinzoku.ignoreShellProgramCheck = true;
+    users.users.postgres.ignoreShellProgramCheck = true;
     users.users.root.ignoreShellProgramCheck = true;
 
     system.persist.home = {
