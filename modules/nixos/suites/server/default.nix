@@ -19,9 +19,9 @@ in {
     security.sops.enable = true;
     system.ssh.port = 42069;
     server = {
-      nextcloud.enable = true;
-      jellyfin.enable = true;
-      prometheus.enable = true;
+      # nextcloud.enable = true;
+      # jellyfin.enable = true;
+      # prometheus.enable = true;
       postgresql.enable = true;
     };
     services.webdav.enable = true;

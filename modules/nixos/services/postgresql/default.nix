@@ -62,6 +62,12 @@ in {
     server.postgresql.internal = {
       inherit databases dbNames;
     };
+    users.users.postgres = {
+      group = "postgres";
+
+      isSystemUser = true;
+    };
+    users.groups.postgres = {};
 
     networking.firewall.allowedTCPPorts = [config.services.postgresql.port];
     services.postgresql = {
