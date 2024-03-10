@@ -2,7 +2,7 @@
   programs.nixvim = {
     plugins.neogit = {
       enable = true;
-      disableBuiltinNotifications = true;
+      settings.disable_builtin_notifications = true;
     };
 
     keymaps = [

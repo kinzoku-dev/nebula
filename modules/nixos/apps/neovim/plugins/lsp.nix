@@ -18,6 +18,13 @@
             installRustc = true;
             installCargo = true;
             enable = true;
+            settings = {
+              procMacro = {
+                ignored = {
+                  leptos_macro = ["server"];
+                };
+              };
+            };
           };
           svelte.enable = true;
           tailwindcss.enable = true;

@@ -37,7 +37,7 @@ in {
       kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
       zfs = {
         devNodes = lib.mkDefault "/dev/disk/by-id";
-        enableUnstable = true;
+        package = pkgs.zfs_unstable;
       };
 
       # root fs is destroyed and rebuilt on every boot

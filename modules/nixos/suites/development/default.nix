@@ -30,6 +30,12 @@ in {
       nix-update
       nixpkgs-fmt
       nixpkgs-review
+
+      cargo
+      rustup
+      bun
+      nodePackages_latest.npm
+      nodePackages_latest.pnpm
     ];
   };
 }

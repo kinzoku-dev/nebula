@@ -1,13 +1,30 @@
 {colors, ...}: {
   programs.nixvim = {
+    extraConfigLua = ''
+      require("bufferline").setup {
+          highlights = require("catppuccin.groups.integrations.bufferline").get(),
+      }
+    '';
     plugins = {
       bufferline = {
         enable = true;
         separatorStyle = "thin";
+        bufferCloseIcon = "";
+        modifiedIcon = "";
+        closeIcon = "";
+        showCloseIcon = false;
+        maxNameLength = 14;
+        maxPrefixLength = 13;
+        tabSize = 10;
+        showTabIndicators = true;
         indicator = {
           style = "underline";
-          icon = "";
         };
+        enforceRegularTabs = false;
+        showBufferCloseIcons = true;
+        alwaysShowBufferline = true;
+        diagnostics = false;
+        themable = true;
         hover = {
           enabled = true;
           reveal = ["close"];

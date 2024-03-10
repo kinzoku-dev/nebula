@@ -129,39 +129,39 @@ in {
       };
       extraConfigLua = ''
             local mode_map = {
-                ['n']    = 'NORMAL',
+                ['n']    = '󰍜',
                 ['no']   = 'O-PENDING',
                 ['nov']  = 'O-PENDING',
                 ['noV']  = 'O-PENDING',
                 ['no�'] = 'O-PENDING',
-                ['niI']  = 'NORMAL',
-                ['niR']  = 'NORMAL',
-                ['niV']  = 'NORMAL',
-                ['nt']   = 'NORMAL',
-                ['v']    = 'VISUAL',
-                ['vs']   = 'VISUAL',
-                ['V']    = 'V-LINE',
-                ['Vs']   = 'V-LINE',
-                ['�']   = 'V-BLOCK',
-                ['�s']  = 'V-BLOCK',
-                ['s']    = 'SELECT',
-                ['S']    = 'S-LINE',
-                ['�']   = 'S-BLOCK',
-                ['i']    = 'INSERT',
-                ['ic']   = 'INSERT',
-                ['ix']   = 'INSERT',
-                ['R']    = 'REPLACE',
-                ['Rc']   = 'REPLACE',
-                ['Rvc']  = 'V-REPLACE',
-                ['Rvx']  = 'V-REPLACE',
-                ['c']    = 'COMMAND',
+                ['niI']  = '󰍜',
+                ['niR']  = '󰍜',
+                ['niV']  = '󰍜',
+                ['nt']   = '󰍜',
+                ['v']    = '󱄽',
+                ['vs']   = '󱄽',
+                ['V']    = '󱄽',
+                ['Vs']   = '󱄽',
+                ['�']   = '󱄽',
+                ['�s']  = '󱄽',
+                ['s']    = '󱄽',
+                ['S']    = '󱄽',
+                ['�']   = '󱄽',
+                ['i']    = '',
+                ['ic']   = '',
+                ['ix']   = '',
+                ['R']    = '',
+                ['Rc']   = '',
+                ['Rvc']  = '',
+                ['Rvx']  = '',
+                ['c']    = '',
                 ['cv']   = 'EX',
                 ['ce']   = 'EX',
-                ['r']    = 'REPLACE',
+                ['r']    = '',
                 ['rm']   = 'MORE',
                 ['r?']   = 'CONFIRM',
-                ['!']    = 'SHELL',
-                ['t']    = 'TERMINAL',
+                ['!']    = '',
+                ['t']    = '',
             }
 
         require('lualine').setup({
@@ -221,6 +221,19 @@ in {
                         {} = [
                             {}
                         ];
+                    ]],
+                    {
+                        i(1),
+                        i(2),
+                    }
+                )
+            ),
+            s('flakeinput',
+                fmt(
+                    [[
+                        {} = {{
+                            url = "github:{}";
+                        }};
                     ]],
                     {
                         i(1),
@@ -672,6 +685,7 @@ in {
           nixvimInjections = true;
           incrementalSelection.enable = true;
         };
+        refactoring.enable = true;
         treesitter-refactor = {
           enable = true;
           highlightDefinitions.enable = true;
