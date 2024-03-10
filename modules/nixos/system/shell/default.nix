@@ -74,6 +74,7 @@ in {
       nf = "neofetch";
       cl = "clear";
       pm = "pulsemixer";
+      v = "fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim";
       # cdf = "cd $(fd . -t d -H | fzf)";
       # zf = "z $(fd . -t d -H | fzf)";
       # nvf = "nvim $(fd . -t f -H | fzf)";
