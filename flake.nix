@@ -1,5 +1,6 @@
 {
   inputs = {
+    #pussy
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-kinzoku.url = "github:kinzoku-dev/nixpkgs";
