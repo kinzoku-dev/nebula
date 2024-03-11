@@ -232,6 +232,8 @@ in {
         txn = "tx new";
         txa = "tx a";
         txd = "tx detach";
+        txk = "tx kill-session";
+        txl = "tx list-sessions";
       };
       interactiveShellInit = ''
         set fish_greeting

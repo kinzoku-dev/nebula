@@ -52,6 +52,9 @@ in {
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
         set -g @dracula-show-powerline true
+        set -g @dracula-show-battery false
+        set -g @dracula-show-left-sep 
+        set -g @dracula-show-right-sep 
         set -g @dracula-fixed-location "Chelsea, AL"
         set -g @dracula-plugins "weather time"
         set -g @dracula-show-flags true
