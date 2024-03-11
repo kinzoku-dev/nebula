@@ -113,7 +113,6 @@ in {
         catppuccin = {
           enable = true;
           flavour = "mocha";
-          transparentBackground = true;
           integrations = {
             alpha = true;
             cmp = true;
