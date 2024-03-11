@@ -51,12 +51,18 @@ in {
         bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
-
+        set -g @dracula-show-powerline true
+        set -g @dracula-fixed-location "Chelsea, AL"
+        set -g @dracula-plugins "weather time"
+        set -g @dracula-show-flags true
+        set -g @dracula-show-left-icon session
+        set -g status-position top
       '';
       plugins = with pkgs.tmuxPlugins; [
         vim-tmux-navigator
-        catppuccin
+        dracula
         yank
+        tmux-fzf
       ];
     };
   };
