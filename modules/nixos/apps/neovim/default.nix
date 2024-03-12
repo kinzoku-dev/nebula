@@ -78,6 +78,15 @@ in {
         rust-analyzer
         alejandra
 
+        yamllint
+        statix
+        clippy
+        csharpier
+        ktlint
+        leptosfmt
+        nixpkgs-fmt
+        yamlfmt
+
         chafa
         imagemagick
         ffmpegthumbnailer

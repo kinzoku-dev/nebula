@@ -11,17 +11,19 @@
           statix.enable = true;
         };
         diagnostics = {
-          statix = {
-            enable = true;
-          };
+          statix.enable = true;
+          fish.enable = true;
+          yamllint.enable = true;
         };
         formatting = {
-          alejandra.enable = true;
+          csharpier.enable = true;
           prettier.enable = true;
           gdformat.enable = true;
           gofumpt.enable = true;
           stylua.enable = true;
           leptosfmt.enable = true;
+          nixpkgs_fmt.enable = true;
+          yamlfmt.enable = true;
           black = {
             enable = true;
             withArgs = ''
