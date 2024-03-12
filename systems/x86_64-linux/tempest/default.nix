@@ -40,6 +40,7 @@
     fzf.enable = true;
     steam.enable = true;
     discord.enable = true;
+    mullvad-vpn.enable = true;
     obsidian = {
       enable = true;
     };
