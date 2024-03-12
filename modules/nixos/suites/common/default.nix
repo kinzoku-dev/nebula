@@ -15,6 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     nix.allowedUsers = ["@wheel"];
+    desktop.xdg.enable = true;
     hardware = {
       networking = {
         nm.enable = true;
