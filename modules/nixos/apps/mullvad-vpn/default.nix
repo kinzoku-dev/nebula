@@ -14,6 +14,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/Mullvad VPN"
+    ];
     environment.systemPackages = [
       pkgs.mullvad-vpn
       (pkgs.makeDesktopItem {
