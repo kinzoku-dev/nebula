@@ -26,8 +26,6 @@ in {
     users.defaultUserShell =
       if (cfg.shell == "nu")
       then pkgs.nushell
-      else if (cfg.shell == "fish")
-      then pkgs.bashInteractive
       else pkgs.${cfg.shell};
 
     users.users.kinzoku.ignoreShellProgramCheck = true;
@@ -107,16 +105,6 @@ in {
       enableNushellIntegration = true;
       enableZshIntegration = true;
       enableFishIntegration = true;
-    };
-
-    programs.bash = {
-      interactiveShellInit = ''
-        if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
-        then
-          shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
-          exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
-        fi
-      '';
     };
 
     home.programs.zsh = mkIf (cfg.shell == "zsh") {
