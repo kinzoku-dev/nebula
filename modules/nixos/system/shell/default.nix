@@ -232,6 +232,14 @@ in {
           name = "grc";
           src = pkgs.fishPlugins.grc.src;
         }
+        {
+          name = "autopair";
+          src = pkgs.fishPlugins.autopair.src;
+        }
+        {
+          name = "colored-man-pages";
+          src = pkgs.fishPlugins.colored-man-pages.src;
+        }
       ];
     };
   };
