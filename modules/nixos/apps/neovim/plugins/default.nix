@@ -18,6 +18,7 @@ in {
     ./cursorline.nix
     ./notify.nix
     ./git
+    ./luasnip.nix
     (import ./bufferline.nix {inherit colors;})
   ];
 }
