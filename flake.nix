@@ -9,6 +9,11 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    fenix = {
+      url = "github:nix-community/fenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Theming and colors related
     nix-colors.url = "github:misterio77/nix-colors";
     prism.url = "github:IogaMaster/prism";
@@ -164,6 +169,7 @@
 
       overlays = with inputs; [
         # neovim.overlays.x86_64-linux.neovim
+        fenix.overlays.default
       ];
       systems = {
         hosts = {

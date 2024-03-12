@@ -31,8 +31,18 @@ in {
       nixpkgs-fmt
       nixpkgs-review
 
-      cargo
-      rustup
+      (fenix.combine [
+        (fenix.complete.withComponents [
+          "cargo"
+          "clippy"
+          "rust-src"
+          "rustc"
+          "rustfmt"
+        ])
+        fenix.targets.wasm32-unknown-unknown.latest.rust-std
+      ])
+      rust-analyzer-nightly
+
       bun
       nodePackages_latest.npm
       nodePackages_latest.pnpm
