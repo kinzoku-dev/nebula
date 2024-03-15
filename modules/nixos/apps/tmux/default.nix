@@ -3,11 +3,14 @@
   pkgs,
   lib,
   options,
+  inputs,
   ...
 }:
 with lib;
 with lib.nebula; let
   cfg = config.apps.tmux;
+  theme = inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme};
+  colors = theme.palette;
 in {
   options.apps.tmux = with types; {
     enable = mkBoolOpt false "Enable or disable tmux the terminal multiplexer";
@@ -51,6 +54,7 @@ in {
         bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
+        set -g @base16-statusline '${theme.slug}'
         set -g @dracula-show-powerline true
         set -g @dracula-show-battery false
         set -g @dracula-show-left-sep 
@@ -66,6 +70,8 @@ in {
         dracula
         yank
         tmux-fzf
+        # base16-tmux
+        # base16-statusline
       ];
     };
   };

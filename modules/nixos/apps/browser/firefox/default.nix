@@ -140,8 +140,8 @@ in {
             isDefault = true;
             search = {
               force = true;
-              default = "LibRedirect";
-              privateDefault = "LibRedirect";
+              default = "Brave";
+              privateDefault = "Brave";
               engines = {
                 "Nix Packages" = {
                   urls = [
@@ -153,6 +153,10 @@ in {
                           value = "packages";
                         }
                         {
+                          name = "channel";
+                          value = "unstable";
+                        }
+                        {
                           name = "query";
                           value = "{searchTerms}";
                         }
@@ -161,6 +165,21 @@ in {
                   ];
                   icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
                   definedAliases = ["!np"];
+                };
+                "MyNixOS" = {
+                  urls = [
+                    {
+                      template = "https://mynixos.com/search";
+                      params = [
+                        {
+                          name = "q";
+                          value = "{searchTerms}";
+                        }
+                      ];
+                    }
+                  ];
+                  icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
+                  definedAliases = ["!mn"];
                 };
                 "NixOS Wiki" = {
                   urls = [{template = "https://nixos.wiki/index.php?search={searchTerms}";}];
@@ -197,7 +216,6 @@ in {
             extensions = with inputs.firefox-addons.packages.${pkgs.system};
             with extra-addons; [
               libredirect
-              bitwarden
               ublock-origin
               sponsorblock
               darkreader
@@ -233,7 +251,6 @@ in {
               open-tabs-next-to-current
               premid
               cf-purge-plugin
-              btroblox
               (w2g.overrideAttrs {meta.license.free = true;})
               watch-on-odysee
               youtube-for-tv

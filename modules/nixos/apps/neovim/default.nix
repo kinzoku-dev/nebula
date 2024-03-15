@@ -9,8 +9,8 @@
 with lib;
 with lib.nebula; let
   cfg = config.apps.neovim;
-  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
-  colors = palette;
+  theme = inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme};
+  colors = theme.palette;
 in {
   options.apps.neovim = with types; {
     enable = mkBoolOpt false "Enable or disable neovim";
@@ -43,6 +43,7 @@ in {
         toLua = str: "lua << EOF\n${str}\nEOF\n";
         plugpkgs = pkgs.vimPlugins;
       in [
+        plugpkgs.base16-nvim
         plugpkgs.aerial-nvim
         plugpkgs.playground
         plugpkgs.nui-nvim
@@ -117,23 +118,7 @@ in {
         CursorLineNr.fg = "#${colors.base07}";
         "@ibl.indent.char.1".fg = "#${colors.base02}";
       };
-      colorschemes = {
-        catppuccin = {
-          enable = true;
-          flavour = "mocha";
-          integrations = {
-            alpha = true;
-            cmp = true;
-            gitsigns = true;
-            leap = true;
-            lsp_trouble = true;
-            neotree = true;
-            noice = true;
-            treesitter = true;
-            which_key = true;
-          };
-        };
-      };
+      colorscheme = "base16-${theme.slug}";
       extraConfigLua = ''
             local mode_map = {
                 ['n']    = '󰍜',
@@ -195,6 +180,24 @@ in {
                 },
         })
 
+        -- nvim-base16 setup
+        require('base16-colorscheme').with_config({
+            telescope = true,
+            telescope_borders = true,
+            indentblankline = true,
+            notify = true,
+            cmp = true,
+            illuminate = true,
+            lsp_semantic = true,
+        })
+
+        require('base16-colorscheme').setup({
+          base00 = '#${colors.base00}', base01 = '#${colors.base01}', base02 = '#${colors.base02}', base03 = '#${colors.base03}',
+          base04 = '#${colors.base04}', base05 = '#${colors.base05}', base06 = '#${colors.base06}', base07 = '#${colors.base07}',
+          base08 = '#${colors.base08}', base09 = '#${colors.base09}', base0A = '#${colors.base0A}', base0B = '#${colors.base0B}',
+          base0C = '#${colors.base0C}', base0D = '#${colors.base0D}', base0E = '#${colors.base0E}', base0F = '#${colors.base0F}',
+        })
+
       '';
       keymaps = [
         {
@@ -214,6 +217,11 @@ in {
             silent = true;
             noremap = true;
           };
+        }
+        {
+          action = "<cmd>Silicon<CR>";
+          key = "<leader>ss";
+          mode = "v";
         }
         {
           action = "nzzzv";

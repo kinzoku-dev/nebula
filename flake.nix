@@ -123,6 +123,15 @@
       flake = false;
     };
 
+    plugin-tmux-base16-statusline = {
+      url = "github:jatap/tmux-base16-statusline";
+      flake = false;
+    };
+    plugin-tmux-base16-tmux = {
+      url = "github:tinted-theming/base16-tmux";
+      flake = false;
+    };
+
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

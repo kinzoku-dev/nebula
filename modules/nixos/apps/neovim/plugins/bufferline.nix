@@ -1,10 +1,5 @@
 {colors, ...}: {
   programs.nixvim = {
-    extraConfigLua = ''
-      require("bufferline").setup {
-          highlights = require("catppuccin.groups.integrations.bufferline").get(),
-      }
-    '';
     plugins = {
       bufferline = {
         enable = true;

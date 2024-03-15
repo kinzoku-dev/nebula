@@ -94,15 +94,15 @@
     steam.enable = true;
     discord.enable = true;
     mullvad-vpn.enable = true;
-    flatpak.enable = true;
+    # flatpak.enable = true;
     obsidian = {
       enable = true;
     };
     browser.firefox.enable = true;
   };
   desktop = {
-    picom.enable = true;
-    xmonad.enable = true;
+    # picom.enable = true;
+    # xmonad.enable = true;
     sddm.enable = true;
     gtk.enable = true;
     xdg.enable = true;
@@ -249,8 +249,6 @@
         winetricks
 
         libreoffice
-
-        davinci-resolve
 
         ungoogled-chromium
         (pkgs.makeDesktopItem {

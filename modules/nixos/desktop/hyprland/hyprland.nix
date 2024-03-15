@@ -32,6 +32,9 @@
   }
   layerrule = blur,rofi
   layerrule = blur,notifications
+  windowrulev2 = float,title:(pulsemixer),class:(kitty)
+  windowrulev2 = move 0 0,title:(pulsemixer),class:(kitty)
+  windowrulev2 = size 40% 40%,title:(pulsemixer),class:(kitty)
   env = WLR_NO_HARDWARE_CURSORS,1
   env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
   env = WLR_DRM_NO_ATOMIC,1

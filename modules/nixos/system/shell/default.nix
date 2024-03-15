@@ -3,11 +3,14 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
 with lib;
 with lib.nebula; let
   cfg = config.system.shell;
+  theme = inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme};
+  colors = theme.palette;
 in {
   options.system.shell = with types; {
     shell = mkOpt (enum ["nu" "fish" "zsh"]) "nu" "What shell to use";
@@ -170,6 +173,7 @@ in {
         bindkey -v
         autoload edit-command-line; zle -N edit-command-line
         bindkey '^e' edit-command-line
+
       '';
     };
 
@@ -226,6 +230,7 @@ in {
       interactiveShellInit = ''
         set fish_greeting
         fish_vi_key_bindings
+
       '';
       plugins = [
         {
@@ -241,6 +246,13 @@ in {
           src = pkgs.fishPlugins.colored-man-pages.src;
         }
       ];
+      functions = {
+        "," = ''
+          for pkg in $argv
+              nix shell nixpkgs#$pkg
+          end
+        '';
+      };
     };
   };
 }

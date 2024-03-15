@@ -15,7 +15,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = [
-      pkgs.picom-allusive
+      pkgs.compfy
     ];
 
     home.configFile."picom/picom.conf".text = ''

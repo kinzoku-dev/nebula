@@ -1,5 +1,32 @@
 {...}: {
   programs.nixvim = {
+    keymaps = [
+      {
+        action = "function() vim.lsp.buf.hover() end";
+        lua = true;
+        key = "K";
+      }
+      {
+        action = "function() vim.lsp.buf.definition() end";
+        lua = true;
+        key = "gd";
+      }
+      {
+        action = "function() vim.lsp.buf.code_action() end";
+        lua = true;
+        key = "<leader>ca";
+      }
+      {
+        action = "function() vim.lsp.buf.rename() end";
+        lua = true;
+        key = "gr";
+      }
+      {
+        action = "function() vim.lsp.buf.references() end";
+        lua = true;
+        key = "gD";
+      }
+    ];
     plugins = {
       lsp = {
         enable = true;
@@ -43,14 +70,6 @@
             "<leader>lk" = "goto_prev";
             "<leader>lo" = "open_float";
           };
-          lspBuf = {
-            "<leader>lh" = "hover";
-            "<leader>lr" = "references";
-            "<leader>ld" = "definition";
-            "<leader>li" = "implementation";
-            "<leader>lt" = "type_definition";
-            "<leader>ln" = "rename";
-          };
         };
       };
       lsp-format = {
@@ -60,81 +79,10 @@
         enable = true;
         cmp.enable = true;
       };
-      lspsaga = {
-        enable = true;
-        beacon = {
-          enable = true;
-        };
-        ui = {
-          border = "rounded"; # One of none, single, double, rounded, solid, shadow
-          codeAction = "💡"; # Can be any symbol you want 💡
-        };
-        hover = {
-          openCmd = "!floorp"; # Choose your browser
-          openLink = "gx";
-        };
-        diagnostic = {
-          borderFollow = true;
-          diagnosticOnlyCurrent = false;
-          showCodeAction = true;
-        };
-        symbolInWinbar = {
-          enable = true; # Breadcrumbs
-        };
-        codeAction = {
-          extendGitSigns = false;
-          showServerName = true;
-          onlyInCursor = true;
-          numShortcut = true;
-          keys = {
-            exec = "<CR>";
-            quit = ["<Esc>" "q"];
-          };
-        };
-        lightbulb = {
-          enable = false;
-          sign = false;
-          virtualText = true;
-        };
-        implement = {
-          enable = false;
-        };
-        rename = {
-          autoSave = false;
-          keys = {
-            exec = "<CR>";
-            quit = ["<C-k>" "<Esc>"];
-            select = "x";
-          };
-        };
-        outline = {
-          autoClose = true;
-          autoPreview = true;
-          closeAfterJump = true;
-          layout = "normal"; # normal or float
-          winPosition = "right"; # left or right
-          keys = {
-            jump = "e";
-            quit = "q";
-            toggleOrJump = "o";
-          };
-        };
-        scrollPreview = {
-          scrollDown = "<C-f>";
-          scrollUp = "<C-b>";
-        };
-      };
       which-key.registrations = {
         "<leader>l".name = " LSP";
       };
     };
-    keymaps = [
-      {
-        mode = "n";
-        key = "<leader>la";
-        action = "<cmd>Lspsaga code_action<CR>";
-      }
-    ];
     extraConfigLua = ''
           local _border = "rounded"
 

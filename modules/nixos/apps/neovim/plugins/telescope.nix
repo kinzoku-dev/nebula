@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins = {
       telescope = {
@@ -8,6 +8,7 @@
           media_files.enable = true;
           fzf-native.enable = true;
           undo.enable = true;
+          ui-select.enable = true;
         };
       };
       which-key.registrations = {

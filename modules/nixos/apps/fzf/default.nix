@@ -9,7 +9,7 @@
 with lib;
 with lib.nebula; let
   cfg = config.apps.fzf;
-  inherit (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}) palette;
+  colors = (inputs.nix-colors.colorschemes.${builtins.toString config.desktop.colorscheme}).palette;
 in {
   options.apps.fzf = with types; {
     enable = mkBoolOpt false "Enable fzf";
@@ -22,12 +22,19 @@ in {
       enableFishIntegration = true;
       defaultCommand = "fd";
       colors = {
-        fg = "#${palette.base05}";
-        bg = "#${palette.base01}";
+        fg = "#${colors.base05}";
+        bg = "#${colors.base00}";
+        "bg+" = "#${colors.base02}";
+        "fg+" = "#${colors.base0D}";
+        border = "#${colors.base07}";
+        info = "#${colors.base05}";
+        pointer = "#${colors.base08}";
+        spinner = "#${colors.base04}";
       };
       defaultOptions = [
         "--height 40%"
         "--border"
+        "--bind=ctrl-k:up,ctrl-j:down"
       ];
     };
   };

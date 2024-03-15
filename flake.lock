@@ -1867,6 +1867,38 @@
         "type": "github"
       }
     },
+    "plugin-tmux-base16-statusline": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1556961218,
+        "narHash": "sha256-Z3JEQZegpyeyKz1uazDCCF50rc/QqW2LCrMRFo+SQIg=",
+        "owner": "jatap",
+        "repo": "tmux-base16-statusline",
+        "rev": "5dc655dfcfa3fcb574c28fb2b8c57bdd29b178cf",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jatap",
+        "repo": "tmux-base16-statusline",
+        "type": "github"
+      }
+    },
+    "plugin-tmux-base16-tmux": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1708217109,
+        "narHash": "sha256-w+yFqh/4vFuDz/9YNpCH/f4DrlwKbA+ZbKvRcbSRnSg=",
+        "owner": "tinted-theming",
+        "repo": "base16-tmux",
+        "rev": "0d3ddbcbb52fa4fae649571a61d12d80910f4697",
+        "type": "github"
+      },
+      "original": {
+        "owner": "tinted-theming",
+        "repo": "base16-tmux",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat_4",
@@ -1947,6 +1979,8 @@
         "plugin-move": "plugin-move",
         "plugin-neocord": "plugin-neocord",
         "plugin-silicon": "plugin-silicon",
+        "plugin-tmux-base16-statusline": "plugin-tmux-base16-statusline",
+        "plugin-tmux-base16-tmux": "plugin-tmux-base16-tmux",
         "prism": "prism",
         "schizofox": "schizofox",
         "snowfall-lib": "snowfall-lib_2",
