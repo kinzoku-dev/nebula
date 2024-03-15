@@ -52,15 +52,6 @@ in {
           export __VK_LAYER_NV_optimus=NVIDIA_only
           exec "$@"
         '')
-        (pkgs.makeDesktopItem {
-          name = "Steam (Prime Run)";
-          desktopName = "Steam (Prime Run)";
-          genericName = "Application for managing and playing games on Steam.";
-          categories = ["Network" "FileTransfer" "Game"];
-          type = "Application";
-          icon = "steam";
-          exec = "prime-run steam";
-        })
       ];
 
       hardware = {

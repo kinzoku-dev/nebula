@@ -101,6 +101,7 @@ in {
             [
               ".cache/dconf"
               ".config/dconf"
+              ".config/spotify"
             ]
             ++ persistCfg.home.dirs;
         };

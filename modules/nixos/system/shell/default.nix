@@ -232,6 +232,11 @@ in {
         fish_vi_key_bindings
 
       '';
+      functions = {
+        rgz = ''
+          rg -n -H . --color=always| fzf --preview "tail -n +(echo {} | cut -d':' -f2) < (echo {} | cut -d':' -f1)" --color
+        '';
+      };
       plugins = [
         {
           name = "grc";

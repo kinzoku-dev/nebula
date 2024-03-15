@@ -19,6 +19,18 @@ in {
       programs = {
         btop = {
           enable = true;
+          package = pkgs.btop.overrideAttrs {
+            desktopItems = [
+              (pkgs.makeDesktopItem {
+                name = "btop";
+                desktopName = "btop++";
+                exec = "kitty btop";
+                icon = "btop";
+                genericName = "System Monitor";
+                keywords = ["hardware" "cpu" "gpu" "memory" "disk"];
+              })
+            ];
+          };
           settings = {
             color_theme = "dracula";
             theme_background = false;

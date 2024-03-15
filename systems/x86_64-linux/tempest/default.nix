@@ -175,6 +175,10 @@
         prismlauncher
 
         gpu-screen-recorder-gtk
+        libva
+        libglvnd
+        mesa
+        ffmpeg
 
         mpv
 
