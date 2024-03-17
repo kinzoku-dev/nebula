@@ -54,7 +54,6 @@ in {
         bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
         bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 
-        set -g @base16-statusline '${theme.slug}'
         set -g @dracula-show-powerline true
         set -g @dracula-show-battery false
         set -g @dracula-show-left-sep 
