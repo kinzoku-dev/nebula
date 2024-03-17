@@ -115,11 +115,18 @@
     extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config.common.default = "*";
   };
+  services = {
+    hardware.openrgb = {
+      enable = true;
+      package = pkgs.openrgb-with-all-plugins;
+      motherboard = "amd";
+    };
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    # Configure keymap in X11
+    xserver = {
+      layout = "us";
+      xkbVariant = "";
+    };
   };
   environment = {
     # Enable touchpad support (enabled default in most desktopManager).

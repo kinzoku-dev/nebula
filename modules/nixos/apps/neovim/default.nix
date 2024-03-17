@@ -48,6 +48,22 @@ in {
         plugpkgs.playground
         plugpkgs.nui-nvim
         plugpkgs.vim-carbon-now-sh
+        plugpkgs.openingh-nvim
+        {
+          plugin = plugpkgs.base16-nvim;
+          config = toLua ''
+            require('base16-colorscheme').with_config({
+                telescope = true,
+                telescope_borders = true,
+                indentblankline = true,
+                notify = true,
+                cmp = true,
+                illuminate = true,
+                dapui = true,
+            })
+            vim.cmd('colorscheme base16-${theme.slug}')
+          '';
+        }
         {
           plugin = plugpkgs.nvim-silicon;
           config = toLua ''
@@ -117,11 +133,6 @@ in {
         LineNrBelow.fg = "#${colors.base05}";
         CursorLineNr.fg = "#${colors.base07}";
         "@ibl.indent.char.1".fg = "#${colors.base02}";
-      };
-      colorschemes.base16 = {
-        enable = true;
-        colorscheme = "${theme.slug}";
-        setUpBar = true;
       };
       extraConfigLua = ''
             local mode_map = {
@@ -217,6 +228,18 @@ in {
         {
           action = "Nzzzv";
           key = "N";
+        }
+        {
+          action = "<cmd>OpenInGHRepo<CR>";
+          key = "<leader>ghr";
+        }
+        {
+          action = "<cmd>OpenInGHFile<CR>";
+          key = "<leader>ghf";
+        }
+        {
+          action = "<cmd>OpenInGHFileLines<CR>";
+          key = "<leader>ghl";
         }
         {
           action = "<cmd>noh<CR>";

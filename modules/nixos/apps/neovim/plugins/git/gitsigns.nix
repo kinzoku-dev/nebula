@@ -8,12 +8,12 @@
     keymaps = [
       {
         mode = ["n" "v"];
-        key = "<leader>gh";
+        key = "<leader>gs";
         action = "gitsigns";
       }
       {
         mode = "n";
-        key = "<leader>ghb";
+        key = "<leader>gsb";
         action = ":Gitsigns blame_line<CR>";
         options = {
           silent = true;
@@ -22,7 +22,7 @@
       }
       {
         mode = "n";
-        key = "<leader>ghd";
+        key = "<leader>gsd";
         action = ":Gitsigns diffthis<CR>";
         options = {
           silent = true;
@@ -31,7 +31,7 @@
       }
       {
         mode = "n";
-        key = "<leader>ghp";
+        key = "<leader>gsp";
         action = ":Gitsigns preview_hunk<CR>";
         options = {
           silent = true;
@@ -40,7 +40,7 @@
       }
       {
         mode = "n";
-        key = "<leader>ghR";
+        key = "<leader>gsR";
         action = ":Gitsigns reset_buffer<CR>";
         options = {
           silent = true;
@@ -49,7 +49,7 @@
       }
       {
         mode = ["n" "v"];
-        key = "<leader>ghr";
+        key = "<leader>gsr";
         action = ":Gitsigns reset_hunk<CR>";
         options = {
           silent = true;
@@ -58,7 +58,7 @@
       }
       {
         mode = ["n" "v"];
-        key = "<leader>ghs";
+        key = "<leader>gss";
         action = ":Gitsigns stage_hunk<CR>";
         options = {
           silent = true;
@@ -67,7 +67,7 @@
       }
       {
         mode = "n";
-        key = "<leader>ghS";
+        key = "<leader>gsS";
         action = ":Gitsigns stage_buffer<CR>";
         options = {
           silent = true;
@@ -76,7 +76,7 @@
       }
       {
         mode = "n";
-        key = "<leader>ghu";
+        key = "<leader>gsu";
         action = ":Gitsigns undo_stage_hunk<CR>";
         options = {
           silent = true;
