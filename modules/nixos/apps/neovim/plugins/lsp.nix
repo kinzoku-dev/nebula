@@ -24,6 +24,11 @@
       {
         action = "function() vim.lsp.buf.references() end";
         lua = true;
+        key = "gr";
+      }
+      {
+        action = "function() vim.lsp.buf.type_definition() end";
+        lua = true;
         key = "gD";
       }
     ];
