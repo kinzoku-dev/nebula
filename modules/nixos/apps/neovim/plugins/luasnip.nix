@@ -13,13 +13,13 @@
       local rep = extras.rep
       local fmt = require('luasnip.extras.fmt').fmt
 
-      vim.keymap.set({ "i", "s" }, "<A-k>", function()
+      vim.keymap.set({ "i", "s" }, "<A-j>", function()
           if lsnip.expand_or_jumpable() then
               lsnip.expand_or_jump()
           end
       end, {silent = true})
 
-      vim.keymap.set({ "i", "s" }, "<A-j>", function()
+      vim.keymap.set({ "i", "s" }, "<A-k>", function()
           if lsnip.jumpable(-1) then
               lsnip.jump(-1)
           end
