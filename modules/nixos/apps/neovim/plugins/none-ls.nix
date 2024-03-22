@@ -41,7 +41,10 @@
     };
     keymaps = [
       {
-        mode = ["n" "v"];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>lf";
         action = "<cmd>lua vim.lsp.buf.format()<cr>";
         options = {
