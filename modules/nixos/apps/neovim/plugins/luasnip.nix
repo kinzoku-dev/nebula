@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   programs.nixvim = {
-    extraPlugins = with pkgs.vimPlugins; [
-      friendly-snippets
-    ];
+    extraPlugins = with pkgs.vimPlugins; [friendly-snippets];
     extraConfigLua = ''
           require("luasnip.loaders.from_vscode").lazy_load()
 
