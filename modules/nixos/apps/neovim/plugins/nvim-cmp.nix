@@ -33,6 +33,8 @@
           '';
           "<C-Space>" = "cmp.mapping.complete()";
           "<S-CR>" = "cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true })";
+          "<C-j>" = "cmp.mapping.scroll_docs(4)";
+          "<C-k>" = "cmp.mapping.scroll_docs(-4)";
         };
         sources = [
           {name = "nvim_lsp";}
