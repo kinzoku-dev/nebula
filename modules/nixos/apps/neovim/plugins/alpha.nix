@@ -1,55 +1,84 @@
 {...}: {
   programs.nixvim = {
-    # plugins.alpha = {
-    #   enable = true;
-    #   iconsEnabled = true;
-    #   theme = null;
-    #   layout = let
-    #     padding = val: {
-    #       type = "padding";
-    #       inherit val;
-    #     };
-    #   in [
-    #     (padding 4)
-    #     {
-    #       opts = {
-    #         hl = "AlphaHeader";
-    #         position = "center";
-    #       };
-    #       type = "text";
-    #       val = [
-    #         "███╗   ██╗███████╗██████╗ ██╗   ██╗██╗   ██╗██╗███╗   ███╗"
-    #         "████╗  ██║██╔════╝██╔══██╗██║   ██║██║   ██║██║████╗ ████║"
-    #         "██╔██╗ ██║█████╗  ██████╔╝██║   ██║██║   ██║██║██╔████╔██║"
-    #         "██║╚██╗██║██╔══╝  ██╔══██╗██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║"
-    #         "██║ ╚████║███████╗██████╔╝╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║"
-    #         "╚═╝  ╚═══╝╚══════╝╚═════╝  ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝"
-    #       ];
-    #     }
-    #     (padding 2)
-    #     {
-    #       type = "group";
-    #       val = [
-    #         {
-    #           command = "<cmd>Telescope find_files<CR>";
-    #           desc = "󰥩 Find files";
-    #           shortcut = "f";
-    #         }
-    #         {
-    #           command = "<cmd>Telescope frecency<CR>";
-    #           desc = "󰪻 Recent files";
-    #           shortcut = "r";
-    #         }
-    #         {
-    #           command = "<cmd>qa<CR>";
-    #           desc = " Quit";
-    #           shortcut = "SPC q";
-    #         }
-    #       ];
-    #     }
-    #     (padding 2)
-    #   ];
-    # };
+    plugins.alpha = {
+      enable = true;
+      iconsEnabled = true;
+      theme = null;
+      layout = let
+        padding = val: {
+          type = "padding";
+          inherit val;
+        };
+      in [
+        (padding 4)
+        {
+          opts = {
+            hl = "Type";
+            position = "center";
+          };
+          type = "text";
+          val = [
+            "███╗   ██╗███████╗██████╗ ██╗   ██╗██╗   ██╗██╗███╗   ███╗"
+            "████╗  ██║██╔════╝██╔══██╗██║   ██║██║   ██║██║████╗ ████║"
+            "██╔██╗ ██║█████╗  ██████╔╝██║   ██║██║   ██║██║██╔████╔██║"
+            "██║╚██╗██║██╔══╝  ██╔══██╗██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║"
+            "██║ ╚████║███████╗██████╔╝╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║"
+            "╚═╝  ╚═══╝╚══════╝╚═════╝  ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝"
+          ];
+        }
+        (padding 2)
+        {
+          type = "group";
+          opts = {
+            position = "center";
+          };
+          val = [
+            {
+              on_press = {
+                __raw = "function() vim.cmd[[Telescope find_files]] end";
+              };
+              val = "󰥩 Find files";
+              type = "button";
+              opts = {
+                shortcut = "f";
+                position = "center";
+              };
+            }
+            {
+              on_press = {
+                __raw = "function() vim.cmd[[Telescope oldfiles]] end";
+              };
+              val = "󰪻 Recent files";
+              type = "button";
+              opts = {
+                shortcut = "r";
+                position = "center";
+              };
+            }
+            {
+              on_press = {
+                __raw = "function() vim.cmd[[qa]] end";
+              };
+              type = "button";
+              val = " Quit";
+              opts = {
+                shortcut = "SPC q";
+                position = "center";
+              };
+            }
+          ];
+        }
+        (padding 2)
+        {
+          opts = {
+            hl = "Keyword";
+            position = "center";
+          };
+          type = "text";
+          val = "My balls itch.";
+        }
+      ];
+    };
     # keymaps = [
     #   {
     #     action = ''
