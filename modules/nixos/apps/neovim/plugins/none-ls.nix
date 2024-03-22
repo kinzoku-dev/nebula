@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   programs.nixvim = {
     plugins.none-ls = {
       enable = true;
@@ -12,6 +12,7 @@
         };
         diagnostics = {
           statix.enable = true;
+          deadnix.enable = true;
           fish.enable = true;
           yamllint.enable = true;
         };
@@ -22,7 +23,10 @@
           gofumpt.enable = true;
           stylua.enable = true;
           leptosfmt.enable = true;
-          nixpkgs_fmt.enable = true;
+          nixfmt = {
+            enable = true;
+            package = pkgs.nixfmt-rfc-style;
+          };
           yamlfmt.enable = true;
           black = {
             enable = true;

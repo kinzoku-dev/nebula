@@ -108,6 +108,8 @@ in {
         clippy
         csharpier
         ktlint
+        deadnix
+        nixfmt-rfc-style
         leptosfmt
         nixpkgs-fmt
         yamlfmt
