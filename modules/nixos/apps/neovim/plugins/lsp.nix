@@ -71,8 +71,8 @@
         };
         keymaps = {
           diagnostic = {
-            "<leader>lj" = "goto_next";
-            "<leader>lk" = "goto_prev";
+            "gj" = "goto_next";
+            "gk" = "goto_prev";
             "<leader>lo" = "open_float";
           };
         };
