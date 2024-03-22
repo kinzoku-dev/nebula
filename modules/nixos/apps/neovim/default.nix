@@ -37,6 +37,16 @@ in {
 
     programs.nixvim = {
       enable = true;
+      autoCmd = [
+        {
+          event = [
+            "BufReadPost"
+            "FileReadPost"
+          ];
+          pattern = ["*"];
+          command = "normal zR";
+        }
+      ];
       extraPlugins = let
         toLua = str: "lua << EOF\n${str}\nEOF\n";
         plugpkgs = pkgs.vimPlugins;
@@ -527,7 +537,7 @@ in {
             "tsx"
             "yaml"
           ];
-          folding = false;
+          folding = true;
           indent = true;
           nixvimInjections = true;
           incrementalSelection.enable = true;
