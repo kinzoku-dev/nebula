@@ -19,7 +19,7 @@
       {
         action = "function() vim.lsp.buf.rename() end";
         lua = true;
-        key = "gr";
+        key = "<leader>rn";
       }
       {
         action = "function() vim.lsp.buf.references() end";
