@@ -19,17 +19,6 @@
       "::1" = ["localhost" "nova"];
       "127.0.0.1" = ["localhost"];
       "127.0.0.2" = ["nova"];
-      "192.168.1.250" = ["nova"];
-    };
-    interfaces = {
-      eno1 = {
-        ipv4.addresses = [
-          {
-            address = "192.168.1.250";
-            prefixLength = 24;
-          }
-        ];
-      };
     };
   };
 
