@@ -34,6 +34,7 @@ in {
       wbStyle = import ./style.nix {inherit colors;};
     in {
       enable = true;
+      package = inputs.nixpkgs-master.legacyPackages.x86_64-linux.waybar;
       settings = wbConfig;
       style = wbStyle;
     };
