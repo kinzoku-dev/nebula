@@ -46,7 +46,8 @@
           "v"
         ];
         key = "<leader>lf";
-        action = "<cmd>lua vim.lsp.buf.format()<cr>";
+        action = "function() vim.lsp.buf.format() end";
+        lua = true;
         options = {
           silent = true;
           desc = "LSP format";
