@@ -19,6 +19,7 @@ in {
     ./notify.nix
     ./git
     ./luasnip.nix
+    ./rust.nix
     (import ./bufferline.nix {inherit colors;})
   ];
 }
