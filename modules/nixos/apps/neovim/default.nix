@@ -19,9 +19,7 @@ in {
   config = mkIf cfg.enable {
     environment = {
       sessionVariables.EDITOR = "nvim";
-      systemPackages = with pkgs; [
-        silicon
-      ];
+      systemPackages = with pkgs; [silicon];
     };
     home.xdgDesktopEntries = {
       nvim = lib.mkForce {
@@ -281,7 +279,10 @@ in {
         {
           action = "\"_d";
           key = "<leader>d";
-          mode = ["n" "v"];
+          mode = [
+            "n"
+            "v"
+          ];
         }
         {
           action = "mzJ`z";
@@ -464,12 +465,28 @@ in {
                 lang = "regex";
               };
               find = {
-                pattern = [":%s*%%s*s:%s*" ":%s*%%s*s!%s*" ":%s*%%s*s/%s*" "%s*s:%s*" ":%s*s!%s*" ":%s*s/%s*" ":%s*'<,'>s/\%s*%%s*V%s*"];
+                pattern = [
+                  ":%s*%%s*s:%s*"
+                  ":%s*%%s*s!%s*"
+                  ":%s*%%s*s/%s*"
+                  "%s*s:%s*"
+                  ":%s*s!%s*"
+                  ":%s*s/%s*"
+                  ":%s*'<,'>s/\%s*%%s*V%s*"
+                ];
                 icon = "";
                 lang = "regex";
               };
               replace = {
-                pattern = [":%s*%%s*s:%w*:%s*" ":%s*%%s*s!%w*!%s*" ":%s*%%s*s/%w*/%s*" "%s*s:%w*:%s*" ":%s*s!%w*!%s*" ":%s*s/%w*/%s*" ":%s*'<,'>s/\%s*%%s*V%w*/%s*"];
+                pattern = [
+                  ":%s*%%s*s:%w*:%s*"
+                  ":%s*%%s*s!%w*!%s*"
+                  ":%s*%%s*s/%w*/%s*"
+                  "%s*s:%w*:%s*"
+                  ":%s*s!%w*!%s*"
+                  ":%s*s/%w*/%s*"
+                  ":%s*'<,'>s/\%s*%%s*V%w*/%s*"
+                ];
                 icon = "󱞪";
                 lang = "regex";
               };
