@@ -16,7 +16,10 @@
   networking = {
     hostId = "9bf01da4";
     hosts = {
-      "::1" = ["localhost" "nova"];
+      "::1" = [
+        "localhost"
+        "nova"
+      ];
       "127.0.0.1" = ["localhost"];
       "127.0.0.2" = ["nova"];
     };
@@ -106,7 +109,18 @@
           refreshRate = 165;
           x = 0;
           y = 0;
-          workspaces = [1 2 3 4 5 6 7 8 9 10];
+          workspaces = [
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            10
+          ];
         }
         {
           name = "DP-2";
@@ -115,7 +129,18 @@
           refreshRate = 165;
           x = 1920;
           y = 0;
-          workspaces = [11 12 13 14 15 16 17 18 19 20];
+          workspaces = [
+            11
+            12
+            13
+            14
+            15
+            16
+            17
+            18
+            19
+            20
+          ];
         }
       ];
     };
@@ -247,14 +272,15 @@
           icon = "/home/kinzoku/.smm/ficsit.png";
           startupWMClass = "satisfactory-mod-manager-gui";
           genericName = "";
-          keywords = ["satisfactory" "mod" "manager" "factory"];
+          keywords = [
+            "satisfactory"
+            "mod"
+            "manager"
+            "factory"
+          ];
         })
       ]
-      ++ (
-        with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
-          mapscii
-        ]
-      );
+      ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [mapscii]);
 
     sessionVariables = {
       DOTNET_ROOT = "${pkgs.dotnet-sdk}";
@@ -274,5 +300,8 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"]; # Did you read the comment?
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ]; # Did you read the comment?
 }
