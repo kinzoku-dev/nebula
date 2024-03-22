@@ -4,7 +4,7 @@
       {
         action = "function() vim.lsp.buf.hover() end";
         lua = true;
-        key = "K";
+        key = "gh";
       }
       {
         action = "function() vim.lsp.buf.definition() end";
