@@ -17,38 +17,38 @@ in {
     programs.steam = {
       enable = true;
       package =
-        (pkgs.steam.override
-          {
-            extraPkgs = pkgs:
-              with pkgs; [
-                xorg.libXcursor
-                xorg.libXi
-                xorg.libXinerama
-                xorg.libXScrnSaver
-                libpng
-                libpulseaudio
-                libvorbis
-                stdenv.cc.cc.lib
-                libkrb5
-                keyutils
-                libgdiplus
-                at-spi2-atk
-                fmodex
-                gtk3
-                gtk3-x11
-                harfbuzz
-                icu
-                glxinfo
-                inetutils
-                libthai
-                mono5
-                pango
-                strace
-                zlib
-                iconv
-                libunwind
-              ];
-          })
+        (pkgs.steam.override {
+          extraPkgs = pkgs:
+            with pkgs; [
+              xorg.libXcursor
+              xorg.libXi
+              xorg.libXinerama
+              xorg.libXScrnSaver
+              libpng
+              libpulseaudio
+              libvorbis
+              libGL
+              stdenv.cc.cc.lib
+              libkrb5
+              keyutils
+              libgdiplus
+              at-spi2-atk
+              fmodex
+              gtk3
+              gtk3-x11
+              harfbuzz
+              icu
+              glxinfo
+              inetutils
+              libthai
+              mono5
+              pango
+              strace
+              zlib
+              iconv
+              libunwind
+            ];
+        })
         .overrideAttrs
         {
           desktopItems = [
@@ -59,8 +59,17 @@ in {
               icon = "steam";
               startupWMClass = "Signal Beta";
               genericName = "Internet Messenger";
-              keywords = ["call" "signal" "electron" "chat"];
-              categories = ["Network" "InstantMessaging" "Chat"];
+              keywords = [
+                "call"
+                "signal"
+                "electron"
+                "chat"
+              ];
+              categories = [
+                "Network"
+                "InstantMessaging"
+                "Chat"
+              ];
             })
           ];
         };
@@ -68,9 +77,7 @@ in {
       dedicatedServer.openFirewall = true;
     };
 
-    system.persist.home.dirs = [
-      ".local/share/Steam"
-    ];
+    system.persist.home.dirs = [".local/share/Steam"];
     environment.systemPackages = [
       pkgs.protonup-ng
       pkgs.gamescope
