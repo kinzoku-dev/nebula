@@ -63,7 +63,11 @@
           end
         '';
         formatting = {
-          fields = ["kind" "abbr" "menu"];
+          fields = [
+            "kind"
+            "abbr"
+            "menu"
+          ];
           expandable_indicator = true;
         };
         window = {
