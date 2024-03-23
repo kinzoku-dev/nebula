@@ -13,7 +13,11 @@ with lib.nebula; let
   colors = theme.palette;
 in {
   options.system.shell = with types; {
-    shell = mkOpt (enum ["nu" "fish" "zsh"]) "nu" "What shell to use";
+    shell = mkOpt (enum [
+      "nu"
+      "fish"
+      "zsh"
+    ]) "nu" "What shell to use";
   };
 
   config = {
@@ -39,9 +43,7 @@ in {
         ".local/share/zoxide"
         ".local/share/atuin"
       ];
-      files = [
-        ".zsh_history"
-      ];
+      files = [".zsh_history"];
     };
 
     home.programs.starship = {
@@ -93,9 +95,7 @@ in {
       enableZshIntegration = true;
       enableNushellIntegration = true;
       enableFishIntegration = true;
-      flags = [
-        "--disable-up-arrow"
-      ];
+      flags = ["--disable-up-arrow"];
       settings = {
         enter_accept = true;
         filter_mode = "host";
@@ -133,10 +133,9 @@ in {
 
         source = map (source: "source ${source}") sources;
 
-        plugins = concatStringsSep "\n" ([
-            "${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin"
-          ]
-          ++ source);
+        plugins = concatStringsSep "\n" (
+          ["${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin"] ++ source
+        );
 
         functions = pkgs.stdenv.mkDerivation {
           name = "zsh-functions";
@@ -179,7 +178,11 @@ in {
 
     home.programs.nushell = mkIf (cfg.shell == "nu") {
       enable = true;
-      shellAliases = config.environment.shellAliases // {ls = "eza";};
+      shellAliases =
+        config.environment.shellAliases
+        // {
+          ls = "eza";
+        };
       extraEnv = ''
         zoxide init nushell | save -f ~/.zoxide.nu
       '';
