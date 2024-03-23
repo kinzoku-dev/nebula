@@ -56,9 +56,7 @@
                 command = "clippy";
               };
               procMacro = {
-                ignored = {
-                  leptos_macro = ["server"];
-                };
+                enable = true;
               };
             };
           };
