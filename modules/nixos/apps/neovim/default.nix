@@ -52,7 +52,6 @@ in {
         plugpkgs.aerial-nvim
         plugpkgs.playground
         plugpkgs.nui-nvim
-        plugpkgs.vim-carbon-now-sh
         plugpkgs.openingh-nvim
         {
           plugin = plugpkgs.nvim-silicon;
