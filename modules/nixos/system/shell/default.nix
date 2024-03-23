@@ -72,7 +72,6 @@ in {
       tx = "tmux";
       hss = "hugo server --noHTTPCache";
       vesktop = "vesktop --disable-gpu";
-      ssh = "TERM=xterm-256color ssh";
       seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
       nf = "neofetch";
       cl = "clear";
