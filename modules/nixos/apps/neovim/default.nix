@@ -37,16 +37,6 @@ in {
 
     programs.nixvim = {
       enable = true;
-      autoCmd = [
-        {
-          event = [
-            "BufReadPost"
-            "FileReadPost"
-          ];
-          pattern = ["*"];
-          command = "normal zR";
-        }
-      ];
       extraPlugins = let
         toLua = str: "lua << EOF\n${str}\nEOF\n";
         plugpkgs = pkgs.vimPlugins;
@@ -594,6 +584,7 @@ in {
         incsearch = true;
         scrolloff = 8;
         signcolumn = "yes";
+        foldenable = false;
       };
     };
   };
