@@ -51,6 +51,10 @@
             installCargo = true;
             enable = true;
             settings = {
+              checkOnSave = true;
+              check = {
+                command = "clippy";
+              };
               procMacro = {
                 ignored = {
                   leptos_macro = ["server"];
