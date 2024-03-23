@@ -37,31 +37,23 @@ in {
 
     programs.nixvim = {
       enable = true;
+      colorschemes.base16 = {
+        enable = true;
+        customColorScheme =
+          lib.concatMapAttrs (name: value: {
+            ${name} = "#${value}";
+          })
+          config.colorScheme.palette;
+      };
       extraPlugins = let
         toLua = str: "lua << EOF\n${str}\nEOF\n";
         plugpkgs = pkgs.vimPlugins;
       in [
-        plugpkgs.base16-nvim
         plugpkgs.aerial-nvim
         plugpkgs.playground
         plugpkgs.nui-nvim
         plugpkgs.vim-carbon-now-sh
         plugpkgs.openingh-nvim
-        {
-          plugin = plugpkgs.base16-nvim;
-          config = toLua ''
-            require('base16-colorscheme').with_config({
-                telescope = true,
-                telescope_borders = true,
-                indentblankline = true,
-                notify = true,
-                cmp = true,
-                illuminate = true,
-                dapui = true,
-            })
-            vim.cmd('colorscheme base16-${theme.slug}')
-          '';
-        }
         {
           plugin = plugpkgs.nvim-silicon;
           config = toLua ''
