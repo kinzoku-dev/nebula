@@ -559,27 +559,79 @@ in {
         };
       };
       options = {
+        # enable relative line numbers
         nu = true;
         rnu = true;
-        wrap = true;
-        tabstop = 4;
-        softtabstop = 4;
-        shiftwidth = 4;
-        smartindent = true;
+
+        # set tabs to 2 spaces
+        tabstop = 2;
+        softtabstop = 2;
+        showtabline = 2;
         expandtab = true;
-        backup = false;
-        swapfile = false;
-        undofile = true;
-        undodir = "/home/${config.user.name}/.vim/undodir";
-        termguicolors = true;
-        spelllang = "en_us";
-        spell = true;
-        updatetime = 50;
-        hlsearch = false;
+
+        # enable auto intending and set it to spaces
+        smartindent = true;
+        shiftwidth = 2;
+
+        # enable smart indenting
+        breakindent = true;
+
+        # enable incremental searching
+        hlsearch = true;
         incsearch = true;
-        scrolloff = 8;
+
+        # enable text wrap
+        wrap = true;
+
+        # better splitting
+        splitbelow = true;
+        splitright = true;
+
+        # enable ignorecase + smartcase for better searching
+        ignorecase = true;
+        smartcase = true; # don't ignore case with capitals
+        grepprg = "rg --vimgrep";
+        grepformat = "%f:%l:%c:%m";
+
+        # decrease updatetime
+        updatetime = 50;
+
+        # set completeopt
+        completeopt = [
+          "menuone"
+          "noselect"
+          "noinsert"
+        ];
+
+        # enable persistent undo directory
+        swapfile = false;
+        backup = false;
+        undofile = true;
+
+        # enable termguicolors
+        termguicolors = true;
+
+        # enable sign column
         signcolumn = "yes";
+
+        # set folding options
+        foldcolumn = "0";
+        foldlevel = 99;
+        foldlevelstart = 99;
         foldenable = false;
+
+        # always keep 8 lines above/below cursor
+        scrolloff = 8;
+
+        # reduce which-key timeout
+        timeoutlen = 10;
+
+        # set encoding type
+        encoding = "utf-8";
+        fileencoding = "utf-8";
+
+        # more space in cmdline
+        cmdheight = 2;
       };
     };
   };
