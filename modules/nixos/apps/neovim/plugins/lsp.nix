@@ -107,7 +107,15 @@
           vuels.enable = true;
           java-language-server.enable = true;
           kotlin-language-server.enable = true;
-          htmx.enable = true;
+          htmx = {
+            enable = true;
+            filetypes = [
+              "html"
+              "htmldjango"
+              "typescriptreact"
+              "javascriptreact"
+            ];
+          };
           nushell.enable = true;
           pyright.enable = true;
         };
