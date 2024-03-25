@@ -116,6 +116,10 @@ in {
         LineNrBelow.fg = "#${colors.base05}";
         CursorLineNr.fg = "#${colors.base07}";
         "@ibl.indent.char.1".fg = "#${colors.base02}";
+        "@comment".fg = "#ffffff";
+        "TSComment".fg = "#ffffff";
+        "nixComment".fg = "#ffffff";
+        "Comment".fg = "#ffffff";
       };
       extraConfigLua = ''
             local mode_map = {
