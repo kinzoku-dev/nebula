@@ -58,6 +58,12 @@
               procMacro = {
                 enable = true;
               };
+              diagnostics = {
+                disabled = ["unlinked-file"];
+              };
+              completion = {
+                privateEditable.enable = true;
+              };
             };
           };
           svelte.enable = true;
