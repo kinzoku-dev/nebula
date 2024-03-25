@@ -196,6 +196,78 @@
           }),
       })
 
+      lsnip.add_snippets('rust', {
+        s('derivedebug', {
+          t("#[derive(Debug)]"),
+        }),
+        s('unusedmut', {
+          t("#[allow(unused_mut)]"),
+        }),
+        s('unusedimpt', {
+          t("#[allow(unused_imports)]"),
+        }),
+        s('unusedvar', {
+          t("#[allow(unused_variables)]"),
+        }),
+        s('unused', {
+          t("#[allow(unused)]"),
+        }),
+        s('deadcode', {
+          t("#[allow(dead_code)]"),
+        }),
+        s('crate', {
+          t("use crate::"),
+          i(1),
+          t(";"),
+        }),
+        s('new', {
+          i(1),
+          t("::new()"),
+        }),
+        s('for',
+          fmt(
+            [[
+              for {} in {} {{
+                {}
+              }}
+            ]],
+            {
+              i(1),
+              i(2),
+              i(3),
+            }
+          )
+         ),
+         s('struct',
+          fmt(
+            [[
+              #[derive(Debug)]
+              struct {} {{
+                {}
+              }}
+            ]],
+            {
+              i(1),
+              i(2),
+            }
+          )
+         ),
+         s('enum',
+          fmt(
+            [[
+              #[derive(Debug)]
+              enum {} {{
+                {}
+              }}
+            ]],
+            {
+              i(1),
+              i(2),
+            }
+          )
+         ),
+      })
+
       lsnip.filetype_extend("javascript", {"javascriptreact", "typescript", "typescriptreact"})
 
     '';
