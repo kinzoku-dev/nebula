@@ -342,6 +342,10 @@ in {
                   url = "http://192.168.1.254";
                 }
                 {
+                  label = "Netgear Switch";
+                  url = "http://192.168.1.251";
+                }
+                {
                   label = "YTMusic";
                   url = "https://music.youtube.com/";
                 }
