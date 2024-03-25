@@ -128,9 +128,7 @@ in {
     enable = mkBoolOpt false "Enable firefox";
   };
   config = mkIf cfg.enable {
-    system.persist.home.dirs = [
-      ".mozilla"
-    ];
+    system.persist.home.dirs = [".mozilla"];
     home.programs = {
       firefox = {
         enable = true;
