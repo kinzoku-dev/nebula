@@ -23,6 +23,15 @@
       "127.0.0.1" = ["localhost"];
       "127.0.0.2" = ["nova"];
     };
+    interfaces."eno1" = {
+      useDHCP = false;
+      ipv4.addresses = [
+        {
+          address = "192.168.1.10";
+          prefixLength = 23;
+        }
+      ];
+    };
   };
 
   hardware.graphics = {
