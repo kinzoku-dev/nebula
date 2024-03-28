@@ -2,34 +2,44 @@
   programs.nixvim = {
     keymaps = [
       {
-        action = "function() vim.lsp.buf.hover() end";
-        lua = true;
+        action = "<cmd>Lspsaga hover_doc<CR>";
         key = "gh";
       }
       {
-        action = "function() vim.lsp.buf.definition() end";
-        lua = true;
+        action = "<cmd>Lspsaga finder def<CR>";
         key = "gd";
       }
       {
-        action = "function() vim.lsp.buf.code_action() end";
-        lua = true;
+        action = "<cmd>Lspsaga code_action<CR>";
         key = "<leader>ca";
       }
       {
-        action = "function() vim.lsp.buf.rename() end";
-        lua = true;
+        action = "<cmd>Lspsaga rename<CR>";
         key = "<leader>rn";
       }
       {
-        action = "function() vim.lsp.buf.references() end";
-        lua = true;
+        action = "<cmd>Lspsaga finder ref<CR>";
         key = "gr";
       }
       {
-        action = "function() vim.lsp.buf.type_definition() end";
-        lua = true;
+        action = "<cmd>Lspsaga peek_type_definition<CR>";
         key = "gD";
+      }
+      {
+        action = "<cmd>Lspsaga outline<CR>";
+        key = "go";
+      }
+      {
+        action = "<cmd>Lspsaga show_line_diagnostics<CR>";
+        key = "gl";
+      }
+      {
+        action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
+        key = "gj";
+      }
+      {
+        action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
+        key = "gk";
       }
     ];
     plugins = {
@@ -121,8 +131,6 @@
         };
         keymaps = {
           diagnostic = {
-            "gj" = "goto_next";
-            "gk" = "goto_prev";
             "<leader>lo" = "open_float";
           };
         };
@@ -133,6 +141,71 @@
       lspkind = {
         enable = true;
         cmp.enable = true;
+      };
+      lspsaga = {
+        enable = true;
+        beacon.enable = true;
+        ui = {
+          border = "rounded";
+          codeAction = "💡";
+        };
+        hover = {
+          openCmd = "!firefox";
+          openLink = "gx";
+        };
+        diagnostic = {
+          borderFollow = true;
+          diagnosticOnlyCurrent = false;
+          showCodeAction = true;
+        };
+        codeAction = {
+          extendGitSigns = false;
+          showServerName = true;
+          onlyInCursor = true;
+          numShortcut = true;
+          keys = {
+            exec = "<CR>";
+            quit = [
+              "<Esc>"
+              "q"
+            ];
+          };
+        };
+        lightbulb = {
+          enable = false;
+          sign = false;
+          virtualText = true;
+        };
+        implement = {
+          enable = false;
+        };
+        rename = {
+          autoSave = false;
+          keys = {
+            exec = "<CR>";
+            quit = [
+              "<C-x>"
+              "<Esc>"
+            ];
+            select = "x";
+          };
+        };
+        outline = {
+          autoClose = true;
+          autoPreview = true;
+          closeAfterJump = true;
+          layout = "normal"; # normal or float
+          winPosition = "right"; # left or right
+          keys = {
+            jump = "e";
+            quit = "q";
+            toggleOrJump = "o";
+          };
+        };
+        scrollPreview = {
+          scrollDown = "<C-j>";
+          scrollUp = "<C-k>";
+        };
       };
       which-key.registrations = {
         "<leader>l".name = " LSP";
