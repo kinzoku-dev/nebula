@@ -8,12 +8,12 @@ in
   pkgs.writeShellScriptBin "houston" ''
     cmd_rebuild() {
         echo "🔨 Rebuilding system configuration with $REBUILD_COMMAND"
-        $REBUILD_COMMAND switch --flake .# --log-format internal-json -v |& ${nom} --json
+        $REBUILD_COMMAND switch --flake .# -j 4 --log-format internal-json -v |& ${nom} --json
     }
 
     cmd_test() {
         echo "🧪 Building ephemeral system config with $REBUILD_COMMAND"
-        $REBUILD_COMMAND test --fast --flake .# --log-format internal-json -v |& ${nom} --json
+        $REBUILD_COMMAND test --fast --flake .# -j 4 --log-format internal-json -v |& ${nom} --json
     }
 
     #TODO: add option for updating a single input only
