@@ -121,6 +121,9 @@ in {
         "nixComment".fg = "#ffffff";
         "Comment".fg = "#ffffff";
       };
+      extraConfigVim = ''
+        autocmd FileType nix setlocal commentstring=#%s
+      '';
       extraConfigLua = ''
             local mode_map = {
                 ['n']    = '󰍜',
