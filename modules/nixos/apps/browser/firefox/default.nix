@@ -337,11 +337,11 @@ in {
                 }
                 {
                   label = "Router";
-                  url = "http://192.168.1.254";
+                  url = "http://192.168.1.0";
                 }
                 {
                   label = "Netgear Switch";
-                  url = "http://192.168.1.251";
+                  url = "http://192.168.1.1";
                 }
                 {
                   label = "YTMusic";
