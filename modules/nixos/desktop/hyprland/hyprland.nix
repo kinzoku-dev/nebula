@@ -32,8 +32,8 @@
   layerrule = blur,rofi
   layerrule = blur,notifications
   windowrulev2 = float,title:(pulsemixer),class:(kitty)
-  windowrulev2 = move 0 0,title:(pulsemixer),class:(kitty)
-  windowrulev2 = size 40% 40%,title:(pulsemixer),class:(kitty)
+  windowrulev2 = move 25% 25%,title:(pulsemixer),class:(kitty)
+  windowrulev2 = size 50% 50%,title:(pulsemixer),class:(kitty)
   env = WLR_NO_HARDWARE_CURSORS,1
   env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
   env = WLR_DRM_NO_ATOMIC,1
@@ -82,6 +82,7 @@
   bind = $mainMod, M, exec, rofi-calculate
   bind = $mainMod, E, exec, emoji
   bind = $mainMod, B, exec, rofi-clipboard
+  bind = $mainMod SHIFT, V, exec, kitty pulsemixer
 
   bind = ,XF86AudioRaiseVolume, exec, volume --up
   bind = ,XF86AudioLowerVolume, exec, volume --down
