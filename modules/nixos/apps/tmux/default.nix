@@ -35,6 +35,9 @@ in {
         unbind n
         bind-key n command-prompt -I "rename-window %%"
 
+        unbind N
+        bind-key N command-prompt -I "rename-session %%"
+
         unbind '&'
         bind C-x kill-window
 
