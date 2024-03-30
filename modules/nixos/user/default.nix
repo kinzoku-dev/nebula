@@ -19,6 +19,8 @@ in {
   config = {
     environment.sessionVariables.FLAKE = "/home/kinzoku/dev/nebula";
 
+    system.persist.root.files = ["/etc/shadow"];
+
     users.users.kinzoku =
       {
         isNormalUser = true;
