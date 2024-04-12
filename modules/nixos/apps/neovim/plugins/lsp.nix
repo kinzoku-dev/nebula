@@ -46,6 +46,7 @@
       lsp = {
         enable = true;
         servers = {
+          ansiblels.enable = true;
           bashls.enable = true;
           clangd.enable = true;
           csharp-ls.enable = true;
