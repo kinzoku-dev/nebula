@@ -27,7 +27,6 @@
             enable = true;
             package = pkgs.nixfmt-rfc-style;
           };
-          yamlfmt.enable = true;
           black = {
             enable = true;
             withArgs = ''
