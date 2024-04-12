@@ -530,6 +530,8 @@ in {
             "toml"
             "tsx"
             "yaml"
+            "ini"
+            "latex"
           ];
           folding = true;
           indent = true;
