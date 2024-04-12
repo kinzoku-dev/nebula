@@ -16,6 +16,7 @@
           deadnix.enable = true;
           fish.enable = true;
           yamllint.enable = true;
+          gdlint.enable = true;
         };
         formatting = {
           csharpier.enable = true;
