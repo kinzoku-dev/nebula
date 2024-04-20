@@ -21,7 +21,7 @@ in {
 
       nitrogen
       xfce.mousepad
-      xfce.thunar
+      gnome.nautilus
       gimp
       gucharmap
     ];
