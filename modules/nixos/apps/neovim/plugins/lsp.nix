@@ -35,11 +35,11 @@
       }
       {
         action = "<cmd>Lspsaga diagnostic_jump_next<CR>";
-        key = "gj";
+        key = "glj";
       }
       {
         action = "<cmd>Lspsaga diagnostic_jump_prev<CR>";
-        key = "gk";
+        key = "glk";
       }
     ];
     plugins = {
