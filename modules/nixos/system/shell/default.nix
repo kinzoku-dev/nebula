@@ -48,7 +48,7 @@ in {
 
     home.programs.starship = {
       enable = true;
-      enableZshIntegration = true;
+      enableZshIntegration = false;
       enableNushellIntegration = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
