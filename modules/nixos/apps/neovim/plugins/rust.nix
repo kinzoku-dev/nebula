@@ -1,7 +1,10 @@
 {...}: {
   programs.nixvim = {
     plugins = {
-      rust-tools = {
+      # rust-tools = {
+      #   enable = true;
+      # };
+      rustaceanvim = {
         enable = true;
       };
     };
