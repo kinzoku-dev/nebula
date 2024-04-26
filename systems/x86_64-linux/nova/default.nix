@@ -84,7 +84,6 @@
   apps = {
     misc.enable = true;
     zathura.enable = true;
-    # apps.spotify-tui.enable = true;
     rofi.enable = true;
     printing.enable = true;
     calcure.enable = true;
@@ -209,7 +208,7 @@
 
         localsend
 
-        vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+        vim
         wget
         git
         nebula.nix-inspect
@@ -251,8 +250,6 @@
         gucharmap
         dotnet-sdk
 
-        sl
-
         prismlauncher
 
         gpu-screen-recorder-gtk
@@ -263,8 +260,6 @@
         minetest
 
         ngrok
-
-        # kinzoku-pkgs.electron_29-bin
 
         blender
 
