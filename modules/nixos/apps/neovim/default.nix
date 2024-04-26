@@ -87,6 +87,8 @@ in {
         nixpkgs-fmt
         yamlfmt
 
+        gdb
+
         chafa
         imagemagick
         ffmpegthumbnailer

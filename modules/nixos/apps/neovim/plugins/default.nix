@@ -20,6 +20,7 @@ in {
     ./git
     ./luasnip.nix
     ./rust.nix
+    ./dap.nix
     (import ./bufferline.nix {inherit colors;})
   ];
 }
