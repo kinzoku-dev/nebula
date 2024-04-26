@@ -14,22 +14,24 @@ in {
     enable = mkBoolOpt false "Enable sops";
   };
 
-  imports = [
-    inputs.sops-nix.nixosModules.sops
-  ];
+  imports = [inputs.sops-nix.nixosModules.sops];
 
   config = mkIf cfg.enable {
-    sops.defaultSopsFile = ./secrets/secrets.yaml;
-    sops.defaultSopsFormat = "yaml";
+    sops = {
+      defaultSopsFile = ./secrets/secrets.yaml;
+      defaultSopsFormat = "yaml";
+      age = {
+        sshKeyPaths = ["/home/${config.user.name}/.ssh/id_ed25519"];
 
-    sops.age.sshKeyPaths = ["/home/${config.user.name}/.ssh/id_ed25519"];
+        keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
 
-    sops.age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
-
-    sops.age.generateKey = true;
-
-    sops.secrets.cloudflared-token = {};
-    sops.secrets.nextcloud-admin-pass = {};
-    sops.secrets.invidious-hmac-key = {};
+        generateKey = true;
+      };
+      secrets = {
+        cloudflared-token = {};
+        nextcloud-admin-pass = {};
+        invidious-hmac-key = {};
+      };
+    };
   };
 }
