@@ -111,6 +111,30 @@ in {
 
     home.programs.zsh = mkIf (cfg.shell == "zsh") {
       enable = true;
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
+        custom = "$HOME/.oh-my-zsh/custom";
+        plugins = [
+          "git"
+          "docker-compose"
+          "docker"
+          "kubectl"
+          "ansible"
+          "bun"
+          "colored-man-pages"
+          "fd"
+          "fluxcd"
+          "fzf"
+          "nmap"
+          "npm"
+          "ripgrep"
+          "rust"
+          "tmux"
+          "gnu-utils"
+          "terraform"
+        ];
+      };
       enableAutosuggestions = true;
       enableCompletion = true;
       syntaxHighlighting.enable = true;
@@ -123,45 +147,8 @@ in {
           ls = "eza";
           "," = "shellpkg";
         };
-      initExtra = let
-        sources = with pkgs; [
-          "${zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh"
-          "${zsh-syntax-highlighting}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-          "${zsh-history-substring-search}/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
-        ];
-
-        source = map (source: "source ${source}") sources;
-
-        plugins = concatStringsSep "\n" (
-          ["${pkgs.any-nix-shell}/bin/any-nix-shell zsh --info-right | source /dev/stdin"] ++ source
-        );
-
-        functions = pkgs.stdenv.mkDerivation {
-          name = "zsh-functions";
-          src = ./zsh/functions;
-
-          ripgrep = "${pkgs.ripgrep}";
-          man = "${pkgs.man}";
-          eza = "${pkgs.eza}";
-
-          installPhase = let
-            basename = "\${file##*/}";
-          in ''
-            mkdir $out
-
-            for file in $src/*; do
-              substituteAll $file $out/${basename}
-              chmod 755 $out/${basename}
-            done
-          '';
-        };
-      in ''
-        ${plugins}
-
+      initExtra = ''
         export XDG_DATA_DIRS=${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}:$XDG_DATA_DIRS
-
-        fpath+=( ${functions} )
-        autoload -Uz ${functions}/*(:t)
 
         function flakeinit() {
             nix flake init -t github:nix-community/templates#$1
@@ -171,7 +158,6 @@ in {
         bindkey -v
         autoload edit-command-line; zle -N edit-command-line
         bindkey '^e' edit-command-line
-
       '';
     };
 
