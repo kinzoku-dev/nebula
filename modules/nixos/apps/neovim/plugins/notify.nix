@@ -5,7 +5,7 @@
         enable = true;
         fps = 60;
         timeout = 500;
-        topDown = true;
+        topDown = false;
         render = "default";
         icons = {
           debug = "󰯠";
