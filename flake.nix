@@ -18,6 +18,8 @@
     nix-colors.url = "github:misterio77/nix-colors";
     prism.url = "github:IogaMaster/prism";
 
+    talhelper.url = "github:budimanjojo/talhelper";
+
     snowfall-lib = {
       url = "github:snowfallorg/lib/dev";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -48,6 +48,7 @@
         servers = {
           ansiblels.enable = true;
           bashls.enable = true;
+          terraformls.enable = true;
           clangd.enable = true;
           csharp-ls.enable = true;
           cssls.enable = true;

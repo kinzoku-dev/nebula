@@ -100,6 +100,7 @@
       enable = true;
     };
     browser.firefox.enable = true;
+    clusterUtils.enable = true;
   };
   desktop = {
     # picom.enable = true;
@@ -205,9 +206,6 @@
         mesa
         ffmpeg
 
-        ansible
-        python3
-
         localsend
 
         vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
@@ -246,8 +244,6 @@
         libnotify
 
         gamemode
-
-        cloudflared
 
         premid
 

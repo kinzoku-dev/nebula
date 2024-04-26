@@ -268,6 +268,133 @@
          ),
       })
 
+      lsnip.add_snippets('yaml', {
+          s('apiv1', {
+            t("apiVersion: v1"),
+          }),
+          s('secret', {
+            t("kind: Secret"),
+          }),
+          s('deploy', {
+            t("kind: Deployment"),
+          }),
+          s('svc', {
+            t("kind: Service"),
+          }),
+          s('ing', {
+            t("kind: Ingress"),
+          }),
+          s('hrepo', {
+            t("kind: HelmRepository"),
+          }),
+          s('grepo', {
+            t("kind: GitRepository"),
+          }),
+          s('release', {
+            t("kind: HelmRelease"),
+          }),
+          s('metadata',
+            fmt(
+              [[
+                metadata:
+                  name: {}
+                  namespace: {}
+              ]],
+              {
+                i(1),
+                i(2),
+              }
+            )
+          ),
+          s('annotations',
+            fmt(
+              [[
+                annotations:
+                  {}
+              ]],
+              {
+                i(1),
+              }
+            )
+          ),
+          s('spec',
+            fmt(
+              [[
+                spec:
+                  {}
+              ]],
+              {
+                i(1),
+              }
+            )
+          ),
+          s('appks',
+            fmt(
+              [[
+                apiVersion: kustomize.toolkit.fluxcd.io/v1
+                kind: Kustomization
+                metadata:
+                  name: &app {}
+                  namespace: flux-system
+                spec:
+                  targetNamespace: {}
+                  commonMetadata:
+                    labels:
+                      app.kubernetes.io/name: *app
+                  path: ./kubernetes/main/apps/{}/{}/{}
+                  prune: true
+                  sourceRef:
+                    kind: GitRepository
+                    name: home-kubernetes
+                  wait: true
+                  interval: 30m
+                  retryInterval: 1m
+                  timeout: 5m
+              ]],
+              {
+                i(1),
+                i(2),
+                rep(2),
+                i(3),
+                i(4),
+              }
+            )
+          ),
+          s('nsks',
+            fmt(
+              [[
+                ---
+                apiVersion: kustomize.config.k8s.io/v1beta1
+                kind: Kustomization
+                resources:
+                  - ./namespace.yaml
+                  - {}
+              ]],
+              {
+                i(1),
+              }
+            )
+          ),
+          s('namespace',
+            fmt(
+              [[
+                ---
+                apiVersion: v1
+                kind: Namespace
+                metadata:
+                  name: {}
+                  annotations:
+                    kustomize.toolkit.fluxcd.io/prune: disabled
+                    {}
+              ]],
+              {
+                i(1),
+                i(2),
+              }
+            )
+          ),
+      })
+
       lsnip.filetype_extend("javascript", {"javascriptreact", "typescript", "typescriptreact"})
 
     '';
