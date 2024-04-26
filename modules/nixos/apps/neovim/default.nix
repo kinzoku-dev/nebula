@@ -268,13 +268,22 @@ in {
         }
         {
           action = "\"_dP";
-          key = "<leader>p";
+          key = "p";
           mode = "x";
         }
         {
           action = "\"_d";
-          key = "<leader>d";
+          key = "d";
           mode = [
+            "n"
+            "v"
+          ];
+        }
+        {
+          action = "\"_c";
+          key = "c";
+          mode = [
+            "x"
             "n"
             "v"
           ];
