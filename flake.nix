@@ -212,9 +212,9 @@
       templates = import ./templates {};
       deploy = lib.mkDeploy {inherit (inputs) self;};
       checks =
-        builtins.mapAttrs
-        (_system: deploy-lib:
-          deploy-lib.deployChecks inputs.self.deploy)
+        builtins.mapAttrs (
+          _system: deploy-lib: deploy-lib.deployChecks inputs.self.deploy
+        )
         inputs.deploy-rs.lib;
     };
 }
