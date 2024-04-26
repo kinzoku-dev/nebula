@@ -17,6 +17,7 @@
           fish.enable = true;
           yamllint.enable = true;
           gdlint.enable = true;
+          editorconfig_checker.enable = true;
         };
         formatting = {
           csharpier.enable = true;

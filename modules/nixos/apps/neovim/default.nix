@@ -37,6 +37,7 @@ in {
 
     programs.nixvim = {
       enable = true;
+      editorconfig.enable = true;
       colorschemes.base16 = {
         enable = true;
         customColorScheme =
