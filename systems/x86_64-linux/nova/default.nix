@@ -23,6 +23,7 @@
       "127.0.0.1" = ["localhost"];
       "127.0.0.2" = ["nova"];
     };
+    nameservers = ["192.168.3.0"];
     interfaces."eno1" = {
       useDHCP = false;
       ipv4.addresses = [
