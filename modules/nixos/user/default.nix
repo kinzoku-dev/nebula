@@ -17,7 +17,7 @@ in {
   };
 
   config = {
-    environment.sessionVariables.FLAKE = "/home/kinzoku/dev/nebula";
+    environment.sessionVariables.FLAKE = "/home/kinzoku/Dev/nebula";
 
     system.persist.root.files = ["/etc/shadow"];
 
