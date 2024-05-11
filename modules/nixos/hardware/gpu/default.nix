@@ -23,7 +23,7 @@ in {
     gpuDriver =
       if cfg.gpu == "amd"
       then "amdgpu"
-      else if "nvidia";
+      else "nvidia";
   in
     mkIf cfg.enable {
       services.xserver.videoDrivers = [
