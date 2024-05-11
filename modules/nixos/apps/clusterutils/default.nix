@@ -21,6 +21,8 @@ in {
 
       fluxcd
 
+      kubectl
+
       terraform
       cf-terraforming
 

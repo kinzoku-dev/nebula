@@ -171,6 +171,7 @@
   };
   services = {
     docker.enable = true;
+    podman.enable = true;
     hardware.openrgb = {
       enable = true;
       package = pkgs.openrgb-with-all-plugins;

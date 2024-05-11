@@ -11,7 +11,7 @@ with lib.nebula; let
 in {
   options.hardware.graphics = with types; {
     enable = mkBoolOpt false "Enable graphics";
-    gpu = mkOpt (enum ["amd" "nvidia"]) "nvidia" "Which gpu to configure";
+    gpu = mkOpt (enum ["amd" "nvidia" "integrated"]) "nvidia" "Which gpu to configure";
     nvidiaOffload = {
       enable = mkBoolOpt false "Enable nvidia offload via PRIME";
       intelBusId = mkOpt str "PCI:0:2:0" "Intel Bus ID";
@@ -23,11 +23,11 @@ in {
     gpuDriver =
       if cfg.gpu == "amd"
       then "amdgpu"
-      else "nvidia";
+      else if "nvidia";
   in
     mkIf cfg.enable {
       services.xserver.videoDrivers = [
-        "${gpuDriver}"
+        (lib.optionalString (cfg.gpu != "integrated") "${gpuDriver}")
       ];
       boot.initrd.kernelModules = [
         (lib.optionalString (cfg.gpu == "amd") "amdgpu")

@@ -4,6 +4,8 @@
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-kinzoku.url = "github:kinzoku-dev/nixpkgs";
 
+    jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
+
     stylix.url = "github:danth/stylix";
 
     home-manager.url = "github:nix-community/home-manager";
