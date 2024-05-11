@@ -9,10 +9,6 @@
     inputs.jovian-nixos.nixosModules.default
   ];
 
-  # Enable Bootloader (EFI or BIOS)
-  system.boot.efi.enable = true;
-  system.boot.bios.enable = true;
-
   suites.common.enable = true;
   suites.development.enable = true;
 
