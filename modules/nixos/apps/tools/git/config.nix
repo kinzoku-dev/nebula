@@ -14,5 +14,3 @@
   [commit]
     gpgsign = true
 ''
-# signingkey = 24C05E5FC1A52F45
-
