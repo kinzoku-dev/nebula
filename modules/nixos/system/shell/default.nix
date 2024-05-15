@@ -188,6 +188,8 @@ in {
 
         source /home/${config.user.name}/.oh-my-zsh/custom/plugins/zsh-abbr/zsh-abbr.zsh
 
+        source <(${pkgs.talosctl}/bin/talosctl completion zsh)
+
         set -o vi
         bindkey -v
         autoload edit-command-line; zle -N edit-command-line
