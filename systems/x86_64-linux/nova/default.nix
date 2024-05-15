@@ -82,6 +82,7 @@
     dconf.enable = true;
   };
   apps = {
+    onepassword.enable = true;
     misc.enable = true;
     zathura.enable = true;
     rofi.enable = true;

@@ -213,6 +213,7 @@ in {
             };
             extensions = with inputs.firefox-addons.packages.${pkgs.system};
             with extra-addons; [
+              (onepassword-password-manager.overrideAttrs {meta.license.free = true;})
               libredirect
               ublock-origin
               sponsorblock
@@ -223,7 +224,6 @@ in {
               fx_cast
               iina-open-in-mpv
               protondb-for-steam
-              proton-pass
               sidebery
               terms-of-service-didnt-read
               vimium-c
