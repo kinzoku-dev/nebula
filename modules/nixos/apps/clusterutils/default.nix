@@ -39,6 +39,15 @@ in {
       inputs.talhelper.packages.x86_64-linux.default
 
       cloudflared
+
+      lens
+
+      minikube
+      docker-machine-kvm2
     ];
+
+    environment.shellAliases = {
+      mk = "minikube";
+    };
   };
 }
