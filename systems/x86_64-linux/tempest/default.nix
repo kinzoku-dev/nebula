@@ -101,7 +101,18 @@
           refreshRate = 144;
           x = 0;
           y = 0;
-          workspaces = [1 2 3 4 5 6 7 8 9 10];
+          workspaces = [
+            1
+            2
+            3
+            4
+            5
+            6
+            7
+            8
+            9
+            10
+          ];
         }
       ];
     };
@@ -168,8 +179,6 @@
         eww-wayland
         libnotify
 
-        gamemode
-
         cloudflared
 
         premid
@@ -219,14 +228,15 @@
           icon = "/home/kinzoku/.smm/ficsit.png";
           startupWMClass = "satisfactory-mod-manager-gui";
           genericName = "";
-          keywords = ["satisfactory" "mod" "manager" "factory"];
+          keywords = [
+            "satisfactory"
+            "mod"
+            "manager"
+            "factory"
+          ];
         })
       ]
-      ++ (
-        with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [
-          mapscii
-        ]
-      );
+      ++ (with inputs.nixpkgs-master.legacyPackages.x86_64-linux; [mapscii]);
 
     sessionVariables = {
       DOTNET_ROOT = "${pkgs.dotnet-sdk}";
@@ -246,5 +256,8 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  nix.settings.experimental-features = ["nix-command" "flakes"]; # Did you read the comment?
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ]; # Did you read the comment?
 }

@@ -14,6 +14,5 @@ in {
     colorscheme = mkOpt str "catppuccin-mocha" "Theme to use for desktop";
   };
 
-  config = {
-  };
+  config = {};
 }

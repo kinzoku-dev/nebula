@@ -24,7 +24,9 @@ in {
       commitizen
     ];
 
-    home.configFile."git/config".text = import ./config.nix {sshKeyPath = "/home/${config.user.name}/.ssh/id_ed25519.pub";};
+    home.configFile."git/config".text = import ./config.nix {
+      sshKeyPath = "/home/${config.user.name}/.ssh/id_ed25519.pub";
+    };
     home.configFile."lazygit/config.yml".source = ./lazygitConfig.yml;
   };
 }

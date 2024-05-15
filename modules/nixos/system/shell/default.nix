@@ -13,11 +13,13 @@ with lib.nebula; let
   colors = theme.palette;
 in {
   options.system.shell = with types; {
-    shell = mkOpt (enum [
-      "nu"
-      "fish"
-      "zsh"
-    ]) "nu" "What shell to use";
+    shell =
+      mkOpt
+      (enum [
+        "nu"
+        "fish"
+        "zsh"
+      ]) "nu" "What shell to use";
   };
 
   config = {

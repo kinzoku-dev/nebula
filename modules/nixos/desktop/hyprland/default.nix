@@ -16,44 +16,46 @@ in {
     enable = mkBoolOpt false "Enable hyprland";
     laptop = mkBoolOpt false "Is this system a laptop?";
     displays = mkOption {
-      type = types.listOf (types.submodule {
-        options = {
-          name = mkOption {
-            type = types.str;
-            example = "DP-1";
-            description = "Name of this display, e.g. HDMI-1";
+      type = types.listOf (
+        types.submodule {
+          options = {
+            name = mkOption {
+              type = types.str;
+              example = "DP-1";
+              description = "Name of this display, e.g. HDMI-1";
+            };
+            width = mkOption {
+              type = types.int;
+              example = 1920;
+              description = "Width of this display";
+            };
+            height = mkOption {
+              type = types.int;
+              example = 1080;
+              description = "Height of this display";
+            };
+            refreshRate = mkOption {
+              type = types.int;
+              default = 60;
+              description = "Refresh rate of this display";
+            };
+            x = mkOption {
+              type = types.int;
+              default = 0;
+              description = "X position of this display";
+            };
+            y = mkOption {
+              type = types.int;
+              default = 0;
+              description = "Y position of this display";
+            };
+            workspaces = mkOption {
+              type = types.listOf int;
+              description = "List of workspaces for this display";
+            };
           };
-          width = mkOption {
-            type = types.int;
-            example = 1920;
-            description = "Width of this display";
-          };
-          height = mkOption {
-            type = types.int;
-            example = 1080;
-            description = "Height of this display";
-          };
-          refreshRate = mkOption {
-            type = types.int;
-            default = 60;
-            description = "Refresh rate of this display";
-          };
-          x = mkOption {
-            type = types.int;
-            default = 0;
-            description = "X position of this display";
-          };
-          y = mkOption {
-            type = types.int;
-            default = 0;
-            description = "Y position of this display";
-          };
-          workspaces = mkOption {
-            type = types.listOf int;
-            description = "List of workspaces for this display";
-          };
-        };
-      });
+        }
+      );
       default = [];
       description = "Config for new displays";
     };
@@ -92,11 +94,9 @@ in {
           cfg.displays
         );
         workspaceMonitors = lib.concatLines (
-          lib.lists.concatMap
-          (
-            m: map (w: "workspace=${toString w},monitor:${m.name}") (m.workspaces)
+          lib.lists.concatMap (m: map (w: "workspace=${toString w},monitor:${m.name}") (m.workspaces)) (
+            cfg.displays
           )
-          (cfg.displays)
         );
       in ''
         ${import ./hyprland.nix {

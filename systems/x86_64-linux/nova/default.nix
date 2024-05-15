@@ -201,7 +201,6 @@
       };
     in
       [
-        inputs.nh.packages.x86_64-linux.default
         libva
         libglvnd
         libGL
@@ -217,9 +216,13 @@
         sl
         appimage-run
 
+        pre-commit
+
         pkgs.nebula.discover-overlay
         cinnamon.nemo
         razergenie
+
+        nfs-utils
 
         arduino
 
@@ -245,8 +248,6 @@
 
         eww-wayland
         libnotify
-
-        gamemode
 
         premid
 

@@ -26,7 +26,8 @@
       };
       sort-by-number = true;
       persistent-workspaces = builtins.listToAttrs (
-        map (m: {
+        map
+        (m: {
           name = m.name;
           value = m.workspaces;
         })
