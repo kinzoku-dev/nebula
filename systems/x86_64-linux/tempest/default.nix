@@ -38,7 +38,7 @@
     chat.enable = true;
     neofetch.enable = true;
     fzf.enable = true;
-    steam.enable = true;
+    gaming.enable = true;
     discord.enable = true;
     mullvad-vpn.enable = true;
     obsidian = {

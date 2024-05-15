@@ -7,10 +7,10 @@
 }:
 with lib;
 with lib.nebula; let
-  cfg = config.apps.steam;
+  cfg = config.apps.gaming;
 in {
-  options.apps.steam = with types; {
-    enable = mkBoolOpt false "Enable or disable steam gaming platform";
+  options.apps.gaming = with types; {
+    enable = mkBoolOpt false "Enable gaming module";
   };
 
   config = mkIf cfg.enable {
@@ -73,16 +73,23 @@ in {
             })
           ];
         };
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
+      # remotePlay.openFirewall = true;
+      # dedicatedServer.openFirewall = true;
+      gamescopeSession.enable = true;
     };
 
+    programs.gamemode.enable = true;
     system.persist.home.dirs = [".local/share/Steam"];
-    environment.systemPackages = [
-      pkgs.protonup-ng
-      pkgs.gamescope
-      pkgs.mangohud
-      pkgs.goverlay
+    environment.systemPackages = with pkgs; [
+      protonup
+      mangohud
+      goverlay
+      lutris
+      heroic
+      bottles
     ];
+    environment.sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "/home/${config.user.name}/.steam/root/compatibilitytools.d";
+    };
   };
 }
