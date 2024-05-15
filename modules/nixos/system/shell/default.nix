@@ -59,8 +59,6 @@ in {
       ".." = "cd ..";
       tfmt = "treefmt";
       dv = "direnv";
-      dva = "direnv allow";
-      dvr = "direnv revoke";
       rb = "sudo nixos-rebuild switch --flake .";
       flui = "sudo nix flake lock --update-input";
       ga = "git add .";
@@ -109,8 +107,41 @@ in {
       enableFishIntegration = true;
     };
 
+    home.file.".oh-my-zsh/custom/plugins/zsh-abbr" = {
+      recursive = true;
+      source = pkgs.fetchFromGitHub {
+        owner = "olets";
+        repo = "zsh-abbr";
+        rev = "v5.4.1";
+        hash = "sha256-gEBGMVR1lMVKNPVuPjtdPkgOXI1MWO0EAtk7JRmS0Ok=";
+      };
+    };
+
     home.programs.zsh = mkIf (cfg.shell == "zsh") {
       enable = true;
+      zsh-abbr = {
+        enable = true;
+        abbreviations = {
+          txn = "tmux new";
+          txd = "tmux detach";
+          txa = "tmux attach";
+          ipa = "ip a";
+          l = "less";
+          dva = "direnv allow";
+          dvk = "direnv revoke";
+          dvr = "direnv reload";
+          dcu = "docker-compose up";
+          dcud = "docker-compose up -d";
+          kgp = "kubectl get pod";
+          kgs = "kubectl get svc";
+          kgd = "kubectl get deploy";
+          kdp = "kubectl describe pod";
+          kds = "kubectl describe svc";
+          kdd = "kubectl describe deploy";
+          kg = "kubectl get";
+          kd = "kubectl describe";
+        };
+      };
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
@@ -131,6 +162,7 @@ in {
           "ripgrep"
           "rust"
           "tmux"
+          "zsh-abbr"
           "gnu-utils"
           "terraform"
         ];
@@ -153,6 +185,8 @@ in {
         function flakeinit() {
             nix flake init -t github:nix-community/templates#$1
         }
+
+        source /home/${config.user.name}/.oh-my-zsh/custom/plugins/zsh-abbr/zsh-abbr.zsh
 
         set -o vi
         bindkey -v
