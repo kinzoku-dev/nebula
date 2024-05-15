@@ -13,7 +13,10 @@
   suites.common.enable = true;
   suites.development.enable = true;
 
-  jovian.steam.enable = true;
+  jovian.steam = {
+    enable = true;
+    autoStart = true;
+  };
 
   networking = {
     hostId = "b9f01da4";
@@ -26,8 +29,7 @@
       "127.0.0.2" = ["deck"];
     };
   };
-  environment.systemPackages = with pkgs; [
-  ];
+  environment.systemPackages = with pkgs; [];
 
   hardware.graphics = {
     enable = true;
@@ -85,6 +87,7 @@
     discord.enable = true;
     browser.firefox.enable = true;
     clusterUtils.enable = true;
+    gaming.enable = true;
   };
   desktop = {
     # picom.enable = true;
