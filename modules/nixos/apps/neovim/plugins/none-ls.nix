@@ -31,14 +31,6 @@
             enable = true;
             package = pkgs.nixfmt-rfc-style;
           };
-          black = {
-            enable = true;
-            withArgs = ''
-              {
-                  extra_args = { "--fast" },
-              }
-            '';
-          };
         };
       };
     };

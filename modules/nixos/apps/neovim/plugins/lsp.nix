@@ -134,7 +134,16 @@
             ];
           };
           nushell.enable = true;
-          pyright.enable = true;
+          pylsp = {
+            enable = true;
+            settings = {
+              plugins = {
+                ruff = {
+                  enabled = true;
+                };
+              };
+            };
+          };
         };
         keymaps = {
           diagnostic = {
