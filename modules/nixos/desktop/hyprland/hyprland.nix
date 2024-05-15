@@ -2,12 +2,13 @@
   displayList,
   workspaceMonitors,
   pkgs,
+  config,
   colors,
 }: ''
   ${displayList}
   exec-once=waybar &
   exec-once=swww init &
-  exec-once=swww img ~/.config/wallpapers/$(env ls ~/.config/wallpapers | shuf -n 1) &
+  exec-once=swww img /home/${config.user.name}/.config/wallpapers/$(env ls /home/${config.user.name}/.config/wallpapers | shuf -n 1) &
   exec-once=dunst &
   exec-once=nm-applet &
   exec-once=blueman-applet &
@@ -16,17 +17,25 @@
   exec-once=premid &
 
   decoration {
-      rounding = 10
+      rounding = 0
 
       drop_shadow = yes
-      shadow_range = 4
+
+      shadow_ignore_window = true
+      shadow_offset = 0 2
+      shadow_range = 20
       shadow_render_power = 3
-      col.shadow = rgba(1a1a1aee)
+      col.shadow = rgba(00000055)
       blur {
-          size = 3
-          passes = 3
+          enabled = true
+          size = 1
+          passes = 1
+          brightness = 1
+          contrast = 1.400
+          ignore_opacity = true
+          noise = 0
           new_optimizations = true
-          xray = false
+          xray = true
       }
   }
   layerrule = blur,rofi
@@ -43,12 +52,12 @@
   }
 
   general {
-      border_size = 3
+      border_size = 2
       layout = dwindle
       gaps_in = 5
       gaps_out = 10
       col.active_border = rgb(${colors.base07})
-      col.inactive_border = rgb(${colors.base02})
+      col.inactive_border = 0x00000000
   }
 
   input {
@@ -75,14 +84,14 @@
   bind = $mainMod SHIFT, W, exec, rofi-wallpaper
   bind = $mainMod, N, exec, wifi-menu
   bind = $mainMod, U, exec, uploader
-  bind = $mainMod SHIFT, S, exec, grimblast --freeze copy area
+  bind = $mainMod SHIFT, S, exec, grimblast copy  area --freeze
   bind = $mainMod, V, togglefloating
   bind = $mainMod, C, exec, hyprpicker | wl-copy
   bind = $mainMod, T, togglegroup
   bind = $mainMod, M, exec, rofi-calculate
   bind = $mainMod, E, exec, emoji
   bind = $mainMod, B, exec, rofi-clipboard
-  bind = $mainMod SHIFT, V, exec, kitty pulsemixer
+  bind = $mainMod SHIFT, Z, exec, kitty pulsemixer
 
   bind = ,XF86AudioRaiseVolume, exec, volume --up
   bind = ,XF86AudioLowerVolume, exec, volume --down

@@ -100,7 +100,12 @@ in {
         );
       in ''
         ${import ./hyprland.nix {
-          inherit displayList workspaceMonitors pkgs;
+          inherit
+            displayList
+            workspaceMonitors
+            pkgs
+            config
+            ;
           colors = palette;
         }}
       '';
