@@ -200,6 +200,13 @@
               device = "/dev/nvme0n1";
             })
           ];
+          deck.modules = with inputs; [
+            (import ./disks/default.nix {
+              inherit lib;
+              swap = true;
+              device = "/dev/nvme0n1";
+            })
+          ];
         };
 
         modules.nixos = with inputs; [

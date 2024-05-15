@@ -92,7 +92,6 @@
   desktop = {
     # picom.enable = true;
     # xmonad.enable = true;
-    sddm.enable = true;
     gtk.enable = true;
     xdg.enable = true;
     dunst.enable = true;
@@ -149,4 +148,5 @@
     "nix-command"
     "flakes"
   ];
+  nix.package = pkgs.nixVersions.latest;
 }

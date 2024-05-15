@@ -373,7 +373,7 @@ in {
               end
             end
           '';
-          openMapping = "<A-t>";
+          settings.open_mapping = "[[<A-t>]]";
           hideNumbers = true;
           shadeTerminals = true;
           startInInsert = true;

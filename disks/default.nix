@@ -68,7 +68,7 @@
                   resumeDevice = true;
                 };
               };
-              zfs = {
+              root = {
                 size = "100%";
                 content = {
                   type = "zfs";
