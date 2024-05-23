@@ -27,10 +27,7 @@
           stylua.enable = true;
           leptosfmt.enable = true;
           terraform_fmt.enable = true;
-          nixfmt = {
-            enable = true;
-            package = pkgs.nixfmt-rfc-style;
-          };
+          alejandra.enable = true;
         };
       };
     };
