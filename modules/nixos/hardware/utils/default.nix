@@ -27,7 +27,13 @@ in {
                 exec = "kitty btop";
                 icon = "btop";
                 genericName = "System Monitor";
-                keywords = ["hardware" "cpu" "gpu" "memory" "disk"];
+                keywords = [
+                  "hardware"
+                  "cpu"
+                  "gpu"
+                  "memory"
+                  "disk"
+                ];
               })
             ];
           };
