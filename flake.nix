@@ -64,11 +64,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nh = {
-      url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Deployments
     arion = {
       url = "github:hercules-ci/arion";
