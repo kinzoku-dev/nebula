@@ -170,6 +170,7 @@
     enable = true;
     users = ["kinzoku"];
   };
+  user.extraGroups = ["dialout"];
   services = {
     docker.enable = true;
     podman.enable = true;
