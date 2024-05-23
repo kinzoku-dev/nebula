@@ -17,15 +17,15 @@ in {
   };
 
   config = {
-    environment.sessionVariables.FLAKE = "/home/kinzoku/Dev/nebula";
+    environment.sessionVariables.FLAKE = "/home/${cfg.name}/Dev/nebula";
 
     system.persist.root.files = ["/etc/shadow"];
 
-    users.users.kinzoku =
+    users.users.${cfg.name} =
       {
         isNormalUser = true;
         inherit (cfg) name initialPassword;
-        home = "/home/kinzoku";
+        home = "/home/${cfg.name}";
         group = "users";
 
         extraGroups =
