@@ -321,4 +321,5 @@
     "nix-command"
     "flakes"
   ]; # Did you read the comment?
+  nix.package = pkgs.nixVersions.latest;
 }
