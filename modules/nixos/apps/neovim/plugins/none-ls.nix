@@ -23,7 +23,7 @@
           csharpier.enable = true;
           prettier.enable = true;
           gdformat.enable = true;
-          gofumpt.enable = true;
+          gofmt.enable = true;
           stylua.enable = true;
           leptosfmt.enable = true;
           terraform_fmt.enable = true;
