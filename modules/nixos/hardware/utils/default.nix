@@ -40,17 +40,6 @@ in {
         bottom = {
           enable = true;
         };
-        cava = {
-          enable = true;
-          settings = {};
-        };
-      };
-      configFile = {
-        "cava/config".text =
-          ''
-            # custom cava config
-          ''
-          + builtins.readFile "${inputs.catppuccin-cava}/mocha.cava";
       };
     };
 
