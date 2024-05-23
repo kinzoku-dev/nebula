@@ -70,8 +70,10 @@
     };
 
     # Deployments
-    arion.url = "github:hercules-ci/arion";
-    arion.inputs.nixpkgs.follows = "nixpkgs";
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
 
@@ -80,11 +82,14 @@
     xremap-flake.url = "github:xremap/nix-flake";
 
     nur.url = "github:nix-community/NUR";
-
-    disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs";
-    deploy-rs.url = "github:serokell/deploy-rs";
-    deploy-rs.inputs.nixpkgs.follows = "nixpkgs";
+    disko = {
+      url = "github:raidenovich/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # nebuvim = {
     #   url = "github:kinzoku-dev/nebuvim";
