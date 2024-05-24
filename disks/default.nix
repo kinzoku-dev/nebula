@@ -1,8 +1,14 @@
-{device ? throw "Set this to your disk device, e.g. /dev/sda", ...}: {
+{
+  device ? throw "Set this to your disk device, e.g. /dev/sda",
+  disk ? throw "disk to use for the system",
+  lib,
+  swap ? false,
+  ...
+}: {
   disko = {
     devices = {
       disk = {
-        main = {
+        main = lib.mkIf (disk == "main") {
           inherit device;
           type = "disk";
           content = {
@@ -23,7 +29,7 @@
                   mountpoint = "/boot";
                 };
               };
-              swap = {
+              swap = lib.mkIf swap {
                 size = "4G";
                 content = {
                   type = "swap";
@@ -40,7 +46,7 @@
             };
           };
         };
-        deck = {
+        deck = lib.mkIf (disk == "deck") {
           inherit device;
           type = "disk";
           content = {
@@ -61,7 +67,7 @@
                   mountpoint = "/boot";
                 };
               };
-              swap = {
+              swap = lib.mkIf swap {
                 size = "4G";
                 content = {
                   type = "swap";
@@ -108,6 +114,11 @@
             nix = {
               type = "zfs_fs";
               mountpoint = "/nix";
+              options.mountpoint = "legacy";
+            };
+            tmp = {
+              type = "zfs_fs";
+              mountpoint = "/tmp";
               options.mountpoint = "legacy";
             };
             persist = {

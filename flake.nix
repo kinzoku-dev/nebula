@@ -187,13 +187,6 @@
       ];
       systems = {
         hosts = {
-          eclipse.modules = with inputs; [
-            (import ./disks/default.nix {
-              inherit lib;
-              swap = true;
-              device = "/dev/nvme0n1";
-            })
-          ];
           tempest.modules = with inputs; [
             (import ./disks/default.nix {
               inherit lib;
@@ -206,6 +199,7 @@
               inherit lib;
               swap = true;
               device = "/dev/nvme0n1";
+              disk = "deck";
             })
           ];
         };
