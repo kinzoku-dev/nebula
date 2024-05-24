@@ -324,8 +324,8 @@ in {
                   url = "https://discord.com/app";
                 }
                 {
-                  label = "ProtonMail";
-                  url = "https://account.proton.me/mail";
+                  label = "Migadu";
+                  url = "https://admin.migadu.com";
                 }
                 {
                   label = "Github";
