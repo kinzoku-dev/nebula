@@ -19,29 +19,64 @@ in {
           types.submodule {
             options = {
               export = mkOpt str "" "Directory to export";
-              hosts = mkOption {
+              clients = mkOption {
                 type = types.listOf (
                   types.submodule types.submodule {
                     options = {
-                      name = mkOpt str "" "Host name";
+                      identifier = mkOpt str "" "Host name/IP address, IP network, or netgroup";
+                      opts = mkOpt (listOf str) [] "List of options for the client";
                     };
                   }
                 );
+                default = [];
+                description = "List of clients allowed to mount the share";
               };
             };
           }
         );
+        default = [];
+        description = "List of file systems to share over NFS";
       };
+    };
+    internal = {
+      exports = mkOption {
+        type = types.listOf (
+          types.submodule {
+            options = {
+              export = mkOpt str "" "";
+              clients = mkOpt str "" "";
+            };
+          }
+        );
+      };
+      exportsStrs = mkOpt (listOf str) [] "";
     };
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [nfs-utils];
 
+    system.nfs.internal.exports =
+      lib.lists.map (
+        x: {
+          export = "${x.export}";
+          clients = lib.lists.map (y: "${y.identifier}(${lib.concatMapStringsSep "," (z: z) y.opts})");
+        }
+      )
+      cfg.server.exports;
+
+    system.nfs.internal.exportsStrs =
+      lib.lists.map (
+        x: "${x.export} ${x.clients}"
+      )
+      cfg.internal.exports;
+
     services.nfs = {
       inherit (cfg) extraConfig;
 
-      server = mkIf cfg.server.enable {};
+      server = mkIf cfg.server.enable {
+        exports = lib.concatLines cfg.internal.exportsStrs;
+      };
     };
   };
 }
