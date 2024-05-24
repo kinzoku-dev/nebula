@@ -3,6 +3,7 @@
   options,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 with lib;
@@ -19,23 +20,12 @@ in {
       ".config/discord"
     ];
     environment.systemPackages = [
-      (pkgs.vesktop.overrideAttrs {
-        desktopItems = let
-          mullvad-exclude = config.apps.mullvad-vpn.enable;
-          disable-gpu = config.hardware.graphics.gpu == "nvidia";
-        in [
+      (inputs.vesktop.legacyPackages."x86_64-linux".vesktop.overrideAttrs {
+        desktopItems = [
           (pkgs.makeDesktopItem {
             name = "vesktop";
             desktopName = "Discord";
-            exec = "${
-              if mullvad-exclude
-              then "mullvad-exclude"
-              else ""
-            } vesktop ${
-              if disable-gpu
-              then "--disable-gpu"
-              else ""
-            } --enable-features=VaapiIgnoreDriverChecks,VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,UseMultiPlaneFormatForHardwareVideo";
+            exec = "vesktop --enable-features=VaapiIgnoreDriverChecks,VaapiVideoEncoder,VaapiVideoDecoder,CanvasOopRasterization,UseMultiPlaneFormatForHardwareVideo";
             icon = "discord";
             startupWMClass = "vesktop";
             genericName = "Internet Messenger";

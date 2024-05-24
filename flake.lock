@@ -2181,6 +2181,7 @@
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "talhelper": "talhelper",
+        "vesktop": "vesktop",
         "xremap-flake": "xremap-flake"
       }
     },
@@ -2694,6 +2695,22 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "vesktop": {
+      "locked": {
+        "lastModified": 1714598028,
+        "narHash": "sha256-Z7T/26z0h53NpKJXwNxLJK8+B5cNfd6HkmzQ5/FK09M=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5607766da72127e8daa6bc58edddf8e4b9506986",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "5607766da72127e8daa6bc58edddf8e4b9506986",
         "type": "github"
       }
     },

@@ -154,6 +154,7 @@
       url = "github:catppuccin/starship";
       flake = false;
     };
+    vesktop.url = "github:NixOS/nixpkgs/5607766da72127e8daa6bc58edddf8e4b9506986";
   };
 
   outputs = inputs: let
