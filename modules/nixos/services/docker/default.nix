@@ -14,6 +14,9 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.root.dirs = [
+      "/var/lib/docker"
+    ];
     virtualisation.docker = {
       enable = true;
     };
