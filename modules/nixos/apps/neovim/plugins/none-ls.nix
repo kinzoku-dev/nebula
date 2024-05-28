@@ -28,6 +28,7 @@
           leptosfmt.enable = true;
           terraform_fmt.enable = true;
           alejandra.enable = true;
+          hclfmt.enable = true;
         };
       };
     };
