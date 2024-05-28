@@ -16,6 +16,7 @@
   jovian.steam = {
     enable = true;
     autoStart = true;
+    user = "kinzoku";
   };
 
   networking = {
