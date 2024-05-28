@@ -208,6 +208,8 @@
         mesa
         ffmpeg
 
+        nextcloud-client
+
         localsend
 
         vim
