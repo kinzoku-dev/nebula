@@ -76,3 +76,7 @@ symbol = " "
 [scala]
 symbol = " "
 
+[kubernetes]
+symbol = "☸ "
+disabled = false
+detect_files = ["kubeconfig", "talosconfig", "kustomization.yaml", "k8s"]
