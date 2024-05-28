@@ -2044,6 +2044,22 @@
         "type": "github"
       }
     },
+    "plugin-nvim-ansible": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1713447796,
+        "narHash": "sha256-Vt8dPQVtx/aYPk8IOR7h0LgdOnvxhoYd4NmTVLYJCO0=",
+        "owner": "mfussenegger",
+        "repo": "nvim-ansible",
+        "rev": "cb5d0cc79c1864b72d5ae40a926a1176b18f1b65",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mfussenegger",
+        "repo": "nvim-ansible",
+        "type": "github"
+      }
+    },
     "plugin-silicon": {
       "flake": false,
       "locked": {
@@ -2171,6 +2187,7 @@
         "plugin-aerial": "plugin-aerial",
         "plugin-move": "plugin-move",
         "plugin-neocord": "plugin-neocord",
+        "plugin-nvim-ansible": "plugin-nvim-ansible",
         "plugin-silicon": "plugin-silicon",
         "plugin-tmux-base16-statusline": "plugin-tmux-base16-statusline",
         "plugin-tmux-base16-tmux": "plugin-tmux-base16-tmux",
