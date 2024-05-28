@@ -30,6 +30,7 @@ in {
       cinny-desktop
       element-desktop
       telegram-desktop
+      slack
       (signal-desktop-beta.overrideAttrs {
         desktopItems = [
           (makeDesktopItem {
