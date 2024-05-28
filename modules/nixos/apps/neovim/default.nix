@@ -54,6 +54,7 @@ in {
         plugpkgs.playground
         plugpkgs.nui-nvim
         plugpkgs.openingh-nvim
+        plugpkgs.nvim-ansible
         {
           plugin = plugpkgs.nvim-silicon;
           config = toLua ''

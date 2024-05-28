@@ -135,6 +135,10 @@
       url = "github:tinted-theming/base16-tmux";
       flake = false;
     };
+    plugin-nvim-ansible = {
+      url = "github:mfussenegger/nvim-ansible";
+      flake = false;
+    };
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";

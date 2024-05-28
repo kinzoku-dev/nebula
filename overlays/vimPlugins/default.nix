@@ -3,6 +3,7 @@
   plugin-neocord,
   plugin-aerial,
   plugin-silicon,
+  plugin-nvim-ansible,
   ...
 }: (final: prev: {
   vimPlugins =
@@ -23,6 +24,10 @@
       nvim-silicon = prev.vimUtils.buildVimPlugin {
         name = "silicon";
         src = plugin-silicon;
+      };
+      nvim-ansible = prev.vimUtils.buildVimPlugin {
+        name = "ansible";
+        src = plugin-nvim-ansible;
       };
     };
 })
