@@ -16,7 +16,15 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
-      ansible
+      (ansible.overrideAttrs (old: rec {
+        pname = "ansible_core";
+        version = "2.17.0";
+
+        src = fetchPypi {
+          inherit pname version;
+          hash = "sha256-vRbjDsrEBdrFlN4+GxtNnMb6Gp96Aaao1MRxsgZgcW0=";
+        };
+      }))
       python3
 
       fluxcd
