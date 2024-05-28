@@ -1,6 +1,6 @@
 {
   device ? throw "Set this to your disk device, e.g. /dev/sda",
-  disk ? throw "disk to use for the system",
+  impermanence ? false,
   lib,
   swap ? false,
   ...
@@ -8,7 +8,7 @@
   disko = {
     devices = {
       disk = {
-        main = lib.mkIf (disk == "main") {
+        impermanence = lib.mkIf impermanence {
           inherit device;
           type = "disk";
           content = {
@@ -40,13 +40,13 @@
                 size = "100%";
                 content = {
                   type = "zfs";
-                  pool = "zroot";
+                  pool = "zimpermanence";
                 };
               };
             };
           };
         };
-        deck = lib.mkIf (disk == "deck") {
+        zfs = lib.mkIf (impermanence == false) {
           inherit device;
           type = "disk";
           content = {
@@ -78,7 +78,7 @@
                 size = "100%";
                 content = {
                   type = "zfs";
-                  pool = "zroot2";
+                  pool = "zroot";
                 };
               };
             };
@@ -86,9 +86,8 @@
         };
       };
       zpool = {
-        zroot2 = {
+        zroot = lib.mkIf (impermanence == false) {
           type = "zpool";
-          mode = "mirror";
           rootFsOptions = {
             compression = "zstd";
             "com.sun:auto-snapshot" = "false";
@@ -102,9 +101,14 @@
               mountpoint = "/nix";
               options.mountpoint = "legacy";
             };
+            tmp = {
+              type = "zfs_fs";
+              mountpoint = "/tmp";
+              options.mountpoint = "legacy";
+            };
           };
         };
-        zroot = {
+        zimpermanence = lib.mkIf impermanence {
           type = "zpool";
           rootFsOptions = {
             canmount = "off";

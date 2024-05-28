@@ -29,7 +29,7 @@
       ipv4.addresses = [
         {
           address = "192.168.1.10";
-          prefixLength = 21;
+          prefixLength = 17;
         }
       ];
     };
@@ -44,6 +44,9 @@
     development.enable = true;
   };
   system = {
+    impermanence = {
+      enable = true;
+    };
     boot.enable = true;
     security.doas = {
       noPassword = true;

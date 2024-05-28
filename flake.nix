@@ -191,11 +191,12 @@
       ];
       systems = {
         hosts = {
-          tempest.modules = with inputs; [
+          nova.modules = with inputs; [
             (import ./disks/default.nix {
               inherit lib;
               swap = true;
               device = "/dev/nvme0n1";
+              impermanence = true;
             })
           ];
           deck.modules = with inputs; [
@@ -203,7 +204,7 @@
               inherit lib;
               swap = true;
               device = "/dev/nvme0n1";
-              disk = "deck";
+              impermanence = false;
             })
           ];
         };
