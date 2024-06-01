@@ -19,8 +19,6 @@ in {
   config = {
     environment.sessionVariables.FLAKE = "/home/${cfg.name}/Dev/nebula";
 
-    system.persist.root.files = ["/etc/shadow"];
-
     users.users.${cfg.name} =
       {
         isNormalUser = true;

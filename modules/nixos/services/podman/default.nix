@@ -14,9 +14,6 @@ in {
   };
 
   config = mkIf cfg.enable {
-    system.persist.root.dirs = [
-      "/run/user/1000/podman"
-    ];
     virtualisation.podman = {
       enable = true;
     };
