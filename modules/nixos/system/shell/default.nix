@@ -135,6 +135,16 @@ in {
           "tmux"
           "gnu-utils"
           "terraform"
+          "1password"
+          "dotenv"
+          "direnv"
+          "golang"
+          "gpg-agent"
+          "helm"
+          "minikube"
+          "postgres"
+          "redis-cli"
+          "ssh-agent"
         ];
       };
       enableAutosuggestions = true;
