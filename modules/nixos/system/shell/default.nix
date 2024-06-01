@@ -247,6 +247,7 @@ in {
 
         ${pkgs.fluxcd}/bin/flux completion fish | source
         ${pkgs.talosctl}/bin/talosctl completion fish | source
+        ${pkgs.kubectl}/bin/kubectl completion fish | source
       '';
       plugins = [
         {
@@ -260,13 +261,6 @@ in {
         {
           name = "colored-man-pages";
           src = pkgs.fishPlugins.colored-man-pages.src;
-        }
-        {
-          name = "fish-kubectl-completions";
-          src = pkgs.fetchurl {
-            url = "https://github.com/evanlucas/fish-kubectl-completions/blob/main/completions/kubectl.fish";
-            sha256 = "06r390wa2g7g5ikwrc4cqikdf4r9yag2ap55sjaxgj5mn89s2qic";
-          };
         }
         {
           name = "fish-kubectl-abbr";
