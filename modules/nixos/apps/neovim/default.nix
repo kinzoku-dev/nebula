@@ -28,8 +28,8 @@ in {
         mimeType = ["text/plain"];
 
         icon = builtins.fetchurl {
-          url = "https://raw.githubusercontent.com/NotAShelf/neovim-flake/main/assets/neovim-flake-logo-work.svg";
-          sha256 = "19n7n9xafyak35pkn4cww0s5db2cr97yz78w5ppbcp9jvxw6yyz3";
+          url = "https://raw.githubusercontent.com/kinzoku-dev/nebula/main/.github/assets/nebuvim_logo.png";
+          sha256 = "0h3sgpbw3cclrmfihj26p561h4cy8gxhnwgr6y9r368lzpkcjn80";
         };
         exec = "kitty nvim";
       };
