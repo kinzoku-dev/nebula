@@ -111,6 +111,13 @@ in {
       enableFishIntegration = true;
     };
 
+    home.programs.thefuck = {
+      enable = true;
+      enableNushellIntegration = true;
+      enableZshIntegration = true;
+      enableFishIntegration = true;
+    };
+
     home.programs.zsh = mkIf (cfg.shell == "zsh") {
       enable = true;
       oh-my-zsh = {
@@ -145,6 +152,7 @@ in {
           "postgres"
           "redis-cli"
           "ssh-agent"
+          "thefuck"
         ];
       };
       enableAutosuggestions = true;
