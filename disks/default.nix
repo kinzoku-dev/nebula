@@ -3,6 +3,7 @@
   impermanence ? false,
   lib,
   swap ? false,
+  swapSize ? "4",
   ...
 }: {
   disko = {
@@ -30,7 +31,7 @@
                 };
               };
               swap = lib.mkIf swap {
-                size = "4G";
+                size = "${swapSize}G";
                 content = {
                   type = "swap";
                   resumeDevice = true;
@@ -68,7 +69,7 @@
                 };
               };
               swap = lib.mkIf swap {
-                size = "4G";
+                size = "${swapSize}G";
                 content = {
                   type = "swap";
                   resumeDevice = true;

@@ -225,6 +225,7 @@
             (import ./disks/default.nix {
               inherit lib;
               swap = true;
+              swapSize = "16";
               device = "/dev/nvme0n1";
               impermanence = false;
             })
