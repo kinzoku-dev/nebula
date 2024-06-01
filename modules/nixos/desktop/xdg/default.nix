@@ -29,6 +29,7 @@ in {
         extraConfig = {
           XDG_DEV_DIR = "${homeDir}/Dev";
           XDG_NOTES_DIR = "${homeDir}/Notes";
+          XDG_MOUNTS_DIR = "${homeDir}/Mounts";
         };
       };
     };
@@ -41,6 +42,7 @@ in {
       "Images"
       "Dev"
       "Notes"
+      "Mounts"
     ];
   };
 }
