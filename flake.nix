@@ -227,7 +227,7 @@
               swap = true;
               swapSize = "16";
               device = "/dev/nvme0n1";
-              impermanence = false;
+              impermanence = true;
             })
           ];
         };

@@ -38,6 +38,9 @@
   };
 
   system = {
+    impermanence = {
+      enable = true;
+    };
     boot.enable = true;
     security.doas = {
       noPassword = true;
