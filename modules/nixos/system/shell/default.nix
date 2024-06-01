@@ -248,6 +248,8 @@ in {
         ${pkgs.fluxcd}/bin/flux completion fish | source
         ${pkgs.talosctl}/bin/talosctl completion fish | source
         ${pkgs.kubectl}/bin/kubectl completion fish | source
+
+        export GPG_TTY=$(tty)
       '';
       plugins = [
         {
