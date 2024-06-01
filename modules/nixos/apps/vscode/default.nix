@@ -14,6 +14,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/VSCodium"
+      ".vscode-oss"
+    ];
+
     home.programs.vscode = {
       enable = true;
       package = (
