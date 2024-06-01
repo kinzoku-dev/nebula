@@ -53,6 +53,28 @@
       url = "github:sopa0/hyprsome";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprlock = {
+      url = "github:hyprwm/hyprlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    hypridle = {
+      url = "github:hyprwm/hypridle";
+      inputs.nixpkgs.follows = "hyprland";
+    };
+    pyprland = {
+      url = "github:hyprland-community/pyprland";
+    };
+
+    nix-alien = {
+      url = "github:thiagokokada/nix-alien";
+    };
+
+    shadower = {
+      url = "github:n3oney/shadower";
+    };
+    wayfreeze = {
+      url = "github:jappie3/wayfreeze";
+    };
 
     anyrun = {
       url = "github:Kirottu/anyrun";
