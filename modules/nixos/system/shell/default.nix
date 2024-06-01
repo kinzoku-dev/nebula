@@ -44,6 +44,7 @@ in {
       dirs = [
         ".local/share/zoxide"
         ".local/share/atuin"
+        ".config/atuin"
       ];
       files = [".zsh_history"];
     };
