@@ -2,15 +2,16 @@
   [user]
   	name = kinzoku-dev
   	email = kinzoku@the-nebula.xyz
-    signingkey = ${sshKeyPath}
+    signingkey = 582B3B3E531B9211
   [safe]
     directory = *
   [pull]
   	rebase = true
   [init]
   	defaultBranch = main
-  [gpg]
-      format = ssh
   [commit]
     gpgsign = true
 ''
+# [gpg]
+#     format = ssh
+
