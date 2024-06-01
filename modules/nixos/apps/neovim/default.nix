@@ -331,18 +331,6 @@ in {
         }
       ];
       plugins = {
-        neocord = {
-          enable = true;
-          settings = {
-            enable_line_number = true;
-            auto_update = true;
-            editing_text = "File: %s (editing)";
-            reading_text = "File: %s (reading)";
-            line_number_text = "Line: %s/%s";
-            workspace_text = "Project: %s";
-            logo = "https://raw.githubusercontent.com/kinzoku-dev/nebula/main/.github/assets/nebuvim_logo.png";
-          };
-        };
         nvim-bqf.enable = true;
         tmux-navigator.enable = true;
         emmet = {
