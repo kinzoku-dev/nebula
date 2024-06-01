@@ -36,6 +36,7 @@ in {
 
       go-task
       helmfile
+      kubernetes-helm
       yq
       jq
       kubeconform
