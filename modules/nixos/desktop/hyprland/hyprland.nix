@@ -92,6 +92,7 @@
   bind = $mainMod, E, exec, emoji
   bind = $mainMod, B, exec, rofi-clipboard
   bind = $mainMod SHIFT, Z, exec, kitty pulsemixer
+  bind = $mainMod, F, fullscreen
 
   bind = ,XF86AudioRaiseVolume, exec, volume --up
   bind = ,XF86AudioLowerVolume, exec, volume --down
