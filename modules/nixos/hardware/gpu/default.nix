@@ -32,17 +32,6 @@ in {
       boot.initrd.kernelModules = [
         (lib.optionalString (cfg.gpu == "amd") "amdgpu")
       ];
-      hardware.nvidia = mkIf (cfg.gpu == "nvidia") {
-        modesetting.enable = true;
-        prime = mkIf cfg.nvidiaOffload.enable {
-          offload = {
-            enable = true;
-            enableOffloadCmd = true;
-          };
-          intelBusId = "${cfg.nvidiaOffload.intelBusId}";
-          nvidiaBusId = "${cfg.nvidiaOffload.nvidiaBusId}";
-        };
-      };
 
       environment.systemPackages = mkIf cfg.nvidiaOffload.enable [
         (pkgs.writeShellScriptBin "prime-run" ''
@@ -54,7 +43,18 @@ in {
         '')
       ];
 
-      hardware = {
+      hardware = mkIf (config.jovian.steam.enable == false) {
+        nvidia = mkIf (cfg.gpu == "nvidia") {
+          modesetting.enable = true;
+          prime = mkIf cfg.nvidiaOffload.enable {
+            offload = {
+              enable = true;
+              enableOffloadCmd = true;
+            };
+            intelBusId = "${cfg.nvidiaOffload.intelBusId}";
+            nvidiaBusId = "${cfg.nvidiaOffload.nvidiaBusId}";
+          };
+        };
         opengl = {
           enable = true;
           driSupport = true;
