@@ -1,8 +1,8 @@
-{sshKeyPath}: ''
+{gpgKey}: ''
   [user]
   	name = kinzoku-dev
   	email = kinzoku@the-nebula.xyz
-    signingkey = 582B3B3E531B9211
+    signingkey = ${gpgKey}
   [safe]
     directory = *
   [pull]

@@ -11,6 +11,7 @@ with lib.nebula; let
 in {
   options.apps.tools.git = with types; {
     enable = mkBoolOpt false "Enable or disable git";
+    gpgKey = mkOpt str "" "GPG key";
   };
 
   config = mkIf cfg.enable {
@@ -25,7 +26,7 @@ in {
     ];
 
     home.configFile."git/config".text = import ./config.nix {
-      sshKeyPath = "/home/${config.user.name}/.ssh/id_ed25519.pub";
+      inherit (cfg) gpgKey;
     };
     home.configFile."lazygit/config.yml".source = ./lazygitConfig.yml;
   };

@@ -85,6 +85,7 @@
     dconf.enable = true;
   };
   apps = {
+    tools.git.gpgKey = "582B3B3E531B9211";
     onepassword.enable = true;
     misc.enable = true;
     zathura.enable = true;

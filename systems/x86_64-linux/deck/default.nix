@@ -88,6 +88,7 @@
     thunderbird.enable = true;
     neofetch.enable = true;
     fzf.enable = true;
+    tools.git.gpgKey = "C3EB85179D21EAF9";
     discord.enable = true;
     browser.firefox.enable = true;
     clusterUtils.enable = true;
