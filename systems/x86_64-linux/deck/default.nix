@@ -17,6 +17,7 @@
     enable = true;
     autoStart = true;
     user = "kinzoku";
+    desktopSession = "hyprland";
   };
 
   networking = {
