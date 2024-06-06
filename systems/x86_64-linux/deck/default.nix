@@ -17,7 +17,7 @@
     enable = true;
     autoStart = true;
     user = "kinzoku";
-    desktopSession = "hyprland";
+    desktopSession = "gnome";
   };
 
   networking = {
@@ -101,36 +101,37 @@
     gtk.enable = true;
     xdg.enable = true;
     dunst.enable = true;
-    hyprland = {
-      enable = true;
-      displays = [
-        {
-          name = "DP-1";
-          width = 1920;
-          height = 1080;
-          refreshRate = 75;
-          x = 0;
-          y = 0;
-          workspaces = [
-            1
-            2
-            3
-            4
-            5
-            6
-            7
-            8
-            9
-            10
-          ];
-        }
-      ];
-    };
-    waybar.enable = true;
+    gnome.enable = true;
+    # hyprland = {
+    #   enable = true;
+    #   displays = [
+    #     {
+    #       name = "DP-1";
+    #       width = 1920;
+    #       height = 1080;
+    #       refreshRate = 75;
+    #       x = 0;
+    #       y = 0;
+    #       workspaces = [
+    #         1
+    #         2
+    #         3
+    #         4
+    #         5
+    #         6
+    #         7
+    #         8
+    #         9
+    #         10
+    #       ];
+    #     }
+    #   ];
+    # };
+    # waybar.enable = true;
   };
   xdg.portal = {
     enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [];
     config.common.default = "*";
   };
   services = {
