@@ -6,7 +6,7 @@
     layer = "top";
     margin = "8px 10px -2px 10px";
 
-    modules-left = ["custom/menu" "hyprland/workspaces" "hyprland/language"];
+    modules-left = ["custom/menu" "hyprland/workspaces" "hyprland/language" "privacy"];
     modules-center = ["clock"];
     modules-right = ["cpu" "memory" "backlight" "network" "tray"];
 
@@ -101,6 +101,28 @@
     "hyprland/language" = {
       format = "  {}";
       keyboard-name = "keychron-k4-keychron-k4";
+    };
+    "privacy" = {
+      icon-spacing = 4;
+      icon-size = 18;
+      transition-duration = 250;
+      modules = [
+        {
+          type = "screenshare";
+          tooltip = true;
+          tooltip-icon-size = 24;
+        }
+        {
+          type = "audio-out";
+          tooltip = true;
+          tooltip-icon-size = 24;
+        }
+        {
+          type = "audio-in";
+          tooltip = true;
+          tooltip-icon-size = 24;
+        }
+      ];
     };
   };
 }

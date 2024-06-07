@@ -24,6 +24,7 @@
   #backlight,
   #network,
   #language,
+  #privacy,
   #tray {
       background-color: #${colors.base00};
       padding: 0 10px;
@@ -60,5 +61,15 @@
       border: 1px solid rgba(0, 0, 0, 0);
       border-radius: 6px;
       background-clip: padding-box;
+  }
+
+  #privacy-item.screenshare {
+    color: #${colors.base09};
+  }
+  #privacy-item.audio-in {
+    color: #${colors.base08};
+  }
+  #privacy-item.audio-out {
+    color: #${colors.base0B};
   }
 ''
