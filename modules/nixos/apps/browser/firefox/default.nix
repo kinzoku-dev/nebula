@@ -357,6 +357,10 @@ in {
                   label = "Spotify";
                   url = "https://open.spotify.com/";
                 }
+                {
+                  label = "ProtonDB";
+                  url = "https://www.protondb.com/";
+                }
               ];
             };
             bookmarks = [
