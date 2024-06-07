@@ -389,6 +389,10 @@ in {
                     url = "https://mynixos.com/";
                   }
                   {
+                    name = "Noogle";
+                    url = "https://noogle.dev/";
+                  }
+                  {
                     name = "Nebula";
                     url = "https://github.com/kinzoku-dev/nebula";
                   }
