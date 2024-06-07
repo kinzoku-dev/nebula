@@ -204,6 +204,16 @@ in {
                   updateInterval = 24 * 60 * 60 * 1000; # every day
                   definedAliases = ["!lr"];
                 };
+                "Quay" = {
+                  urls = [{template = "https://quay.io/search?q={searchTerms}";}];
+                  updateInterval = 24 * 60 * 60 * 1000;
+                  definedAliases = ["!qy"];
+                };
+                "Docker Hub" = {
+                  urls = [{template = "https://hub.docker.com/search?q={searchTerms}";}];
+                  updateInterval = 24 * 60 * 60 * 1000;
+                  definedAliases = ["!dh"];
+                };
               };
               order = [
                 "Brave"
