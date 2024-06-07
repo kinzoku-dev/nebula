@@ -6,7 +6,7 @@
     layer = "top";
     margin = "8px 10px -2px 10px";
 
-    modules-left = ["custom/menu" "hyprland/workspaces"];
+    modules-left = ["custom/menu" "hyprland/workspaces" "hyprland/language"];
     modules-center = ["clock"];
     modules-right = ["cpu" "memory" "backlight" "network" "tray"];
 
@@ -96,6 +96,11 @@
       };
       scroll-step = 1;
       on-click = "kitty pulsemixer";
+    };
+
+    "hyprland/language" = {
+      format = "  {}";
+      keyboard-name = "keychron-k4-keychron-k4";
     };
   };
 }

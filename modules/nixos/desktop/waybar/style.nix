@@ -23,6 +23,7 @@
   #memory,
   #backlight,
   #network,
+  #language,
   #tray {
       background-color: #${colors.base00};
       padding: 0 10px;
