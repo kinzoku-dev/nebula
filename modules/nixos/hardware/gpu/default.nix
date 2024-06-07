@@ -43,7 +43,7 @@ in {
         '')
       ];
 
-      hardware = mkIf (config.jovian.steam.enable == false) {
+      hardware = mkIf (config.networking.hostName != "deck") {
         nvidia = mkIf (cfg.gpu == "nvidia") {
           modesetting.enable = true;
           prime = mkIf cfg.nvidiaOffload.enable {
