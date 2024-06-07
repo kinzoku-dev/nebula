@@ -354,8 +354,8 @@ in {
                   url = "http://192.168.1.1";
                 }
                 {
-                  label = "YTMusic";
-                  url = "https://music.youtube.com/";
+                  label = "Spotify";
+                  url = "https://open.spotify.com/";
                 }
               ];
             };
