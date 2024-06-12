@@ -38,6 +38,7 @@
     gpu = "integrated";
   };
 
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_jovian;
   system = {
     impermanence = {
       enable = true;
