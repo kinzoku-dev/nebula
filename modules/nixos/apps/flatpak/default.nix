@@ -24,9 +24,14 @@ in {
       enable = true;
       inherit (cfg) packages;
     };
-    system.persist.home.dirs = [
-      ".var/app"
-      ".local/share/flatpak"
-    ];
+    system.persist = {
+      home.dirs = [
+        ".var/app"
+        ".local/share/flatpak"
+      ];
+      root.dirs = [
+        "/var/lib/flatpak/"
+      ];
+    };
   };
 }
