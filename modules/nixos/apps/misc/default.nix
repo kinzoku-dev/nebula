@@ -24,6 +24,10 @@ in {
       gnome.nautilus
       gimp
       gucharmap
+
+      unzip
+      zip
+      udisks
     ];
   };
 }

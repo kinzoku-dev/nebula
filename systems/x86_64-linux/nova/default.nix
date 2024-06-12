@@ -275,14 +275,9 @@
 
         blender
 
-        udisks
-
         audacity
 
         godot_4
-
-        unzip
-        zip
 
         wineWowPackages.waylandFull
         winetricks
