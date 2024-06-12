@@ -26,5 +26,9 @@ in {
         "com.fyralabs.SkiffDesktop"
       ];
     };
+    system.persist.home.dirs = [
+      ".var/app"
+      ".local/share/flatpak"
+    ];
   };
 }
