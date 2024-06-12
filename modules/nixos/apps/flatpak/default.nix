@@ -12,6 +12,7 @@ with lib.nebula; let
 in {
   options.apps.flatpak = with types; {
     enable = mkBoolOpt false "enable flatpak";
+    packages = mkOpt (listOf str) [] "Flatpaks to install";
   };
 
   imports = [
@@ -21,10 +22,7 @@ in {
   config = mkIf cfg.enable {
     services.flatpak = {
       enable = true;
-      packages = [
-        "im.riot.Riot"
-        "com.fyralabs.SkiffDesktop"
-      ];
+      inherit (cfg) packages;
     };
     system.persist.home.dirs = [
       ".var/app"
