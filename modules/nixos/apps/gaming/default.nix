@@ -79,7 +79,10 @@ in {
     };
 
     programs.gamemode.enable = true;
-    system.persist.home.dirs = [".local/share/Steam"];
+    system.persist.home.dirs = [
+      ".local/share/Steam"
+      ".local/share/Terraria"
+    ];
     environment.systemPackages = with pkgs; [
       protonup
       mangohud
