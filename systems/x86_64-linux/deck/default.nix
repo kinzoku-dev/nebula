@@ -92,6 +92,7 @@
     tools.git.gpgKey = "C3EB85179D21EAF9";
     discord.enable = true;
     browser.firefox.enable = true;
+    flatpak.enable = true;
     clusterUtils.enable = true;
     gaming.enable = true;
   };
