@@ -85,6 +85,7 @@
     dconf.enable = true;
   };
   apps = {
+    security.enable = true;
     tools.git.gpgKey = "582B3B3E531B9211";
     emulation.enable = true;
     onepassword.enable = true;
