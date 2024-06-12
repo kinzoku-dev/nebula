@@ -100,7 +100,7 @@
     gaming.enable = true;
     discord.enable = true;
     mullvad-vpn.enable = true;
-    # flatpak.enable = true;
+    flatpak.enable = true;
     obsidian = {
       enable = true;
     };
