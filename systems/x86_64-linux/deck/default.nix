@@ -80,6 +80,7 @@
     dconf.enable = true;
   };
   apps = {
+    emulation.enable = true;
     misc.enable = true;
     zathura.enable = true;
     rofi.enable = true;
