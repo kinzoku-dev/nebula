@@ -28,6 +28,8 @@ in {
       unzip
       zip
       udisks
+
+      p7zip
     ];
   };
 }
