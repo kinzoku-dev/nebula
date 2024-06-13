@@ -31,7 +31,10 @@
       "127.0.0.2" = ["deck"];
     };
   };
-  environment.systemPackages = with pkgs; [];
+  environment.systemPackages = with pkgs; [
+    wineWowPackages.waylandFull
+    winetricks
+  ];
 
   hardware.graphics = {
     enable = true;
