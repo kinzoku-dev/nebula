@@ -14,10 +14,13 @@ in {
   };
 
   config = mkIf cfg.enable {
-    apps.neovim.enable = true;
-    apps.tools.direnv.enable = true;
-    apps.yazi.enable = true;
-    apps.tmux.enable = true;
+    apps = {
+      neovim.enable = true;
+      tools.direnv.enable = true;
+      yazi.enable = true;
+      tmux.enable = true;
+      jetbrains.enable = true;
+    };
 
     home.configFile."nix-init/config.toml".text = ''
       maintainers = ["kinzoku"]
