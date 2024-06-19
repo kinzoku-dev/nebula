@@ -86,7 +86,10 @@
   };
   apps = {
     security.enable = true;
-    tools.git.gpgKey = "582B3B3E531B9211";
+    tools = {
+      git.gpgKey = "582B3B3E531B9211";
+      network.enable = true;
+    };
     emulation.enable = true;
     onepassword.enable = true;
     misc.enable = true;
