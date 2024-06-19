@@ -240,6 +240,11 @@ in {
         dvs = "direnv status";
         dvk = "direnv revoke";
         dvr = "direnv reload";
+        mksts = "minikube status";
+        mkstr = "minikube start";
+        mkstp = "minikube stop";
+        mksvc = "minikube service";
+        mkdel = "minikube delete";
       };
       interactiveShellInit = ''
         set fish_greeting
@@ -248,6 +253,7 @@ in {
         ${pkgs.fluxcd}/bin/flux completion fish | source
         ${pkgs.talosctl}/bin/talosctl completion fish | source
         ${pkgs.kubectl}/bin/kubectl completion fish | source
+        ${pkgs.minikube}/bin/minikube completion fish | source
 
         export GPG_TTY=$(tty)
       '';
