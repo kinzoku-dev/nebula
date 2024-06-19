@@ -79,6 +79,7 @@ in {
       pm = "pulsemixer";
       v = "fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim";
       k = "kubectl";
+      tf = "terraform";
       # cdf = "cd $(fd . -t d -H | fzf)";
       # zf = "z $(fd . -t d -H | fzf)";
       # nvf = "nvim $(fd . -t f -H | fzf)";
@@ -245,6 +246,10 @@ in {
         mkstp = "minikube stop";
         mksvc = "minikube service";
         mkdel = "minikube delete";
+        tfp = "terraform plan";
+        tfa = "terraform apply";
+        tfi = "terraform init";
+        tff = "terraform fmt";
       };
       interactiveShellInit = ''
         set fish_greeting
