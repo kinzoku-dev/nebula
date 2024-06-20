@@ -84,6 +84,7 @@ in {
     system.persist.home.dirs = [
       ".local/share/Steam"
       ".local/share/Terraria"
+      "Games"
     ];
     environment = {
       systemPackages = with pkgs; [
