@@ -56,7 +56,7 @@ in {
               (pkgs.makeDesktopItem {
                 name = "Steam";
                 desktopName = "Steam";
-                exec = "${lib.optionalString config.apps.mullvad-vpn.enable "mullvad-exclude"} ${lib.optionalString config.hardware.graphics.nvidiaOffload.enable "prime-run"} steam";
+                exec = "${lib.optionalString config.apps.mullvad-vpn.enable "mullvad-exclude"} ${lib.optionalString config.hardware.gpu.nvidiaOffload.enable "prime-run"} steam";
                 icon = "steam";
                 startupWMClass = "Signal Beta";
                 genericName = "Internet Messenger";

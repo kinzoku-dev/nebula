@@ -36,7 +36,7 @@
     winetricks
   ];
 
-  hardware.graphics = {
+  hardware.gpu = {
     enable = true;
     gpu = "integrated";
   };

@@ -16,7 +16,7 @@
 
   networking.hostId = "c106acaf";
 
-  hardware.graphics = {
+  hardware.gpu = {
     enable = true;
     gpu = "nvidia";
     nvidiaOffload = {

@@ -35,7 +35,7 @@
     };
   };
 
-  hardware.graphics = {
+  hardware.gpu = {
     enable = true;
     gpu = "amd";
   };

@@ -7,9 +7,9 @@
 }:
 with lib;
 with lib.nebula; let
-  cfg = config.hardware.graphics;
+  cfg = config.hardware.gpu;
 in {
-  options.hardware.graphics = with types; {
+  options.hardware.gpu = with types; {
     enable = mkBoolOpt false "Enable graphics";
     gpu = mkOpt (enum ["amd" "nvidia" "integrated"]) "nvidia" "Which gpu to configure";
     nvidiaOffload = {
