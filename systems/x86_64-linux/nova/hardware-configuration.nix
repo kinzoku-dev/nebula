@@ -22,6 +22,11 @@
     extraModulePackages = [];
   };
 
+  fileSystems."/home/${config.user.name}/Mounts/obsidian_vaults" = {
+    device = "192.168.3.5:/mnt/store/obsidian_vaults";
+    fsType = "nfs";
+  };
+
   swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
