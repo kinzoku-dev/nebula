@@ -30,6 +30,8 @@ in {
       udisks
 
       p7zip
+
+      filezilla
     ];
   };
 }
