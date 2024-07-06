@@ -84,6 +84,7 @@ in {
     system.persist.home.dirs = [
       ".local/share/Steam"
       ".local/share/Terraria"
+      ".local/share/bottles"
       "Games"
     ];
     environment = {
