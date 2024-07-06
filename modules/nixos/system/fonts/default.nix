@@ -28,6 +28,7 @@ in {
         noto-fonts-cjk-serif
         noto-fonts-emoji
         (nerdfonts.override {fonts = ["JetBrainsMono" "NerdFontsSymbolsOnly"];})
+        geist-font
       ]
       ++ cfg.fonts;
   };
