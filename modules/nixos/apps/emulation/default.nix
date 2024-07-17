@@ -21,6 +21,7 @@ in {
       melonDS
       mgba
       ryujinx
+      dolphin-emu
     ];
   };
 }
