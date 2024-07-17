@@ -32,8 +32,6 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    wineWowPackages.waylandFull
-    winetricks
   ];
 
   hardware.gpu = {
@@ -84,6 +82,7 @@
     dconf.enable = true;
   };
   apps = {
+    wine.enable = true;
     emulation.enable = true;
     misc.enable = true;
     zathura.enable = true;

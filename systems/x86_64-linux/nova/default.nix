@@ -85,6 +85,7 @@
     dconf.enable = true;
   };
   apps = {
+    wine.enable = true;
     security.enable = true;
     tools = {
       git.gpgKey = "582B3B3E531B9211";
@@ -282,9 +283,6 @@
         audacity
 
         godot_4
-
-        wineWowPackages.waylandFull
-        winetricks
 
         libreoffice
 

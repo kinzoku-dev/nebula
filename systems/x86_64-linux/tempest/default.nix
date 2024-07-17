@@ -214,9 +214,6 @@
         unzip
         zip
 
-        wineWowPackages.waylandFull
-        winetricks
-
         libreoffice
 
         ungoogled-chromium
