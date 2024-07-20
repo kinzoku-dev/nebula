@@ -93,7 +93,10 @@
     };
     emulation.enable = true;
     onepassword.enable = true;
-    misc.enable = true;
+    misc = {
+      enable = true;
+      figlet.enable = true;
+    };
     zathura.enable = true;
     rofi.enable = true;
     printing.enable = true;
