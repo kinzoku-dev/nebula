@@ -26,16 +26,16 @@ in {
     apps.flatpak.packages = [
       "io.github.lime3ds.Lime3DS"
     ];
-    environment.systemPackages = with pkgs;
-      [
-        melonDS
-        mgba
-        ryujinx
-        mupen64plus
-        rpcs3
-      ]
-      ++ (with inputs; [
-        dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
-      ]);
+    environment.systemPackages = with pkgs; [
+      melonDS
+      mgba
+      ryujinx
+      mupen64plus
+      rpcs3
+      dolphin-emu
+    ];
+    # ++ (with inputs; [
+    #   dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
+    # ]);
   };
 }
