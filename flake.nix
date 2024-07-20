@@ -181,6 +181,8 @@
       flake = false;
     };
     vesktop.url = "github:NixOS/nixpkgs/5607766da72127e8daa6bc58edddf8e4b9506986";
+
+    dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
   };
 
   outputs = inputs: let
