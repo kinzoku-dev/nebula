@@ -20,6 +20,7 @@ in {
       ".config/dolphin-emu"
       ".config/mgba"
       ".config/melonDS"
+      ".config/rpcs3"
     ];
 
     apps.flatpak.packages = [
@@ -31,6 +32,7 @@ in {
         mgba
         ryujinx
         mupen64plus
+        rpcs3
       ]
       ++ (with inputs; [
         dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
