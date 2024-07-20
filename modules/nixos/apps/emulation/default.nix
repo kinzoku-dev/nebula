@@ -14,6 +14,13 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".local/share/dolphin-emu"
+      ".config/dolphin-emu"
+      ".config/mgba"
+      ".config/melonDS"
+    ];
+
     apps.flatpak.packages = [
       "io.github.lime3ds.Lime3DS"
     ];
