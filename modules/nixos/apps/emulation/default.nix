@@ -33,6 +33,7 @@ in {
       mupen64plus
       rpcs3
       dolphin-emu
+      cemu
     ];
     # ++ (with inputs; [
     #   dolphin-emu-nix.packages.x86_64-linux.dolphin-emu
