@@ -21,6 +21,8 @@ in {
       ".config/mgba"
       ".config/melonDS"
       ".config/rpcs3"
+      ".config/Cemu"
+      ".local/share/Cemu"
     ];
 
     apps.flatpak.packages = [
