@@ -53,6 +53,7 @@ in {
       lm_sensors
       nvtop-amd
       pipes
+      usbutils
     ];
 
     services.udisks2.enable = true;
