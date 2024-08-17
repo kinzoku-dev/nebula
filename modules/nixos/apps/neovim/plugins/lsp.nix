@@ -134,16 +134,16 @@
             ];
           };
           nushell.enable = true;
-          pylsp = {
-            enable = true;
-            settings = {
-              plugins = {
-                ruff = {
-                  enabled = true;
-                };
-              };
-            };
-          };
+          # pylsp = {
+          #   enable = true;
+          #   settings = {
+          #     plugins = {
+          #       ruff = {
+          #         enabled = true;
+          #       };
+          #     };
+          #   };
+          # };
         };
         keymaps = {
           diagnostic = {

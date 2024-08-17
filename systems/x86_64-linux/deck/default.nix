@@ -45,10 +45,6 @@
       enable = true;
     };
     boot.enable = true;
-    security.doas = {
-      noPassword = true;
-      replaceSudo = lib.mkForce true;
-    };
 
     xserver.enable = true;
     fonts = {
@@ -56,7 +52,6 @@
     };
     # system.xremap.enable = true;
     shell.shell = "zsh";
-    systemd-timers.enable = true;
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
@@ -101,8 +96,6 @@
     gaming.enable = true;
   };
   desktop = {
-    # picom.enable = true;
-    # xmonad.enable = true;
     gtk.enable = true;
     xdg.enable = true;
     dunst.enable = true;
@@ -160,5 +153,4 @@
     "nix-command"
     "flakes"
   ];
-  nix.package = pkgs.nixVersions.latest;
 }

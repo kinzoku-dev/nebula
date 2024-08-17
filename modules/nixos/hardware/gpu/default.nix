@@ -55,11 +55,12 @@ in {
             nvidiaBusId = "${cfg.nvidiaOffload.nvidiaBusId}";
           };
         };
-        opengl = {
+        graphics = {
           enable = true;
-          # driSupport = true;
-          driSupport32Bit = true;
-          extraPackages = [pkgs.mesa.drivers];
+          enable32Bit = true;
+          extraPackages = [
+            pkgs.mesa.drivers
+          ];
         };
       };
     };

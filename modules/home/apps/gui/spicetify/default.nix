@@ -9,13 +9,13 @@
 with lib;
 with lib.nebula; let
   cfg = config.home.apps.spicetify;
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
 in {
   options.home.apps.spicetify = with types; {
     enable = mkBoolOpt false "Enable spicetify";
   };
 
-  imports = [inputs.spicetify-nix.homeManagerModule];
+  imports = [inputs.spicetify-nix.homeManagerModules.default];
 
   config = mkIf cfg.enable {
     programs.spicetify = {

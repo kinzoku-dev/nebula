@@ -34,16 +34,9 @@ in {
       boot = {
         enable = true;
       };
-      ssh = {
-        enable = true;
-      };
 
       locale.enable = true;
       security = {
-        doas = {
-          enable = true;
-          replaceSudo = false;
-        };
         gnupg.enable = true;
       };
     };

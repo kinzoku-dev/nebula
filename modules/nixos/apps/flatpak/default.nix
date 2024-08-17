@@ -24,12 +24,12 @@ in {
       enable = true;
       inherit (cfg) packages;
     };
-    system.persist = {
-      home.dirs = [
+    environment.persist = {
+      home.directories = [
         ".var/app"
         ".local/share/flatpak"
       ];
-      root.dirs = [
+      root.directories = [
         "/var/lib/flatpak/"
       ];
     };

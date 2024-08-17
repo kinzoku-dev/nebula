@@ -5,13 +5,7 @@ with pkgs;
       treefmt
 
       alejandra
+      python310Packages.mdformat
       shfmt
-
-      go
-      gofumpt
-      gopls
-
-      pkg-config
-      glib
     ];
   }

@@ -9,6 +9,8 @@ with lib; rec {
 
   mkBoolOpt' = mkOpt' types.bool;
 
+  mkEnableOpt = mkBoolOpt' false;
+
   enabled = {enable = true;};
 
   disabled = {enable = false;};

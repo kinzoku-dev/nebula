@@ -14,13 +14,15 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = with pkgs; [
-      wineWowPackages.stagingFull
-      winetricks
-    ];
-    system.persist.home.dirs = [
-      ".local/share/wineprefixes"
-      ".wine"
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        wineWowPackages.stagingFull
+        winetricks
+      ];
+      persist.home.directories = [
+        ".local/share/wineprefixes"
+        ".wine"
+      ];
+    };
   };
 }

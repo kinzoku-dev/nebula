@@ -28,10 +28,8 @@ in {
     '';
 
     environment.systemPackages = with pkgs; [
-      nix-index
       nix-init
       nix-update
-      nixpkgs-fmt
       nixpkgs-review
 
       (fenix.combine [
@@ -44,7 +42,7 @@ in {
         ])
         fenix.targets.wasm32-unknown-unknown.latest.rust-std
       ])
-      rust-analyzer-nightly
+      # rust-analyzer-nightly
 
       bun
       nodePackages_latest.npm

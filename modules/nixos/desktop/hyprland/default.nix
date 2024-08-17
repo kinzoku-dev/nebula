@@ -82,6 +82,95 @@ in {
       plugins = with inputs; [
         # split-monitor-workspaces.packages.${pkgs.system}.split-monitor-workspaces
       ];
+      # settings = let
+      #   startupScript = pkgs.writeShellScriptBin "start" ''
+      #     ${pkgs.waybar}/bin/waybar &
+      #     ${pkgs.swww}/bin/swww init &
+      #
+      #     sleep 1
+      #
+      #     ${pkgs.swww}/bin/swww img /home/${config.user.name}/.config/wallpapers/$(ls /home/${config.user.name}/.config/wallpapers | shuf -n 1) &
+      #
+      #     ${pkgs.networkmanagerapplet}/bin/nm-applet &
+      #
+      #     ${pkgs.blueman}/bin/blueman-applet &
+      #
+      #     ${pkgs.wl-clipboard}/bin/wl-paste --watch ${pkgs.cliphist}/bin/cliphist store &
+      #
+      #     ${pkgs.dbus}/bin/dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+      #
+      #   '';
+      # in {
+      #   exec-once = ''${startupScript}/bin/start'';
+      #
+      #   decoration = {
+      #     rounding = 0;
+      #
+      #     drop_shadow = "yes";
+      #
+      #     shadow_ignore_window = true;
+      #     shadow_offset = "0 2";
+      #     shadow_range = 20;
+      #     shadow_render_power = 3;
+      #     "col.shadow" = "rgba(${colors.base01}ff)";
+      #     blur = {
+      #       enabled = true;
+      #       size = 1;
+      #       passes = 1;
+      #       brightness = 1;
+      #       contrast = 1.400;
+      #       ignore_opacity = true;
+      #       noise = 0;
+      #       new_optimizations = true;
+      #       xray = false;
+      #     };
+      #   };
+      #
+      #   layerrule = [
+      #     "blur,rofi"
+      #     "blur,notifications"
+      #   ];
+      #   windowrulev2 = [
+      #     "float,title:(pulsemixer),class:(kitty)"
+      #     "move 25% 25%,title:(pulsemixer),class:(kitty)"
+      #     "size 50% 50%,title:(pulsemixer),class:(kitty)"
+      #   ];
+      #   env = [
+      #     "WLR_NO_HARDWARE_CURSORS,1"
+      #     "GTK_THEME,catppuccin-mocha-lavender-compact+dark"
+      #     "WLR_DRM_NO_ATOMIC,1"
+      #   ];
+      #
+      #   general = {
+      #     border_size = 2;
+      #     layout = "dwindle";
+      #     gaps_in = 5;
+      #     gaps_out = 10;
+      #     "col.active_border" = "rgba(${colors.base07}ff)";
+      #     "col.incative_border" = "rgba(${colors.base00}ff)";
+      #   };
+      #
+      #   input = {
+      #     kb_options = "caps:escape,grp:win_space_toggle";
+      #     kb_layout = "us,us,us";
+      #     kb_variant = ",intl,colemak_dh";
+      #     accel_profile = "flat";
+      #     sensitivity = 0.6;
+      #   };
+      #
+      #   dwindle = {
+      #     preserve_split = "yes";
+      #   };
+      #
+      #   "$mainMod" = "SUPER";
+      #
+      #   bind = [
+      #     "$mainMod SHIFT, Return, exec, kitty"
+      #     "$mainMod SHIFT, C, killactive"
+      #     "$mainMod, P, exec, rofi-drun"
+      #     "$mainMod SHIFT, P, exec, powermenu"
+      #   ];
+      # };
       extraConfig = let
         displayList = lib.concatLines (
           map
@@ -105,8 +194,8 @@ in {
             workspaceMonitors
             pkgs
             config
+            colors
             ;
-          colors = palette;
         }}
       '';
     };
@@ -205,7 +294,7 @@ in {
 
         wl-clipboard
         cliphist
-        inputs.hyprsome.packages."${pkgs.system}".default
+        inputs.hyprsome.packages.${pkgs.system}.default
 
         xwaylandvideobridge
 

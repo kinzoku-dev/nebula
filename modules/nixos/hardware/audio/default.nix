@@ -3,6 +3,7 @@
   options,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 with lib;
@@ -19,6 +20,7 @@ in {
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;
+      package = inputs.nixpkgs-master.legacyPackages.x86_64-linux.pipewire;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
@@ -26,9 +28,11 @@ in {
       wireplumber.enable = true;
     };
     programs.noisetorch.enable = true;
-    environment.systemPackages = [pkgs.pavucontrol pkgs.pulsemixer];
-    system.persist.home.dirs = [
-      ".local/state/wireplumber"
-    ];
+    environment = {
+      systemPackages = [pkgs.pavucontrol pkgs.pulsemixer];
+      persist.home.directories = [
+        ".local/state/wireplumber"
+      ];
+    };
   };
 }

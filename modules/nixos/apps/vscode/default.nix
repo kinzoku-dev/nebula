@@ -14,7 +14,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    system.persist.home.dirs = [
+    environment.persist.home.directories = [
       ".config/VSCodium"
       ".vscode-oss"
     ];

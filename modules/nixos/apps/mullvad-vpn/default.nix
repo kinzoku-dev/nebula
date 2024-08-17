@@ -14,22 +14,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    system.persist.home.dirs = [
-      ".config/Mullvad VPN"
-    ];
-    environment.systemPackages = [
-      pkgs.mullvad-vpn
-      (pkgs.makeDesktopItem {
-        name = "Mullvad GUI";
-        desktopName = "Mullvad GUI";
-        genericName = "Application for managing Mullvad VPN connection";
-        categories = ["Network"];
-        type = "Application";
-        icon = "mullvad";
-        exec = "mullvad-gui";
-        terminal = false;
-      })
-    ];
+    environment = {
+      persist.home.directories = [
+        ".config/Mullvad VPN"
+      ];
+      systemPackages = [
+        pkgs.mullvad-vpn
+        (pkgs.makeDesktopItem {
+          name = "Mullvad GUI";
+          desktopName = "Mullvad GUI";
+          genericName = "Application for managing Mullvad VPN connection";
+          categories = ["Network"];
+          type = "Application";
+          icon = "mullvad";
+          exec = "mullvad-gui";
+          terminal = false;
+        })
+      ];
+    };
 
     services.mullvad-vpn.enable = true;
   };

@@ -48,10 +48,6 @@
   };
   system = {
     boot.enable = true;
-    security.doas = {
-      noPassword = true;
-      replaceSudo = lib.mkForce true;
-    };
 
     xserver.enable = true;
     impermanence = {
@@ -62,7 +58,6 @@
     };
     # system.xremap.enable = true;
     shell.shell = "fish";
-    systemd-timers.enable = true;
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
@@ -158,8 +153,6 @@
         gopls
         spotify
         cava
-
-        sops
 
         nebula.premid-appimage
 

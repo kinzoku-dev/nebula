@@ -12,7 +12,7 @@ with lib.nebula; {
     prism.homeModules.prism
     # nebuvim.homeManagerModules.default
     schizofox.homeManagerModules.default
-    spicetify-nix.homeManagerModule
+    spicetify-nix.homeManagerModules.default
   ];
 
   options = with types; {

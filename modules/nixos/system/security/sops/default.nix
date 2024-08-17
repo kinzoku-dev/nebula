@@ -1,37 +1,44 @@
 {
   config,
-  options,
   pkgs,
   lib,
   inputs,
+  options,
   ...
 }:
 with lib;
 with lib.nebula; let
-  cfg = config.security.sops;
+  cfg = config.system.security.sops;
 in {
-  options.security.sops = with types; {
-    enable = mkBoolOpt false "Enable sops";
-  };
+  # imports = with inputs; [
+  #   sops-nix.nixosModules.sops
+  # ];
 
-  imports = [inputs.sops-nix.nixosModules.sops];
+  options.system.security.sops = with types; {
+    enable = mkBoolOpt true "Enable sops-nix";
+  };
 
   config = mkIf cfg.enable {
     sops = {
-      defaultSopsFile = ./secrets/secrets.yaml;
+      defaultSopsFile = ../../../../../secrets/secrets.yaml;
       defaultSopsFormat = "yaml";
-      age = {
-        sshKeyPaths = ["/home/${config.user.name}/.ssh/id_ed25519"];
-
-        keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
-
-        generateKey = true;
-      };
-      secrets = {
-        cloudflared-token = {};
-        nextcloud-admin-pass = {};
-        invidious-hmac-key = {};
-      };
+      age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
     };
+    environment = {
+      persist.home.directories = [
+        ".config/sops"
+      ];
+
+      systemPackages = with pkgs; [
+        (writeShellScriptBin "sops" ''
+          EDITOR=${config.environment.variables.EDITOR} ${pkgs.sops}/bin/sops $@
+        '')
+        age
+      ];
+    };
+
+    sops.secrets."system/password" = {neededForUsers = true;};
+    sops.secrets."minio/access-key" = {};
+    sops.secrets."minio/secret-key" = {};
   };
 }

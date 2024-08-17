@@ -2,6 +2,10 @@
 command = "alejandra"
 includes = ["*.nix"]
 
+[formatter.markdown]
+command = "mdformat"
+includes = ["*.md"]
+
 [formatter.shell]
 command = "shfmt"
 options = [

@@ -43,15 +43,12 @@
     common.enable = true;
     development.enable = true;
   };
+  impermanence = {
+    enable = true;
+  };
   system = {
-    impermanence = {
-      enable = true;
-    };
+    security.sops.enable = true;
     boot.enable = true;
-    security.doas = {
-      noPassword = true;
-      replaceSudo = lib.mkForce true;
-    };
 
     xserver.enable = true;
     fonts = {
@@ -59,7 +56,6 @@
     };
     # system.xremap.enable = true;
     shell.shell = "fish";
-    systemd-timers.enable = true;
 
     # Open ports in the firewall.
     # networking.firewall.allowedTCPPorts = [ ... ];
@@ -100,7 +96,6 @@
     zathura.enable = true;
     rofi.enable = true;
     printing.enable = true;
-    calcure.enable = true;
     chat.enable = true;
     thunderbird.enable = true;
     vscode.enable = true;
@@ -117,8 +112,6 @@
     clusterUtils.enable = true;
   };
   desktop = {
-    # picom.enable = true;
-    # xmonad.enable = true;
     sddm.enable = true;
     gtk.enable = true;
     xdg.enable = true;
@@ -171,7 +164,7 @@
     waybar.enable = true;
   };
 
-  virtualisation.vm.enable = true;
+  virtualisation.kvm.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -234,7 +227,6 @@
 
         pre-commit
 
-        pkgs.nebula.discover-overlay
         cinnamon.nemo
         razergenie
 
@@ -245,9 +237,6 @@
         gopls
         spotify
         cava
-
-        sops
-        age
 
         nitch
 
@@ -324,10 +313,4 @@
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ]; # Did you read the comment?
-  nix.package = pkgs.nixVersions.latest;
 }

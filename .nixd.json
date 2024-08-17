@@ -1,0 +1,16 @@
+{
+  "eval": {
+    "target": {
+      "args": ["-f", "default.nix"],
+      "installable": "nixosConfigurations.nova.config"
+    },
+    "depth": 10
+  },
+  "options": {
+    "enable": true,
+    "target": {
+      "args": [],
+      "installable": ".#nixosConfigurations.nova.options"
+    }
+  }
+}

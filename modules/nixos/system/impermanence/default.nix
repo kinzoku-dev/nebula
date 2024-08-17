@@ -2,30 +2,36 @@
   config,
   options,
   pkgs,
+  inputs,
   lib,
   ...
 }:
 with lib;
 with lib.nebula; let
-  cfg = config.system.impermanence;
-  persistCfg = config.system.persist;
+  cfg = config.impermanence;
 in {
-  options.system.impermanence = with types; {
+  options.impermanence = with types; {
     enable = mkBoolOpt false "Enable impermanence";
     tmpfs = mkBoolOpt true "Enable tmpfs";
-    erase = mkBoolOpt config.system.impermanence.tmpfs "Enable rollback to blank for / and /home";
+    erase = mkBoolOpt config.impermanence.tmpfs "Enable rollback to blank for / and /home";
   };
-  options.system.persist = with types; {
-    root = {
-      dirs = mkOpt (listOf string) [] "persist dirs in root";
-      files = mkOpt (listOf string) [] "persist files in root";
-      cache = mkOpt (listOf string) [] "persist dirs in root (dont snapshot)";
-    };
-    home = {
-      dirs = mkOpt (listOf string) [] "persist dirs in home";
-      files = mkOpt (listOf string) [] "persist files in home";
+
+  options.environment = with types; {
+    # persist = mkOpt (submodule {
+    #   options = {
+    #     root = mkOpt attrs {} "Files and directories to persist in root";
+    #     home = mkOpt attrs {} "Files and directories to persist in home";
+    #   };
+    # }) {} "Files and directories to persist";
+    persist = {
+      root = mkOpt attrs {} "Files and directories to persist in root";
+      home = mkOpt attrs {} "Files and directories to persist in home";
     };
   };
+
+  # imports = with inputs; [
+  #   impermanence.nixosModules.impermanence
+  # ];
 
   config = mkIf cfg.enable {
     boot = {
@@ -85,31 +91,27 @@ in {
 
     # persist config
     environment.persistence = {
-      "/persist" = {
-        hideMounts = true;
-        files = ["/etc/machine-id"] ++ persistCfg.root.files;
-        directories =
-          [
+      "/persist" =
+        {
+          hideMounts = true;
+          files = ["/etc/machine-id"];
+          directories = [
             "/var/log"
             "/var/lib/nixos"
             "/var/lib/systemd/coredump"
-          ]
-          ++ persistCfg.root.dirs;
-        users.${config.user.name} = {
-          files = persistCfg.home.files;
-          directories =
-            [
-              ".cache/dconf"
-              ".config/dconf"
-              ".config/spotify"
-            ]
-            ++ persistCfg.home.dirs;
-        };
-      };
-      "/persist/cache" = {
-        hideMounts = true;
-        directories = persistCfg.root.cache;
-      };
+          ];
+          users.${config.user.name} =
+            {
+              files = [];
+              directories = [
+                ".cache/dconf"
+                ".config/dconf"
+                ".config/spotify"
+              ];
+            }
+            // (mkAliasDefinitions options.environment.persist.home);
+        }
+        // (mkAliasDefinitions options.environment.persist.root);
     };
   };
 }

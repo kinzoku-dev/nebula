@@ -25,7 +25,7 @@ in {
 
     theme = {
       package = mkOpt package catppuccin-mocha-gtk "Gtk theme package";
-      name = mkOpt str "Catppuccin-Mocha-Compact-Lavender-Dark" "Gtk theme name";
+      name = mkOpt str "catppuccin-mocha-lavender-compact+dark" "Gtk theme name";
     };
 
     iconTheme = {

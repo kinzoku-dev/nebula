@@ -27,12 +27,14 @@ in {
   };
 
   config = {
-    environment.systemPackages = with pkgs; [
-      nmap
-    ];
-    system.persist.root.dirs = [
-      (lib.optionalString cfg.nm.enable "/etc/NetworkManager")
-    ];
+    environment = {
+      systemPackages = with pkgs; [
+        nmap
+      ];
+      persist.root.directories = [
+        (lib.optionalString cfg.nm.enable "/etc/NetworkManager")
+      ];
+    };
     networking = {
       networkmanager.enable = cfg.nm.enable;
       firewall = mkIf fwCfg.enable {

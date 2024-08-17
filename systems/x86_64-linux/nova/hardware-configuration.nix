@@ -9,22 +9,29 @@
   ...
 }: {
   imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+
   boot = {
-    initrd.availableKernelModules = [
-      "xhci_pci"
-      "ahci"
-      "nvme"
-      "usbhid"
-      "usb_storage"
-      "sd_mod"
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+      ];
+      kernelModules = ["dm-snapshot"];
+    };
+    kernelModules = ["kvm-amd" "gcadapter_oc"];
+    extraModulePackages = [
+      config.boot.kernelPackages.gcadapter-oc-kmod
     ];
-    kernelModules = ["kvm-amd"];
-    extraModulePackages = [];
   };
 
-  fileSystems."/home/${config.user.name}/Mounts/obsidian_vaults" = {
-    device = "192.168.3.5:/mnt/store/obsidian_vaults";
-    fsType = "nfs";
+  fileSystems."/home/${config.user.name}/Mounts/sda1" = {
+    device = "/dev/disk/by-label/STORAGE";
+    fsType = "ext4";
+    options = ["defaults" "mode=1777" "uid=1000" "gid=100"];
   };
 
   swapDevices = [];

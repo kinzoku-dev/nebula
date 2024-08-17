@@ -8,6 +8,9 @@
 with lib;
 with lib.nebula; let
   cfg = config.apps.browser.firefox;
+  nur-no-pkgs = import nur {
+    nurpkgs = import nixpkgs {system = "${pkgs.system}";};
+  };
   extra-addons = let
     buildFirefoxXpiAddon = {
       src,
@@ -128,7 +131,7 @@ in {
     enable = mkBoolOpt false "Enable firefox";
   };
   config = mkIf cfg.enable {
-    system.persist.home.dirs = [".mozilla"];
+    environment.persist.home.directories = [".mozilla"];
     home.programs = {
       firefox = {
         enable = true;
@@ -221,7 +224,11 @@ in {
                 "NixOS Wiki"
               ];
             };
-            extensions = with inputs.firefox-addons.packages.${pkgs.system};
+            extensions = with
+            /*
+            inputs.firefox-addons
+            */
+            config.nur.repos.rycee.firefox-addons;
             with extra-addons; [
               (onepassword-password-manager.overrideAttrs {meta.license.free = true;})
               libredirect

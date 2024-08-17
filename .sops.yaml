@@ -1,9 +1,10 @@
 keys:
-  - &primary age109u0hhummvyua8h6ep67mmlucus5cwwp3aq2zkfsgw7mewartdjqdpjn4x
-  - &eclipse age1ggzgwplg0dzgyrfj58fmmk0tsaa0827f4adrujd07z5t5evf8peqdd84yt
+  - &kinzoku_gpg EA514A4E0C8A34AFDB496181582B3B3E531B9211
+  - &kinzoku_age age17qhu5jrzachdvprxtw4d06f6gp3hrag5u3705qvrj68dcza0ps4q03a53z
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: secrets/secrets\.yaml$
     key_groups:
-      - age:
-          - *primary
-          - *eclipse
+      - pgp:
+          - *kinzoku_gpg
+        age:
+          - *kinzoku_age

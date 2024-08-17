@@ -44,7 +44,7 @@
   windowrulev2 = move 25% 25%,title:(pulsemixer),class:(kitty)
   windowrulev2 = size 50% 50%,title:(pulsemixer),class:(kitty)
   env = WLR_NO_HARDWARE_CURSORS,1
-  env = GTK_THEME,Catppuccin-Mocha-Compact-Lavender-Dark
+  env = GTK_THEME,catppuccin-mocha-lavender-compact+dark
   env = WLR_DRM_NO_ATOMIC,1
 
   gestures {

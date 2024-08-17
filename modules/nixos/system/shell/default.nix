@@ -23,15 +23,6 @@ in {
   };
 
   config = {
-    environment.systemPackages = with pkgs; [
-      eza
-      bat
-      nitch
-      fd
-      ripgrep
-      wget
-      grc
-    ];
     users.defaultUserShell =
       if (cfg.shell == "nu")
       then pkgs.nushell
@@ -39,14 +30,54 @@ in {
 
     users.users.kinzoku.ignoreShellProgramCheck = true;
     users.users.root.ignoreShellProgramCheck = true;
-
-    system.persist.home = {
-      dirs = [
-        ".local/share/zoxide"
-        ".local/share/atuin"
-        ".config/atuin"
+    environment = {
+      systemPackages = with pkgs; [
+        eza
+        bat
+        nitch
+        fd
+        ripgrep
+        wget
+        grc
       ];
-      files = [".zsh_history"];
+
+      persist.home = {
+        directories = [
+          ".local/share/zoxide"
+          ".local/share/atuin"
+          ".config/atuin"
+        ];
+        files = [".zsh_history"];
+      };
+
+      shellAliases = {
+        ".." = "cd ..";
+        tfmt = "treefmt";
+        dv = "direnv";
+        rb = "sudo nixos-rebuild switch --flake .";
+        flui = "sudo nix flake lock --update-input";
+        ga = "git add .";
+        gc = "git commit -m ";
+        gp = "git push -u origin";
+        lg = "lazygit";
+        az = "yazi";
+        spoodle = "ssh poodle@mc.theduckpond.xyz -p 42069";
+        tx = "tmux";
+        hss = "hugo server --noHTTPCache";
+        vesktop = "vesktop --disable-gpu";
+        seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
+        nf = "neofetch";
+        cl = "clear";
+        pm = "pulsemixer";
+        v = "fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim";
+        k = "kubectl";
+        tf = "terraform";
+        udm = "udisksctl mount -b";
+        udu = "udisksctl unmount -b";
+        # cdf = "cd $(fd . -t d -H | fzf)";
+        # zf = "z $(fd . -t d -H | fzf)";
+        # nvf = "nvim $(fd . -t f -H | fzf)";
+      };
     };
 
     home.programs.starship = {
@@ -57,35 +88,6 @@ in {
       enableFishIntegration = true;
     };
     home.configFile."starship.toml".source = ./starship.toml;
-
-    environment.shellAliases = {
-      ".." = "cd ..";
-      tfmt = "treefmt";
-      dv = "direnv";
-      rb = "sudo nixos-rebuild switch --flake .";
-      flui = "sudo nix flake lock --update-input";
-      ga = "git add .";
-      gc = "git commit -m ";
-      gp = "git push -u origin";
-      lg = "lazygit";
-      az = "yazi";
-      spoodle = "ssh poodle@mc.theduckpond.xyz -p 42069";
-      tx = "tmux";
-      hss = "hugo server --noHTTPCache";
-      vesktop = "vesktop --disable-gpu";
-      seclipse = "TERM=xterm-256color ssh kinzoku@71.150.126.171";
-      nf = "neofetch";
-      cl = "clear";
-      pm = "pulsemixer";
-      v = "fd --type f --hidden --exclude .git | fzf-tmux -p | xargs nvim";
-      k = "kubectl";
-      tf = "terraform";
-      udm = "udisksctl mount -b";
-      udu = "udisksctl unmount -b";
-      # cdf = "cd $(fd . -t d -H | fzf)";
-      # zf = "z $(fd . -t d -H | fzf)";
-      # nvf = "nvim $(fd . -t f -H | fzf)";
-    };
 
     home.programs.zoxide = {
       enable = true;
@@ -132,7 +134,7 @@ in {
           "docker-compose"
           "docker"
           "kubectl"
-          "ansible"
+          # "ansible"
           "bun"
           "colored-man-pages"
           "fd"
@@ -183,6 +185,8 @@ in {
         bindkey -v
         autoload edit-command-line; zle -N edit-command-line
         bindkey '^e' edit-command-line
+
+        export GPG_TTY=$(tty)
       '';
     };
 

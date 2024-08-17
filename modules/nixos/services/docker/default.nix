@@ -14,22 +14,24 @@ in {
   };
 
   config = mkIf cfg.enable {
-    system.persist = {
-      root.dirs = [
-        "/var/lib/docker"
-      ];
-      home.dirs = [
-        ".docker"
+    environment = {
+      persist = {
+        root.directories = [
+          "/var/lib/docker"
+        ];
+        home.directories = [
+          ".docker"
+        ];
+      };
+
+      systemPackages = with pkgs; [
+        docker
+        docker-compose
       ];
     };
     virtualisation.docker = {
       enable = true;
     };
     user.extraGroups = ["docker"];
-
-    environment.systemPackages = with pkgs; [
-      docker
-      docker-compose
-    ];
   };
 }

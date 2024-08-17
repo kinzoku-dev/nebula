@@ -3,22 +3,71 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-master.url = "github:nixos/nixpkgs/master";
     nixpkgs-kinzoku.url = "github:kinzoku-dev/nixpkgs";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     jovian-nixos.url = "github:Jovian-Experiments/Jovian-NixOS";
 
     stylix.url = "github:danth/stylix";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # For nixd
+    flake-compat = {
+      url = "github:inclyc/flake-compat";
+      flake = false;
+    };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    impermanence.url = "github:kinzoku-dev/impermanence";
+
+    # Theming and colors related
+    nix-colors.url = "github:misterio77/nix-colors";
+    prism.url = "github:IogaMaster/prism";
+
+    # Deployments
+    arion = {
+      url = "github:hercules-ci/arion";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    disko = {
+      url = "github:raidenovich/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    deploy-rs = {
+      url = "github:serokell/deploy-rs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nix-topology.url = "github:oddlama/nix-topology";
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Misc
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flux.url = "github:IogaMaster/flux";
 
     fenix = {
       url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Theming and colors related
-    nix-colors.url = "github:misterio77/nix-colors";
-    prism.url = "github:IogaMaster/prism";
 
     talhelper.url = "github:budimanjojo/talhelper";
 
@@ -27,19 +76,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim = {
-      url = "github:kinzoku-dev/neovim";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
+    nixos-cosmic = {
+      url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hyprland = {
-      url = "github:hyprwm/Hyprland?ref=v0.36.0";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+      inputs.nixpkgs.follows = "nixpkgs-master";
     };
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -59,7 +103,7 @@
     };
     hypridle = {
       url = "github:hyprwm/hypridle";
-      inputs.nixpkgs.follows = "hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     pyprland = {
       url = "github:hyprland-community/pyprland";
@@ -86,12 +130,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Deployments
-    arion = {
-      url = "github:hercules-ci/arion";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.1.0";
 
     ags.url = "github:Aylur/ags";
@@ -99,14 +137,6 @@
     xremap-flake.url = "github:xremap/nix-flake";
 
     nur.url = "github:nix-community/NUR";
-    disko = {
-      url = "github:raidenovich/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    deploy-rs = {
-      url = "github:serokell/deploy-rs";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # nebuvim = {
     #   url = "github:kinzoku-dev/nebuvim";
@@ -122,13 +152,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    firefox-addons = {
-      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/53a9599cc4da4f7557995b8611e5dba831261eef";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -163,10 +188,9 @@
     };
 
     spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
+      url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:kinzoku-dev/impermanence";
 
     catppuccin-bat = {
       url = "github:catppuccin/bat";
@@ -180,9 +204,11 @@
       url = "github:catppuccin/starship";
       flake = false;
     };
-    vesktop.url = "github:NixOS/nixpkgs/5607766da72127e8daa6bc58edddf8e4b9506986";
+    vesktop.url = "github:NixOS/nixpkgs/755b915a158c9d588f08e9b08da9f7f3422070cc";
 
-    # dolphin-emu-nix.url = "github:matthewcroughan/dolphin-emu-nix";
+    dolphin-emu = {
+      url = "github:MatthewCroughan/dolphin-emu-nix";
+    };
   };
 
   outputs = inputs: let
@@ -200,7 +226,7 @@
       };
     };
   in
-    lib.mkFlake {
+    (lib.mkFlake {
       channels-config = {
         allowUnfree = true;
         permittedInsecurePackages = [
@@ -212,6 +238,8 @@
       overlays = with inputs; [
         # neovim.overlays.x86_64-linux.neovim
         fenix.overlays.default
+        nix-topology.overlays.default
+        flux.overlays.default
       ];
       systems = {
         hosts = {
@@ -232,23 +260,54 @@
               impermanence = true;
             })
           ];
+          hardened-vm.modules = with inputs; [
+            (import ./disks/default.nix {
+              inherit lib;
+              swap = false;
+              device = "/dev/vda1";
+              impermanence = true;
+            })
+          ];
         };
 
         modules.nixos = with inputs; [
+          nix-topology.nixosModules.default
+          flux.nixosModules.flux
           home-manager.nixosModules.home-manager
           nur.nixosModules.nur
           disko.nixosModules.disko
-          arion.nixosModules.arion
           nixvim.nixosModules.nixvim
+          sops-nix.nixosModules.sops
           impermanence.nixosModules.impermanence
         ];
       };
-      templates = import ./templates {};
+
       deploy = lib.mkDeploy {inherit (inputs) self;};
+
       checks =
         builtins.mapAttrs (
           _system: deploy-lib: deploy-lib.deployChecks inputs.self.deploy
         )
         inputs.deploy-rs.lib;
+
+      templates = import ./templates {};
+
+      topology = with inputs; let
+        host = self.nixosConfigurations.${builtins.head (builtins.attrNames self.nixosConfigurations)};
+      in
+        import nix-topology {
+          inherit (host) pkgs;
+          modules = [
+            (import ./topology {
+              inherit (host) config;
+            })
+            {inherit (self) nixosConfigurations;}
+          ];
+        };
+    })
+    // {
+      hydraJobs = {
+        packages = {inherit (inputs.self.packages) "x86_64-linux";};
+      };
     };
 }
