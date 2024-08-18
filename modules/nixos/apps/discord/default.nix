@@ -598,11 +598,11 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/vesktop"
+      ".config/discord"
+    ];
     environment = {
-      persist.home.directories = [
-        ".config/vesktop"
-        ".config/discord"
-      ];
       systemPackages = [
         (inputs.vesktop.legacyPackages."x86_64-linux".vesktop.overrideAttrs {
           desktopItems = [

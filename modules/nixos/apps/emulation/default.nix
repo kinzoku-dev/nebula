@@ -15,16 +15,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".local/share/dolphin-emu"
+      ".config/dolphin-emu"
+      ".config/mgba"
+      ".config/melonDS"
+      ".config/rpcs3"
+      ".config/Cemu"
+      ".local/share/Cemu"
+    ];
     environment = {
-      persist.home.directories = [
-        ".local/share/dolphin-emu"
-        ".config/dolphin-emu"
-        ".config/mgba"
-        ".config/melonDS"
-        ".config/rpcs3"
-        ".config/Cemu"
-        ".local/share/Cemu"
-      ];
       systemPackages = with pkgs; [
         melonDS
         mgba

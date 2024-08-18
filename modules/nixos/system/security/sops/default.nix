@@ -24,11 +24,10 @@ in {
       defaultSopsFormat = "yaml";
       age.keyFile = "/home/${config.user.name}/.config/sops/age/keys.txt";
     };
+    system.persist.home.dirs = [
+      ".config/sops"
+    ];
     environment = {
-      persist.home.directories = [
-        ".config/sops"
-      ];
-
       systemPackages = with pkgs; [
         (writeShellScriptBin "sops" ''
           EDITOR=${config.environment.variables.EDITOR} ${pkgs.sops}/bin/sops $@

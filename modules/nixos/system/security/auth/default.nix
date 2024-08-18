@@ -18,7 +18,7 @@ in {
     security = {
       polkit.enable = true;
     };
-    environment.persist.home.directories = [
+    system.persist.home.dirs = [
       ".local/share/keyrings"
       ".pki"
     ];

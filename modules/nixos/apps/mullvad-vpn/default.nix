@@ -14,10 +14,10 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/Mullvad VPN"
+    ];
     environment = {
-      persist.home.directories = [
-        ".config/Mullvad VPN"
-      ];
       systemPackages = [
         pkgs.mullvad-vpn
         (pkgs.makeDesktopItem {

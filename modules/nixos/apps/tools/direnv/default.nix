@@ -19,11 +19,10 @@ in {
       enableZshIntegration = true;
       enableNushellIntegration = true;
     };
+    system.persist.home.dirs = [
+      ".local/share/direnv"
+    ];
     environment = {
-      persist.home.directories = [
-        ".local/share/direnv"
-      ];
-
       sessionVariables.DIRENV_LOG_FORMAT = "";
     }; # Blank so direnv will shut up
   };

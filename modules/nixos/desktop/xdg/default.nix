@@ -33,7 +33,7 @@ in {
         };
       };
     };
-    environment.persist.home.directories = [
+    system.persist.home.dirs = [
       "Desktop"
       "Documents"
       "Downloads"

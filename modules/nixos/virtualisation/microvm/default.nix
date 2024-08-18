@@ -18,7 +18,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.persist.root.directories = [
+    system.persist.root.dirs = [
       "/var/lib/microvms"
     ];
   };

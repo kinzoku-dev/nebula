@@ -14,10 +14,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".thunderbird"
+    ];
     environment = {
-      persist.home.directories = [
-        ".thunderbird"
-      ];
       systemPackages = with pkgs; [
         protonmail-bridge
         pass-wayland

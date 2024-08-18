@@ -14,16 +14,16 @@ in {
   };
 
   config = mkIf cfg.enable {
+    system.persist.home.dirs = [
+      ".config/Signal Beta"
+      ".config/Mumble"
+      ".local/share/Mumble"
+      ".local/share/cinny"
+      ".local/share/in.cinny.app"
+      ".config/Element"
+      ".local/share/TelegramDesktop"
+    ];
     environment = {
-      persist.home.directories = [
-        ".config/Signal Beta"
-        ".config/Mumble"
-        ".local/share/Mumble"
-        ".local/share/cinny"
-        ".local/share/in.cinny.app"
-        ".config/Element"
-        ".local/share/TelegramDesktop"
-      ];
       systemPackages = with pkgs; [
         revolt-desktop
         dino

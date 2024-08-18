@@ -24,7 +24,7 @@ in {
       enable = true;
       inherit (cfg) packages;
     };
-    environment.persist = {
+    system.persist = {
       home.directories = [
         ".var/app"
         ".local/share/flatpak"

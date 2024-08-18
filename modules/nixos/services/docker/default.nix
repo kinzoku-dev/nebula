@@ -15,18 +15,17 @@ in {
 
   config = mkIf cfg.enable {
     environment = {
-      persist = {
-        root.directories = [
-          "/var/lib/docker"
-        ];
-        home.directories = [
-          ".docker"
-        ];
-      };
-
       systemPackages = with pkgs; [
         docker
         docker-compose
+      ];
+    };
+    system.persist = {
+      root.dirs = [
+        "/var/lib/docker"
+      ];
+      home.dirs = [
+        ".docker"
       ];
     };
     virtualisation.docker = {

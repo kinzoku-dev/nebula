@@ -20,6 +20,6 @@ in {
     };
     services.blueman.enable = true;
 
-    environment.persist.root.directories = ["/var/lib/bluetooth"];
+    system.persist.root.dirs = ["/var/lib/bluetooth"];
   };
 }
