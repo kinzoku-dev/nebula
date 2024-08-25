@@ -28,11 +28,11 @@ in {
       wireplumber.enable = true;
     };
     programs.noisetorch.enable = true;
+    system.persist.home.dirs = [
+      ".local/state/wireplumber"
+    ];
     environment = {
       systemPackages = [pkgs.pavucontrol pkgs.pulsemixer];
-      persist.home.directories = [
-        ".local/state/wireplumber"
-      ];
     };
   };
 }

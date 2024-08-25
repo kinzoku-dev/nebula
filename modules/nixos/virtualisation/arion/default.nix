@@ -20,14 +20,13 @@ in {
   config = mkIf cfg.enable {
     virtualisation.arion.backend = "docker";
     virtualisation.docker.enable = true;
+    system.persist.root.dirs = [
+      "/var/lib/docker"
+    ];
     environment = {
       systemPackages = [
         pkgs.arion
         pkgs.lazydocker
-      ];
-
-      persist.root.directories = [
-        "/var/lib/docker"
       ];
     };
   };

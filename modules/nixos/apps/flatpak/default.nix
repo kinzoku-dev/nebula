@@ -25,11 +25,11 @@ in {
       inherit (cfg) packages;
     };
     system.persist = {
-      home.directories = [
+      home.dirs = [
         ".var/app"
         ".local/share/flatpak"
       ];
-      root.directories = [
+      root.dirs = [
         "/var/lib/flatpak/"
       ];
     };

@@ -43,10 +43,10 @@
     common.enable = true;
     development.enable = true;
   };
-  impermanence = {
-    enable = true;
-  };
   system = {
+    impermanence = {
+      enable = true;
+    };
     security.sops.enable = true;
     boot.enable = true;
 

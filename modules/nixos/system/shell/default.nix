@@ -30,6 +30,14 @@ in {
 
     users.users.kinzoku.ignoreShellProgramCheck = true;
     users.users.root.ignoreShellProgramCheck = true;
+    system.persist.home = {
+      dirs = [
+        ".local/share/zoxide"
+        ".local/share/atuin"
+        ".config/atuin"
+      ];
+      files = [".zsh_history"];
+    };
     environment = {
       systemPackages = with pkgs; [
         eza
@@ -40,15 +48,6 @@ in {
         wget
         grc
       ];
-
-      persist.home = {
-        directories = [
-          ".local/share/zoxide"
-          ".local/share/atuin"
-          ".config/atuin"
-        ];
-        files = [".zsh_history"];
-      };
 
       shellAliases = {
         ".." = "cd ..";

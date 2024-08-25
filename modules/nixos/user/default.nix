@@ -67,12 +67,6 @@ in {
       ];
 
       sessionVariables.FLAKE = "/home/${cfg.name}/Dev/nebula";
-      persist.home.directories = [
-        "Documents"
-        "Music"
-        "Images"
-        "Dev"
-      ];
     };
 
     users.users.${cfg.name} =

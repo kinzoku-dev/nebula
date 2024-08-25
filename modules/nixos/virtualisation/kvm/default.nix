@@ -98,9 +98,9 @@ in {
         };
       };
     };
+    system.persist.root.dirs = ["/var/lib/libvirt"];
     environment = {
       systemPackages = with pkgs; [virt-manager];
-      persist.root.directories = ["/var/lib/libvirt"];
     };
   };
 }

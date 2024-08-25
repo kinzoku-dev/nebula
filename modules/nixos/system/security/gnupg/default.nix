@@ -20,13 +20,12 @@ in {
       pinentryPackage = pkgs.pinentry-curses;
       enableSSHSupport = true;
     };
+    system.persist.home.dirs = [
+      ".gnupg"
+      ".local/share/gnupg"
+    ];
     environment = {
       systemPackages = [pkgs.pinentry pkgs.pinentry-curses];
-
-      persist.home.directories = [
-        ".gnupg"
-        ".local/share/gnupg"
-      ];
 
       sessionVariables = {
         GNUPGHOME = "/home/${config.user.name}/.local/share/gnupg";
