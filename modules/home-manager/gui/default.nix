@@ -1,0 +1,23 @@
+{
+  imports = [
+    ./browser
+    ./hyprland
+    ./goverlay.nix
+    ./hyprlock.nix
+    ./kitty.nix
+    ./lutris.nix
+    ./mpv.nix
+    ./obs
+    ./obsidian.nix
+    ./prism-launcher.nix
+    ./qt
+    ./spicetify.nix
+    ./swaync
+    ./vesktop.nix
+    ./virt-manager.nix
+    ./waybar
+    ./wlogout
+    ./fastfetch
+    ./mangohud
+  ];
+}
